@@ -1,2 +1,7 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # miceafter
-Pooling Functions after Multiple Imputation
+
+The package provides functions to apply simple and more advanced
+statistical analyses after multiple imputation.
