@@ -21,7 +21,7 @@ make_mids <- function(data,
     stop("determine variable that distinguishes imputed datasets by impvar")
 
   dat_imp <- data %>%
-    group_split(data[impvar], .keep = FALSE)
+    group_split(get(impvar), .keep = FALSE)
 
   dat_imp1 <- dat_imp[[1]]
 
