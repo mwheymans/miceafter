@@ -1,7 +1,6 @@
-#' Calculates the difference between proportions according to Wald
+#' Calculates the risk ratio and standard error.
 #'
-#' \code{prop_diff_wald} Calculates the difference between proportions
-#'  acoording to Wald to be used in \code{with.aftermi}.
+#' \code{riskratio} Calculates the risk ratio and standard error.
 #'
 #' @param formula A formula object to specify the model as normally used by glm.
 #' @param data Data frame with stacked multiple imputed datasets.
@@ -9,12 +8,12 @@
 #'   dataset. The imputed datasets must be distinguished by an imputation variable,
 #'   specified under impvar, and starting by 1.
 #'
-#' @return The difference between proportions and the standard error.
+#' @return The risk ratio and related standard error and degrees of freedom.
 #'
 #' @author Martijn Heymans, 2021
 #'
 #' @export
-prop_diff_wald <- function(formula, data){
+riskratio <- function(formula, data){
 
   mf_call <- match.call()
   mf_call[[1L]] <- quote(stats::model.frame)
@@ -25,23 +24,23 @@ prop_diff_wald <- function(formula, data){
   outcome <- attr(fm, "variables")[[2]]
   group <- attr(fm, "variables")[[3]]
 
-  sub0 <- subset(X, get(group)==0)
   sub1 <- subset(X, get(group)==1)
+  sub0 <- subset(X, get(group)==0)
 
-  n0 <- nrow(sub0)
   n1 <- nrow(sub1)
+  n0 <- nrow(sub0)
 
-  x0 <- nrow(subset(sub0, get(outcome)==1))
   x1 <- nrow(subset(sub1, get(outcome)==1))
+  x0 <- nrow(subset(sub0, get(outcome)==1))
 
-  p0hat <- x0/n0
   p1hat <- x1/n1
+  p0hat <- x0/n0
 
-  dfcom <- (n0+n1)-1
-  # Proportion and Standard Error according to Wald
-  phat_diff <-
-    p1hat - p0hat
-  se_phat_diff <-
-    sqrt((p0hat * (1 - p0hat)/n0) + (p1hat * (1 - p1hat)/n1))
-  return(c(phat_diff, se_phat_diff, dfcom))
+  dfcom <- c(n1+n0)-1
+  rr <-
+    p1hat / p0hat
+  rr_se <-
+    sqrt(1/x1 - 1/n1 + 1/x0 - 1/n0)
+  return(c(rr, rr_se, dfcom))
 }
+

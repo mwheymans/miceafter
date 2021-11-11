@@ -1,7 +1,7 @@
-#' Calculates the difference between proportions according to Wald
+#' Calculates the difference between proportions according to Agresti-Caffo
 #'
-#' \code{prop_diff_wald} Calculates the difference between proportions
-#'  acoording to Wald to be used in \code{with.aftermi}.
+#' \code{prop_diff_ac} Calculates the difference between proportions
+#'  and standard error acoording to Agresti-Caffo.
 #'
 #' @param formula A formula object to specify the model as normally used by glm.
 #' @param data Data frame with stacked multiple imputed datasets.
@@ -9,14 +9,18 @@
 #'   dataset. The imputed datasets must be distinguished by an imputation variable,
 #'   specified under impvar, and starting by 1.
 #'
-#' @return The difference between proportions and the standard error.
+#' @return The Agresti-Caffo difference between proportions and the standard error.
 #'
 #' @author Martijn Heymans, 2021
 #'
 #' @export
-prop_diff_wald <- function(formula, data){
+prop_diff_ac <- function(formula, data){
 
   mf_call <- match.call()
+  #print(mf_call)
+  #m <- match(c("formula", "data"), names(mf_call), 0L)
+  #mf_call <- mf_call[c(1L, m)]
+  #mf$drop.unused.levels <- TRUE
   mf_call[[1L]] <- quote(stats::model.frame)
   mf_call <- eval(mf_call, parent.frame())
   X <- model.frame(mf_call)
@@ -34,14 +38,14 @@ prop_diff_wald <- function(formula, data){
   x0 <- nrow(subset(sub0, get(outcome)==1))
   x1 <- nrow(subset(sub1, get(outcome)==1))
 
-  p0hat <- x0/n0
-  p1hat <- x1/n1
+  dfcom <- c(n0+n1)-1
 
-  dfcom <- (n0+n1)-1
-  # Proportion and Standard Error according to Wald
-  phat_diff <-
-    p1hat - p0hat
-  se_phat_diff <-
-    sqrt((p0hat * (1 - p0hat)/n0) + (p1hat * (1 - p1hat)/n1))
-  return(c(phat_diff, se_phat_diff, dfcom))
+  # Agresti-Caffo
+  p0hat_ac <- (x0 + 1)/(n0 + 2)
+  p1hat_ac <- (x1 + 1)/(n1 + 2)
+
+  phat_diff_ac <- p1hat_ac - p0hat_ac
+  se_phat_diff_ac <-
+    sqrt((p0hat_ac * (1 - p0hat_ac)/(n0 + 2)) + (p1hat_ac * (1 - p1hat_ac)/(n1 + 2)))
+  return(c(phat_diff_ac, se_phat_diff_ac, dfcom))
 }
