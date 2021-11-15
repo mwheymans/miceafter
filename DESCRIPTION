@@ -1,0 +1,30 @@
+Package: miceafter
+Type: Package
+Depends:
+  R (>= 4.0.0),
+Imports:
+    mitools (>= 2.4),
+    mice (>= 3.12.0),
+    mitml (>= 0.3-7),
+    dplyr (>= 1.0.2),
+    purrr (>= 0.3.4),
+    tidyr (>= 1.1.2),
+    tibble (>= 3.0.4),
+    miceadds (>= 3.10-28),
+    car(>= 3.0-10)
+Suggests:
+Title: Functions to perform Data and Statistical analyses after Multiple Imputation
+Version: 0.0.0.999
+Authors@R: c(
+  person("Martijn", "Heymans", email = "mw.heymans@amsterdamumc.nl", role=c("cre", "aut"),
+  comment = c(ORCID = "0000-0002-3889-0921")))
+Description:
+	Pooling of Statistical Analyses after Multiple Imputation
+Encoding: UTF-8
+LazyData:	true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+License: GPL (>= 2)
+URL:
+BugReports:
+VignetteBuilder: knitr

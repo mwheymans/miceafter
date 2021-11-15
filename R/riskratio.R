@@ -2,37 +2,57 @@
 #'
 #' \code{riskratio} Calculates the risk ratio and standard error.
 #'
+#' @param x 0-1 binary independent variable.
+#' @param y 0-1 binary response variable.
 #' @param formula A formula object to specify the model as normally used by glm.
-#' @param data Data frame with stacked multiple imputed datasets.
-#'   The original dataset that contains missing values must be excluded from the
-#'   dataset. The imputed datasets must be distinguished by an imputation variable,
-#'   specified under impvar, and starting by 1.
+#' @param data An objects of class \code{mids}, created by
+#'  \code{make_mids} or after a call to function \code{mice}.
+#'  If \code{data} is of type \code{data.frame}, use
+#'  \code{make_mids} to convert to \code{mids} object.
 #'
 #' @return The risk ratio and related standard error and degrees of freedom.
 #'
 #' @author Martijn Heymans, 2021
 #'
 #' @export
-riskratio <- function(formula, data){
+riskratio <- function(y, x, formula, data){
 
-  mf_call <- match.call()
-  mf_call[[1L]] <- quote(stats::model.frame)
-  mf_call <- eval(mf_call, parent.frame())
-  X <- model.frame(mf_call)
+  call <- match.call()
 
-  fm <- terms(mf_call)
-  outcome <- attr(fm, "variables")[[2]]
-  group <- attr(fm, "variables")[[3]]
+  if(!inherits(y,"formula")){
+    eval_prop <- eval(call[[1L]], parent.frame())
+    X <- data.frame(y, x)
+    if(!all(X$x==1 | X$x==0))
+      stop("x variable should be a 0 - 1 variable")
+    if(!all(X$y==1 | X$y==0))
+      stop("y variable should be a 0 - 1 variable")
 
-  sub1 <- subset(X, get(group)==1)
-  sub0 <- subset(X, get(group)==0)
+    sub1 <- subset(X, x==1)
+    sub0 <- subset(X, x==0)
 
-  n1 <- nrow(sub1)
-  n0 <- nrow(sub0)
+    n1 <- nrow(sub1)
+    n0 <- nrow(sub0)
 
-  x1 <- nrow(subset(sub1, get(outcome)==1))
-  x0 <- nrow(subset(sub0, get(outcome)==1))
+    x1 <- nrow(subset(sub1, y==1))
+    x0 <- nrow(subset(sub0, y==1))
+    print("test")
+  } else {
+    call <- eval(call[[2L]], parent.frame())
+    X <- model.frame(call)
 
+    fm <- terms(call)
+    outcome <- attr(fm, "variables")[[2]]
+    group <- attr(fm, "variables")[[3]]
+
+    sub1 <- subset(X, get(group)==1)
+    sub0 <- subset(X, get(group)==0)
+
+    n1 <- nrow(sub1)
+    n0 <- nrow(sub0)
+
+    x1 <- nrow(subset(sub1, get(outcome)==1))
+    x0 <- nrow(subset(sub0, get(outcome)==1))
+  }
   p1hat <- x1/n1
   p0hat <- x0/n0
 
@@ -41,6 +61,6 @@ riskratio <- function(formula, data){
     p1hat / p0hat
   rr_se <-
     sqrt(1/x1 - 1/n1 + 1/x0 - 1/n0)
-  return(c(rr, rr_se, dfcom))
+  c(rr, rr_se, dfcom)
 }
 

@@ -5,10 +5,10 @@
 #'
 #' @param x name of variable to calculate proportion.
 #' @param formula A formula object to specify the model as normally used by glm.
-#' @param data Data frame with stacked multiple imputed datasets.
-#'   The original dataset that contains missing values must be excluded from the
-#'   dataset. The imputed datasets must be distinguished by an imputation variable,
-#'   specified under impvar, and starting by 1.
+#' @param data An objects of class \code{mids}, created by
+#'  \code{make_mids} or after a call to function \code{mice}.
+#'  If \code{data} is of type \code{data.frame}, use
+#'  \code{make_mids} to convert to \code{mids} object.
 #'
 #' @return The proportion and the standard error.
 #'

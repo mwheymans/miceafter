@@ -1,4 +1,4 @@
-#' Calculates the pooled C-statistic (Area Under the ROC Curve) across Multiply Imputed datasets
+#' Calculates the pooled C-statistic (Area Under the ROC Curve)
 #'
 #' \code{pool_auc} Calculates the pooled C-statistic and 95% Confidence interval
 #'  by using Rubin's Rules. The C-statistic values are log transformed before pooling.

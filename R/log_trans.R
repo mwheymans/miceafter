@@ -1,12 +1,17 @@
-#' Natural Log transformation of input parameters
+#' Natural Log transformation of parameter estimates
 #'
 #' \code{log_transform} Natural Log transformation of parameter
 #'  estimate and standard error.
 #'
 #' @param est A numeric vector of values that have to be log transformed
-#' @param se A numeric vector of standard error values that have to be log transformed
+#' @param se A numeric vector of standard error values
 #'
 #' @return The natural log transformed values.
+#'
+#' @details Function is used to naturally log transform parameters
+#'  and standard errors before they can be pooled using function
+#'  \code{pool_RR} before pooling with Rubin's Rules. To naturally
+#'  log transform the standard error the Delta method is used.
 #'
 #' @author Martijn Heymans, 2021
 #'

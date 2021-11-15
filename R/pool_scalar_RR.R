@@ -1,4 +1,8 @@
-pool_RR <- function(est, se, log_trans=FALSE, conf.level=0.95, df_com=NULL){
+pool_scalar_RR <- function(est,
+                           se,
+                           log_trans=FALSE,
+                           conf.level=0.95,
+                           df_com=NULL){
   call <- match.call()
   if(log_trans){
     source("log_trans.R")

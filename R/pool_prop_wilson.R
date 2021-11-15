@@ -5,7 +5,7 @@
 #'  confidence intervals according to Wald across multiply imputed datasets
 #'  and using Rubin's Rules.
 #'
-#' @param object An object of class 'raami' after using \code{with.aftermi}.
+#' @param object An object of class 'staami' after using \code{with.aftermi}.
 #' @param formula A formula object to specify the model as normally used by glm.
 #' @param data Data frame with stacked multiple imputed datasets.
 #'   The original dataset that contains missing values must be excluded from the
@@ -30,10 +30,8 @@ pool_prop_wilson <- function(object, conf.level=0.95){
   ra <- data.frame(do.call("rbind", object$statistics))
   colnames(ra) <- c("est", "se", "df_com")
 
-  source("pool_RR.R")
-  pool_est <- pool_RR(est=ra$est, se=ra$se,
+  pool_est <- pool_scalar_RR(est=ra$est, se=ra$se,
                       log_trans=FALSE, conf.level = conf.level, df_com=ra$df_com[1])
-
 
   mean_est <- pool_est$pool_est
   t <- pool_est$t
@@ -54,5 +52,6 @@ pool_prop_wilson <- function(object, conf.level=0.95){
 
   reswilson <- round(c(mean_est, lower, upper), 4)
   names(reswilson) <- c("Prop", "95%CI L Wilson", "95%CI U Wilson")
+  class(reswilson) <- 'paami'
   return(reswilson)
 }

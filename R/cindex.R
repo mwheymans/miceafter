@@ -1,0 +1,39 @@
+#' Calculates the c-index and standard error
+#'
+#' \code{cindex} Calculates the c-index and standard error for
+#'  logistic and Cox regression models.
+#'
+#' @param formula A formula object to specify the model as normally used by glm
+#'  or coxph.
+#' @param data An objects of class \code{mids}, created by
+#'  \code{make_mids} or after a call to function \code{mice}.
+#'  If \code{data} is of type \code{data.frame}, use
+#'  \code{make_mids} to convert to \code{mids} object.
+#'
+#' @return The c-index, related standard error and degrees of freedom.
+#'
+#' @author Martijn Heymans, 2021
+#'
+#' @export
+cindex <- function(formula, data){
+
+  mf_call <- match.call()
+  fit <- eval(mf_call[[2L]], parent.frame())
+
+  if(any(class(formula)!="coxph")){
+    predfit <- predict(fit, type="response")
+    can <- pROC::roc(fit$y, predfit, quiet=TRUE)
+    cest <- can$auc
+    cse <- sqrt(var(can))
+    n <- length(predfit)
+  }
+  else {
+    cfit <- concordance(fit)
+    cest <- cfit$concordance
+    cse <- sqrt(cfit$var)
+    n <- fit$n
+  }
+  dfcom <- n-1
+  res <- c(cest, cse, dfcom)
+  return(res)
+}

@@ -17,23 +17,26 @@
 make_mids <- function(data,
                       impvar=NULL){
 
-  if(is.null(impvar))
-    stop("determine variable that distinguishes imputed datasets by impvar")
+  if(any(class(data)=="data.frame")){
+    if(is.null(impvar))
+      stop("determine variable that distinguishes imputed datasets using 'impvar'")
+    data <- data %>%
+      group_split(get(impvar), .keep = TRUE)
+  }
+  if(!any(class(data)=="list"))
+    stop("data is not of object list")
 
-  dat_imp <- data %>%
-    group_split(get(impvar), .keep = FALSE)
-
-  dat_imp1 <- dat_imp[[1]]
+  dat_imp1 <- data[[1]]
 
   n <- nrow(dat_imp1)
-  nimp <- length(dat_imp)
+  nimp <- length(data)
 
   r_X <- matrix(NA, n, ncol(dat_imp1))
 
   for(k in seq_len(ncol(dat_imp1))){
 
-    x <- dat_imp[[1]]
-    imp_var <- unlist(sapply(dat_imp, function(x) x[, k]))
+    x <- data[[1]]
+    imp_var <- unlist(sapply(data, function(x) x[, k]))
     imp_X <- matrix(imp_var, n, nimp)
 
     # make missing
@@ -48,14 +51,14 @@ make_mids <- function(data,
   }
   dat_imp1[r_X==1] <- NA
 
-  # dry run of mice
+  # impute
   imp_ini <- mice(dat_imp1, m=nimp, maxit=0, allow.na = TRUE)
   ini_imputed <- imp_ini$imp
 
-  # replace missing data with already imputed data
+  # replace missing data with imputed data
   for(j in 1:nimp){
     for(i in 1:ncol(dat_imp1)){
-      repl_var <- unlist(dat_imp[[j]][, i])
+      repl_var <- unlist(data[[j]][, i])
       ini_imputed[[i]][, j]  <- repl_var[r_X[, i]==1]
     }
   }

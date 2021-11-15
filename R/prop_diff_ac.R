@@ -4,10 +4,10 @@
 #'  and standard error acoording to Agresti-Caffo.
 #'
 #' @param formula A formula object to specify the model as normally used by glm.
-#' @param data Data frame with stacked multiple imputed datasets.
-#'   The original dataset that contains missing values must be excluded from the
-#'   dataset. The imputed datasets must be distinguished by an imputation variable,
-#'   specified under impvar, and starting by 1.
+#' @param data An objects of class \code{mids}, created by
+#'  \code{make_mids} or after a call to function \code{mice}.
+#'  If \code{data} is of type \code{data.frame}, use
+#'  \code{make_mids} to convert to \code{mids} object.
 #'
 #' @return The Agresti-Caffo difference between proportions and the standard error.
 #'
@@ -17,10 +17,6 @@
 prop_diff_ac <- function(formula, data){
 
   mf_call <- match.call()
-  #print(mf_call)
-  #m <- match(c("formula", "data"), names(mf_call), 0L)
-  #mf_call <- mf_call[c(1L, m)]
-  #mf$drop.unused.levels <- TRUE
   mf_call[[1L]] <- quote(stats::model.frame)
   mf_call <- eval(mf_call, parent.frame())
   X <- model.frame(mf_call)

@@ -5,7 +5,7 @@
 #' @param f a vector of F values.
 #' @param df single value for the numerator degrees of freedom of the F test.
 #'
-#' @return The chi square values.
+#' @return The Chi square values.
 #'
 #' @author Martijn Heymans, 2021
 #'
