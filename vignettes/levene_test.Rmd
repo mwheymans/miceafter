@@ -1,0 +1,61 @@
+---
+title: "Pooling Levene's test statistic"
+author: "Martijn W Heymans"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Pooling Levene's test statistic}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(miceafter)
+library(mice)
+library(magrittr)
+library(dplyr)
+```
+
+### Levene's test
+
+Levene's test is used to test if the variance between groups is comparable. The test can be used to compare the variances between two groups, but also between more than two groups.
+
+## Examples
+
+## In combination with the `mice` function 
+
+The lbp_orig is a dataset with missing values. So we first impute them with the `mice` function. Than we use the `with.miceafter`  function to apply repeated analyses with the `levene_test` function across the multiply imputed datasets. Finally, we pool the results by using the `pool_levenetest` function.
+
+```{r}
+
+  imp_data <- mice(miceafter::lbp_orig, m=5, seed=3025, printFlag = FALSE) 
+
+  ra <- with.miceafter(data=imp_data,
+   expr = levene_test(Pain ~ factor(Satisfaction)))
+
+  res <- pool_levenetest(ra, method = "D1")
+  res
+
+```  
+
+## In combination with stored Multiply Imputed datasets 
+
+The dataset `lbpmilr` is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the `Impnr`  variable. First we convert the dataset into a `mids` object by the `makemids` function. Than we use the `with.miceafter`  function to apply repeated analyses with the `levene_test` function across the multiply imputed datasets. Finally, we pool the results by using the `pool_levenetest` function.
+
+```{r}
+
+  imp_data <- make_mids(lbpmilr, impvar = "Impnr") # MI datasets are in lbpmilr
+
+  ra <- with.miceafter(data=imp_data,
+   expr = levene_test(Pain ~ factor(Satisfaction)))
+
+  res <- pool_levenetest(ra, method = "D1")
+  res
+
+```  
+

@@ -3,23 +3,30 @@ Type: Package
 Depends:
   R (>= 4.0.0),
 Imports:
+    ggplot2 (>= 3.3.2),
+    norm (>= 1.0-9.5),
+    survival (>= 3.1-12),
     mitools (>= 2.4),
+    pROC (>= 1.16.2),
+    rms (>= 6.1-0),
+    magrittr (>= 2.0.1),
     mice (>= 3.12.0),
     mitml (>= 0.3-7),
-    dplyr (>= 1.0.2),
+    dplyr (>= 1.0.2), 
     purrr (>= 0.3.4),
     tidyr (>= 1.1.2),
     tibble (>= 3.0.4),
+    stringr (>= 1.4.0),
     miceadds (>= 3.10-28),
     car(>= 3.0-10)
 Suggests:
 Title: Functions to perform Data and Statistical analyses after Multiple Imputation
-Version: 0.0.0.999
+Version: 0.1.0
 Authors@R: c(
   person("Martijn", "Heymans", email = "mw.heymans@amsterdamumc.nl", role=c("cre", "aut"),
   comment = c(ORCID = "0000-0002-3889-0921")))
 Description:
-	Pooling of Statistical Analyses after Multiple Imputation
+	Statistical Analyses and Pooling after Multiple Imputation
 Encoding: UTF-8
 LazyData:	true
 Roxygen: list(markdown = TRUE)

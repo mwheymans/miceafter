@@ -15,6 +15,12 @@ knitr::opts_chunk$set(
 
 # miceafter
 
-The package provides functions to apply simple and more advanced statistical analyses after multiple imputation.
+The package provides statistical functions to apply simple and more advanced
+statistical analyses after multiple imputation. Therefore the name 'miceafter'.
+The package is an extension of the \code{mice} function. The package contains 
+the \code{make_mids} function. With this function it is possible to convert 
+any dataframe into a \code{mids} object. This object can be used in combination
+with the \code{with.miceafter} function to apply all kind of repeated statistical
+analyses. For all statistical analyses pooling functions are available.
 
 
