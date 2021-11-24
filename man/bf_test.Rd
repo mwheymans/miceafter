@@ -13,18 +13,32 @@ bf_test(y, x, formula, data)
 
 \item{formula}{A formula object to specify the model as normally
 used by glm. Use 'factor' to define the grouping variable.}
+
+\item{data}{An objects of class \code{mids}, created by
+\code{make_mids} or after a call to function \code{mice}.}
 }
 \value{
 An object containing the following objects:
 \itemize{
 \item  \code{fstats} F-test value, including numerator and
 denominator degrees of freedom.
-\item  \code{qhat} pooled coefficients from fit
-\item  \code{vcov} variance-covariance matrix
+\item  \code{qhat} pooled coefficients from fit.
+\item  \code{vcov} variance-covariance matrix.
+\item  \code{dfcom} degrees of freedom obtained from /code{df.residual}.
 }
 }
 \description{
-\code{bf_test} Calculates the Brown-Forsythe test.
+\code{bf_test} Calculates the Brown-Forsythe test for homogeneity
+of variance across groups, coefficients, variance-covariance matrix,
+and degrees of freedom to be used in function \code{with.miceafter}.
+}
+\examples{
+imp_dat <- make_mids(lbpmilr, impvar="Impnr")
+ra <- with.miceafter(imp_dat, expr=bf_test(Pain ~ factor(Carrying)))
+
+}
+\seealso{
+\code{\link{with.miceafter}}
 }
 \author{
 Martijn Heymans, 2021

@@ -8,7 +8,8 @@ to Wilson across multiply imputed datasets.}
 pool_prop_wilson(object, conf.level = 0.95)
 }
 \arguments{
-\item{object}{An object of class 'staami' after using \code{with.aftermi}.}
+\item{object}{An object of class 'raami' (repeated analysis after
+multiple imputation) after using \code{with.aftermi}.}
 
 \item{formula}{A formula object to specify the model as normally used by glm.}
 
@@ -28,6 +29,13 @@ and using Rubin's Rules.
 \details{
 Before pooling, the proportions will be naturally log transformed and
 the pooled estimates back transformed to the original scale.
+}
+\examples{
+imp_dat <- make_mids(lbpmilr, impvar="Impnr")
+ra <- with.miceafter(imp_dat, expr=prop_wald(Chronic ~ 1))
+res <- pool_prop_wilson(ra)
+res
+
 }
 \author{
 Martijn Heymans, 2021

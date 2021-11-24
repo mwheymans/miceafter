@@ -1,6 +1,7 @@
-#' Calculates the odds ratio and standard error.
+#' Calculates the odds ratio (OR) and standard error.
 #'
-#' \code{oddsratio} Calculates the log odds ratio and standard error.
+#' \code{oddsratio} Calculates the odds ratio and standard error
+#'  and degrees of freedom to be used in function \code{with.miceafter}.
 #'
 #' @param x 0-1 binary independent variable.
 #' @param y 0-1 binary response variable.
@@ -10,9 +11,18 @@
 #'  If \code{data} is of type \code{data.frame}, use
 #'  \code{make_mids} to convert to \code{mids} object.
 #'
+#' @details Note that the standard error of the OR is on the
+#'  logit scale.
+#'
 #' @return The odds ratio, related standard error and degrees of freedom.
 #'
 #' @author Martijn Heymans, 2021
+#'
+#' @seealso \code{\link{with.miceafter}}
+#'
+#' @examples
+#' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
+#' ra <- with.miceafter(imp_dat, expr=oddsratio(Chronic ~ Radiation))
 #'
 #' @export
 oddsratio <- function(y, x, formula, data){
@@ -20,6 +30,9 @@ oddsratio <- function(y, x, formula, data){
   call <- match.call()
 
   if(!inherits(y,"formula")){
+    names_var <- all.vars(call, functions = FALSE)
+    if(length(names_var) > 2)
+      stop("x should include one variable")
     eval_prop <- eval(call[[1L]], parent.frame())
     X <- data.frame(y, x)
     if(!all(X$x==1 | X$x==0))
@@ -40,14 +53,19 @@ oddsratio <- function(y, x, formula, data){
 
     OR <- (xa *xd) / (xb * xc)
     log_se <- sqrt(1/xa + 1/xb + 1/xc + 1/xd)
-    dfcom <- nrow(X)-1
+    dfcom <- nrow(X)-2
     c(OR, log_se, dfcom)
   } else {
     eval_prop <- eval(call[[2]], parent.frame())
     fit <- glm(eval_prop, y=TRUE, x=TRUE, family = binomial)
+    nr_var <- attr(fit$terms, "term.labels")
+    if(length(nr_var) > 1)
+      stop("Include single independent variable only or use function psfmi_lr")
     OR <- exp(coef(fit)[2])
     OR_se <- sqrt(diag(vcov(fit))[2])
-    dfcom <- df.residual(fit)+1
-    c(OR, OR_se, dfcom)
+    dfcom <- df.residual(fit)
+    output <- matrix(c(OR, OR_se, dfcom), 1, 3)
+    colnames(output) <- c("OR", "SE", "dfcom")
+    output
   }
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/oddsratio.R
 \name{oddsratio}
 \alias{oddsratio}
-\title{Calculates the odds ratio and standard error.}
+\title{Calculates the odds ratio (OR) and standard error.}
 \usage{
 oddsratio(y, x, formula, data)
 }
@@ -22,7 +22,20 @@ If \code{data} is of type \code{data.frame}, use
 The odds ratio, related standard error and degrees of freedom.
 }
 \description{
-\code{oddsratio} Calculates the log odds ratio and standard error.
+\code{oddsratio} Calculates the odds ratio and standard error
+and degrees of freedom to be used in function \code{with.miceafter}.
+}
+\details{
+Note that the standard error of the OR is on the
+logit scale.
+}
+\examples{
+imp_dat <- make_mids(lbpmilr, impvar="Impnr")
+ra <- with.miceafter(imp_dat, expr=oddsratio(Chronic ~ Radiation))
+
+}
+\seealso{
+\code{\link{with.miceafter}}
 }
 \author{
 Martijn Heymans, 2021

@@ -7,8 +7,8 @@
 cindex(formula, data)
 }
 \arguments{
-\item{formula}{A formula object to specify the model as normally used by glm
-or coxph.}
+\item{formula}{A formula object to specify the model as
+normally used by glm or coxph.}
 
 \item{data}{An objects of class \code{mids}, created by
 \code{make_mids} or after a call to function \code{mice}.
@@ -16,11 +16,27 @@ If \code{data} is of type \code{data.frame}, use
 \code{make_mids} to convert to \code{mids} object.}
 }
 \value{
-The c-index, related standard error and degrees of freedom.
+The c-index, related standard error and
+degrees of freedom.
 }
 \description{
 \code{cindex} Calculates the c-index and standard error for
-logistic and Cox regression models.
+logistic and Cox regression models and degrees of freedom
+to be used in function \code{with.miceafter}.
+}
+\examples{
+ imp_list <- lbpmilr \%>\%
+  group_split(Impnr, .keep = FALSE)
+
+ imp_data <- make_mids(imp_list)
+
+ ra <- with.miceafter(data=imp_data,
+  expr = cindex(glm(Chronic ~ Gender + Radiation,
+  family="binomial")))
+
+}
+\seealso{
+\code{\link{with.miceafter}}
 }
 \author{
 Martijn Heymans, 2021

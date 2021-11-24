@@ -8,7 +8,8 @@ to Wald across multiply imputed datasets.}
 pool_prop_nna(object, conf.level = 0.95)
 }
 \arguments{
-\item{object}{An object of class 'raami' after using \code{with.aftermi}.}
+\item{object}{An object of class 'raami' (repeated analysis after
+multiple imputation) after using \code{with.aftermi}.}
 
 \item{data}{Data frame with stacked multiple imputed datasets.
 The original dataset that contains missing values must be excluded from the
@@ -29,12 +30,10 @@ the pooled estimates back transformed to the original scale.
 }
 \examples{
  lbpmilr <- psfmi::lbpmilr
-
  imp_dat <- make_mids(lbpmilr, impvar='Impnr')
-
- ra <- miceafter::with(imp_dat, expr=prop_nna(Radiation))
-
- pool_prop_na(ra)
+ ra <- with.miceafter(imp_dat, expr=prop_nna(Radiation))
+ res <- pool_prop_nna(ra)
+ res
 
 }
 \references{

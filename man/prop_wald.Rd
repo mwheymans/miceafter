@@ -2,7 +2,8 @@
 % Please edit documentation in R/prop_wald.R
 \name{prop_wald}
 \alias{prop_wald}
-\title{Calculates the proportion and standard error}
+\title{Calculates a single proportion and related standard error
+according to Wald}
 \usage{
 prop_wald(x, formula, data)
 }
@@ -20,8 +21,18 @@ If \code{data} is of type \code{data.frame}, use
 The proportion and the standard error.
 }
 \description{
-\code{prop_wald} Calculates the proportion and
-related standard error according to Wald.
+\code{prop_wald} Calculates a single proportion and
+related standard error according to Wald and
+provides degrees of freedom to be used
+in function \code{with.miceafter}.
+}
+\examples{
+imp_dat <- make_mids(lbpmilr, impvar="Impnr")
+ra <- with.miceafter(imp_dat, expr=prop_wald(Chronic ~ 1))
+
+}
+\seealso{
+\code{\link{with.miceafter}}
 }
 \author{
 Martijn Heymans, 2021

@@ -1,7 +1,10 @@
-#' Calculates the proportion and standard error
+#' Calculates a single proportion and related standard error
+#'  according to Wald
 #'
-#' \code{prop_wald} Calculates the proportion and
-#'  related standard error according to Wald.
+#' \code{prop_wald} Calculates a single proportion and
+#'  related standard error according to Wald and
+#'  provides degrees of freedom to be used
+#'  in function \code{with.miceafter}.
 #'
 #' @param x name of variable to calculate proportion.
 #' @param formula A formula object to specify the model as normally used by glm.
@@ -13,6 +16,12 @@
 #' @return The proportion and the standard error.
 #'
 #' @author Martijn Heymans, 2021
+#'
+#' @seealso \code{\link{with.miceafter}}
+#'
+#' @examples
+#' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
+#' ra <- with.miceafter(imp_dat, expr=prop_wald(Chronic ~ 1))
 #'
 #' @export
 prop_wald <- function(x, formula, data){

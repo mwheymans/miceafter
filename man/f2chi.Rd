@@ -4,12 +4,12 @@
 \alias{f2chi}
 \title{Converts F-values into Chi Square values}
 \usage{
-f2chi(f, df)
+f2chi(f, df_num)
 }
 \arguments{
 \item{f}{a vector of F values.}
 
-\item{df}{single value for the numerator degrees of freedom of the F test.}
+\item{df_num}{single value for the numerator degrees of freedom of the F test.}
 }
 \value{
 The Chi square values.

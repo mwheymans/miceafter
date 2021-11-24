@@ -2,8 +2,8 @@
 % Please edit documentation in R/prop_nna.R
 \name{prop_nna}
 \alias{prop_nna}
-\title{Calculates the proportion and standard error according to
-a nonnormal approximation}
+\title{Calculates the mean and variance components of the beta
+distribution for a single proportion}
 \usage{
 prop_nna(x, data)
 }
@@ -19,8 +19,8 @@ If \code{data} is of type \code{data.frame}, use
 The mean and variance components of the beta distribution.
 }
 \description{
-\code{prop_nna} Calculates the proportion and
-related confidence interval using a beta distribution.
+\code{prop_nna} Calculates the mean and variance
+components of the beta distribution for a single proportion.
 }
 \author{
 Martijn Heymans, 2021

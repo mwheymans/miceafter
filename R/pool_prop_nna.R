@@ -5,7 +5,8 @@
 #'  standard error according to Wald across multiply imputed datasets
 #'  and using Rubin's Rules.
 #'
-#' @param object An object of class 'raami' after using \code{with.aftermi}.
+#' @param object An object of class 'raami' (repeated analysis after
+#'   multiple imputation) after using \code{with.aftermi}.
 #' @param data Data frame with stacked multiple imputed datasets.
 #'   The original dataset that contains missing values must be excluded from the
 #'   dataset. The imputed datasets must be distinguished by an imputation variable,
@@ -23,12 +24,10 @@
 #'
 #' @examples
 #'  lbpmilr <- psfmi::lbpmilr
-#'
 #'  imp_dat <- make_mids(lbpmilr, impvar='Impnr')
-#'
-#'  ra <- miceafter::with(imp_dat, expr=prop_nna(Radiation))
-#'
-#'  pool_prop_na(ra)
+#'  ra <- with.miceafter(imp_dat, expr=prop_nna(Radiation))
+#'  res <- pool_prop_nna(ra)
+#'  res
 #'
 #' @export
 pool_prop_nna <- function(object, conf.level=0.95){

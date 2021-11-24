@@ -2,7 +2,7 @@
 % Please edit documentation in R/riskratio.R
 \name{riskratio}
 \alias{riskratio}
-\title{Calculates the risk ratio and standard error.}
+\title{Calculates the risk ratio (RR) and standard error.}
 \usage{
 riskratio(y, x, formula, data)
 }
@@ -19,10 +19,23 @@ If \code{data} is of type \code{data.frame}, use
 \code{make_mids} to convert to \code{mids} object.}
 }
 \value{
-The risk ratio and related standard error and degrees of freedom.
+The risk ratio and related standard error and
+degrees of freedom to be used in function \code{with.miceafter}.
 }
 \description{
 \code{riskratio} Calculates the risk ratio and standard error.
+}
+\details{
+Note that the standard error of the RR is on the natural
+log scale, both when you use formula or y and x.
+}
+\examples{
+imp_dat <- make_mids(lbpmilr, impvar="Impnr")
+ra <- with.miceafter(imp_dat, expr=riskratio(Chronic ~ Radiation))
+
+}
+\seealso{
+\code{\link{with.miceafter}}
 }
 \author{
 Martijn Heymans, 2021

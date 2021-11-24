@@ -2,14 +2,15 @@
 % Please edit documentation in R/make_mids.R
 \name{make_mids}
 \alias{make_mids}
-\title{Converts a data.frame into a object of class mids}
+\title{Converts a data.frame, tibble or list into a object of class \code{mice::mids}}
 \usage{
 make_mids(data, impvar = NULL)
 }
 \arguments{
-\item{data}{Data frame with stacked multiple imputed datasets.
-The original dataset that contains missing values must be excluded from the
-dataset. The imputed datasets must be distinguished by an imputation variable,
+\item{data}{A Data frame, tibble or list containing the multiply imputed
+datasets. The original dataset that contains missing values must be
+excluded from the dataset. For data frames and tibbles, The imputed
+datasets must be distinguished by an imputation variable,
 specified under impvar, and starting by 1.}
 
 \item{impvar}{A character vector. Name of the variable that distinguishes the
@@ -19,7 +20,8 @@ imputed datasets.}
 Object of class mids.
 }
 \description{
-\code{make_mids} Converta data.frame into object of class mids
+\code{make_mids} Converts data.frame, tibble or list into object of
+class \code{mice::mids}
 }
 \author{
 Martijn Heymans, 2021

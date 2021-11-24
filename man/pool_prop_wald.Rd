@@ -8,17 +8,13 @@ to Wald across multiply imputed datasets.}
 pool_prop_wald(object, conf.level = 0.95)
 }
 \arguments{
-\item{object}{An object of class 'raami' after using \code{with.aftermi}.}
+\item{object}{An object of class 'raami' (repeated analysis after
+multiple imputation) after using \code{with.aftermi}.}
 
-\item{formula}{A formula object to specify the model as normally used by glm.}
-
-\item{data}{Data frame with stacked multiple imputed datasets.
-The original dataset that contains missing values must be excluded from the
-dataset. The imputed datasets must be distinguished by an imputation variable,
-specified under impvar, and starting by 1.}
+\item{conf.level}{Confidence level of the confidence intervals.}
 }
 \value{
-The proportion and the 95\% Confidence interval.
+The proportion, the Confidence intervals, the standard error and the statistic.
 }
 \description{
 \code{pool_prop_wald} Calculates the pooled proportion and
@@ -28,6 +24,13 @@ and using Rubin's Rules.
 \details{
 Before pooling, the proportions will be naturally log transformed and
 the pooled estimates back transformed to the original scale.
+}
+\examples{
+imp_dat <- make_mids(lbpmilr, impvar="Impnr")
+ra <- with.miceafter(imp_dat, expr=prop_wald(Chronic ~ 1))
+res <- pool_prop_wald(ra)
+res
+
 }
 \author{
 Martijn Heymans, 2021

@@ -1,13 +1,15 @@
-#' Converts a data.frame into a object of class mids
+#' Converts a data.frame, tibble or list into a object of class \code{mice::mids}
 #'
-#' \code{make_mids} Converta data.frame into object of class mids
+#' \code{make_mids} Converts data.frame, tibble or list into object of
+#'  class \code{mice::mids}
 #'
-#' @param data Data frame with stacked multiple imputed datasets.
-#'   The original dataset that contains missing values must be excluded from the
-#'   dataset. The imputed datasets must be distinguished by an imputation variable,
-#'   specified under impvar, and starting by 1.
+#' @param data A Data frame, tibble or list containing the multiply imputed
+#'  datasets. The original dataset that contains missing values must be
+#'  excluded from the dataset. For data frames and tibbles, The imputed
+#'  datasets must be distinguished by an imputation variable,
+#'  specified under impvar, and starting by 1.
 #' @param impvar A character vector. Name of the variable that distinguishes the
-#' imputed datasets.
+#'  imputed datasets.
 #'
 #' @return Object of class mids.
 #'
@@ -24,7 +26,7 @@ make_mids <- function(data,
       group_split(get(impvar), .keep = TRUE)
   }
   if(!any(class(data)=="list"))
-    stop("data is not of object list")
+    stop("data is not of object data.frame, tibble or list")
 
   dat_imp1 <- data[[1]]
 

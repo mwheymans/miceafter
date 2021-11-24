@@ -1,8 +1,8 @@
-#' Calculates the proportion and standard error according to
-#'  a nonnormal approximation
+#' Calculates the mean and variance components of the beta
+#'  distribution for a single proportion
 #'
-#' \code{prop_nna} Calculates the proportion and
-#'  related confidence interval using a beta distribution.
+#' \code{prop_nna} Calculates the mean and variance
+#'  components of the beta distribution for a single proportion.
 #'
 #' @param x name of variable to calculate proportion.
 #' @param data An objects of class \code{mids}, created by
