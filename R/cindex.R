@@ -1,22 +1,22 @@
 #' Calculates the c-index and standard error
 #'
 #' \code{cindex} Calculates the c-index and standard error for
-#'  logistic and Cox regression models and degrees of freedom
-#'  to be used in function \code{with.miceafter}.
+#'  logistic and Cox regression models and the degrees of freedom
+#'  to be further used in function \code{with.miceafter}.
 #'
 #' @param formula A formula object to specify the model as
 #'  normally used by glm or coxph.
 #' @param data An objects of class \code{mids}, created by
 #'  \code{make_mids} or after a call to function \code{mice}.
 #'  If \code{data} is of type \code{data.frame}, use
-#'  \code{make_mids} to convert to \code{mids} object.
+#'  \code{make_mids} to convert to a \code{mids} object.
 #'
 #' @return The c-index, related standard error and
 #'  degrees of freedom.
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.miceafter}}
+#' @seealso \code{\link{with.miceafter}}, \code{\link{pool_cindex}}
 #'
 #' @examples
 #'  imp_list <- lbpmilr %>%

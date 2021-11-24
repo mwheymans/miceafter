@@ -11,16 +11,16 @@
 #' @param data An objects of class \code{mids}, created by
 #'  \code{make_mids} or after a call to function \code{mice}.
 #'
-#' @details The Levene test centers around means to calculate
+#' @details The Levene's test centers around means to calculate
 #'  outcome residuals, the Brown-Forsythe test on the median.
 #'
-#'@return An object containing the following objects:
+#'@return An object containing the following objects are extracted:
 #'  \itemize{
 #'  \item  \code{fstats} F-test value, including numerator and
 #'   denominator degrees of freedom.
 #'  \item  \code{qhat} pooled coefficients from fit.
 #'  \item  \code{vcov} variance-covariance matrix.
-#'  \item  \code{dfcom} degrees of freedom obtained from /code{df.residual}.
+#'  \item  \code{dfcom} degrees of freedom obtained from \code{df.residual}.
 #'}
 #'
 #' @author Martijn Heymans, 2021

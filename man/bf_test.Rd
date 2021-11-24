@@ -18,19 +18,23 @@ used by glm. Use 'factor' to define the grouping variable.}
 \code{make_mids} or after a call to function \code{mice}.}
 }
 \value{
-An object containing the following objects:
+An object containing the following objects are extracted:
 \itemize{
 \item  \code{fstats} F-test value, including numerator and
 denominator degrees of freedom.
 \item  \code{qhat} pooled coefficients from fit.
 \item  \code{vcov} variance-covariance matrix.
-\item  \code{dfcom} degrees of freedom obtained from /code{df.residual}.
+\item  \code{dfcom} degrees of freedom obtained from \code{df.residual}.
 }
 }
 \description{
 \code{bf_test} Calculates the Brown-Forsythe test for homogeneity
 of variance across groups, coefficients, variance-covariance matrix,
 and degrees of freedom to be used in function \code{with.miceafter}.
+}
+\details{
+The Levene's test centers around means to calculate
+outcome residuals, the Brown-Forsythe test on the median.
 }
 \examples{
 imp_dat <- make_mids(lbpmilr, impvar="Impnr")

@@ -1,32 +1,33 @@
 #' Calculates the Levene's test
 #'
 #' \code{levene_test} Calculates the Levene's test for homogeneity
-#'  of variance across groups, coefficients, variance-covariance matrix,
-#'  and degrees of freedom to be further used with
-#'  function \code{with.miceafter}.
+#'  of variance across groups, model coefficients, the
+#'  variance-covariance matrix and the degrees of freedom to be further
+#'  used with function \code{with.miceafter}.
 #'
 #' @param x categorical group variable.
 #' @param y numeric (continuous) response variable.
 #' @param formula A formula object to specify the model as normally
-#'  used by glm. Use 'factor' to define the grouping x variable.
+#'  used by glm. Use 'factor' to define the grouping x variable. Only
+#'  one grouping variable is allowed.
 #' @param data An objects of class \code{mids}, created by
 #'  \code{make_mids} or after a call to function \code{mice}.
 #'
-#' @details The Levene test centers on group means to calculate
+#' @details The Levene's test centers on group means to calculate
 #'  outcome residuals, the Brown-Forsythe test on the median.
 #'
-#'@return An object from which the following objects can be extracted:
+#'@return An object from which the following objects are extracted:
 #'  \itemize{
 #'  \item  \code{fstats} F-test value, including numerator and
 #'   denominator degrees of freedom.
 #'  \item  \code{qhat} model coefficients.
 #'  \item  \code{vcov} variance-covariance matrix.
-#'  \item  \code{dfcom} degrees of freedom obtained from /code{df.residual}.
+#'  \item  \code{dfcom} degrees of freedom obtained from \code{df.residual}.
 #'}
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.miceafter}}
+#' @seealso \code{\link{with.miceafter}}, \code{\link{bf_test}}
 #'
 #' @examples
 #' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
