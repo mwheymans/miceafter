@@ -91,7 +91,7 @@
 #'
 #' @references http://missingdatasolutions.rbind.io/
 #'
-#' @author Martijn Heymans, 2020
+#' @author Martijn Heymans, 2021
 #'
 #' @examples
 #'   pool_lr <- glm_mi(data=lbpmilr, formula = Chronic ~ Pain +

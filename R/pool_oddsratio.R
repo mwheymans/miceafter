@@ -11,6 +11,8 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
+#' @seealso \code{\link{with.miceafter}}, \code{\link{oddsratio}}
+#'
 #' @examples
 #' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
 #' ra <- with.miceafter(imp_dat, expr=oddsratio(Chronic ~ Radiation))

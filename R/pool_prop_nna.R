@@ -18,12 +18,13 @@
 #' @return The proportion and the 95% Confidence interval.
 #'
 #' @references Raghunathan, T. (2016). Missing Data Analysis in Practice.
-#'  Boca Raton, FL: Chapman and Hall/CRC.
+#'  Boca Raton, FL: Chapman and Hall/CRC. (paragr 4.6.2)
 #'
 #' @author Martijn Heymans, 2021
 #'
+#' @seealso \code{\link{with.miceafter}}, \code{\link{prop_nna}}
+#'
 #' @examples
-#'  lbpmilr <- psfmi::lbpmilr
 #'  imp_dat <- make_mids(lbpmilr, impvar='Impnr')
 #'  ra <- with.miceafter(imp_dat, expr=prop_nna(Radiation))
 #'  res <- pool_prop_nna(ra)

@@ -27,7 +27,7 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.miceafter}}, \code{\link{bf_test}}
+#' @seealso \code{\link{with.miceafter}}, \code{\link{pool_levenetest}}, \code{\link{bf_test}}
 #'
 #' @examples
 #' imp_dat <- make_mids(lbpmilr, impvar="Impnr")

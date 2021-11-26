@@ -20,6 +20,8 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
+#' @seealso \code{\link{with.miceafter}}, \code{\link{prop_wald}}
+#'
 #' @examples
 #' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
 #' ra <- with.miceafter(imp_dat, expr=prop_wald(Chronic ~ 1))
@@ -57,7 +59,8 @@ pool_prop_wilson <- function(object, conf.level=0.95){
                       (4*(1 + ((t^2)/n) + (((t^2)*r)/n))^2)) -
                      ((mean_est^2)/(1 + ((t^2)/n) + (((t^2)*r)/n)))))
 
-  reswilson <- round(c(mean_est, lower, upper), 4)
-  names(reswilson) <- c("Prop", "CI L Wilson", "CI U Wilson")
-  return(reswilson)
+  output <- round(c(mean_est, lower, upper), 4)
+  names(output) <- c("Prop", "CI L Wilson", "CI U Wilson")
+  class(output) <- 'paami'
+  return(output)
 }

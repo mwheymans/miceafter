@@ -35,7 +35,7 @@
 #'   Satisfaction +  SocialSupport + Smoking +
 #'   Radiation
 #'
-#' psfmi::pool_D4(data=lbpmilr, nimp=10, impvar="Impnr",
+#' miceafter::pool_D4(data=lbpmilr, nimp=10, impvar="Impnr",
 #'                fm0=fm0, fm1=fm1, robust = TRUE)
 #'
 #' @export

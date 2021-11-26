@@ -17,6 +17,8 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
+#' @seealso \code{\link{with.miceafter}}, \code{\link{prop_wald}}
+#'
 #' @examples
 #' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
 #' ra <- with.miceafter(imp_dat, expr=prop_wald(Chronic ~ 1))

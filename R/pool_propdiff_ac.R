@@ -12,6 +12,8 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
+#' @seealso \code{\link{with.miceafter}}, \code{\link{propdiff_ac}}
+#'
 #' @examples
 #' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
 #' ra <- with.miceafter(imp_dat, expr=propdiff_ac(Chronic ~ Gender))
@@ -39,6 +41,7 @@ pool_propdiff_ac <- function(object, conf.level=0.95)
   colnames(output) <- c("Prop diff AC",
                         c(paste(conf.level*100, "CI low"),
                           paste(conf.level*100, "CI high")))
+  class(output) <- 'paami'
   return(output)
 }
 

@@ -11,6 +11,8 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
+#' @seealso \code{\link{with.miceafter}}, \code{\link{riskratio}}
+#'
 #' @examples
 #' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
 #' ra <- with.miceafter(imp_dat, expr=riskratio(Chronic ~ Radiation))

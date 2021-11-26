@@ -23,7 +23,7 @@
 #' @param keep.P A single string or a vector of strings including the variables that are forced
 #'   in the model during predictor selection. All type of variables are allowed.
 #'
-#' @author Martijn Heymans, 2020
+#' @author Martijn Heymans, 2021
 #' @keywords internal
 #'
 #' @export

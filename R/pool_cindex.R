@@ -1,6 +1,6 @@
-#' Calculates the pooled C-index
+#' Calculates the pooled C-index and Confidence intervals
 #'
-#' \code{pool_cindex} Calculates the pooled C-index and Confidence interval.
+#' \code{pool_cindex} Calculates the pooled C-index and Confidence intervals.
 #'
 #' @param data An object of class 'raami' (repeated analysis after
 #'  multiple imputation) or a 2 x m matrix with C-index
@@ -15,6 +15,8 @@
 #' @return The pooled c-index value and the confidence intervals.
 #'
 #' @author Martijn Heymans, 2021
+#'
+#' @seealso \code{\link{with.miceafter}}, \code{\link{cindex}}
 #'
 #' @examples
 #'  imp_list <- lbpmilr %>%

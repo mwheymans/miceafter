@@ -17,7 +17,7 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.miceafter}}
+#' @seealso \code{\link{with.miceafter}}, \code{\link{pool_prop_wald}}
 #'
 #' @examples
 #' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
