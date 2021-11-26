@@ -27,7 +27,7 @@ The `miceafter` package includes the function `pool_cindex`, to pool c-index val
 
 ## Examples
 
-## In combination with the `mice` function 
+## In combination with the `mice` function - Logistic Regression
 
 The lbp_orig is a dataset with missing values. So we first impute them with the `mice` function. Than we use the `with.miceafter`  function to apply repeated analyses with the `cindex` function across the multiply imputed datasets. Finally, we pool the results by using the `pool_cindex` function.
 
@@ -35,15 +35,15 @@ The lbp_orig is a dataset with missing values. So we first impute them with the 
 
   imp_data <- mice(miceafter::lbp_orig, m=5, seed=3025, printFlag = FALSE) 
 
-  object <- with.miceafter(data=imp_data,
-   expr = cindex(glm(Chronic ~ Gender + Radiation, family="binomial")))
+  ra <- with.miceafter(data=imp_data,
+   expr = cindex(glm(Chronic ~ Gender + Radiation, family=binomial)))
 
-  res <- pool_cindex(object)
+  res <- pool_cindex(ra)
   res
 
 ```  
 
-## In combination with stored Multiply Imputed datasets 
+## In combination with stored Multiply Imputed datasets - Logistic Regression
 
 The dataset `lbpmilr` is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the `Impnr`  variable. First we convert the dataset into a `mids` object by the `makemids` function. Than we use the `with.miceafter`  function to apply repeated analyses with the `cindex` function across the multiply imputed datasets. Finally, we pool the results by using the `pool_cindex` function.
 
@@ -51,10 +51,26 @@ The dataset `lbpmilr` is a long dataset that contains 10 multiply imputed datase
 
   imp_data <- make_mids(lbpmilr, impvar = "Impnr") # MI datasets are in lbpmilr
 
-  object <- with.miceafter(data=imp_data,
-   expr = cindex(glm(Chronic ~ Gender + Radiation, family="binomial")))
+  ra <- with.miceafter(data=imp_data,
+   expr = cindex(glm(Chronic ~ Gender + Radiation, family=binomial)))
 
-  res <- pool_cindex(object)
+  res <- pool_cindex(ra)
+  res
+
+```  
+
+## In combination with stored Multiply Imputed datasets - Cox Regression
+
+The dataset `lbpmicox` is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the `Impnr`  variable. First we convert the dataset into a `mids` object by the `makemids` function. Than we use the `with.miceafter`  function to apply repeated analyses with the `cindex` function across the multiply imputed datasets. Finally, we pool the results by using the `pool_cindex` function.
+
+```{r}
+
+  imp_data <- make_mids(lbpmicox, impvar = "Impnr") # MI datasets are in lbpmilr
+
+  ra <- with.miceafter(data=imp_data,
+   expr = cindex(coxph(Surv(Time, Status) ~ Radiation + Age)))
+
+  res <- pool_cindex(ra)
   res
 
 ```  

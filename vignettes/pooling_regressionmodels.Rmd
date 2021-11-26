@@ -1,0 +1,144 @@
+---
+title: "Pooling Linear ans Logistic Regression Models"
+author: "Martijn W Heymans"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Pooling Linear ans Logistic Regression Models}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(miceafter)
+library(mice)
+library(magrittr)
+library(dplyr)
+```
+
+# Installing the miceafter and mice packages
+
+You can install the released version of `miceafter` with:
+
+``` r
+install.packages("miceafter")
+```
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("mwheymans/miceafter")
+```
+You can install the released version of mice with:
+
+``` r
+install.packages("mice")
+
+``` 
+# Examples 
+
++ [mice and miceafter for pooling logistic regression models]
++ [mice and miceafter for pooling linear regression models]
++ [mice and miceafter for selecting logistic regression models]
++ [mice and miceafter for selecting linear regression models]
+
+## mice and miceafter for pooling logistic regression models
+
+```{r}
+
+  library(mice)
+  library(miceafter)
+  
+  imp <- mice(lbp_orig, m=5, maxit=5, printFlag = FALSE) 
+  
+  data_comp <- complete(imp, action = "long", include = FALSE)
+  
+  library(miceafter)
+  pool_lr <- glm_mi(data=data_comp, nimp=5, impvar=".imp", 
+                      formula=Chronic ~ factor(Carrying) + Gender + Smoking + 
+                      Function + JobControl + JobDemands + SocialSupport, 
+                      method="D1", model_type = "binomial")
+  pool_lr$RR_model
+  pool_lr$multiparm
+ 
+```
+
+Back to [Examples]
+
+## mice and miceafter for pooling linear regression models
+
+```{r}
+
+  library(mice)
+  library(miceafter)
+  
+  imp <- mice(lbp_orig, m=5, maxit=5, printFlag = FALSE) 
+  
+  data_comp <- complete(imp, action = "long", include = FALSE)
+  
+  library(miceafter)
+  pool_lm <- glm_mi(data=data_comp, nimp=5, impvar=".imp", 
+                      formula=Pain ~ Gender + Smoking + Function + 
+                      JobControl + JobDemands + SocialSupport, 
+                      method="D1", model_type = "linear")
+  pool_lm$RR_model
+  pool_lm$multiparm
+ 
+```
+
+Back to [Examples]
+
+## mice and miceafter for selecting logistic regression models
+
+```{r}
+
+  library(mice)
+  library(miceafter)
+
+  imp <- mice(lbp_orig, m=5, maxit=5, printFlag = FALSE) 
+  
+  data_comp <- complete(imp, action = "long", include = FALSE)
+  
+  library(miceafter)
+  pool_lr <- glm_mi(data=data_comp, nimp=5, impvar=".imp", 
+                      formula=Chronic ~ Gender + Smoking + Tampascale + 
+                      JobControl + JobDemands + SocialSupport, 
+                      p.crit = 0.157, method="D1", 
+                      direction = "FW", model_type="binomial")
+  
+  pool_lr$RR_model_final
+  pool_lr$multiparm_final
+ 
+```
+
+Back to [Examples]
+
+## mice and miceafter for selecting linear regression models
+
+```{r}
+
+  library(mice)
+  library(miceafter)
+
+  imp <- mice(lbp_orig, m=5, maxit=5, printFlag = FALSE) 
+  
+  data_comp <- complete(imp, action = "long", include = FALSE)
+  
+  library(miceafter)
+  pool_lm <- glm_mi(data=data_comp, nimp=5, impvar=".imp", 
+                    formula=Pain ~ Gender + Smoking + Tampascale + 
+                    JobControl + JobDemands + SocialSupport, 
+                    p.crit = 0.157, method="D1", 
+                    direction = "FW", model_type = "linear")
+  
+  pool_lm$RR_model_final
+  pool_lm$multiparm_final
+  
+```
+
+Back to [Examples]
