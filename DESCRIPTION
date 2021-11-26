@@ -1,9 +1,8 @@
 Package: miceafter
 Type: Package
 Depends:
-  R (>= 4.0.0),
+    R (>= 4.0.0),
 Imports:
-    ggplot2 (>= 3.3.2),
     norm (>= 1.0-9.5),
     survival (>= 3.1-12),
     mitools (>= 2.4),
