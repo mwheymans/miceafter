@@ -12,7 +12,8 @@
 #' @details Before pooling, the proportions will be naturally log transformed and
 #'  the pooled estimates back transformed to the original scale.
 #'
-#' @return The proportion, the Confidence intervals, the standard error and the statistic.
+#' @return The proportion, the Confidence intervals, the standard error
+#'  and the statistic.
 #'
 #' @author Martijn Heymans, 2021
 #'

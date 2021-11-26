@@ -1,7 +1,7 @@
-#' Pooling and Predictor selection function for backward or forward selection of
-#' Logistic regression models across multiply imputed data.
+#' Pooling and backward or forward selection of Linear and Logistic regression
+#'  models across multiply imputed data.
 #'
-#' \code{psfmi_lr} Pooling and backward or forward selection of Logistic regression
+#' \code{glm_mi} Pooling and backward or forward selection of Linear and Logistic regression
 #'  models across multiply imputed data using selection methods RR, D1, D2, D3, D4 and MPR.
 #'
 #' @param data Data frame with stacked multiple imputed datasets.
@@ -24,10 +24,12 @@
 #'   See details for more information. Default is "RR".
 #' @param direction The direction of predictor selection, "BW" means backward selection and "FW"
 #'   means forward selection.
+#' @param model_type A character vector for type of model, "binomial" is for logistic regression and
+#'   "linear" is for linear regression models.
 #'
 #' @details The basic pooling procedure to derive pooled coefficients, standard errors, 95
 #'  confidence intervals and p-values is Rubin's Rules (RR). However, RR is only possible when
-#'  the model included continuous or dichotomous variables. Specific procedures are
+#'  the model includes continuous and dichotomous variables. Specific procedures are
 #'  available when the model also included categorical (> 2 categories) or restricted cubic spline
 #'  variables. These pooling methods are: “D1” is pooling of the total covariance matrix,
 #'  ”D2” is pooling of Chi-square values, “D3” and "D4" is pooling Likelihood ratio statistics
@@ -89,29 +91,28 @@
 #'
 #' @references http://missingdatasolutions.rbind.io/
 #'
-#' @section Vignettes:
-#'   https://mwheymans.github.io/psfmi/articles/psfmi_LogisticModels.html
-#'
 #' @author Martijn Heymans, 2020
 #'
 #' @examples
-#'   pool_lr <- psfmi_lr(data=lbpmilr, formula = Chronic ~ Pain +
+#'   pool_lr <- glm_mi(data=lbpmilr, formula = Chronic ~ Pain +
 #'   factor(Satisfaction) + rcs(Tampascale,3) + Radiation +
 #'   Radiation*factor(Satisfaction) + Age + Duration + BMI,
 #'   p.crit = 0.05, direction="FW", nimp=5, impvar="Impnr",
-#'   keep.predictors = c("Radiation*factor(Satisfaction)", "Age"), method="D1")
+#'   keep.predictors = c("Radiation*factor(Satisfaction)", "Age"),
+#'   method="D1", model_type="binomial")
 #'
 #'   pool_lr$RR_model_final
 #'
 #' @export
-psfmi_lr <- function(data,
+glm_mi <- function(data,
                      formula = NULL,
                      nimp=5,
                      impvar=NULL,
                      keep.predictors=NULL,
                      p.crit=1,
                      method="RR",
-                     direction=NULL)
+                     direction=NULL,
+                     model_type=NULL)
 {
 
   call <- match.call()
@@ -119,32 +120,48 @@ psfmi_lr <- function(data,
   m_check <- check_model(data=data, formula = formula,
                          keep.predictors = keep.predictors,
                          impvar=impvar, p.crit=p.crit, method=method,
-                         nimp=nimp, direction=direction)
+                         nimp=nimp, direction=direction,
+                         model_type=model_type)
 
   P <- m_check$P
   keep.P <- m_check$keep.P
   Outcome <- m_check$Outcome
 
   if(p.crit==1){
-    pobjpool <-
-      psfmi_lr_bw(data = data, nimp=nimp, impvar = impvar, Outcome= Outcome,
-                  P = P, p.crit = p.crit, method = method, keep.P = keep.P)
+    if(model_type=="binomial")
+      pobjpool <-
+        glm_lr_bw(data = data, nimp=nimp, impvar = impvar, Outcome= Outcome,
+                    P = P, p.crit = p.crit, method = method, keep.P = keep.P)
+    if(model_type=="linear")
+      pobjpool <-
+        glm_lm_bw(data = data, nimp=nimp, impvar = impvar, Outcome= Outcome,
+                    P = P, p.crit = p.crit, method = method, keep.P = keep.P)
     class(pobjpool) <-
       "pmods"
     return(pobjpool)
   }
   if(direction=="FW"){
-    pobjfw <-
-      psfmi_lr_fw(data = data, nimp = nimp, impvar = impvar, Outcome = Outcome, p.crit = p.crit,
-                  P = P, keep.P = keep.P, method = method)
+    if(model_type=="binomial")
+      pobjfw <-
+        glm_lr_fw(data = data, nimp = nimp, impvar = impvar, Outcome = Outcome, p.crit = p.crit,
+                    P = P, keep.P = keep.P, method = method)
+    if(model_type=="linear")
+      pobjfw <-
+        glm_lm_fw(data = data, nimp = nimp, impvar = impvar, Outcome = Outcome, p.crit = p.crit,
+                    P = P, keep.P = keep.P, method = method)
     class(pobjfw) <-
       "pmods"
     return(pobjfw)
   }
   if(direction=="BW"){
-    pobjbw <-
-      psfmi_lr_bw(data = data, nimp=nimp, impvar = impvar, Outcome= Outcome,
-                  P = P, p.crit = p.crit, method = method, keep.P = keep.P)
+    if(model_type=="binomial")
+      pobjbw <-
+        glm_lr_bw(data = data, nimp = nimp, impvar = impvar, Outcome = Outcome, p.crit = p.crit,
+                    P = P, keep.P = keep.P, method = method)
+    if(model_type=="linear")
+      pobjbw <-
+        glm_lm_bw(data = data, nimp = nimp, impvar = impvar, Outcome = Outcome, p.crit = p.crit,
+                    P = P, keep.P = keep.P, method = method)
     class(pobjbw) <-
       "pmods"
     return(pobjbw)

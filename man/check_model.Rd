@@ -12,7 +12,8 @@ check_model(
   p.crit,
   method,
   nimp,
-  direction
+  direction,
+  model_type
 )
 }
 \arguments{
@@ -43,6 +44,9 @@ See details for more information. Default is "RR".}
 
 \item{direction}{The direction of predictor selection, "BW" means backward selection and "FW"
 means forward selection.}
+
+\item{model_type}{A character vector for type of model, "binomial" is for logistic regression and
+"linear" is for linear regression models.}
 }
 \description{
 \code{check_model} Back transformation to original scale of

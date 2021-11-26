@@ -49,7 +49,7 @@ psfmi::pool_D4(data=lbpmilr, nimp=10, impvar="Impnr",
 }
 \references{
 Chan, K. W., & Meng, X.-L. (2019). Multiple improvements of multiple
-imputation likelihood ratio tests. https://arxiv.org/abs/1711.08822.
+imputation likelihood ratio tests. https://arxiv.org/abs/1711.08822
 
 Grund, Simon, Oliver Lüdtke, and Alexander Robitzsch. 2021. “Pooling Methods for
 Likelihood Ratio Tests in Multiply Imputed Data Sets.” PsyArXiv. January 29. doi:10.31234/osf.io/d459g.

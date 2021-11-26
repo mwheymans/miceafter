@@ -14,7 +14,8 @@ multiple imputation) after using \code{with.aftermi}.}
 \item{conf.level}{Confidence level of the confidence intervals.}
 }
 \value{
-The proportion, the Confidence intervals, the standard error and the statistic.
+The proportion, the Confidence intervals, the standard error
+and the statistic.
 }
 \description{
 \code{pool_prop_wald} Calculates the pooled proportion and

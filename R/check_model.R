@@ -24,6 +24,8 @@
 #'   See details for more information. Default is "RR".
 #' @param direction The direction of predictor selection, "BW" means backward selection and "FW"
 #'   means forward selection.
+#' @param model_type A character vector for type of model, "binomial" is for logistic regression and
+#'   "linear" is for linear regression models.
 #'
 #' @author Martijn Heymans, 2020
 #' @keywords internal
@@ -36,7 +38,8 @@ check_model <- function(data,
                         p.crit,
                         method,
                         nimp,
-                        direction)
+                        direction,
+                        model_type)
 {
 
   form <-
@@ -80,6 +83,8 @@ check_model <- function(data,
   P.check <-
     c(P, cat.P, s.P)
   # Check data input
+  if(is_empty(model_type))
+    stop("model_type not defined, use 'binomial' or 'linear'")
   if(p.crit!=1){
     if(is_empty(direction))
       stop("Specify FW or BW for forward or backward predictor selection")
@@ -92,8 +97,12 @@ check_model <- function(data,
     stop("Data should be a data frame")
   data <- data.frame(as_tibble(data))
   data <- mutate_if(data, is.factor, ~ as.numeric(as.character(.x)))
+  if(model_type=="binomial") {
   if(!all(data[Outcome]==1 | data[Outcome]==0))
     stop("Outcome should be a 0 - 1 variable")
+  }
+  if(model_type=="linear" & method=="D3")
+    stop("Method D3 is not available for linear regression models")
   if ((nvar <- ncol(data)) < 2)
     stop("Data should contain at least two columns")
   if(is_empty(impvar))

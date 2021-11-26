@@ -13,7 +13,7 @@ normally used by glm or coxph.}
 \item{data}{An objects of class \code{mids}, created by
 \code{make_mids} or after a call to function \code{mice}.
 If \code{data} is of type \code{data.frame}, use
-\code{make_mids} to convert to \code{mids} object.}
+\code{make_mids} to convert to a \code{mids} object.}
 }
 \value{
 The c-index, related standard error and
@@ -21,8 +21,8 @@ degrees of freedom.
 }
 \description{
 \code{cindex} Calculates the c-index and standard error for
-logistic and Cox regression models and degrees of freedom
-to be used in function \code{with.miceafter}.
+logistic and Cox regression models and the degrees of freedom
+to be further used in function \code{with.miceafter}.
 }
 \examples{
  imp_list <- lbpmilr \%>\%
@@ -32,11 +32,11 @@ to be used in function \code{with.miceafter}.
 
  ra <- with.miceafter(data=imp_data,
   expr = cindex(glm(Chronic ~ Gender + Radiation,
-  family="binomial")))
+  family=binomial)))
 
 }
 \seealso{
-\code{\link{with.miceafter}}
+\code{\link{with.miceafter}}, \code{\link{pool_cindex}}
 }
 \author{
 Martijn Heymans, 2021

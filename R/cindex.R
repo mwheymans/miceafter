@@ -26,7 +26,7 @@
 #'
 #'  ra <- with.miceafter(data=imp_data,
 #'   expr = cindex(glm(Chronic ~ Gender + Radiation,
-#'   family="binomial")))
+#'   family=binomial)))
 #'
 #' @export
 cindex <- function(formula, data){

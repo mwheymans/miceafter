@@ -32,9 +32,20 @@ transformed before pooling and finally back transformed.
 
  imp_data <- make_mids(imp_list)
 
+ # Logistic regression
  data <- with.miceafter(data=imp_data,
   expr = cindex(glm(Chronic ~ Gender + Radiation, family="binomial")))
+ res <- pool_cindex(data)
+ res
 
+ # Cox regression
+ imp_list <- lbpmicox \%>\%
+  group_split(Impnr, .keep = FALSE)
+
+ imp_data <- make_mids(imp_list)
+
+ data <- with.miceafter(data=imp_data,
+  expr = cindex(coxph(Surv(Time, Status) ~ Pain + Radiation)))
  res <- pool_cindex(data)
  res
 
