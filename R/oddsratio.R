@@ -18,11 +18,11 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.miceafter}}, \code{\link{pool_oddsratio}}
+#' @seealso \code{\link{with.milist}}, \code{\link{pool_oddsratio}}
 #'
 #' @examples
-#' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-#' ra <- with.miceafter(imp_dat, expr=oddsratio(Chronic ~ Radiation))
+#' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+#' ra <- with(imp_dat, expr=oddsratio(Chronic ~ Radiation))
 #'
 #' @export
 oddsratio <- function(y, x, formula, data){

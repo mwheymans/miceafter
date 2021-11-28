@@ -27,12 +27,12 @@ provides degrees of freedom to be used
 in function \code{with.miceafter}.
 }
 \examples{
-imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-ra <- with.miceafter(imp_dat, expr=prop_wald(Chronic ~ 1))
+imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+ra <- with(imp_dat, expr=prop_wald(Chronic ~ 1))
 
 }
 \seealso{
-\code{\link{with.miceafter}}
+\code{\link{with.milist}}, \code{\link{pool_prop_wald}}
 }
 \author{
 Martijn Heymans, 2021

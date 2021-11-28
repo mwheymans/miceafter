@@ -27,11 +27,14 @@ Before pooling, the proportions will be naturally log transformed and
 the pooled estimates back transformed to the original scale.
 }
 \examples{
-imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-ra <- with.miceafter(imp_dat, expr=prop_wald(Chronic ~ 1))
+imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+ra <- with(imp_dat, expr=prop_wald(Chronic ~ 1))
 res <- pool_prop_wald(ra)
 res
 
+}
+\seealso{
+\code{\link{with.milist}}, \code{\link{prop_wald}}
 }
 \author{
 Martijn Heymans, 2021

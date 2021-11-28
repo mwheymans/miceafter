@@ -21,8 +21,8 @@ The (combined) F-statistic, p-value and degrees of freedom.
 of the Levenene test.
 }
 \examples{
-imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-ra <- with.miceafter(imp_dat, expr=levene_test(Pain ~ factor(Carrying)))
+imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+ra <- with(imp_dat, expr=levene_test(Pain ~ factor(Carrying)))
 res <- pool_levenetest(ra, method="D1")
 res
 
@@ -36,6 +36,9 @@ Enders CK (2010). Applied missing data analysis. New York: The Guilford Press.
 
 Van Buuren S. (2018). Flexible Imputation of Missing Data. 2nd Edition. Chapman & Hall/CRC
 Interdisciplinary Statistics. Boca Raton.
+}
+\seealso{
+\code{\link{with.milist}}, \code{\link{levene_test}}
 }
 \author{
 Martijn Heymans, 2021

@@ -30,12 +30,12 @@ Note that the standard error of the OR is on the
 logit scale.
 }
 \examples{
-imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-ra <- with.miceafter(imp_dat, expr=oddsratio(Chronic ~ Radiation))
+imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+ra <- with(imp_dat, expr=oddsratio(Chronic ~ Radiation))
 
 }
 \seealso{
-\code{\link{with.miceafter}}
+\code{\link{with.milist}}, \code{\link{pool_oddsratio}}
 }
 \author{
 Martijn Heymans, 2021

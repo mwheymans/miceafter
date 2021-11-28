@@ -30,12 +30,12 @@ Note that the standard error of the RR is on the natural
 log scale, both when you use formula or y and x.
 }
 \examples{
-imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-ra <- with.miceafter(imp_dat, expr=riskratio(Chronic ~ Radiation))
+imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+ra <- with(imp_dat, expr=riskratio(Chronic ~ Radiation))
 
 }
 \seealso{
-\code{\link{with.miceafter}}
+\code{\link{with.milist}}
 }
 \author{
 Martijn Heymans, 2021

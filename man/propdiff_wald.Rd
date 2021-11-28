@@ -33,16 +33,16 @@ standard error according to Wald and degrees of freedom to
 be used in function \code{with.miceafter}.
 }
 \examples{
-imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-ra <- with.miceafter(imp_dat, expr=propdiff_wald(Chronic ~ Gender))
+imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+ra <- with(imp_dat, expr=propdiff_wald(Chronic ~ Gender))
 
 # proportions in each subgroup
-imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-ra <- with.miceafter(imp_dat, expr=propdiff_wald(Chronic ~ Gender, strata=TRUE))
+imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+ra <- with(imp_dat, expr=propdiff_wald(Chronic ~ Gender, strata=TRUE))
 
 }
 \seealso{
-\code{\link{with.miceafter}}, \code{\link{pool_propdiff_wilson}}
+\code{\link{with.milist}}, \code{\link{pool_propdiff_wilson}}
 }
 \author{
 Martijn Heymans, 2021

@@ -137,5 +137,5 @@ to Development, Validation, and Updating (2nd edition). Springer Nature Switzerl
 http://missingdatasolutions.rbind.io/
 }
 \author{
-Martijn Heymans, 2020
+Martijn Heymans, 2021
 }

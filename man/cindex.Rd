@@ -25,18 +25,15 @@ logistic and Cox regression models and the degrees of freedom
 to be further used in function \code{with.miceafter}.
 }
 \examples{
- imp_list <- lbpmilr \%>\%
-  group_split(Impnr, .keep = FALSE)
 
- imp_data <- make_mids(imp_list)
-
- ra <- with.miceafter(data=imp_data,
+ imp_dat <- df2milist(lbpmilr, impvar="Impnr"
+ ra <- with(data=imp_data,
   expr = cindex(glm(Chronic ~ Gender + Radiation,
   family=binomial)))
 
 }
 \seealso{
-\code{\link{with.miceafter}}, \code{\link{pool_cindex}}
+\code{\link{with.milist}}, \code{\link{pool_cindex}}
 }
 \author{
 Martijn Heymans, 2021

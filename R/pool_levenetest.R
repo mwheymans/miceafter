@@ -19,19 +19,19 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.miceafter}}, \code{\link{levene_test}}
+#' @seealso \code{\link{with.milist}}, \code{\link{levene_test}}
 #'
 #' @examples
-#' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-#' ra <- with.miceafter(imp_dat, expr=levene_test(Pain ~ factor(Carrying)))
+#' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+#' ra <- with(imp_dat, expr=levene_test(Pain ~ factor(Carrying)))
 #' res <- pool_levenetest(ra, method="D1")
 #' res
 #'
 #' @export
 pool_levenetest <- function(object, method="D1"){
 
-  if(all(class(object)!="raami"))
-    stop("object must be of class 'raami'")
+  if(all(class(object)!="mistats"))
+    stop("object must be of class 'mistats'")
   if(!is.list(object$statistics))
     stop("object must be a list")
 
@@ -114,5 +114,6 @@ pool_levenetest <- function(object, method="D1"){
       pool_D2(dw=est,
               v=object$statistics[[1]]$fstats[2])
   }
+  class(output) <- "mipool"
   return(output)
 }

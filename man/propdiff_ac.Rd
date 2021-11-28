@@ -24,12 +24,12 @@ and standard error according to method Agresti-Caffo and
 degrees of freedom to be used in function \code{with.miceafter}
 }
 \examples{
-imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-ra <- with.miceafter(imp_dat, expr=propdiff_ac(Chronic ~ Gender))
+imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+ra <- with(imp_dat, expr=propdiff_ac(Chronic ~ Gender))
 
 }
 \seealso{
-\code{\link{with.miceafter}}
+\code{\link{with.milist}}, \code{\link{pool_propdiff_ac}}
 }
 \author{
 Martijn Heymans, 2021

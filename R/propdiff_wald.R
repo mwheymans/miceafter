@@ -21,15 +21,15 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.miceafter}}, \code{\link{pool_propdiff_wilson}}
+#' @seealso \code{\link{with.milist}}, \code{\link{pool_propdiff_wilson}}
 #'
 #' @examples
-#' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-#' ra <- with.miceafter(imp_dat, expr=propdiff_wald(Chronic ~ Gender))
+#' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+#' ra <- with(imp_dat, expr=propdiff_wald(Chronic ~ Gender))
 #'
 #' # proportions in each subgroup
-#' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-#' ra <- with.miceafter(imp_dat, expr=propdiff_wald(Chronic ~ Gender, strata=TRUE))
+#' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+#' ra <- with(imp_dat, expr=propdiff_wald(Chronic ~ Gender, strata=TRUE))
 #'
 #' @export
 propdiff_wald <- function(y, x, formula, data, strata=FALSE){

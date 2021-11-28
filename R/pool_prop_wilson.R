@@ -2,16 +2,11 @@
 #'  to Wilson across multiply imputed datasets.
 #'
 #' \code{pool_prop_wilson} Calculates the pooled single proportion and
-#'  confidence intervals according to Wald across multiply imputed datasets
-#'  and using Rubin's Rules.
+#'  confidence intervals according to Wald across multiply imputed datasets.
 #'
 #' @param object An object of class 'raami' (repeated analysis after
 #'   multiple imputation) after using \code{with.aftermi}.
-#' @param formula A formula object to specify the model as normally used by glm.
-#' @param data Data frame with stacked multiple imputed datasets.
-#'   The original dataset that contains missing values must be excluded from the
-#'   dataset. The imputed datasets must be distinguished by an imputation variable,
-#'   specified under impvar, and starting by 1.
+#' @param conf.level Confidence level of the confidence intervals.
 #'
 #' @details Before pooling, the proportions will be naturally log transformed and
 #'  the pooled estimates back transformed to the original scale.
@@ -20,19 +15,19 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.miceafter}}, \code{\link{prop_wald}}
+#' @seealso \code{\link{with.milist}}, \code{\link{prop_wald}}
 #'
 #' @examples
-#' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-#' ra <- with.miceafter(imp_dat, expr=prop_wald(Chronic ~ 1))
+#' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+#' ra <- with(imp_dat, expr=prop_wald(Chronic ~ 1))
 #' res <- pool_prop_wilson(ra)
 #' res
 #'
 #' @export
 pool_prop_wilson <- function(object, conf.level=0.95){
 
-  if(all(class(object)!="raami"))
-    stop("object must be of class 'raami'")
+  if(all(class(object)!="mistats"))
+    stop("object must be of class 'mistats'")
   if(!is.list(object$statistics))
     stop("object must be a list")
 
@@ -61,6 +56,6 @@ pool_prop_wilson <- function(object, conf.level=0.95){
 
   output <- round(c(mean_est, lower, upper), 4)
   names(output) <- c("Prop", "CI L Wilson", "CI U Wilson")
-  class(output) <- 'paami'
+  class(output) <- 'mipool'
   return(output)
 }

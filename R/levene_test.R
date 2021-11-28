@@ -2,16 +2,15 @@
 #'
 #' \code{levene_test} Calculates the Levene's test for homogeneity
 #'  of variance across groups, model coefficients, the
-#'  variance-covariance matrix and the degrees of freedom to be further
-#'  used with function \code{with.miceafter}.
+#'  variance-covariance matrix and the degrees of freedom.
 #'
 #' @param x categorical group variable.
 #' @param y numeric (continuous) response variable.
 #' @param formula A formula object to specify the model as normally
 #'  used by glm. Use 'factor' to define the grouping x variable. Only
 #'  one grouping variable is allowed.
-#' @param data An objects of class \code{mids}, created by
-#'  \code{make_mids} or after a call to function \code{mice}.
+#' @param data An objects of class \code{milist}, created by
+#'  \code{df2milist} or \code{mids2milist}.
 #'
 #' @details The Levene's test centers on group means to calculate
 #'  outcome residuals, the Brown-Forsythe test on the median.
@@ -27,11 +26,11 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.miceafter}}, \code{\link{pool_levenetest}}, \code{\link{bf_test}}
+#' @seealso \code{\link{with.milist}}, \code{\link{pool_levenetest}}, \code{\link{bf_test}}
 #'
 #' @examples
-#' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-#' ra <- with.miceafter(imp_dat, expr=levene_test(Pain ~ factor(Carrying)))
+#' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+#' ra <- with(imp_dat, expr=levene_test(Pain ~ factor(Carrying)))
 #'
 #' @export
 levene_test <- function(y, x, formula, data){

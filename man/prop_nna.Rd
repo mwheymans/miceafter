@@ -22,6 +22,14 @@ The mean and variance components of the beta distribution.
 \code{prop_nna} Calculates the mean and variance
 components of the beta distribution for a single proportion.
 }
+\examples{
+ imp_dat <- df2milist(lbpmilr, impvar='Impnr')
+ ra <- with(imp_dat, expr=prop_nna(Radiation))
+
+}
+\seealso{
+\code{\link{with.milist}}, \code{\link{pool_prop_nna}}
+}
 \author{
 Martijn Heymans, 2021
 }

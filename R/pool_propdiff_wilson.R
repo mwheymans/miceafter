@@ -22,6 +22,8 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
+#' @seealso \code{\link{with.milist}}, \code{\link{propdiff_wald}}
+#'
 #' @examples
 #' imp_list <- lbpmilr %>%
 #'  group_split(Impnr, .keep = FALSE)
@@ -35,8 +37,8 @@
 pool_propdiff_wilson <- function(object, conf.level=0.95)
 {
 
-  if(all(class(object)!="raami"))
-    stop("object must be of class 'raami'")
+  if(all(class(object)!="mistats"))
+    stop("object must be of class 'mistats'")
   if(!is.list(object$statistics))
     stop("object must be a list")
 
@@ -47,7 +49,7 @@ pool_propdiff_wilson <- function(object, conf.level=0.95)
 
   obj1 <- list(statistics=obj1)
   obj0 <- list(statistics=obj0)
-  class(obj0) <- class(obj1) <- 'raami'
+  class(obj0) <- class(obj1) <- 'mistats'
 
   p0_pool <- pool_prop_wilson(obj0, conf.level=conf.level)
   p1_pool <- pool_prop_wilson(obj1, conf.level=conf.level)
@@ -69,5 +71,6 @@ pool_propdiff_wilson <- function(object, conf.level=0.95)
   upper <- prop_diff + sqrt((u0-phat0)^2 + (phat1-l1)^2)
   output <- round(matrix(c(prop_diff, lower, upper), 1, 3), 4)
   colnames(output) <- c("Prop diff", "CI L Wilson", "CI U Wilson")
+  class(output) <- "mipool"
   return(output)
 }

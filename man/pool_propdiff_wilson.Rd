@@ -42,6 +42,9 @@ Yulia Sidi & Ofer Harel (2021): Difference Between Binomial
 Proportions Using Newcombe’s Method With Multiple Imputation for Incomplete
 Data, The American Statistician, DOI:10.1080/00031305.2021.1898468
 }
+\seealso{
+\code{\link{with.milist}}, \code{\link{propdiff_wald}}
+}
 \author{
 Martijn Heymans, 2021
 }

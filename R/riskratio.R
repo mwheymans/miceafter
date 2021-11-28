@@ -18,11 +18,11 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.miceafter}}
+#' @seealso \code{\link{with.milist}}
 #'
 #' @examples
-#' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-#' ra <- with.miceafter(imp_dat, expr=riskratio(Chronic ~ Radiation))
+#' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+#' ra <- with(imp_dat, expr=riskratio(Chronic ~ Radiation))
 #'
 #' @export
 riskratio <- function(y, x, formula, data){

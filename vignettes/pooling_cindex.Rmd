@@ -19,6 +19,7 @@ library(miceafter)
 library(mice)
 library(magrittr)
 library(dplyr)
+library(survival)
 ```
 
 ## Introduction

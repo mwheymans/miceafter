@@ -11,31 +11,28 @@ pool_prop_wilson(object, conf.level = 0.95)
 \item{object}{An object of class 'raami' (repeated analysis after
 multiple imputation) after using \code{with.aftermi}.}
 
-\item{formula}{A formula object to specify the model as normally used by glm.}
-
-\item{data}{Data frame with stacked multiple imputed datasets.
-The original dataset that contains missing values must be excluded from the
-dataset. The imputed datasets must be distinguished by an imputation variable,
-specified under impvar, and starting by 1.}
+\item{conf.level}{Confidence level of the confidence intervals.}
 }
 \value{
 The proportion and the 95\% Confidence interval according to Wilson.
 }
 \description{
 \code{pool_prop_wilson} Calculates the pooled single proportion and
-confidence intervals according to Wald across multiply imputed datasets
-and using Rubin's Rules.
+confidence intervals according to Wald across multiply imputed datasets.
 }
 \details{
 Before pooling, the proportions will be naturally log transformed and
 the pooled estimates back transformed to the original scale.
 }
 \examples{
-imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-ra <- with.miceafter(imp_dat, expr=prop_wald(Chronic ~ 1))
+imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+ra <- with(imp_dat, expr=prop_wald(Chronic ~ 1))
 res <- pool_prop_wilson(ra)
 res
 
+}
+\seealso{
+\code{\link{with.milist}}, \code{\link{prop_wald}}
 }
 \author{
 Martijn Heymans, 2021

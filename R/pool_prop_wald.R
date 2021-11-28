@@ -17,19 +17,19 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.miceafter}}, \code{\link{prop_wald}}
+#' @seealso \code{\link{with.milist}}, \code{\link{prop_wald}}
 #'
 #' @examples
-#' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-#' ra <- with.miceafter(imp_dat, expr=prop_wald(Chronic ~ 1))
+#' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+#' ra <- with(imp_dat, expr=prop_wald(Chronic ~ 1))
 #' res <- pool_prop_wald(ra)
 #' res
 #'
 #' @export
 pool_prop_wald <- function(object, conf.level=0.95){
 
-  if(all(class(object)!="raami"))
-    stop("object must be of class 'raami'")
+  if(all(class(object)!="mistats"))
+    stop("object must be of class 'mistats'")
   if(!is.list(object$statistics))
     stop("object must be a list")
 
@@ -44,6 +44,6 @@ pool_prop_wald <- function(object, conf.level=0.95){
     inv_logit(est=pool_est$pool_est, se=pool_est$pool_se, crit.value=pool_est$t)
   dimnames(output) <-
     list(NULL, c("Prop Wald", "Statistic", "95%CI L", "95%CI U"))
-  class(output) <- 'paami'
+  class(output) <- 'mipool'
   return(output)
 }

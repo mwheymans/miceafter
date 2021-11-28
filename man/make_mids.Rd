@@ -2,7 +2,8 @@
 % Please edit documentation in R/make_mids.R
 \name{make_mids}
 \alias{make_mids}
-\title{Converts a data.frame, tibble or list into a object of class \code{mice::mids}}
+\title{Converts a data.frame, tibble or list into a object of class
+\code{mice::mids}}
 \usage{
 make_mids(data, impvar = NULL)
 }
@@ -21,7 +22,7 @@ Object of class mids.
 }
 \description{
 \code{make_mids} Converts data.frame, tibble or list into object of
-class \code{mice::mids}
+class \code{mice::mids}.
 }
 \author{
 Martijn Heymans, 2021

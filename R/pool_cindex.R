@@ -16,27 +16,20 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.miceafter}}, \code{\link{cindex}}
+#' @seealso \code{\link{with.milist}}, \code{\link{cindex}}
 #'
 #' @examples
-#'  imp_list <- lbpmilr %>%
-#'   group_split(Impnr, .keep = FALSE)
-#'
-#'  imp_data <- make_mids(imp_list)
-#'
-#'  # Logistic regression
-#'  data <- with.miceafter(data=imp_data,
-#'   expr = cindex(glm(Chronic ~ Gender + Radiation, family="binomial")))
+#'  # Logistic Regression
+#'  imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+#'  ra <- with(data=imp_data,
+#'   expr = cindex(glm(Chronic ~ Gender + Radiation,
+#'   family=binomial)))
 #'  res <- pool_cindex(data)
 #'  res
 #'
 #'  # Cox regression
-#'  imp_list <- lbpmicox %>%
-#'   group_split(Impnr, .keep = FALSE)
-#'
-#'  imp_data <- make_mids(imp_list)
-#'
-#'  data <- with.miceafter(data=imp_data,
+#'  imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+#'   ra <- with(data=imp_data,
 #'   expr = cindex(coxph(Surv(Time, Status) ~ Pain + Radiation)))
 #'  res <- pool_cindex(data)
 #'  res
@@ -47,7 +40,7 @@ pool_cindex <- function(data,
                         dfcom=NULL)
 {
 
-  if(class(data)=='raami'){
+  if(class(data)=='mistats'){
     ra <- data.frame(do.call("rbind", data$statistics))
     colnames(ra) <- c("est", "se", "dfcom")
   } else {
@@ -69,5 +62,6 @@ pool_cindex <- function(data,
   colnames(output) <- c("C-index", "Critical value",
                         c(paste(conf.level*100, "CI low"),
                           paste(conf.level*100, "CI high")))
+  class(output) <- "mipool"
   return(output)
 }

@@ -39,6 +39,6 @@ models across multiply imputed data using selection methods RR, D1, D2, D3 and M
 Function is called by \code{psfmi_lr}.
 }
 \author{
-Martijn Heymans, 2020
+Martijn Heymans, 2021
 }
 \keyword{internal}

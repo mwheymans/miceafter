@@ -12,9 +12,11 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
+#' @seealso \code{\link{with.milist}}, \code{\link{propdiff_wald}}
+#'
 #' @examples
-#' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-#' ra <- with.miceafter(imp_dat, expr=propdiff_wald(Chronic ~ Gender))
+#' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+#' ra <- with(imp_dat, expr=propdiff_wald(Chronic ~ Gender))
 #' res <- pool_propdiff_wald(ra)
 #' res
 #'
@@ -22,8 +24,8 @@
 pool_propdiff_wald <- function(object, conf.level=0.95)
 {
 
-  if(all(class(object)!="raami"))
-    stop("object must be of class 'raami'")
+  if(all(class(object)!="mistats"))
+    stop("object must be of class 'mistats'")
   if(!is.list(object$statistics))
     stop("object must be a list")
 
@@ -40,5 +42,6 @@ pool_propdiff_wald <- function(object, conf.level=0.95)
   colnames(output) <- c("Prop diff Wald", "SE", "t",
                         c(paste(conf.level*100, "CI low"),
                           paste(conf.level*100, "CI high")))
+  class(output) <- "mipool"
   return(output)
 }

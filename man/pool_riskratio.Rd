@@ -20,11 +20,14 @@ The pooled RR and confidence intervals.
 confidence interval.
 }
 \examples{
-imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-ra <- with.miceafter(imp_dat, expr=riskratio(Chronic ~ Radiation))
+imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+ra <- with(imp_dat, expr=riskratio(Chronic ~ Radiation))
 res <- pool_riskratio(ra)
 res
 
+}
+\seealso{
+\code{\link{with.milist}}, \code{\link{riskratio}}
 }
 \author{
 Martijn Heymans, 2021

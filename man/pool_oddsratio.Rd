@@ -20,11 +20,14 @@ The pooled OR and confidence intervals.
 confidence interval.
 }
 \examples{
-imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-ra <- with.miceafter(imp_dat, expr=oddsratio(Chronic ~ Radiation))
+imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+ra <- with(imp_dat, expr=oddsratio(Chronic ~ Radiation))
 res <- pool_oddsratio(ra)
 res
 
+}
+\seealso{
+\code{\link{with.milist}}, \code{\link{oddsratio}}
 }
 \author{
 Martijn Heymans, 2021

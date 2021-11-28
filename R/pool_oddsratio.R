@@ -11,19 +11,19 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.miceafter}}, \code{\link{oddsratio}}
+#' @seealso \code{\link{with.milist}}, \code{\link{oddsratio}}
 #'
 #' @examples
-#' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-#' ra <- with.miceafter(imp_dat, expr=oddsratio(Chronic ~ Radiation))
+#' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+#' ra <- with(imp_dat, expr=oddsratio(Chronic ~ Radiation))
 #' res <- pool_oddsratio(ra)
 #' res
 #'
 #' @export
 pool_oddsratio <- function(object, conf.level = 0.95){
 
-  if(all(class(object)!="raami"))
-    stop("object must be of class 'raami'")
+  if(all(class(object)!="mistats"))
+    stop("object must be of class 'mistats'")
   if(!is.list(object$statistics))
     stop("object must be a list")
 
@@ -43,6 +43,6 @@ pool_oddsratio <- function(object, conf.level = 0.95){
   colnames(output) <- c("pooled OR",
                         c(paste(conf.level*100, "CI low"),
                           paste(conf.level*100, "CI high")))
-  class(output) <- 'paami'
+  class(output) <- 'mipool'
   return(output)
 }

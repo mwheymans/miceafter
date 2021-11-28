@@ -1,7 +1,8 @@
-#' Converts a data.frame, tibble or list into a object of class \code{mice::mids}
+#' Converts a data.frame, tibble or list into a object of class
+#'  \code{mice::mids}
 #'
 #' \code{make_mids} Converts data.frame, tibble or list into object of
-#'  class \code{mice::mids}
+#'  class \code{mice::mids}.
 #'
 #' @param data A Data frame, tibble or list containing the multiply imputed
 #'  datasets. The original dataset that contains missing values must be

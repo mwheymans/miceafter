@@ -7,10 +7,7 @@
 #'
 #' @param object An object of class 'raami' (repeated analysis after
 #'   multiple imputation) after using \code{with.aftermi}.
-#' @param data Data frame with stacked multiple imputed datasets.
-#'   The original dataset that contains missing values must be excluded from the
-#'   dataset. The imputed datasets must be distinguished by an imputation variable,
-#'   specified under impvar, and starting by 1.
+#' @param conf.level Confidence level of the confidence intervals.
 #'
 #' @details Before pooling, the proportions will be naturally log transformed and
 #'  the pooled estimates back transformed to the original scale.
@@ -22,19 +19,19 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.miceafter}}, \code{\link{prop_nna}}
+#' @seealso \code{\link{with.milist}}, \code{\link{prop_nna}}
 #'
 #' @examples
 #'  imp_dat <- make_mids(lbpmilr, impvar='Impnr')
-#'  ra <- with.miceafter(imp_dat, expr=prop_nna(Radiation))
+#'  ra <- with(imp_dat, expr=prop_nna(Radiation))
 #'  res <- pool_prop_nna(ra)
 #'  res
 #'
 #' @export
 pool_prop_nna <- function(object, conf.level=0.95){
 
-  if(all(class(object)!="raami"))
-    stop("object must be of class 'raami'")
+  if(all(class(object)!="mistats"))
+    stop("object must be of class 'mistats'")
   if(!is.list(object$statistics))
     stop("object must be a list")
 
@@ -50,10 +47,11 @@ pool_prop_nna <- function(object, conf.level=0.95){
   a <- e_m*(((e_m*(1-e_m)) / (T_m)) -1)
   b <- (1-e_m)*(((e_m*(1-e_m))/(T_m)) -1)
 
-  obj <- matrix(qbeta(c(0.5, 0.025,0.975), a, b), 1, 3)
+  obj <- matrix(qbeta(c(0.5, (1-conf.level)/2,
+                        (1-(1-conf.level)/2)), a, b), 1, 3)
 
   dimnames(obj) <-
     list(NULL, c("Prop nna", "95%CI L", "95%CI U "))
-  class(obj) <- 'paami'
+  class(obj) <- 'mipool'
   return(obj)
 }

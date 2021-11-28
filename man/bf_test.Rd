@@ -14,8 +14,8 @@ bf_test(y, x, formula, data)
 \item{formula}{A formula object to specify the model as normally
 used by glm. Use 'factor' to define the grouping variable.}
 
-\item{data}{An objects of class \code{mids}, created by
-\code{make_mids} or after a call to function \code{mice}.}
+\item{data}{An objects of class \code{milist}, created by
+\code{df2milist} or \code{mids2milist}.}
 }
 \value{
 An object containing the following objects are extracted:
@@ -30,19 +30,19 @@ denominator degrees of freedom.
 \description{
 \code{bf_test} Calculates the Brown-Forsythe test for homogeneity
 of variance across groups, coefficients, variance-covariance matrix,
-and degrees of freedom to be used in function \code{with.miceafter}.
+and degrees of freedom.
 }
 \details{
 The Levene's test centers around means to calculate
 outcome residuals, the Brown-Forsythe test on the median.
 }
 \examples{
-imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-ra <- with.miceafter(imp_dat, expr=bf_test(Pain ~ factor(Carrying)))
+imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+res <- with(imp_dat, expr=bf_test(Pain ~ factor(Carrying)))
 
 }
 \seealso{
-\code{\link{with.miceafter}}
+\code{\link{with.milist}}
 }
 \author{
 Martijn Heymans, 2021

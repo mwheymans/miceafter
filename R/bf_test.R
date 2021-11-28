@@ -2,14 +2,14 @@
 #'
 #' \code{bf_test} Calculates the Brown-Forsythe test for homogeneity
 #'  of variance across groups, coefficients, variance-covariance matrix,
-#'  and degrees of freedom to be used in function \code{with.miceafter}.
+#'  and degrees of freedom.
 #'
 #' @param y numeric response variable.
 #' @param x categorical variable.
 #' @param formula A formula object to specify the model as normally
 #'  used by glm. Use 'factor' to define the grouping variable.
-#' @param data An objects of class \code{mids}, created by
-#'  \code{make_mids} or after a call to function \code{mice}.
+#' @param data An objects of class \code{milist}, created by
+#'  \code{df2milist} or \code{mids2milist}.
 #'
 #' @details The Levene's test centers around means to calculate
 #'  outcome residuals, the Brown-Forsythe test on the median.
@@ -25,11 +25,11 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.miceafter}}
+#' @seealso \code{\link{with.milist}}
 #'
 #' @examples
-#' imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-#' ra <- with.miceafter(imp_dat, expr=bf_test(Pain ~ factor(Carrying)))
+#' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+#' res <- with(imp_dat, expr=bf_test(Pain ~ factor(Carrying)))
 #'
 #' @export
 bf_test <- function(y, x, formula, data){

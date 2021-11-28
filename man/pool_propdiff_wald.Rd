@@ -21,11 +21,14 @@ The proportion, the Confidence intervals, the standard error and statistic.
 and standard error according to Wald across multiply imputed datasets.
 }
 \examples{
-imp_dat <- make_mids(lbpmilr, impvar="Impnr")
-ra <- with.miceafter(imp_dat, expr=propdiff_wald(Chronic ~ Gender))
+imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+ra <- with(imp_dat, expr=propdiff_wald(Chronic ~ Gender))
 res <- pool_propdiff_wald(ra)
 res
 
+}
+\seealso{
+\code{\link{with.milist}}, \code{\link{propdiff_wald}}
 }
 \author{
 Martijn Heymans, 2021

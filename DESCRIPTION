@@ -18,7 +18,13 @@ Imports:
     stringr (>= 1.4.0),
     miceadds (>= 3.10-28),
     car(>= 3.0-10)
-Suggests:
+Suggests: 
+    foreign (>= 0.8-80),
+    knitr,
+    rmarkdown,
+    testthat,
+    bookdown,
+    readr
 Title: Functions to perform Data and Statistical analyses after Multiple Imputation
 Version: 0.1.0
 Authors@R: c(

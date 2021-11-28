@@ -2,7 +2,7 @@
 % Please edit documentation in R/pool_cindex.R
 \name{pool_cindex}
 \alias{pool_cindex}
-\title{Calculates the pooled C-index}
+\title{Calculates the pooled C-index and Confidence intervals}
 \usage{
 pool_cindex(data, conf.level = 0.95, dfcom = NULL)
 }
@@ -20,35 +20,31 @@ provided.}
 The pooled c-index value and the confidence intervals.
 }
 \description{
-\code{pool_cindex} Calculates the pooled C-index and Confidence interval.
+\code{pool_cindex} Calculates the pooled C-index and Confidence intervals.
 }
 \details{
 Rubin's Rules are used for pooling. The C-index values are log
 transformed before pooling and finally back transformed.
 }
 \examples{
- imp_list <- lbpmilr \%>\%
-  group_split(Impnr, .keep = FALSE)
-
- imp_data <- make_mids(imp_list)
-
- # Logistic regression
- data <- with.miceafter(data=imp_data,
-  expr = cindex(glm(Chronic ~ Gender + Radiation, family="binomial")))
+ # Logistic Regression
+ imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+ ra <- with(data=imp_data,
+  expr = cindex(glm(Chronic ~ Gender + Radiation,
+  family=binomial)))
  res <- pool_cindex(data)
  res
 
  # Cox regression
- imp_list <- lbpmicox \%>\%
-  group_split(Impnr, .keep = FALSE)
-
- imp_data <- make_mids(imp_list)
-
- data <- with.miceafter(data=imp_data,
+ imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+  ra <- with(data=imp_data,
   expr = cindex(coxph(Surv(Time, Status) ~ Pain + Radiation)))
  res <- pool_cindex(data)
  res
 
+}
+\seealso{
+\code{\link{with.milist}}, \code{\link{cindex}}
 }
 \author{
 Martijn Heymans, 2021
