@@ -8,8 +8,8 @@ to Wilson across multiply imputed datasets.}
 pool_prop_wilson(object, conf.level = 0.95)
 }
 \arguments{
-\item{object}{An object of class 'raami' (repeated analysis after
-multiple imputation) after using \code{with.aftermi}.}
+\item{object}{An object of class 'mistats' (repeated statistical
+analysis across multiply imputed datasets).}
 
 \item{conf.level}{Confidence level of the confidence intervals.}
 }

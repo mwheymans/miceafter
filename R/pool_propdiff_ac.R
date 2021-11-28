@@ -4,8 +4,8 @@
 #' \code{pool_prop_wald} Calculates the pooled difference between proportions
 #'  and standard error according to Agresti-Caffo across multiply imputed datasets.
 #'
-#' @param object An object of class 'raami' (repeated analysis after
-#'  multiple imputation) after using \code{with.aftermi}.
+#' @param object An object of class 'mistats' (repeated statistical
+#'  analysis across multiply imputed datasets).
 #' @param conf.level Confidence level of the confidence intervals.
 #'
 #' @return The proportion, the Confidence intervals, the standard error and statistic.
@@ -15,6 +15,7 @@
 #' @seealso \code{\link{with.milist}}, \code{\link{propdiff_ac}}
 #'
 #' @examples
+#'
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 #' ra <- with(imp_dat, expr=propdiff_ac(Chronic ~ Gender))
 #' res <- pool_propdiff_ac(ra)

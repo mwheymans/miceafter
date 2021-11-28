@@ -2,10 +2,10 @@
 #'
 #' \code{pool_cindex} Calculates the pooled C-index and Confidence intervals.
 #'
-#' @param data An object of class 'raami' (repeated analysis after
-#'  multiple imputation) or a 2 x m matrix with C-index
-#'  values and standard errors. For the latter situation dfcom has to be
-#'  provided.
+#' @param data An object of class 'mistats' (repeated statistical analysis across
+#'  multiply imputed datasets) or a m x 2 matrix with C-index
+#'  values and standard errors in the columns. For the latter data
+#'  dfcom has to be provided.
 #' @param conf.level conf.level Confidence level of the confidence intervals.
 #' @param dfcom Number of completed-data analysis degrees of freedom.
 #'
@@ -21,17 +21,17 @@
 #' @examples
 #'  # Logistic Regression
 #'  imp_dat <- df2milist(lbpmilr, impvar="Impnr")
-#'  ra <- with(data=imp_data,
+#'  res_stats <- with(data=imp_dat,
 #'   expr = cindex(glm(Chronic ~ Gender + Radiation,
 #'   family=binomial)))
-#'  res <- pool_cindex(data)
+#'  res <- pool_cindex(res_stats)
 #'  res
 #'
 #'  # Cox regression
-#'  imp_dat <- df2milist(lbpmilr, impvar="Impnr")
-#'   ra <- with(data=imp_data,
+#'  imp_dat <- df2milist(lbpmicox, impvar="Impnr")
+#'   res_stats <- with(data=imp_dat,
 #'   expr = cindex(coxph(Surv(Time, Status) ~ Pain + Radiation)))
-#'  res <- pool_cindex(data)
+#'  res <- pool_cindex(res_stats)
 #'  res
 #'
 #' @export

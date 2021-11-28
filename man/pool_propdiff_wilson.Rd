@@ -8,8 +8,8 @@ to Wilson across multiply imputed datasets.}
 pool_propdiff_wilson(object, conf.level = 0.95)
 }
 \arguments{
-\item{object}{An object of class 'raami' (repeated analysis after
-multiple imputation) after using \code{with.aftermi}.}
+\item{object}{An object of class 'mistats' (repeated statistical
+analysis across multiply imputed datasets).}
 
 \item{conf.level}{Confidence level of the confidence intervals. Mostly
 set at 0.95.}
@@ -28,11 +28,10 @@ exposure groups. It is therefore important to first use the \code{propdiff_wald}
 function and to set strata = TRUE in that function.
 }
 \examples{
-imp_list <- lbpmilr \%>\%
- group_split(Impnr, .keep = FALSE)
 
-res <- with.miceafter(imp_list,
-  expr=propdiff_wald(Chronic ~ Radiation, strata = TRUE))
+imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+res <- with(imp_dat,
+ expr=propdiff_wald(Chronic ~ Radiation, strata = TRUE))
 res <- pool_propdiff_wilson(res)
 res
 

@@ -8,8 +8,8 @@ according to Agresti-Caffo across multiply imputed datasets.}
 pool_propdiff_ac(object, conf.level = 0.95)
 }
 \arguments{
-\item{object}{An object of class 'raami' (repeated analysis after
-multiple imputation) after using \code{with.aftermi}.}
+\item{object}{An object of class 'mistats' (repeated statistical
+analysis across multiply imputed datasets).}
 
 \item{conf.level}{Confidence level of the confidence intervals.}
 }
@@ -21,6 +21,7 @@ The proportion, the Confidence intervals, the standard error and statistic.
 and standard error according to Agresti-Caffo across multiply imputed datasets.
 }
 \examples{
+
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 ra <- with(imp_dat, expr=propdiff_ac(Chronic ~ Gender))
 res <- pool_propdiff_ac(ra)

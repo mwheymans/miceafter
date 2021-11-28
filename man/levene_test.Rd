@@ -38,6 +38,7 @@ The Levene's test centers on group means to calculate
 outcome residuals, the Brown-Forsythe test on the median.
 }
 \examples{
+
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 ra <- with(imp_dat, expr=levene_test(Pain ~ factor(Carrying)))
 

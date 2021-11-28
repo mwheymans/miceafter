@@ -3,8 +3,8 @@
 #' \code{pool_levenetest} Calculates the pooled F-statistic
 #'  of the Levenene test.
 #'
-#' @param object An object of class 'raami' (repeated analysis after
-#'  multiple imputation) after using \code{with.miceafter}.
+#' @param object An object of class 'mistats' (repeated statistical
+#'  analysis across multiply imputed datasets).
 #' @param method A character vector to choose the pooling method,
 #'  'D1' (default) or 'D2'.
 #'
@@ -22,6 +22,7 @@
 #' @seealso \code{\link{with.milist}}, \code{\link{levene_test}}
 #'
 #' @examples
+#'
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 #' ra <- with(imp_dat, expr=levene_test(Pain ~ factor(Carrying)))
 #' res <- pool_levenetest(ra, method="D1")

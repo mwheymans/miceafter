@@ -8,10 +8,8 @@
 #'
 #' @param x name of variable to calculate proportion.
 #' @param formula A formula object to specify the model as normally used by glm.
-#' @param data An objects of class \code{mids}, created by
-#'  \code{make_mids} or after a call to function \code{mice}.
-#'  If \code{data} is of type \code{data.frame}, use
-#'  \code{make_mids} to convert to \code{mids} object.
+#' @param data An objects of class \code{milist}, created by
+#'  \code{df2milist} or \code{mids2milist}.
 #'
 #' @return The proportion and the standard error.
 #'

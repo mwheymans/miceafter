@@ -5,10 +5,8 @@
 #'  components of the beta distribution for a single proportion.
 #'
 #' @param x name of variable to calculate proportion.
-#' @param data An objects of class \code{mids}, created by
-#'  \code{make_mids} or after a call to function \code{mice}.
-#'  If \code{data} is of type \code{data.frame}, use
-#'  \code{make_mids} to convert to \code{mids} object.
+#' @param data An object of class 'mistats' (repeated statistical
+#'  analysis across multiply imputed datasets).
 #'
 #' @return The mean and variance components of the beta distribution.
 #'

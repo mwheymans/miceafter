@@ -7,10 +7,10 @@
 pool_cindex(data, conf.level = 0.95, dfcom = NULL)
 }
 \arguments{
-\item{data}{An object of class 'raami' (repeated analysis after
-multiple imputation) or a 2 x m matrix with C-index
-values and standard errors. For the latter situation dfcom has to be
-provided.}
+\item{data}{An object of class 'mistats' (repeated statistical analysis across
+multiply imputed datasets) or a m x 2 matrix with C-index
+values and standard errors in the columns. For the latter data
+dfcom has to be provided.}
 
 \item{conf.level}{conf.level Confidence level of the confidence intervals.}
 
@@ -29,17 +29,17 @@ transformed before pooling and finally back transformed.
 \examples{
  # Logistic Regression
  imp_dat <- df2milist(lbpmilr, impvar="Impnr")
- ra <- with(data=imp_data,
+ res_stats <- with(data=imp_dat,
   expr = cindex(glm(Chronic ~ Gender + Radiation,
   family=binomial)))
- res <- pool_cindex(data)
+ res <- pool_cindex(res_stats)
  res
 
  # Cox regression
- imp_dat <- df2milist(lbpmilr, impvar="Impnr")
-  ra <- with(data=imp_data,
+ imp_dat <- df2milist(lbpmicox, impvar="Impnr")
+  res_stats <- with(data=imp_dat,
   expr = cindex(coxph(Surv(Time, Status) ~ Pain + Radiation)))
- res <- pool_cindex(data)
+ res <- pool_cindex(res_stats)
  res
 
 }

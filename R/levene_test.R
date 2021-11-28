@@ -29,6 +29,7 @@
 #' @seealso \code{\link{with.milist}}, \code{\link{pool_levenetest}}, \code{\link{bf_test}}
 #'
 #' @examples
+#'
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 #' ra <- with(imp_dat, expr=levene_test(Pain ~ factor(Carrying)))
 #'

@@ -18,7 +18,7 @@ imputation variable, specified under impvar and starting by 1.}
 }
 \value{
 The value of the evaluated expression with class \code{mistats}
-'statistical analyses in multiply imputed data'.
+'Repeated statistical analysis across multiply imputed datasets'.
 }
 \description{
 \code{with.milist} Evaluate an expression in the form of a

@@ -5,8 +5,8 @@
 #'  confidence intervals according to Wald across multiply imputed datasets
 #'  and using Rubin's Rules.
 #'
-#' @param object An object of class 'raami' (repeated analysis after
-#'   multiple imputation) after using \code{with.aftermi}.
+#' @param object An object of class 'mistats' (repeated statistical
+#'  analysis across multiply imputed datasets).
 #' @param conf.level Confidence level of the confidence intervals. Mostly
 #'  set at 0.95.
 #'
@@ -25,11 +25,10 @@
 #' @seealso \code{\link{with.milist}}, \code{\link{propdiff_wald}}
 #'
 #' @examples
-#' imp_list <- lbpmilr %>%
-#'  group_split(Impnr, .keep = FALSE)
 #'
-#' res <- with.miceafter(imp_list,
-#'   expr=propdiff_wald(Chronic ~ Radiation, strata = TRUE))
+#' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
+#' res <- with(imp_dat,
+#'  expr=propdiff_wald(Chronic ~ Radiation, strata = TRUE))
 #' res <- pool_propdiff_wilson(res)
 #' res
 #'

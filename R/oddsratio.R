@@ -6,10 +6,8 @@
 #' @param x 0-1 binary independent variable.
 #' @param y 0-1 binary response variable.
 #' @param formula A formula object to specify the model as normally used by glm.
-#' @param data An objects of class \code{mids}, created by
-#'  \code{make_mids} or after a call to function \code{mice}.
-#'  If \code{data} is of type \code{data.frame}, use
-#'  \code{make_mids} to convert to \code{mids} object.
+#' @param data An objects of class \code{milist}, created by
+#'  \code{df2milist} or \code{mids2milist}.
 #'
 #' @details Note that the standard error of the OR is on the
 #'  logit scale.
@@ -21,6 +19,7 @@
 #' @seealso \code{\link{with.milist}}, \code{\link{pool_oddsratio}}
 #'
 #' @examples
+#'
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 #' ra <- with(imp_dat, expr=oddsratio(Chronic ~ Radiation))
 #'

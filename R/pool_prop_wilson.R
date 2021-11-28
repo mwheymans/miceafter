@@ -4,8 +4,8 @@
 #' \code{pool_prop_wilson} Calculates the pooled single proportion and
 #'  confidence intervals according to Wald across multiply imputed datasets.
 #'
-#' @param object An object of class 'raami' (repeated analysis after
-#'   multiple imputation) after using \code{with.aftermi}.
+#' @param object An object of class 'mistats' (repeated statistical
+#'  analysis across multiply imputed datasets).
 #' @param conf.level Confidence level of the confidence intervals.
 #'
 #' @details Before pooling, the proportions will be naturally log transformed and
@@ -54,8 +54,8 @@ pool_prop_wilson <- function(object, conf.level=0.95){
                       (4*(1 + ((t^2)/n) + (((t^2)*r)/n))^2)) -
                      ((mean_est^2)/(1 + ((t^2)/n) + (((t^2)*r)/n)))))
 
-  output <- round(c(mean_est, lower, upper), 4)
-  names(output) <- c("Prop", "CI L Wilson", "CI U Wilson")
+  output <- matrix(round(c(mean_est, lower, upper), 5), 1, 3)
+  colnames(output) <- c("Prop", "CI L Wilson", "CI U Wilson")
   class(output) <- 'mipool'
   return(output)
 }

@@ -28,8 +28,9 @@
 #' @seealso \code{\link{with.milist}}
 #'
 #' @examples
+#'
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
-#' res <- with(imp_dat, expr=bf_test(Pain ~ factor(Carrying)))
+#'  ra <- with(imp_dat, expr=bf_test(Pain ~ factor(Carrying)))
 #'
 #' @export
 bf_test <- function(y, x, formula, data){

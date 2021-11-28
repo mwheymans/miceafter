@@ -4,17 +4,16 @@
 #'
 #' @param x 0-1 binary independent variable.
 #' @param y 0-1 binary response variable.
-#' @param formula A formula object to specify the model as normally used by glm.
-#' @param data An objects of class \code{mids}, created by
-#'  \code{make_mids} or after a call to function \code{mice}.
-#'  If \code{data} is of type \code{data.frame}, use
-#'  \code{make_mids} to convert to \code{mids} object.
+#' @param formula A formula object to specify the model as
+#'  normally used by glm.
+#' @param data An objects of class \code{milist}, created by
+#'  \code{df2milist} or \code{mids2milist}.
 #'
 #' @details Note that the standard error of the RR is on the natural
 #'  log scale, both when you use formula or y and x.
 #'
 #' @return The risk ratio and related standard error and
-#'  degrees of freedom to be used in function \code{with.miceafter}.
+#'  degrees of freedom to be used in function \code{with.milist}.
 #'
 #' @author Martijn Heymans, 2021
 #'

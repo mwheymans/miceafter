@@ -14,10 +14,8 @@ propdiff_wald(y, x, formula, data, strata = FALSE)
 
 \item{formula}{A formula object to specify the model as normally used by glm.}
 
-\item{data}{An objects of class \code{mids}, created by
-\code{make_mids} or after a call to function \code{mice}.
-If \code{data} is of type \code{data.frame}, use
-\code{make_mids} to convert to \code{mids} object.}
+\item{data}{An objects of class \code{milist}, created by
+\code{df2milist} or \code{mids2milist}.}
 
 \item{strata}{If TRUE the proportion, se and n of each group is provided.
 Default is FALSE. Has to be used in combination with function

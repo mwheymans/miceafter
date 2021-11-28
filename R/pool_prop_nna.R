@@ -5,8 +5,8 @@
 #'  standard error according to Wald across multiply imputed datasets
 #'  and using Rubin's Rules.
 #'
-#' @param object An object of class 'raami' (repeated analysis after
-#'   multiple imputation) after using \code{with.aftermi}.
+#' @param object An object of class 'mistats' (repeated statistical
+#'  analysis across multiply imputed datasets).
 #' @param conf.level Confidence level of the confidence intervals.
 #'
 #' @details Before pooling, the proportions will be naturally log transformed and
@@ -22,7 +22,7 @@
 #' @seealso \code{\link{with.milist}}, \code{\link{prop_nna}}
 #'
 #' @examples
-#'  imp_dat <- make_mids(lbpmilr, impvar='Impnr')
+#'  imp_dat <- df2milist(lbpmilr, impvar='Impnr')
 #'  ra <- with(imp_dat, expr=prop_nna(Radiation))
 #'  res <- pool_prop_nna(ra)
 #'  res

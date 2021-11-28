@@ -7,8 +7,8 @@
 pool_bftest(object, method = "D1")
 }
 \arguments{
-\item{object}{An object of class 'raami' (repeated analysis after
-multiple imputation) after using \code{with.miceafter}.}
+\item{object}{An object of class 'mistats' (repeated statistical
+analysis across multiply imputed datasets).}
 
 \item{method}{A character vector to choose the pooling method,
 'D1' (default) or 'D2'.}
@@ -21,6 +21,7 @@ The (combined) F-statistic, p-value and degrees of freedom.
 of the Brown-Forsythe test.
 }
 \examples{
+
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 ra <- with(imp_dat, expr=bf_test(Pain ~ factor(Carrying)))
 res <- pool_bftest(ra)
