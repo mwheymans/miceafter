@@ -29,13 +29,15 @@ Levene's test is used to test if the variance between groups is comparable. The 
 
 ## In combination with the `mice` function 
 
-The lbp_orig is a dataset with missing values. So we first impute them with the `mice` function. Than we use the `with.miceafter`  function to apply repeated analyses with the `levene_test` function across the multiply imputed datasets. Finally, we pool the results by using the `pool_levenetest` function.
+The lbp_orig is a dataset with missing values. So we first impute them with the `mice` function. Than we use the `mids2milist` to turn a `mids` object into a `milist` object.  Than we use the `with` function function to apply repeated analyses with the `levene_test` function across the list of multiply imputed datasets. Finally, we pool the results by using the `pool_levenetest` function.
 
 ```{r}
 
   imp_data <- mice(miceafter::lbp_orig, m=5, seed=3025, printFlag = FALSE) 
 
-  ra <- with.miceafter(data=imp_data,
+  imp_list <- mids2milist(imp_data)
+  
+  ra <- with(data=imp_list,
    expr = levene_test(Pain ~ factor(Satisfaction)))
 
   res <- pool_levenetest(ra, method = "D1")
@@ -45,13 +47,13 @@ The lbp_orig is a dataset with missing values. So we first impute them with the 
 
 ## In combination with stored Multiply Imputed datasets 
 
-The dataset `lbpmilr` is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the `Impnr`  variable. First we convert the dataset into a `mids` object by the `makemids` function. Than we use the `with.miceafter`  function to apply repeated analyses with the `levene_test` function across the multiply imputed datasets. Finally, we pool the results by using the `pool_levenetest` function.
+The dataset `lbpmilr` is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the `Impnr`  variable. First we convert the dataset into a `milist` object by the `df2milist` function. Than we use the `with`  function to apply repeated analyses with the `levene_test` function across the list of multiply imputed datasets. Finally, we pool the results by using the `pool_levenetest` function.
 
 ```{r}
 
-  imp_data <- make_mids(lbpmilr, impvar = "Impnr") # MI datasets are in lbpmilr
+  imp_data <- df2milist(lbpmilr, impvar = "Impnr") # MI datasets are in lbpmilr
 
-  ra <- with.miceafter(data=imp_data,
+  ra <- with(data=imp_data,
    expr = levene_test(Pain ~ factor(Satisfaction)))
 
   res <- pool_levenetest(ra, method = "D1")
