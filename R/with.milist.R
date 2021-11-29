@@ -10,9 +10,10 @@
 #'  exluded and the imputed datasets must be distinguished by an
 #'  imputation variable, specified under impvar and starting by 1.
 #' @param expr expression to evaluate.
+#' @param ... Not required.
 #'
 #' @return The value of the evaluated expression with class \code{mistats}
-#' 'Repeated statistical analysis across multiply imputed datasets'.
+#' 'Multiply Imputed Statistical Analysis'.
 #'
 #' @author Martijn Heymans, 2021
 #'

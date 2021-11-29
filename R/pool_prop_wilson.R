@@ -13,6 +13,10 @@
 #'
 #' @return The proportion and the 95% Confidence interval according to Wilson.
 #'
+#' @references Anne Lott & Jerome P. Reiter (2020) Wilson Confidence Intervals
+#'  for Binomial Proportions With Multiple Imputation for Missing Data,
+#'  The American Statistician, 74:2, 109-115, DOI: 10.1080/00031305.2018.1473796.
+#'
 #' @author Martijn Heymans, 2021
 #'
 #' @seealso \code{\link{with.milist}}, \code{\link{prop_wald}}
@@ -35,7 +39,9 @@ pool_prop_wilson <- function(object, conf.level=0.95){
   colnames(ra) <- c("est", "se", "dfcom")
 
   pool_est <- pool_scalar_RR(est=ra$est, se=ra$se,
-                      logit_trans=FALSE, conf.level = conf.level, dfcom=ra$dfcom[1])
+                      logit_trans=FALSE,
+                      conf.level = conf.level,
+                      dfcom=ra$dfcom[1])
 
   mean_est <- pool_est$pool_est
   t <- pool_est$t

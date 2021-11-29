@@ -54,7 +54,7 @@ bf_test <- function(y, x, formula, data){
   df_new <- df %>%
     group_by(x) %>%
     mutate(resd = abs(y-median(y))) %>%
-    dplyr::select(x, resd)
+    dplyr::select(x, .data$resd)
   fit_new <- lm(resd ~ x, data=df_new)
   fstats <- summary(fit_new)$'fstatistic'
   qhat <- coef(fit_new)

@@ -5,19 +5,20 @@ Depends:
 Imports:
     norm (>= 1.0-9.5),
     survival (>= 3.1-12),
-    mitools (>= 2.4),
     pROC (>= 1.16.2),
     rms (>= 6.1-0),
     magrittr (>= 2.0.1),
     mice (>= 3.12.0),
     mitml (>= 0.3-7),
-    dplyr (>= 1.0.2), 
+    mitools (>= 2.4),
+    dplyr (>= 1.0.2),
     purrr (>= 0.3.4),
     tidyr (>= 1.1.2),
     tibble (>= 3.0.4),
     stringr (>= 1.4.0),
     miceadds (>= 3.10-28),
-    car(>= 3.0-10)
+    car (>= 3.0-10),
+    rlang
 Suggests: 
     foreign (>= 0.8-80),
     knitr,
@@ -33,7 +34,7 @@ Authors@R: c(
 Description:
 	Statistical Analyses and Pooling after Multiple Imputation
 Encoding: UTF-8
-LazyData:	true
+LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 License: GPL (>= 2)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/df2milist.R
 \name{df2milist}
 \alias{df2milist}
-\title{Turns an object of class 'data.frame', 'tbl_df' or 'tbl' into
+\title{Turns a data frame with multiply imputed data into
 an object of class 'milist' to be further used
 by 'miceafter::with'}
 \usage{
@@ -19,11 +19,11 @@ distinguishes the imputed datasets.}
 the grouping column is not kept.}
 }
 \value{
-an object of class 'milist'
+an object of class 'milist' (Multiply Imputed Data list)
 }
 \description{
-\code{df2milist} Turns an object of class 'data.frame', 'tbl_df'
-or 'tbl' into an object of class 'milist' to be further used
+\code{df2milist} Turns a data frame of class 'data.frame', 'tbl_df'
+or 'tbl' (tibble) into an object of class 'milist' to be further used
 by 'miceafter::with'
 }
 \author{

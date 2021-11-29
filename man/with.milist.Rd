@@ -15,10 +15,12 @@ exluded and the imputed datasets must be distinguished by an
 imputation variable, specified under impvar and starting by 1.}
 
 \item{expr}{expression to evaluate.}
+
+\item{...}{Not required.}
 }
 \value{
 The value of the evaluated expression with class \code{mistats}
-'Repeated statistical analysis across multiply imputed datasets'.
+'Multiply Imputed Statistical Analysis'.
 }
 \description{
 \code{with.milist} Evaluate an expression in the form of a

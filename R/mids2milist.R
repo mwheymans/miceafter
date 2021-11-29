@@ -20,7 +20,7 @@ mids2milist <- function(data, keep=FALSE){
   df <- mice::complete(data, action="long",
                        include=FALSE)
   imp_list <- df %>%
-    group_split(.imp, .keep = keep)
+    group_split(df$.imp, .keep = keep)
   class(imp_list) <- "milist"
   return(imp_list)
 }

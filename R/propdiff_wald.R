@@ -19,7 +19,7 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.milist}}, \code{\link{pool_propdiff_wilson}}
+#' @seealso \code{\link{with.milist}}, \code{\link{pool_propdiff_nw}}
 #'
 #' @examples
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")

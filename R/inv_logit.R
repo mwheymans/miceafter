@@ -13,7 +13,7 @@
 #'  intervals on original scale.
 #'
 #' @details Takes the inverse of logit transformed parameter
-#'  estimates. The confidence interval is calculated as taking the
+#'  estimates. The confidence interval is calculated by taking the
 #'  inverse of \eqn{est +/- crit.value{1-\alpha/2} * se}.
 #'
 #' @author Martijn Heymans, 2021

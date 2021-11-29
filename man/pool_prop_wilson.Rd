@@ -31,6 +31,11 @@ res <- pool_prop_wilson(ra)
 res
 
 }
+\references{
+Anne Lott & Jerome P. Reiter (2020) Wilson Confidence Intervals
+for Binomial Proportions With Multiple Imputation for Missing Data,
+The American Statistician, 74:2, 109-115, DOI: 10.1080/00031305.2018.1473796.
+}
 \seealso{
 \code{\link{with.milist}}, \code{\link{prop_wald}}
 }

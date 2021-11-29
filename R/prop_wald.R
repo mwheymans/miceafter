@@ -36,15 +36,18 @@ prop_wald <- function(x, formula, data){
 
     # Proportion and Standard Error according to Wald
     phat <- p/n
-    se_phat <- sqrt(phat*((1-phat)/n))
+    se_phat <- sqrt((phat*(1-phat))/n)
     dfcom <- n-1
   } else{
     eval_prop <- eval(call[[2]], parent.frame())
     # Proportion and Standard Error via formula
     fit <- glm(eval_prop, family=binomial)
+    if(!is_empty(attr(fit$terms, "term.labels")))
+      stop("Model can only include an outcome variable,
+           Use '1' for the independent variable")
     dfcom <- df.residual(fit)
     phat <- exp(coef(fit)) / (1 + exp(coef(fit)))
-    se_phat <- vcov(fit)
+    se_phat <- sqrt((phat*(1-phat))/(dfcom+1))
   }
   obj <- c(phat, se_phat, dfcom)
   obj

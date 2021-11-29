@@ -1,20 +1,20 @@
-#' Calculates the pooled single proportion confidence intervals according
-#'  to Wilson across multiply imputed datasets.
+#'  Calculates the pooled difference between proportions and confidence
+#'  intervals according to Newcombe-Wilson (NW) across multiply imputed datasets.
 #'
-#' \code{pool_prop_wilson} Calculates the pooled single proportion and
-#'  confidence intervals according to Wald across multiply imputed datasets
-#'  and using Rubin's Rules.
+#' \code{pool_prop_nw} Calculates the pooled difference between proportions
+#'  and confidence intervals according to Newcombe-Wilson (NW) across
+#'  multiply imputed datasets.
 #'
-#' @param object An object of class 'mistats' (repeated statistical
-#'  analysis across multiply imputed datasets).
+#' @param object An object of class 'mistats' ('Multiply Imputed
+#'  Statistical Analysis'.).
 #' @param conf.level Confidence level of the confidence intervals. Mostly
 #'  set at 0.95.
 #'
-#' @details The \code{pool_propdiff_wilson} function uses information from separate
+#' @details The \code{pool_propdiff_nw} function uses information from separate
 #'  exposure groups. It is therefore important to first use the \code{propdiff_wald}
 #'  function and to set strata = TRUE in that function.
 #'
-#' @return The Proportion and the Confidence intervals according to Wilson.
+#' @return The Proportion and the Confidence intervals according to Newcombe-Wilson.
 #'
 #' @references Yulia Sidi & Ofer Harel (2021): Difference Between Binomial
 #'  Proportions Using Newcombe’s Method With Multiple Imputation for Incomplete
@@ -29,11 +29,11 @@
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 #' res <- with(imp_dat,
 #'  expr=propdiff_wald(Chronic ~ Radiation, strata = TRUE))
-#' res <- pool_propdiff_wilson(res)
+#' res <- pool_propdiff_nw(res)
 #' res
 #'
 #' @export
-pool_propdiff_wilson <- function(object, conf.level=0.95)
+pool_propdiff_nw <- function(object, conf.level=0.95)
 {
 
   if(all(class(object)!="mistats"))
@@ -69,7 +69,7 @@ pool_propdiff_wilson <- function(object, conf.level=0.95)
   lower <- prop_diff - sqrt((phat0-l0)^2 + (u1-phat1)^2)
   upper <- prop_diff + sqrt((u0-phat0)^2 + (phat1-l1)^2)
   output <- round(matrix(c(prop_diff, lower, upper), 1, 3), 4)
-  colnames(output) <- c("Prop diff", "CI L Wilson", "CI U Wilson")
+  colnames(output) <- c("Prop diff", "CI L NW", "CI U NW")
   class(output) <- "mipool"
   return(output)
 }

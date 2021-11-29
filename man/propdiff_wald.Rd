@@ -40,7 +40,7 @@ ra <- with(imp_dat, expr=propdiff_wald(Chronic ~ Gender, strata=TRUE))
 
 }
 \seealso{
-\code{\link{with.milist}}, \code{\link{pool_propdiff_wilson}}
+\code{\link{with.milist}}, \code{\link{pool_propdiff_nw}}
 }
 \author{
 Martijn Heymans, 2021

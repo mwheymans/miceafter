@@ -1,0 +1,60 @@
+---
+title: "Pooling difference between proportions"
+author: "Martijn W Heymans"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Pooling difference between proportions}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(miceafter)
+library(mice)
+library(magrittr)
+library(dplyr)
+
+```
+
+## Introduction
+
+The `miceafter` package includes the function `pool_propdiff_nw`, to obtain confidence intervals according to the method Newcombe-Wilson (NW). 
+
+## Examples - After `mice`
+
+The lbp_orig is a dataset with missing values. So we first impute them with the `mice` function. Than we use the `mids2milist` function to turn the `mids` object, as a result of using `mice`, into a `milist` object. Than we use the `with` function to apply repeated analyses with the `propdiff_wald` function across the list of multiply imputed datasets. In this function we use the option `strata=TRUE` to extract results within each group of the independent variable. Finally, we pool the results by using the `pool_propdiff_nw` function.
+
+```{r}
+
+  imp_data <- mice(miceafter::lbp_orig, m=5, seed=20873, printFlag = FALSE) 
+
+  imp_list <- mids2milist(imp_data)
+
+  ra <- with(imp_list, expr=propdiff_wald(Chronic ~ Radiation, strata = TRUE))
+
+  res <- pool_propdiff_nw(ra)
+  res
+
+```  
+
+## After Multiply Imputed datasets are stored in a dataframe
+
+The dataset `lbpmilr` is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the `Impnr`  variable. First we convert the dataset into a `milist` object by the `df2milist` function. Than we use the `with` function to apply repeated analyses with the `propdiff_wald` function across the list of multiply imputed datasets. In this function we use the option `strata=TRUE` to extract results within each group of the independent variable. These results are first pooled within each stratum by using the `pool_prop_wilson` function and than the pooled confidence intervals for the difference between groups are than derived in the `pool_propdiff_nw` function.
+
+```{r}
+
+  imp_dat <- df2milist(lbpmilr, impvar = "Impnr") # MI datasets are in lbpmilr
+
+  ra <- with(imp_dat, expr=propdiff_wald(Chronic ~ Radiation, strata = TRUE))
+
+  res <- pool_propdiff_nw(ra)
+  res
+
+```  
+
