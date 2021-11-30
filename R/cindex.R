@@ -6,8 +6,8 @@
 #'
 #' @param formula A formula object to specify the model as
 #'  normally used by glm or coxph.
-#' @param data An objects of class \code{milist}, created by
-#'  \code{df2milist} or \code{mids2milist}.
+#' @param data An object of class \code{milist}, created by
+#'  \code{df2milist}, \code{list2milist} or \code{mids2milist}.
 #'
 #' @return The c-index, related standard error and
 #'  degrees of freedom.

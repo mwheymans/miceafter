@@ -14,18 +14,16 @@ propdiff_ac(y, x, formula, data)
 
 \item{formula}{A formula object to specify the model as normally used by glm.}
 
-\item{data}{An objects of class \code{mids}, created by
-\code{make_mids} or after a call to function \code{mice}.
-If \code{data} is of type \code{data.frame}, use
-\code{make_mids} to convert to \code{mids} object.}
+\item{data}{An objects of class \code{milist}, created by
+\code{df2milist}, \code{list2milist} or \code{mids2milist}.}
 }
 \value{
-The Agresti-Caffo difference between proportions and the standard error.
+The difference between proportions and the standard error
+according to Agresti-Caffo.
 }
 \description{
 \code{propdiff_ac} Calculates the difference between proportions
-and standard error according to method Agresti-Caffo and
-degrees of freedom to be used in function \code{with.miceafter}
+and standard error according to method Agresti-Caffo.
 }
 \examples{
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")

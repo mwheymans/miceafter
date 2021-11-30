@@ -11,8 +11,8 @@ pool_propdiff_nw(object, conf.level = 0.95)
 \item{object}{An object of class 'mistats' ('Multiply Imputed
 Statistical Analysis'.).}
 
-\item{conf.level}{Confidence level of the confidence intervals. Mostly
-set at 0.95.}
+\item{conf.level}{Confidence level of the confidence intervals.
+Mostly set at 0.95.}
 }
 \value{
 The Proportion and the Confidence intervals according to Newcombe-Wilson.

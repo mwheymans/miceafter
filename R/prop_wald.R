@@ -9,7 +9,7 @@
 #' @param x name of variable to calculate proportion.
 #' @param formula A formula object to specify the model as normally used by glm.
 #' @param data An objects of class \code{milist}, created by
-#'  \code{df2milist} or \code{mids2milist}.
+#'  \code{df2milist}, \code{list2milist} or \code{mids2milist}.
 #'
 #' @return The proportion and the standard error.
 #'

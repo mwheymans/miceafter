@@ -29,8 +29,9 @@ Suggests:
 Title: Functions to perform Data and Statistical analyses after Multiple Imputation
 Version: 0.1.0
 Authors@R: c(
-  person("Martijn", "Heymans", email = "mw.heymans@amsterdamumc.nl", role=c("cre", "aut"),
-  comment = c(ORCID = "0000-0002-3889-0921")))
+   person("Martijn", "Heymans", email = "mw.heymans@amsterdamumc.nl", role=c("cre", "aut"),
+  comment = c(ORCID = "0000-0002-3889-0921")),
+  person("Jaap", "Brand", email = "jaapbrand2651965@gmail.com", role=c("ctb")))
 Description:
 	Statistical Analyses and Pooling after Multiple Imputation
 Encoding: UTF-8

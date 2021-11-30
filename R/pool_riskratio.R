@@ -3,8 +3,8 @@
 #' \code{pool_riskratio} Calculates the pooled risk ratio and
 #'  confidence interval.
 #'
-#' @param object An object of class 'mistats' (repeated statistical
-#'  analysis across multiply imputed datasets).
+#' @param object An object of class 'mistats' ('Multiply Imputed
+#'  Statistical Analysis').
 #' @param conf.level Confidence level of the confidence intervals.
 #'
 #' @return The pooled RR and confidence intervals.

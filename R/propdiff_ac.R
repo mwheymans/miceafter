@@ -2,18 +2,16 @@
 #'  according to method Agresti-Caffo
 #'
 #' \code{propdiff_ac} Calculates the difference between proportions
-#'  and standard error according to method Agresti-Caffo and
-#'  degrees of freedom to be used in function \code{with.miceafter}
+#'  and standard error according to method Agresti-Caffo.
 #'
 #' @param y 0-1 binary response variable.
 #' @param x 0-1 binary independent variable.
 #' @param formula A formula object to specify the model as normally used by glm.
-#' @param data An objects of class \code{mids}, created by
-#'  \code{make_mids} or after a call to function \code{mice}.
-#'  If \code{data} is of type \code{data.frame}, use
-#'  \code{make_mids} to convert to \code{mids} object.
+#' @param data An objects of class \code{milist}, created by
+#'  \code{df2milist}, \code{list2milist} or \code{mids2milist}.
 #'
-#' @return The Agresti-Caffo difference between proportions and the standard error.
+#' @return The difference between proportions and the standard error
+#'  according to Agresti-Caffo.
 #'
 #' @author Martijn Heymans, 2021
 #'

@@ -3,8 +3,8 @@
 #' \code{pool_levenetest} Calculates the pooled F-statistic
 #'  of the Brown-Forsythe test.
 #'
-#' @param object An object of class 'mistats' (repeated statistical
-#'  analysis across multiply imputed datasets).
+#' @param object An object of class 'mistats'
+#'  ('Multiply Imputed Statistical Analysis').
 #' @param method A character vector to choose the pooling method,
 #'  'D1' (default) or 'D2'.
 #'

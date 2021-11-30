@@ -2,7 +2,7 @@
 % Please edit documentation in R/prop_nna.R
 \name{prop_nna}
 \alias{prop_nna}
-\title{Calculates the mean and variance components of the beta
+\title{Calculates the mean and variance components of the Beta
 distribution for a single proportion}
 \usage{
 prop_nna(x, data)
@@ -10,20 +10,24 @@ prop_nna(x, data)
 \arguments{
 \item{x}{name of variable to calculate proportion.}
 
-\item{data}{An object of class 'mistats' (repeated statistical
-analysis across multiply imputed datasets).}
+\item{data}{An object of class 'mistats' ('Multiply Imputed
+Statistical Analysis').}
 }
 \value{
 The mean and variance components of the beta distribution.
 }
 \description{
 \code{prop_nna} Calculates the mean and variance
-components of the beta distribution for a single proportion.
+components of the Beta distribution for a single proportion.
 }
 \examples{
  imp_dat <- df2milist(lbpmilr, impvar='Impnr')
  ra <- with(imp_dat, expr=prop_nna(Radiation))
 
+}
+\references{
+Raghunathan, T. (2016). Missing Data Analysis in Practice.
+Boca Raton, FL: Chapman and Hall/CRC. (paragr 4.6.2)
 }
 \seealso{
 \code{\link{with.milist}}, \code{\link{pool_prop_nna}}

@@ -7,8 +7,8 @@
 pool_riskratio(object, conf.level = 0.95)
 }
 \arguments{
-\item{object}{An object of class 'mistats' (repeated statistical
-analysis across multiply imputed datasets).}
+\item{object}{An object of class 'mistats' ('Multiply Imputed
+Statistical Analysis').}
 
 \item{conf.level}{Confidence level of the confidence intervals.}
 }

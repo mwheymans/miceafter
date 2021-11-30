@@ -8,16 +8,17 @@ according to Wald across multiply imputed datasets.}
 pool_propdiff_wald(object, conf.level = 0.95)
 }
 \arguments{
-\item{object}{An object of class 'mistats' (repeated statistical
-analysis across multiply imputed datasets).}
+\item{object}{An object of class 'mistats' ('Multiply Imputed
+Statistical Analysis').}
 
 \item{conf.level}{Confidence level of the confidence intervals.}
 }
 \value{
-The proportion, the Confidence intervals, the standard error and statistic.
+The proportion, the Confidence intervals,
+the standard error and statistic.
 }
 \description{
-\code{pool_prop_wald} Calculates the pooled difference between proportions
+\code{pool_propdiff_wald} Calculates the pooled difference between proportions
 and standard error according to Wald across multiply imputed datasets.
 }
 \examples{

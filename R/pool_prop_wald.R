@@ -42,9 +42,10 @@ pool_prop_wald <- function(object, conf.level=0.95){
                       conf.level = conf.level, dfcom=ra$dfcom[1])
 
   output <-
-    inv_logit(est=pool_est$pool_est, se=pool_est$pool_se, crit.value=pool_est$t)
-  dimnames(output) <-
-    list(NULL, c("Prop Wald", "Statistic", "95%CI L", "95%CI U"))
+    inv_logit(est=pool_est$pool_est,
+              se=pool_est$pool_se, crit.value=pool_est$t)
+  colnames(output) <-
+    c("Prop Wald", "Statistic", "95%CI L", "95%CI U")
   class(output) <- 'mipool'
   return(output)
 }

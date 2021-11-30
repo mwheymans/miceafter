@@ -4,12 +4,9 @@
 #' \code{pool_prop_wilson} Calculates the pooled single proportion and
 #'  confidence intervals according to Wald across multiply imputed datasets.
 #'
-#' @param object An object of class 'mistats' (repeated statistical
-#'  analysis across multiply imputed datasets).
+#' @param object An object of class 'mistats' ('Multiply Imputed
+#'  Statistical Analysis').
 #' @param conf.level Confidence level of the confidence intervals.
-#'
-#' @details Before pooling, the proportions will be naturally log transformed and
-#'  the pooled estimates back transformed to the original scale.
 #'
 #' @return The proportion and the 95% Confidence interval according to Wilson.
 #'

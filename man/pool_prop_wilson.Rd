@@ -8,8 +8,8 @@ to Wilson across multiply imputed datasets.}
 pool_prop_wilson(object, conf.level = 0.95)
 }
 \arguments{
-\item{object}{An object of class 'mistats' (repeated statistical
-analysis across multiply imputed datasets).}
+\item{object}{An object of class 'mistats' ('Multiply Imputed
+Statistical Analysis').}
 
 \item{conf.level}{Confidence level of the confidence intervals.}
 }
@@ -19,10 +19,6 @@ The proportion and the 95\% Confidence interval according to Wilson.
 \description{
 \code{pool_prop_wilson} Calculates the pooled single proportion and
 confidence intervals according to Wald across multiply imputed datasets.
-}
-\details{
-Before pooling, the proportions will be naturally log transformed and
-the pooled estimates back transformed to the original scale.
 }
 \examples{
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")

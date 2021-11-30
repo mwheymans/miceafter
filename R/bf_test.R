@@ -9,7 +9,7 @@
 #' @param formula A formula object to specify the model as normally
 #'  used by glm. Use 'factor' to define the grouping variable.
 #' @param data An objects of class \code{milist}, created by
-#'  \code{df2milist} or \code{mids2milist}.
+#'  \code{df2milist}, \code{list2milist} or \code{mids2milist}.
 #'
 #' @details The Levene's test centers around means to calculate
 #'  outcome residuals, the Brown-Forsythe test on the median.

@@ -15,7 +15,7 @@ riskratio(y, x, formula, data)
 normally used by glm.}
 
 \item{data}{An objects of class \code{milist}, created by
-\code{df2milist} or \code{mids2milist}.}
+\code{df2milist}, \code{list2milist} or \code{mids2milist}.}
 }
 \value{
 The risk ratio and related standard error and

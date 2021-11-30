@@ -2,9 +2,9 @@
 #'
 #' \code{pool_cindex} Calculates the pooled C-index and Confidence intervals.
 #'
-#' @param data An object of class 'mistats' (repeated statistical analysis across
-#'  multiply imputed datasets) or a m x 2 matrix with C-index
-#'  values and standard errors in the columns. For the latter data
+#' @param data An object of class 'mistats' ('Multiply Imputed
+#'  Statistical Analysis'.) or a m x 2 matrix with C-index
+#'  values and standard errors in the columns. For the latter option
 #'  dfcom has to be provided.
 #' @param conf.level conf.level Confidence level of the confidence intervals.
 #' @param dfcom Number of completed-data analysis degrees of freedom.

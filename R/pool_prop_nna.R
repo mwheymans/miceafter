@@ -1,21 +1,23 @@
-#' Calculates the pooled proportion and standard error according
-#'  to Wald across multiply imputed datasets.
+#' Calculates the pooled proportion and confidence intervals
+#'  using an approximate Beta distribution.
 #'
-#' \code{pool_prop_wald} Calculates the pooled proportion and
-#'  standard error according to Wald across multiply imputed datasets
-#'  and using Rubin's Rules.
+#' \code{pool_prop_nna} Calculates the pooled proportion and
+#'  confidence intervals using an approximate Beta distribution.
 #'
-#' @param object An object of class 'mistats' (repeated statistical
-#'  analysis across multiply imputed datasets).
+#' @param object An object of class 'mistats' ('Multiply Imputed
+#'  Statistical Analysis').
 #' @param conf.level Confidence level of the confidence intervals.
 #'
-#' @details Before pooling, the proportions will be naturally log transformed and
-#'  the pooled estimates back transformed to the original scale.
+#' @details The parameters for the Beta distribution are calculated
+#'  using the method of moments (Gelman et al. p. 582).
 #'
-#' @return The proportion and the 95% Confidence interval.
+#' @return The pooled proportion and the 95% Confidence interval.
 #'
 #' @references Raghunathan, T. (2016). Missing Data Analysis in Practice.
 #'  Boca Raton, FL: Chapman and Hall/CRC. (paragr 4.6.2)
+#' @references Andrew Gelman, John B. Carlin, Hal S. Stern, David B.
+#'  Dunson, Aki Vehtari, Donald B. Rubin. (2003). Bayesian Data Analysis
+#'  (2nd ed). Chapman and Hall/CRC.
 #'
 #' @author Martijn Heymans, 2021
 #'
@@ -49,9 +51,8 @@ pool_prop_nna <- function(object, conf.level=0.95){
 
   obj <- matrix(qbeta(c(0.5, (1-conf.level)/2,
                         (1-(1-conf.level)/2)), a, b), 1, 3)
-
-  dimnames(obj) <-
-    list(NULL, c("Prop nna", "95%CI L", "95%CI U "))
+  colnames(obj) <-
+    c("Prop nna", "95%CI L", "95%CI U ")
   class(obj) <- 'mipool'
   return(obj)
 }

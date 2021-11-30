@@ -7,8 +7,8 @@
 pool_bftest(object, method = "D1")
 }
 \arguments{
-\item{object}{An object of class 'mistats' (repeated statistical
-analysis across multiply imputed datasets).}
+\item{object}{An object of class 'mistats'
+('Multiply Imputed Statistical Analysis').}
 
 \item{method}{A character vector to choose the pooling method,
 'D1' (default) or 'D2'.}

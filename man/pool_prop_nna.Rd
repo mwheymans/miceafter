@@ -2,28 +2,27 @@
 % Please edit documentation in R/pool_prop_nna.R
 \name{pool_prop_nna}
 \alias{pool_prop_nna}
-\title{Calculates the pooled proportion and standard error according
-to Wald across multiply imputed datasets.}
+\title{Calculates the pooled proportion and confidence intervals
+using an approximate Beta distribution.}
 \usage{
 pool_prop_nna(object, conf.level = 0.95)
 }
 \arguments{
-\item{object}{An object of class 'mistats' (repeated statistical
-analysis across multiply imputed datasets).}
+\item{object}{An object of class 'mistats' ('Multiply Imputed
+Statistical Analysis').}
 
 \item{conf.level}{Confidence level of the confidence intervals.}
 }
 \value{
-The proportion and the 95\% Confidence interval.
+The pooled proportion and the 95\% Confidence interval.
 }
 \description{
-\code{pool_prop_wald} Calculates the pooled proportion and
-standard error according to Wald across multiply imputed datasets
-and using Rubin's Rules.
+\code{pool_prop_nna} Calculates the pooled proportion and
+confidence intervals using an approximate Beta distribution.
 }
 \details{
-Before pooling, the proportions will be naturally log transformed and
-the pooled estimates back transformed to the original scale.
+The parameters for the Beta distribution are calculated
+using the method of moments (Gelman et al. p. 582).
 }
 \examples{
  imp_dat <- df2milist(lbpmilr, impvar='Impnr')
@@ -35,6 +34,10 @@ the pooled estimates back transformed to the original scale.
 \references{
 Raghunathan, T. (2016). Missing Data Analysis in Practice.
 Boca Raton, FL: Chapman and Hall/CRC. (paragr 4.6.2)
+
+Andrew Gelman, John B. Carlin, Hal S. Stern, David B.
+Dunson, Aki Vehtari, Donald B. Rubin. (2003). Bayesian Data Analysis
+(2nd ed). Chapman and Hall/CRC.
 }
 \seealso{
 \code{\link{with.milist}}, \code{\link{prop_nna}}

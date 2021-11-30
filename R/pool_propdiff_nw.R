@@ -7,8 +7,8 @@
 #'
 #' @param object An object of class 'mistats' ('Multiply Imputed
 #'  Statistical Analysis'.).
-#' @param conf.level Confidence level of the confidence intervals. Mostly
-#'  set at 0.95.
+#' @param conf.level Confidence level of the confidence intervals.
+#'  Mostly set at 0.95.
 #'
 #' @details The \code{pool_propdiff_nw} function uses information from separate
 #'  exposure groups. It is therefore important to first use the \code{propdiff_wald}

@@ -9,7 +9,7 @@
 #' @param x 0-1 binary independent variable.
 #' @param formula A formula object to specify the model as normally used by glm.
 #' @param data An objects of class \code{milist}, created by
-#'  \code{df2milist} or \code{mids2milist}.
+#'  \code{df2milist}, \code{list2milist} or \code{mids2milist}.
 #' @param strata If TRUE the proportion, se and n of each group is provided.
 #'  Default is FALSE. Has to be used in combination with function
 #'  \code{pool_propdiff_wilson}

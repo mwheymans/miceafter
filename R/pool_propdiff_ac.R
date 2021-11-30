@@ -1,14 +1,15 @@
 #' Calculates the pooled difference between proportions and standard error
 #'  according to Agresti-Caffo across multiply imputed datasets.
 #'
-#' \code{pool_prop_wald} Calculates the pooled difference between proportions
+#' \code{pool_propdiff_ac} Calculates the pooled difference between proportions
 #'  and standard error according to Agresti-Caffo across multiply imputed datasets.
 #'
-#' @param object An object of class 'mistats' (repeated statistical
-#'  analysis across multiply imputed datasets).
+#' @param object An object of class 'mistats' ('Multiply Imputed
+#'  Statistical Analysis').
 #' @param conf.level Confidence level of the confidence intervals.
 #'
-#' @return The proportion, the Confidence intervals, the standard error and statistic.
+#' @return The proportion, the Confidence intervals, the standard error and
+#'  statistic.
 #'
 #' @author Martijn Heymans, 2021
 #'

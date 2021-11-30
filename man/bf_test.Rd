@@ -15,7 +15,7 @@ bf_test(y, x, formula, data)
 used by glm. Use 'factor' to define the grouping variable.}
 
 \item{data}{An objects of class \code{milist}, created by
-\code{df2milist} or \code{mids2milist}.}
+\code{df2milist}, \code{list2milist} or \code{mids2milist}.}
 }
 \value{
 An object containing the following objects are extracted:

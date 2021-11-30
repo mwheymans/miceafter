@@ -14,7 +14,7 @@ oddsratio(y, x, formula, data)
 \item{formula}{A formula object to specify the model as normally used by glm.}
 
 \item{data}{An objects of class \code{milist}, created by
-\code{df2milist} or \code{mids2milist}.}
+\code{df2milist}, \code{df2milist} or \code{mids2milist}.}
 }
 \value{
 The odds ratio, related standard error and degrees of freedom.

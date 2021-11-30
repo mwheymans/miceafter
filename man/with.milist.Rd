@@ -9,9 +9,9 @@
 \arguments{
 \item{data}{data that is used to evaluate the expression in,
 an objects of class \code{milist} after a call to function
-\code{df2milist} or \code{mids2milist}. For 'df2milist'
-the original dataset (normally indicated as dataset 0) must be
-exluded and the imputed datasets must be distinguished by an
+\code{df2milist}, \code{list2milist} or \code{mids2milist}.
+For 'df2milist' the original dataset (normally indicated as dataset 0)
+must be exluded and the imputed datasets must be distinguished by an
 imputation variable, specified under impvar and starting by 1.}
 
 \item{expr}{expression to evaluate.}

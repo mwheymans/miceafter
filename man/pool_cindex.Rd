@@ -7,9 +7,9 @@
 pool_cindex(data, conf.level = 0.95, dfcom = NULL)
 }
 \arguments{
-\item{data}{An object of class 'mistats' (repeated statistical analysis across
-multiply imputed datasets) or a m x 2 matrix with C-index
-values and standard errors in the columns. For the latter data
+\item{data}{An object of class 'mistats' ('Multiply Imputed
+Statistical Analysis'.) or a m x 2 matrix with C-index
+values and standard errors in the columns. For the latter option
 dfcom has to be provided.}
 
 \item{conf.level}{conf.level Confidence level of the confidence intervals.}

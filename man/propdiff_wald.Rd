@@ -15,7 +15,7 @@ propdiff_wald(y, x, formula, data, strata = FALSE)
 \item{formula}{A formula object to specify the model as normally used by glm.}
 
 \item{data}{An objects of class \code{milist}, created by
-\code{df2milist} or \code{mids2milist}.}
+\code{df2milist}, \code{list2milist} or \code{mids2milist}.}
 
 \item{strata}{If TRUE the proportion, se and n of each group is provided.
 Default is FALSE. Has to be used in combination with function

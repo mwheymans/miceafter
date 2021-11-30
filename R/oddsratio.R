@@ -7,7 +7,7 @@
 #' @param y 0-1 binary response variable.
 #' @param formula A formula object to specify the model as normally used by glm.
 #' @param data An objects of class \code{milist}, created by
-#'  \code{df2milist} or \code{mids2milist}.
+#'  \code{df2milist}, \code{df2milist} or \code{mids2milist}.
 #'
 #' @details Note that the standard error of the OR is on the
 #'  logit scale.
