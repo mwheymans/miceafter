@@ -23,12 +23,7 @@ library(dplyr)
 
 # Installing the miceafter and mice packages
 
-You can install the released version of `miceafter` with:
-
-``` r
-install.packages("miceafter")
-```
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")

@@ -17,6 +17,8 @@ knitr::opts_chunk$set(
 
 The package provides functions to apply statistical analyses after multiple imputation. Therefore the name 'miceafter'. The main functions of the package are the `df2milist`, `list2milist`, `mids2milist` and the `with.milist` functions. The `df2milist` function turns a data frame with multiply imputed datasets into an object of class `milist`, the `list2milist` does this for a list with multiply imputed datasets and the `mids2milist` for objects of class `mids`. These `milist` object can than be used with the `with.milist` function to apply repeated statistical analyses across the multiply imputed datasets. Subsequently, pooling functions are available in the form of separate `pool` functions, like the `pool_levenetest` function to pool Levene's tests across multiply imputed datasets. The package also contains a function `glm_mi` to pool and select linear and logistic regression functions.   
 
+With more to come ...
+
 ## Installation
 
 You can install the development version from [GitHub](https://github.com/) with:

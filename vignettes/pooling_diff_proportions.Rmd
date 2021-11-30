@@ -28,7 +28,7 @@ The `miceafter` package includes the function `pool_propdiff_nw`, to obtain conf
 
 ## Examples - After `mice`
 
-The lbp_orig is a dataset with missing values. So we first impute them with the `mice` function. Than we use the `mids2milist` function to turn the `mids` object, as a result of using `mice`, into a `milist` object. Than we use the `with` function to apply repeated analyses with the `propdiff_wald` function across the list of multiply imputed datasets. In this function we use the option `strata=TRUE` to extract results within each group of the independent variable. Finally, we pool the results by using the `pool_propdiff_nw` function.
+The lbp_orig is a dataset with missing values. So we first impute them with the `mice` function. Than we use the `mids2milist` function to turn the `mids` object, as a result of using `mice`, into a `milist` object. Than we use the `with` function to apply repeated analyses with the `propdiff_wald` function across the multiply imputed datasets. In this function we use the option `strata=TRUE` to extract results within each group of the independent variable. Finally, we pool the results by using the `pool_propdiff_nw` function.
 
 ```{r}
 
@@ -45,7 +45,7 @@ The lbp_orig is a dataset with missing values. So we first impute them with the 
 
 ## After Multiply Imputed datasets are stored in a dataframe
 
-The dataset `lbpmilr` is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the `Impnr`  variable. First we convert the dataset into a `milist` object by the `df2milist` function. Than we use the `with` function to apply repeated analyses with the `propdiff_wald` function across the list of multiply imputed datasets. In this function we use the option `strata=TRUE` to extract results within each group of the independent variable. These results are first pooled within each stratum by using the `pool_prop_wilson` function and than the pooled confidence intervals for the difference between groups are than derived in the `pool_propdiff_nw` function.
+The dataset `lbpmilr` is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the `Impnr` variable. First we convert the dataset into a `milist` object by the `df2milist` function. Than we use the `with` function to apply repeated analyses with the `propdiff_wald` function across the multiply imputed datasets. In this function we use the option `strata=TRUE` to extract results within each group of the independent variable. Than the pooled Newcombe-Wilson confidence intervals for the difference between groups are derived with the `pool_propdiff_nw` function.
 
 ```{r}
 

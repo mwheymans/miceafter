@@ -17,6 +17,8 @@ functions, like the `pool_levenetest` function to pool Levene’s tests
 across multiply imputed datasets. The package also contains a function
 `glm_mi` to pool and select linear and logistic regression functions.
 
+With more to come …
+
 ## Installation
 
 You can install the development version from

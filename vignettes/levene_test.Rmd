@@ -29,7 +29,7 @@ Levene's test is used to test if the variance between groups is comparable. The 
 
 ## In combination with the `mice` function 
 
-The lbp_orig is a dataset with missing values. So we first impute them with the `mice` function. Than we use the `mids2milist` to turn a `mids` object into a `milist` object.  Than we use the `with` function function to apply repeated analyses with the `levene_test` function across the list of multiply imputed datasets. Finally, we pool the results by using the `pool_levenetest` function.
+The lbp_orig is a dataset with missing values. So we first impute them with the `mice` function. Than we use the `mids2milist` to turn a `mids` object, as a result of using `mice`, into a `milist` object. Than we use the `with` function to apply repeated analyses with the `levene_test` function across the list of multiply imputed datasets. Finally, we pool the results by using the `pool_levenetest` function.
 
 ```{r}
 
@@ -47,7 +47,7 @@ The lbp_orig is a dataset with missing values. So we first impute them with the 
 
 ## In combination with stored Multiply Imputed datasets 
 
-The dataset `lbpmilr` is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the `Impnr`  variable. First we convert the dataset into a `milist` object by the `df2milist` function. Than we use the `with`  function to apply repeated analyses with the `levene_test` function across the list of multiply imputed datasets. Finally, we pool the results by using the `pool_levenetest` function.
+The dataset `lbpmilr` is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the `Impnr` variable. First we convert the dataset into a `milist` object by the `df2milist` function. Than we use the `with` function to apply repeated analyses with the `levene_test` function across the multiply imputed datasets. Finally, we pool the results by using the `pool_levenetest` function. As pooling method we use `D1` (`D2` is also possible).
 
 ```{r}
 

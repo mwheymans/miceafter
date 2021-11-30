@@ -28,9 +28,9 @@ The `miceafter` package includes the function `pool_cindex`, to pool c-index val
 
 ## Examples
 
-## In combination with the `mice` function - Logistic Regression
+## In combination with the `mice` function and Logistic Regression
 
-The lbp_orig is a dataset with missing values. So we first impute them with the `mice` function. Than we use the `mids2milist` function to turn the `mids` object, as a result of using `mice`, into a `milist` object. Than we use the `with` function to apply repeated analyses with the `cindex` function across the list of multiply imputed datasets. Finally, we pool the results by using the `pool_cindex` function.
+The lbp_orig is a dataset with missing values. So we first impute them with the `mice` function. Than we use the `mids2milist` function to turn the `mids` object, as a result of using `mice`, into a `milist` object. Than we use the `with` function to apply repeated analyses with the `cindex` function across the multiply imputed datasets. Finally, we pool the results by using the `pool_cindex` function.
 
 ```{r}
 
@@ -46,9 +46,9 @@ The lbp_orig is a dataset with missing values. So we first impute them with the 
 
 ```  
 
-## In combination with stored Multiply Imputed datasets - Logistic Regression
+## In combination with stored Multiply Imputed datasets and Logistic Regression
 
-The dataset `lbpmilr` is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the `Impnr`  variable. First we convert the dataset into a `milist` object by the `df2milist` function. Than we use the `with.miceafter`  function to apply repeated analyses with the `cindex` function across the list of multiply imputed datasets. Finally, we pool the results by using the `pool_cindex` function.
+The dataset `lbpmilr` is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the `Impnr` variable. First we convert the dataset into a `milist` object by the `df2milist` function. Than we use the `with` function to apply repeated analyses with the `cindex` function across the multiply imputed datasets. Finally, we pool the results by using the `pool_cindex` function.
 
 ```{r}
 
@@ -62,12 +62,13 @@ The dataset `lbpmilr` is a long dataset that contains 10 multiply imputed datase
 
 ```  
 
-## In combination with stored Multiply Imputed datasets - Cox Regression
+## In combination with stored Multiply Imputed datasets and Cox Regression
 
-The dataset `lbpmicox` is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the `Impnr`  variable. First we convert the dataset into a `milist` object by the `df2milist` function. Than we use the `with.miceafter`  function to apply repeated analyses with the `cindex` function across the list of multiply imputed datasets. Finally, we pool the results by using the `pool_cindex` function.
+The dataset `lbpmicox` is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the `Impnr` variable. First we convert the dataset into a `milist` object by the `df2milist` function. Than we use the `with`  function to apply repeated analyses with the `cindex` function across the list of multiply imputed datasets. Finally, we pool the results by using the `pool_cindex` function.
 
 ```{r}
 
+  library(survival)
   imp_data <- df2milist(lbpmicox, impvar = "Impnr") # MI datasets are in lbpmilr
 
   ra <- with(data=imp_data,
