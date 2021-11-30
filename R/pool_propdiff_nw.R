@@ -66,8 +66,9 @@ pool_propdiff_nw <- function(object, conf.level=0.95)
 
   prop_diff <- phat1 - phat0
 
-  lower <- prop_diff - sqrt((phat0-l0)^2 + (u1-phat1)^2)
-  upper <- prop_diff + sqrt((u0-phat0)^2 + (phat1-l1)^2)
+  lower <- prop_diff - sqrt((phat1-l1)^2 + (u0-phat0)^2)
+  upper <- prop_diff + sqrt((phat0-l0)^2 + (u1-phat1)^2)
+
   output <- round(matrix(c(prop_diff, lower, upper), 1, 3), 4)
   colnames(output) <- c("Prop diff", "CI L NW", "CI U NW")
   class(output) <- "mipool"
