@@ -5,7 +5,7 @@
 \title{Calculates the difference between proportions and standard error
 according to method Agresti-Caffo}
 \usage{
-propdiff_ac(formula, data)
+propdiff_ac(y, x, formula, data)
 }
 \arguments{
 \item{formula}{A formula object to specify the model as normally used by glm.}
@@ -25,7 +25,7 @@ degrees of freedom to be used in function \code{with.miceafter}
 }
 \examples{
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
-ra <- with(imp_dat, expr=propdiff_ac(Chronic ~ Gender))
+ra <- with(imp_dat, expr=propdiff_ac(Chronic ~ Radiation + Gender))
 
 }
 \seealso{

@@ -19,28 +19,50 @@
 #'
 #' @examples
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
-#' ra <- with(imp_dat, expr=propdiff_ac(Chronic ~ Gender))
+#' ra <- with(imp_dat, expr=propdiff_ac(Chronic ~ Radiation))
 #'
 #' @export
-propdiff_ac <- function(formula, data){
+propdiff_ac <- function(y, x, formula, data){
 
-  mf_call <- match.call()
-  mf_call[[1L]] <- quote(stats::model.frame)
-  mf_call <- eval(mf_call, parent.frame())
-  X <- model.frame(mf_call)
+  call <- match.call()
 
-  fm <- terms(mf_call)
-  outcome <- attr(fm, "variables")[[2]]
-  group <- attr(fm, "variables")[[3]]
+  names_var <- all.vars(call, functions = FALSE)
+  if(length(names_var) > 2)
+    stop("Include only one independent variable in x or formula")
 
-  sub0 <- subset(X, get(group)==0)
-  sub1 <- subset(X, get(group)==1)
+  if(!inherits(y,"formula")){
+    eval_prop <- eval(call[[1L]], parent.frame())
+    X <- data.frame(y, x)
+    if(!all(X$x==1 | X$x==0))
+      stop("x variable should be a 0 - 1 variable")
+    if(!all(X$y==1 | X$y==0))
+      stop("y variable should be a 0 - 1 variable")
 
-  n0 <- nrow(sub0)
-  n1 <- nrow(sub1)
+    sub1 <- subset(X, x==1)
+    sub0 <- subset(X, x==0)
 
-  x0 <- nrow(subset(sub0, get(outcome)==1))
-  x1 <- nrow(subset(sub1, get(outcome)==1))
+    n1 <- nrow(sub1)
+    n0 <- nrow(sub0)
+
+    x1 <- nrow(subset(sub1, y==1))
+    x0 <- nrow(subset(sub0, y==1))
+  } else {
+    call <- eval(call[[2L]], parent.frame())
+    X <- model.frame(call)
+
+    fm <- terms(call)
+    outcome <- attr(fm, "variables")[[2]]
+    group <- attr(fm, "variables")[[3]]
+
+    sub1 <- subset(X, get(group)==1)
+    sub0 <- subset(X, get(group)==0)
+
+    n1 <- nrow(sub1)
+    n0 <- nrow(sub0)
+
+    x1 <- nrow(subset(sub1, get(outcome)==1))
+    x0 <- nrow(subset(sub0, get(outcome)==1))
+  }
 
   dfcom <- c(n0+n1)-1
 
@@ -51,5 +73,7 @@ propdiff_ac <- function(formula, data){
   phat_diff_ac <- p1hat_ac - p0hat_ac
   se_phat_diff_ac <-
     sqrt((p0hat_ac * (1 - p0hat_ac)/(n0 + 2)) + (p1hat_ac * (1 - p1hat_ac)/(n1 + 2)))
-  return(c(phat_diff_ac, se_phat_diff_ac, dfcom))
+  output <- matrix(c(phat_diff_ac, se_phat_diff_ac, dfcom), 1, 3)
+  colnames(output) <- c("Prop diff AC", "SE", "dfcom")
+  return(output)
 }
