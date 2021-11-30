@@ -5,8 +5,8 @@
 #'  standard error according to Wald and degrees of freedom to
 #'  be used in function \code{with.miceafter}.
 #'
-#' @param x 0-1 binary independent variable.
 #' @param y 0-1 binary response variable.
+#' @param x 0-1 binary independent variable.
 #' @param formula A formula object to specify the model as normally used by glm.
 #' @param data An objects of class \code{milist}, created by
 #'  \code{df2milist} or \code{mids2milist}.

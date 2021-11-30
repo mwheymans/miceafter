@@ -5,6 +5,8 @@
 #'  and standard error according to method Agresti-Caffo and
 #'  degrees of freedom to be used in function \code{with.miceafter}
 #'
+#' @param y 0-1 binary response variable.
+#' @param x 0-1 binary independent variable.
 #' @param formula A formula object to specify the model as normally used by glm.
 #' @param data An objects of class \code{mids}, created by
 #'  \code{make_mids} or after a call to function \code{mice}.

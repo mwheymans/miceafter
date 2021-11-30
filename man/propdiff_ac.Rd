@@ -8,6 +8,10 @@ according to method Agresti-Caffo}
 propdiff_ac(y, x, formula, data)
 }
 \arguments{
+\item{y}{0-1 binary response variable.}
+
+\item{x}{0-1 binary independent variable.}
+
 \item{formula}{A formula object to specify the model as normally used by glm.}
 
 \item{data}{An objects of class \code{mids}, created by
@@ -25,7 +29,7 @@ degrees of freedom to be used in function \code{with.miceafter}
 }
 \examples{
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
-ra <- with(imp_dat, expr=propdiff_ac(Chronic ~ Radiation + Gender))
+ra <- with(imp_dat, expr=propdiff_ac(Chronic ~ Radiation))
 
 }
 \seealso{
