@@ -1,7 +1,5 @@
-url: https://mwheymans.github.io/miceafter/
-
+url: https://mwheymans.github.io/miceafter
 bootswatch: spacelab
-
 reference:
 - title: Functions to prepare Multiply Imputed datasets
 - contents:
@@ -9,8 +7,7 @@ reference:
   - list2milist
   - mids2milist
 - title: Function for Repeated Analysis
-- contents:
-  - with.milist
+- contents: with.milist
 - title: Functions for Repeated Statistical Analysis
 - contents:
   - bf_test
@@ -55,3 +52,4 @@ reference:
   - lbp_orig
   - lbpmicox
   - lbpmilr
+
