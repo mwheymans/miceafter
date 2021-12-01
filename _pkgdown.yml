@@ -1,2 +1,57 @@
-url: ~
+url: https://mwheymans.github.io/miceafter/
 
+bootswatch: spacelab
+
+reference:
+- title: Functions to prepare Multiply Imputed datasets
+- contents:
+  - df2milist
+  - list2milist
+  - mids2milist
+- title: Function for Repeated Analysis
+- contents:
+  - with.milist
+- title: Functions for Repeated Statistical Analysis
+- contents:
+  - bf_test
+  - cindex
+  - levene_test
+  - oddsratio
+  - prop_nna
+  - prop_wald
+  - propdiff_ac
+  - propdiff_wald
+  - riskratio
+- title: Functions to Pool Statistical Analysis
+- contents:
+  - pool_bftest
+  - pool_cindex
+  - pool_D2
+  - pool_levenetest
+  - pool_oddsratio
+  - pool_prop_nna
+  - pool_prop_wald
+  - pool_prop_wilson
+  - pool_propdiff_ac
+  - pool_propdiff_nw
+  - pool_propdiff_wald
+  - pool_riskratio
+  - pool_scalar_RR
+  - glm_mi
+- title: Extra Functions
+- contents:
+  - check_model
+  - clean_P
+  - f2chi
+  - glm_lm_bw
+  - glm_lm_fw
+  - glm_lr_bw
+  - glm_lr_fw
+  - inv_logit
+  - logit_trans
+  - pool_D4
+- title: Datasets used in examples and tutorials
+- contents:
+  - lbp_orig
+  - lbpmicox
+  - lbpmilr
