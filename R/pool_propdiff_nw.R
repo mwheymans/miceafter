@@ -1,7 +1,7 @@
 #'  Calculates the pooled difference between proportions and confidence
 #'  intervals according to Newcombe-Wilson (NW) across multiply imputed datasets.
 #'
-#' \code{pool_prop_nw} Calculates the pooled difference between proportions
+#' \code{pool_propdiff_nw} Calculates the pooled difference between proportions
 #'  and confidence intervals according to Newcombe-Wilson (NW) across
 #'  multiply imputed datasets.
 #'
