@@ -14,10 +14,12 @@ than be used with the `with.milist` function to apply repeated
 statistical analyses across the multiply imputed datasets. Subsequently,
 pooling functions are available in the form of separate `pool`
 functions, like the `pool_levenetest` function to pool Levene’s tests
-across multiply imputed datasets. The package also contains a function
-`glm_mi` to pool and select linear and logistic regression functions.
+across multiply imputed datasets or the `pool_propdiff_nw function` to
+pool the difference between proportions according to method
+Newcombe-Wilson. The package also contains a function `glm_mi` to pool
+and select linear and logistic regression functions.
 
-With more to come …
+With more and more pooling functions added over time.
 
 ## Installation
 
@@ -79,7 +81,7 @@ ra <- with(imp_dat,
 res <- pool_propdiff_nw(ra)
 res
 #>      Prop diff CI L NW CI U NW
-#> [1,]    0.2786  0.1381  0.4372
+#> [1,]    0.2786  0.1199   0.419
 #> attr(,"class")
 #> [1] "mipool"
 ```
