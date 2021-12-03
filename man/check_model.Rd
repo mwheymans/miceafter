@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_model.R
 \name{check_model}
 \alias{check_model}
-\title{Function to check input data for function \code{psfmi_lr}}
+\title{Function to check input data for function \code{glm_mi}}
 \usage{
 check_model(
   data,
@@ -23,9 +23,7 @@ dataset. The imputed datasets must be distinguished by an imputation variable,
 specified under impvar, and starting by 1.}
 
 \item{formula}{A formula object to specify the model as normally used by glm.
-See under "Details" and "Examples" how these can be specified. If a formula
-object is used set predictors, cat.predictors, spline.predictors or int.predictors
-at the default value of NULL.}
+See under "Details" and "Examples" how these can be specified.}
 
 \item{keep.predictors}{A single string or a vector of strings including the variables that are forced
 in the model during predictor selection. All type of variables are allowed.}
@@ -37,12 +35,12 @@ imputed datasets.}
 provides the pooled model without selection.}
 
 \item{method}{A character vector to indicate the pooling method for p-values to pool the
-total model or used during predictor selection. This can be "RR", D1", "D2", "D3", "D4", or "MPR".
+total model or used during model selection. This can be "RR", D1", "D2", "D3", "D4", or "MPR".
 See details for more information. Default is "RR".}
 
 \item{nimp}{A numerical scalar. Number of imputed datasets. Default is 5.}
 
-\item{direction}{The direction of predictor selection, "BW" means backward selection and "FW"
+\item{direction}{The direction of model selection, "BW" means backward selection and "FW"
 means forward selection.}
 
 \item{model_type}{A character vector for type of model, "binomial" is for logistic regression and
@@ -52,6 +50,22 @@ means forward selection.}
 \code{check_model} Back transformation to original scale of
 natural logarithmic transformed parameters and calculating
 confidence interval
+}
+\details{
+The basic pooling procedure to derive pooled coefficients, standard errors, 95
+confidence intervals and p-values is Rubin's Rules (RR). RR are possible when the model
+includes continuous or dichotomous variables. When the model includes categorical (> 2 categories)
+or restricted cubic spline variables multiparameter pooling methods have to be used. These pooling
+methods are: “D1” (pooling of the total covariance matrix), ”D2” pooling of Chi-square values,
+“D3” and "D4" pooling Likelihood ratio statistics and “MPR”, pooling of median p-values (MPR rule).
+Spline regression coefficients are defined by using the rcs function for restricted cubic
+splines of the rms package. A minimum number of 3 knots as defined under knots is required.
+
+A typical formula object has the form \code{Outcome ~ terms}. Categorical variables has to
+be defined as \code{Outcome ~ factor(variable)}, restricted cubic spline variables as
+\code{Outcome ~ rcs(variable, 3)}. Interaction terms can be defined as
+\code{Outcome ~ variable1*variable2} or \code{Outcome ~ variable1 + variable2 + variable1:variable2}.
+All variables in the terms part have to be separated by a "+".
 }
 \author{
 Martijn Heymans, 2020

@@ -2,7 +2,7 @@
 #'
 #' \code{glm_lr_bw} Backward selection of Logistic regression
 #' models in multiply imputed data using selection methods RR, D1, D2, D3 and MPR.
-#' Function is called by \code{psfmi_lr}.
+#' Function is called by \code{glm_mi}.
 #'
 #' @param data Data frame with stacked multiple imputed datasets.
 #'   The original dataset that contains missing values must be excluded from the

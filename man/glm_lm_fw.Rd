@@ -36,7 +36,7 @@ in the model during predictor selection. Categorical and interaction variables a
 \description{
 \code{glm_lm_fw} Forward selection of Linear regression
 models across multiply imputed data using selection methods RR, D1, D2, D4 and MPR.
-Function is called by \code{psfmi_lm}.
+Function is called by \code{glm_mi}.
 }
 \author{
 Martijn Heymans, 2021

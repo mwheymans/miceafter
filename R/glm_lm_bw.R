@@ -2,7 +2,7 @@
 #'
 #' \code{glm_lm_bw} Backward selection of Linear regression
 #' models across multiply imputed data using selection methods RR, D1, D2, D4 and MPR.
-#' Function is called by \code{psfmi_lm}.
+#' Function is called by \code{glm_mi}.
 #'
 #' @param data Data frame with stacked multiple imputed datasets.
 #'   The original dataset that contains missing values must be excluded from the

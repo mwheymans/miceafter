@@ -36,7 +36,7 @@ in the model during predictor selection. All type of variables are allowed.}
 \description{
 \code{glm_lr_bw} Backward selection of Logistic regression
 models in multiply imputed data using selection methods RR, D1, D2, D3 and MPR.
-Function is called by \code{psfmi_lr}.
+Function is called by \code{glm_mi}.
 }
 \author{
 Martijn Heymans, 2021
