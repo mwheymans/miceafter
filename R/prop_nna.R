@@ -1,14 +1,14 @@
-#' Calculates the mean and variance components of the Beta
-#'  distribution for a single proportion
+#' Calculates the posterior mean and variance components of a
+#'  single proportion
 #'
-#' \code{prop_nna} Calculates the mean and variance
-#'  components of the Beta distribution for a single proportion.
+#' \code{prop_nna} Calculates the posterior mean and variance
+#'  of a single proportion.
 #'
 #' @param x name of variable to calculate proportion.
 #' @param data An object of class 'mistats' ('Multiply Imputed
 #'  Statistical Analysis').
 #'
-#' @return The mean and variance components of the beta distribution.
+#' @return The posterior mean and variance.
 #'
 #' @references Raghunathan, T. (2016). Missing Data Analysis in Practice.
 #'  Boca Raton, FL: Chapman and Hall/CRC. (paragr 4.6.2)

@@ -2,8 +2,8 @@
 % Please edit documentation in R/prop_nna.R
 \name{prop_nna}
 \alias{prop_nna}
-\title{Calculates the mean and variance components of the Beta
-distribution for a single proportion}
+\title{Calculates the posterior mean and variance components of a
+single proportion}
 \usage{
 prop_nna(x, data)
 }
@@ -14,11 +14,11 @@ prop_nna(x, data)
 Statistical Analysis').}
 }
 \value{
-The mean and variance components of the beta distribution.
+The posterior mean and variance.
 }
 \description{
-\code{prop_nna} Calculates the mean and variance
-components of the Beta distribution for a single proportion.
+\code{prop_nna} Calculates the posterior mean and variance
+of a single proportion.
 }
 \examples{
  imp_dat <- df2milist(lbpmilr, impvar='Impnr')
