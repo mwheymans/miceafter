@@ -1,11 +1,11 @@
 ---
-title: "Pooling Linear ans Logistic Regression Models"
+title: "Pooling Linear and Logistic Regression Models"
 author: "Martijn W Heymans"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Pooling Linear ans Logistic Regression Models}
+  %\VignetteIndexEntry{Pooling Linear and Logistic Regression Models}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
