@@ -12,7 +12,7 @@
 #'
 #' @export
 list2milist <- function(data){
-  if (!class(data)=="list")
+  if (!any(class(data)=="list"))
     stop("object must be of class 'list'")
   if (length(data)<2)
     stop("List must contain more than 1 imputed dataset")
