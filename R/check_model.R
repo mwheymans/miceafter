@@ -123,7 +123,7 @@ check_model <- function(data,
   if(is_empty(method)) method="RR"
   if(all(!is_empty(cat.P) | !is_empty(s.P)) & method=="RR")
     stop("Categorical or spline variables in model,
-         define selection method: D1, D2, D3, D4 or MPR")
+         define method: D1, D2, D3, D4 or MPR")
   if (sort(unique(data[, impvar]))[1] == 0)
     stop("Original dataset should not be included")
   if(is_empty(nimp))
