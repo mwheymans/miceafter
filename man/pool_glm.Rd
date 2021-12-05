@@ -42,6 +42,7 @@ splines of the rms package. A minimum number of 3 knots as defined under knots i
   dat_list <- df2milist(lbpmilr, impvar="Impnr")
   ra <- with(data=dat_list, expr = glm(Chronic ~ factor(Carrying) + Radiation + Age))
   poolm <- pool_glm(ra, method="D1")
+  poolm
 
 }
 \references{
