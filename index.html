@@ -17,7 +17,7 @@
    of repeated statistical analysis can be performed and finally pooled. Statistical analysis 
    that are available are, among others, Levene's test, Odds and Risk Ratios, One sample 
    proportions, difference between proportions and linear and logistic regression models. 
-   More and more will be added over time.">
+   More and more pooling functions will be added over time.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -64,7 +64,7 @@
       <a href="articles/pooling_diff_proportions.html">Pooling difference between proportions</a>
     </li>
     <li>
-      <a href="articles/pooling_regressionmodels.html">Pooling Linear ans Logistic Regression Models</a>
+      <a href="articles/pooling_regressionmodels.html">Pooling Linear and Logistic Regression Models</a>
     </li>
   </ul>
 </li>
@@ -91,8 +91,8 @@
 <div class="section level1">
 <div class="page-header"><h1 id="miceafter">miceafter<a class="anchor" aria-label="anchor" href="#miceafter"></a>
 </h1></div>
-<p>The package provides functions to apply statistical analyses after multiple imputation. Therefore the name ‘miceafter’. The main functions of the package are the <code>df2milist</code>, <code>list2milist</code>, <code>mids2milist</code> and the <code>with.milist</code> functions. The <code>df2milist</code> function turns a data frame with multiply imputed datasets into an object of class <code>milist</code>, the <code>list2milist</code> does this for a list with multiply imputed datasets and the <code>mids2milist</code> for objects of class <code>mids</code>. These <code>milist</code> object can than be used with the <code>with.milist</code> function to apply repeated statistical analyses across the multiply imputed datasets. Subsequently, pooling functions are available in the form of separate <code>pool</code> functions, like the <code>pool_levenetest</code> function to pool Levene’s tests across multiply imputed datasets. The package also contains a function <code>glm_mi</code> to pool and select linear and logistic regression functions.</p>
-<p>With more to come …</p>
+<p>The package provides functions to apply statistical analyses after multiple imputation. Therefore the name ‘miceafter’. The main functions of the package are the <code>df2milist</code>, <code>list2milist</code>, <code>mids2milist</code> and the <code>with.milist</code> functions. The <code>df2milist</code> function turns a data frame with multiply imputed datasets into an object of class <code>milist</code>, the <code>list2milist</code> does this for a list with multiply imputed datasets and the <code>mids2milist</code> for objects of class <code>mids</code>. These <code>milist</code> object can than be used with the <code>with.milist</code> function to apply repeated statistical analyses across the multiply imputed datasets. Subsequently, pooling functions are available in the form of separate <code>pool</code> functions, like the <code>pool_levenetest</code> function to pool Levene’s tests across multiply imputed datasets or the <code>pool_propdiff_nw function</code> to pool the difference between proportions according to method Newcombe-Wilson. The package also contains a function <code>glm_mi</code> to pool and select linear and logistic regression functions.</p>
+<p>With more and more pooling functions added over time.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -150,7 +150,7 @@
 <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pool_propdiff_nw.html">pool_propdiff_nw</a></span><span class="op">(</span><span class="va">ra</span><span class="op">)</span>
 <span class="va">res</span>
 <span class="co">#&gt;      Prop diff CI L NW CI U NW</span>
-<span class="co">#&gt; [1,]    0.2786  0.1381  0.4372</span>
+<span class="co">#&gt; [1,]    0.2786  0.1199   0.419</span>
 <span class="co">#&gt; attr(,"class")</span>
 <span class="co">#&gt; [1] "mipool"</span></code></pre></div>
 <p>More examples can be found on the <a href="https://mwheymans.github.io/miceafter/">package website</a></p>
