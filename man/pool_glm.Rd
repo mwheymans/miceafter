@@ -33,8 +33,29 @@ means forward selection.}
 An object of class \code{mipool} (multiply imputed pooled models) from
 which the following objects can be extracted:
 \itemize{
-\item  \code{pmodel} pooled model
+\item  \code{pmodel} pooled model (at last selection step)
 \item  \code{pmultiparm} pooled p-values according to multiparameter test method
+(at last selection step)
+\item  \code{pmodel_step} pooled model (at each selection step)
+\item  \code{pmultiparm_step} pooled p-values according to multiparameter test method
+(at each selection step)
+\item  \code{multiparm_final} pooled p-values at final step according to pooling method
+\item  \code{multiparm_out} (only when direction = "FW") pooled p-values of removed predictors
+\item  \code{formula_final} formula object at final step
+\item  \code{formula_initial} formula object at final step
+\item  \code{predictors_in} predictors included at each selection step
+\item  \code{predictors_out} predictors excluded at each step
+\item  \code{impvar} name of variable used to distinguish imputed datasets
+\item  \code{nimp} number of imputed datasets
+\item  \code{Outcome} name of the outcome variable
+\item  \code{method} selection method
+\item  \code{p.crit} p-value selection criterium
+\item  \code{call} function call
+\item  \code{model_type} type of regression model used
+\item  \code{direction} direction of predictor selection
+\item  \code{predictors_final} names of predictors in final selection step
+\item  \code{predictors_initial} names of predictors in start model
+\item  \code{keep.predictors} names of predictors that were forced in the model
 }
 }
 \description{

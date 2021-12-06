@@ -50,16 +50,16 @@ install.packages("mice")
   library(miceafter)
   
   imp <- mice(lbp_orig, m=5, maxit=5, printFlag = FALSE) 
+  dat_imp <- complete(imp, action = "long", include = FALSE)
   
-  data_comp <- complete(imp, action = "long", include = FALSE)
-  
-  library(miceafter)
-  pool_lr <- glm_mi(data=data_comp, nimp=5, impvar=".imp", 
-                      formula=Chronic ~ factor(Carrying) + Gender + Smoking + 
+  dat_imp <- df2milist(dat_imp, impvar = ".imp")
+  ra <- with(dat_imp, expr = glm(Chronic ~ factor(Carrying) + Gender + Smoking + 
                       Function + JobControl + JobDemands + SocialSupport, 
-                      method="D1", model_type = "binomial")
-  pool_lr$RR_model
-  pool_lr$multiparm
+                      family = binomial))
+  
+  poolm <- pool_glm(ra, method="D1")
+  poolm$pmodel
+  poolm$pmultiparm
  
 ```
 
@@ -73,16 +73,15 @@ Back to [Examples]
   library(miceafter)
   
   imp <- mice(lbp_orig, m=5, maxit=5, printFlag = FALSE) 
+  dat_imp <- complete(imp, action = "long", include = FALSE)
   
-  data_comp <- complete(imp, action = "long", include = FALSE)
+  dat_imp <- df2milist(dat_imp, impvar = ".imp")
+  ra <- with(dat_imp, expr = glm(Pain ~ factor(Carrying) + Gender + Smoking + 
+                      Function + JobControl + JobDemands + SocialSupport))
   
-  library(miceafter)
-  pool_lm <- glm_mi(data=data_comp, nimp=5, impvar=".imp", 
-                      formula=Pain ~ Gender + Smoking + Function + 
-                      JobControl + JobDemands + SocialSupport, 
-                      method="D1", model_type = "linear")
-  pool_lm$RR_model
-  pool_lm$multiparm
+  poolm <- pool_glm(ra, method="D1")
+  poolm$pmodel
+  poolm$pmultiparm
  
 ```
 
@@ -94,20 +93,18 @@ Back to [Examples]
 
   library(mice)
   library(miceafter)
-
+  
   imp <- mice(lbp_orig, m=5, maxit=5, printFlag = FALSE) 
+  dat_imp <- complete(imp, action = "long", include = FALSE)
   
-  data_comp <- complete(imp, action = "long", include = FALSE)
+  dat_imp <- df2milist(dat_imp, impvar = ".imp")
+  ra <- with(dat_imp, expr = glm(Chronic ~ factor(Carrying) + Gender + Smoking + 
+                      Function + JobControl + JobDemands + SocialSupport, 
+                      family = binomial))
   
-  library(miceafter)
-  pool_lr <- glm_mi(data=data_comp, nimp=5, impvar=".imp", 
-                      formula=Chronic ~ Gender + Smoking + Tampascale + 
-                      JobControl + JobDemands + SocialSupport, 
-                      p.crit = 0.157, method="D1", 
-                      direction = "FW", model_type="binomial")
-  
-  pool_lr$RR_model_final
-  pool_lr$multiparm_final
+  poolm <- pool_glm(ra, method="D1", p.crit = 0.15, direction = "BW")
+  poolm$pmodel
+  poolm$pmultiparm
  
 ```
 
@@ -119,20 +116,17 @@ Back to [Examples]
 
   library(mice)
   library(miceafter)
-
+  
   imp <- mice(lbp_orig, m=5, maxit=5, printFlag = FALSE) 
+  dat_imp <- complete(imp, action = "long", include = FALSE)
   
-  data_comp <- complete(imp, action = "long", include = FALSE)
+  dat_imp <- df2milist(dat_imp, impvar = ".imp")
+  ra <- with(dat_imp, expr = glm(Pain ~ factor(Carrying) + Gender + Smoking + 
+                      Function + JobControl + JobDemands + SocialSupport))
   
-  library(miceafter)
-  pool_lm <- glm_mi(data=data_comp, nimp=5, impvar=".imp", 
-                    formula=Pain ~ Gender + Smoking + Tampascale + 
-                    JobControl + JobDemands + SocialSupport, 
-                    p.crit = 0.157, method="D1", 
-                    direction = "FW", model_type = "linear")
-  
-  pool_lm$RR_model_final
-  pool_lm$multiparm_final
+  poolm <- pool_glm(ra, method="D1", p.crit = 0.15, direction = "BW")
+  poolm$pmodel
+  poolm$pmultiparm
   
 ```
 
