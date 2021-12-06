@@ -2,41 +2,60 @@
 % Please edit documentation in R/pool_glm.R
 \name{pool_glm}
 \alias{pool_glm}
-\title{Pools Linear and Logistic regression models across multiply imputed data.}
+\title{Pools and selects Linear and Logistic regression models across multiply imputed data.}
 \usage{
-pool_glm(object, method = "D1")
+pool_glm(
+  object,
+  method = "D1",
+  p.crit = 1,
+  keep.predictors = NULL,
+  direction = NULL
+)
 }
 \arguments{
 \item{object}{An object of class 'mistats' ('Multiply Imputed
-Statistical Analysis').}
+Statistical Analyses').}
 
-\item{method}{A character vector to indicate the pooling method for p-values
-to pool the total model or used during predictor selection. This can be
-"RR", D1", "D2", "D3", "D4", or "MPR". See details for more information.
-Default is "RR".}
+\item{method}{A character vector to indicate the multiparameter pooling method to pool
+the total model or used during model selection. This can be "RR", D1", "D2", "D3",
+"D4", or "MPR". See details for more information. Default is "RR".}
+
+\item{p.crit}{A numerical scalar. P-value selection criterium. A value of 1
+provides the pooled model without selection.}
+
+\item{keep.predictors}{A single string or a vector of strings including the variables that are forced
+in the model during model selection. All type of variables are allowed.}
+
+\item{direction}{The direction for model selection, "BW" means backward selection and "FW"
+means forward selection.}
 }
 \value{
 An object of class \code{mipool} (multiply imputed pooled models) from
 which the following objects can be extracted:
 \itemize{
 \item  \code{pmodel} pooled model
-\item  \code{pmultiparm} pooled p-values according to pooling method
+\item  \code{pmultiparm} pooled p-values according to multiparameter test method
 }
 }
 \description{
-\code{pool_glm} Pools Linear and Logistic regression models across multiply
+\code{pool_glm} Pools and selects Linear and Logistic regression models across multiply
 imputed data, using pooling methods RR, D1, D2, D3, D4 and MPR.
 }
 \details{
 The basic pooling procedure to derive pooled coefficients, standard errors, 95
 confidence intervals and p-values is Rubin's Rules (RR). However, RR is only possible when
-the model includes continuous and dichotomous variables. Specific procedures are
-available when the model also included categorical (> 2 categories) or restricted cubic spline
-variables. These pooling methods are: “D1” is pooling of the total covariance matrix,
+the model includes continuous and dichotomous variables. Multiparameter pooling methods are
+available when the model also included categorical (> 2 categories) variables.
+These pooling methods are: “D1” is pooling of the total covariance matrix,
 ”D2” is pooling of Chi-square values, “D3” and "D4" is pooling Likelihood ratio statistics
 (method of Meng and Rubin) and “MPR” is pooling of median p-values (MPR rule).
-Spline regression coefficients are defined by using the rcs function for restricted cubic
-splines of the rms package. A minimum number of 3 knots as defined under knots is required.
+For pooling restricted cubic splines using the 'rcs' function of of the rms package,
+use function 'glm_mi'.
+
+A typical formula object has the form \code{Outcome ~ terms}. Categorical variables has to
+be defined as \code{Outcome ~ factor(variable)}. Interaction terms can be defined as
+\code{Outcome ~ variable1*variable2} or \code{Outcome ~ variable1 + variable2 + variable1:variable2}.
+All variables in the terms part have to be separated by a "+".
 }
 \examples{
   dat_list <- df2milist(lbpmilr, impvar="Impnr")
