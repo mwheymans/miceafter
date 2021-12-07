@@ -59,7 +59,7 @@
       <a href="../articles/pooling_diff_proportions.html">Pooling difference between proportions</a>
     </li>
     <li>
-      <a href="../articles/pooling_regressionmodels.html">Pooling Linear and Logistic Regression Models</a>
+      <a href="../articles/regression_modelling.html">mice and miceafter for Regression modelling</a>
     </li>
   </ul>
 </li>
@@ -87,7 +87,7 @@
       <h1 data-toc-skip>Pooling C-index of Logistic and Cox Regression Models</h1>
                         <h4 data-toc-skip class="author">Martijn W Heymans</h4>
             
-            <h4 data-toc-skip class="date">2021-12-05</h4>
+            <h4 data-toc-skip class="date">2021-12-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mwheymans/miceafter/blob/HEAD/vignettes/pooling_cindex.Rmd" class="external-link"><code>vignettes/pooling_cindex.Rmd</code></a></small>
       <div class="hidden name"><code>pooling_cindex.Rmd</code></div>
@@ -106,12 +106,12 @@
 </h2>
 </div>
 <div class="section level2">
-<h2 id="in-combination-with-the-mice-function-and-logistic-regression">In combination with the <code>mice</code> function and Logistic Regression<a class="anchor" aria-label="anchor" href="#in-combination-with-the-mice-function-and-logistic-regression"></a>
+<h2 id="after-the-mice-function-and-with-logistic-regression">After the <code>mice</code> function and with Logistic Regression<a class="anchor" aria-label="anchor" href="#after-the-mice-function-and-with-logistic-regression"></a>
 </h2>
-<p>The lbp_orig is a dataset with missing values. So we first impute them with the <code>mice</code> function. Than we use the <code>mids2milist</code> function to turn the <code>mids</code> object, as a result of using <code>mice</code>, into a <code>milist</code> object. Than we use the <code>with</code> function to apply repeated analyses with the <code>cindex</code> function across the multiply imputed datasets. Finally, we pool the results by using the <code>pool_cindex</code> function.</p>
+<p>The lbp_orig is a dataset as part of the miceafter package with missing values. So we first impute them with the <code>mice</code> function. Than we use the <code>mids2milist</code> function to turn the <code>mids</code> object with multiply imputed datasets, as a result of using <code>mice</code>, into a <code>milist</code> object. Than we use the <code>with</code> function to apply repeated analyses with the <code>cindex</code> function across the multiply imputed datasets. Finally, we pool the results by using the <code>pool_cindex</code> function.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-  <span class="va">imp_data</span> <span class="op">&lt;-</span> <span class="fu">mice</span><span class="op">(</span><span class="fu">miceafter</span><span class="fu">::</span><span class="va"><a href="../reference/lbp_orig.html">lbp_orig</a></span>, m<span class="op">=</span><span class="fl">5</span>, seed<span class="op">=</span><span class="fl">3025</span>, printFlag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
+  <span class="va">imp_data</span> <span class="op">&lt;-</span> <span class="fu">mice</span><span class="op">(</span><span class="va">lbp_orig</span>, m<span class="op">=</span><span class="fl">5</span>, seed<span class="op">=</span><span class="fl">3025</span>, printFlag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
 
   <span class="va">imp_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mids2milist.html">mids2milist</a></span><span class="op">(</span><span class="va">imp_data</span><span class="op">)</span>
 
@@ -126,9 +126,9 @@
 <span class="co">#&gt; [1] "mipool"</span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="in-combination-with-stored-multiply-imputed-datasets-and-logistic-regression">In combination with stored Multiply Imputed datasets and Logistic Regression<a class="anchor" aria-label="anchor" href="#in-combination-with-stored-multiply-imputed-datasets-and-logistic-regression"></a>
+<h2 id="after-multiply-imputed-datasets-are-stored-in-a-separate-dataframe-and-with-logistic-regression">After Multiply Imputed datasets are stored in a separate dataframe and with Logistic Regression<a class="anchor" aria-label="anchor" href="#after-multiply-imputed-datasets-are-stored-in-a-separate-dataframe-and-with-logistic-regression"></a>
 </h2>
-<p>The dataset <code>lbpmilr</code> is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the <code>Impnr</code> variable. First we convert the dataset into a <code>milist</code> object by the <code>df2milist</code> function. Than we use the <code>with</code> function to apply repeated analyses with the <code>cindex</code> function across the multiply imputed datasets. Finally, we pool the results by using the <code>pool_cindex</code> function.</p>
+<p>The dataset <code>lbpmilr</code> as part of the miceafter package is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the <code>Impnr</code> variable. First we convert the dataset into a <code>milist</code> object by using the <code>df2milist</code> function. Than we use the <code>with</code> function to apply repeated analyses with the <code>cindex</code> function across the multiply imputed datasets. Finally, we pool the results by using the <code>pool_cindex</code> function.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
   <span class="va">imp_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar <span class="op">=</span> <span class="st">"Impnr"</span><span class="op">)</span> <span class="co"># MI datasets are in lbpmilr</span>
@@ -144,9 +144,9 @@
 <span class="co">#&gt; [1] "mipool"</span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="in-combination-with-stored-multiply-imputed-datasets-and-cox-regression">In combination with stored Multiply Imputed datasets and Cox Regression<a class="anchor" aria-label="anchor" href="#in-combination-with-stored-multiply-imputed-datasets-and-cox-regression"></a>
+<h2 id="after-multiply-imputed-datasets-are-stored-in-a-separate-dataframe-and-with-cox-regression">After Multiply Imputed datasets are stored in a separate dataframe and with Cox Regression<a class="anchor" aria-label="anchor" href="#after-multiply-imputed-datasets-are-stored-in-a-separate-dataframe-and-with-cox-regression"></a>
 </h2>
-<p>The dataset <code>lbpmicox</code> is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the <code>Impnr</code> variable. First we convert the dataset into a <code>milist</code> object by the <code>df2milist</code> function. Than we use the <code>with</code> function to apply repeated analyses with the <code>cindex</code> function across the list of multiply imputed datasets. Finally, we pool the results by using the <code>pool_cindex</code> function.</p>
+<p>The dataset <code>lbpmicox</code> as part of the miceafter package is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the <code>Impnr</code> variable. First we convert the dataset into a <code>milist</code> object by using the <code>df2milist</code> function. Than we use the <code>with</code> function to apply repeated analyses with the <code>cindex</code> function across the list of multiply imputed datasets. Finally, we pool the results by using the <code>pool_cindex</code> function.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
   <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/therneau/survival" class="external-link">survival</a></span><span class="op">)</span>

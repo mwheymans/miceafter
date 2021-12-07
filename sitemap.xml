@@ -16,7 +16,7 @@
     <loc>https://mwheymans.github.io/miceafter/articles/pooling_diff_proportions.html</loc>
   </url>
   <url>
-    <loc>https://mwheymans.github.io/miceafter/articles/pooling_regressionmodels.html</loc>
+    <loc>https://mwheymans.github.io/miceafter/articles/regression_modelling.html</loc>
   </url>
   <url>
     <loc>https://mwheymans.github.io/miceafter/authors.html</loc>
@@ -98,6 +98,9 @@
   </url>
   <url>
     <loc>https://mwheymans.github.io/miceafter/reference/pool_cindex.html</loc>
+  </url>
+  <url>
+    <loc>https://mwheymans.github.io/miceafter/reference/pool_glm.html</loc>
   </url>
   <url>
     <loc>https://mwheymans.github.io/miceafter/reference/pool_levenetest.html</loc>
