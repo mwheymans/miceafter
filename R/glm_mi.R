@@ -1,8 +1,9 @@
-#' Pooling and backward or forward selection of Linear and Logistic regression
+#'  Direct Pooling and model selection of Linear and Logistic regression
 #'  models across multiply imputed data.
 #'
 #' \code{glm_mi} Pooling and backward or forward selection of Linear and Logistic regression
-#'  models across multiply imputed data using selection methods RR, D1, D2, D3, D4 and MPR.
+#'  models across multiply imputed data using selection methods RR, D1, D2, D3, D4 and MPR
+#'  (without use of with function).
 #'
 #' @param data Data frame with stacked multiple imputed datasets.
 #'   The original dataset that contains missing values must be excluded from the

@@ -2,7 +2,8 @@
 #'  to be further used by 'miceafter::with'
 #'
 #' \code{mids2milist} Turns a 'mice::mids' object into an object
-#'  of class 'milist' to be further used by 'miceafter::with'
+#'  with multiply imputed datasets of class 'milist' to be further
+#'  used by 'miceafter::with'
 #'
 #' @param data a 'mice::mids' object
 #' @param keep if TRUE the grouping column is kept, if FALSE

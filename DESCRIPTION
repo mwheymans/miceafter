@@ -37,7 +37,7 @@ Description:
    of repeated statistical analysis can be performed and finally pooled. Statistical analysis 
    that are available are, among others, Levene's test, Odds and Risk Ratios, One sample 
    proportions, difference between proportions and linear and logistic regression models. 
-   More and more pooling functions will be added over time.
+   More and more statistical analyses and pooling functions will be added over time.
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

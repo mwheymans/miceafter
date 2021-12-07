@@ -7,7 +7,8 @@ reference:
   - list2milist
   - mids2milist
 - title: Function for Repeated Analysis
-- contents: with.milist
+- contents:
+  - with.milist
 - title: Functions for Repeated Statistical Analysis
 - contents:
   - bf_test
@@ -19,11 +20,12 @@ reference:
   - propdiff_ac
   - propdiff_wald
   - riskratio
-- title: Functions to Pool Statistical Analysis
+- title: Functions to Pool Statistical Analyses
 - contents:
   - pool_bftest
   - pool_cindex
   - pool_D2
+  - pool_glm
   - pool_levenetest
   - pool_oddsratio
   - pool_prop_nna

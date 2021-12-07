@@ -3,23 +3,25 @@
 
 # miceafter
 
-The package provides functions to apply statistical analyses after
-multiple imputation. Therefore the name ‘miceafter’. The main functions
-of the package are the `df2milist`, `list2milist`, `mids2milist` and the
-`with.milist` functions. The `df2milist` function turns a data frame
-with multiply imputed datasets into an object of class `milist`, the
-`list2milist` does this for a list with multiply imputed datasets and
-the `mids2milist` for objects of class `mids`. These `milist` object can
-than be used with the `with.milist` function to apply repeated
-statistical analyses across the multiply imputed datasets. Subsequently,
-pooling functions are available in the form of separate `pool`
-functions, like the `pool_levenetest` function to pool Levene’s tests
-across multiply imputed datasets or the `pool_propdiff_nw function` to
-pool the difference between proportions according to method
-Newcombe-Wilson. The package also contains a function `glm_mi` to pool
-and select linear and logistic regression functions.
+The `miceafter` package provides functions to apply statistical and
+pooled analyses after multiple imputation. Therefore the name
+‘miceafter’. The main functions of the package are the `df2milist`,
+`list2milist`, `mids2milist` and the `with.milist` functions. The
+`df2milist` function turns a data frame with multiply imputed datasets
+into an object of class `milist`, the `list2milist` does this for a list
+with multiply imputed datasets and the `mids2milist` for objects of
+class `mids`. These `milist` object can than be used with the
+`with.milist` function to apply repeated statistical analyses across the
+multiply imputed datasets. Subsequently, pooling functions are available
+in the form of separate `pool` functions, like the `pool_levenetest`
+function to pool Levene’s tests across multiply imputed datasets or the
+`pool_propdiff_nw function` to pool the difference between proportions
+according to method Newcombe-Wilson. The package also contains a
+function `pool_glm` to pool and select linear and logistic regression
+functions.
 
-With more and more pooling functions added over time.
+More and more statistical analyses and pooling functions will be added
+over time.
 
 ## Installation
 

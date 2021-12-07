@@ -18,7 +18,8 @@ an object of class 'milist'
 }
 \description{
 \code{mids2milist} Turns a 'mice::mids' object into an object
-of class 'milist' to be further used by 'miceafter::with'
+with multiply imputed datasets of class 'milist' to be further
+used by 'miceafter::with'
 }
 \author{
 Martijn Heymans, 2021

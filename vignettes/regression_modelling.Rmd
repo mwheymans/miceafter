@@ -1,11 +1,11 @@
 ---
-title: "Pooling Linear and Logistic Regression Models"
+title: "mice and miceafter for Regression modelling"
 author: "Martijn W Heymans"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Pooling Linear and Logistic Regression Models}
+  %\VignetteIndexEntry{mice and miceafter for Regression modelling}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
@@ -29,7 +29,7 @@ You can install the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("mwheymans/miceafter")
 ```
-You can install the released version of mice with:
+You can install mice with:
 
 ``` r
 install.packages("mice")
@@ -44,15 +44,17 @@ install.packages("mice")
 
 ## mice and miceafter for pooling logistic regression models
 
+lbp_orig is a dataset that is part of the miceafter package with missing values. So we first impute them with the `mice` function. Than we use the `mids2milist` function to turn a `mids` object, as a result of using `mice`, into a `milist` object with multiply imputed datasets. Than we use the `with` function to apply repeated logistic regression analyses. With the `pool_glm` function we obtain the results for the pooled model.
+
 ```{r}
 
   library(mice)
   library(miceafter)
   
   imp <- mice(lbp_orig, m=5, maxit=5, printFlag = FALSE) 
-  dat_imp <- complete(imp, action = "long", include = FALSE)
+ 
+  dat_imp <- mids2milist(imp)
   
-  dat_imp <- df2milist(dat_imp, impvar = ".imp")
   ra <- with(dat_imp, expr = glm(Chronic ~ factor(Carrying) + Gender + Smoking + 
                       Function + JobControl + JobDemands + SocialSupport, 
                       family = binomial))
@@ -67,15 +69,17 @@ Back to [Examples]
 
 ## mice and miceafter for pooling linear regression models
 
+The lbp_orig is a dataset that is part of the miceafter package with missing values. So we first impute them with the `mice` function. Than we use the `mids2milist` function to turn a `mids` object, as a result of using `mice`, into a `milist` object with multiply imputed datasets. Than we use the `with` function to apply repeated linear regression analyses. With the `pool_glm` function we obtain the results for the pooled model.
+
 ```{r}
 
   library(mice)
   library(miceafter)
   
   imp <- mice(lbp_orig, m=5, maxit=5, printFlag = FALSE) 
-  dat_imp <- complete(imp, action = "long", include = FALSE)
+ 
+  dat_imp <- mids2milist(imp)
   
-  dat_imp <- df2milist(dat_imp, impvar = ".imp")
   ra <- with(dat_imp, expr = glm(Pain ~ factor(Carrying) + Gender + Smoking + 
                       Function + JobControl + JobDemands + SocialSupport))
   
@@ -89,15 +93,17 @@ Back to [Examples]
 
 ## mice and miceafter for selecting logistic regression models
 
+We follow the same procedure as the first example but also apply model selection here.
+
 ```{r}
 
   library(mice)
   library(miceafter)
   
   imp <- mice(lbp_orig, m=5, maxit=5, printFlag = FALSE) 
-  dat_imp <- complete(imp, action = "long", include = FALSE)
+ 
+  dat_imp <- mids2milist(imp)
   
-  dat_imp <- df2milist(dat_imp, impvar = ".imp")
   ra <- with(dat_imp, expr = glm(Chronic ~ factor(Carrying) + Gender + Smoking + 
                       Function + JobControl + JobDemands + SocialSupport, 
                       family = binomial))
@@ -112,15 +118,17 @@ Back to [Examples]
 
 ## mice and miceafter for selecting linear regression models
 
+We follow the same procedure as the second example but also apply model selection here.
+
 ```{r}
 
   library(mice)
   library(miceafter)
   
   imp <- mice(lbp_orig, m=5, maxit=5, printFlag = FALSE) 
-  dat_imp <- complete(imp, action = "long", include = FALSE)
+ 
+  dat_imp <- mids2milist(imp)
   
-  dat_imp <- df2milist(dat_imp, impvar = ".imp")
   ra <- with(dat_imp, expr = glm(Pain ~ factor(Carrying) + Gender + Smoking + 
                       Function + JobControl + JobDemands + SocialSupport))
   

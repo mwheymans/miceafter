@@ -1,7 +1,8 @@
 #' Pools and selects Linear and Logistic regression models across multiply imputed data.
 #'
 #' \code{pool_glm} Pools and selects Linear and Logistic regression models across multiply
-#'  imputed data, using pooling methods RR, D1, D2, D3, D4 and MPR.
+#'  imputed data, using pooling methods RR, D1, D2, D3, D4 and MPR (in combination with
+#'  'with' function).
 #'
 #' @param object An object of class 'mistats' ('Multiply Imputed
 #'  Statistical Analyses').

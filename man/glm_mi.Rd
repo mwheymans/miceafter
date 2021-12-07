@@ -2,7 +2,7 @@
 % Please edit documentation in R/glm_mi.R
 \name{glm_mi}
 \alias{glm_mi}
-\title{Pooling and backward or forward selection of Linear and Logistic regression
+\title{Direct Pooling and model selection of Linear and Logistic regression
 models across multiply imputed data.}
 \usage{
 glm_mi(
@@ -79,7 +79,8 @@ which the following objects can be extracted:
 }
 \description{
 \code{glm_mi} Pooling and backward or forward selection of Linear and Logistic regression
-models across multiply imputed data using selection methods RR, D1, D2, D3, D4 and MPR.
+models across multiply imputed data using selection methods RR, D1, D2, D3, D4 and MPR
+(without use of with function).
 }
 \details{
 The basic pooling procedure to derive pooled coefficients, standard errors, 95
