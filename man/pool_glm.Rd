@@ -79,11 +79,17 @@ be defined as \code{Outcome ~ factor(variable)}. Interaction terms can be define
 \code{Outcome ~ variable1*variable2} or \code{Outcome ~ variable1 + variable2 + variable1:variable2}.
 All variables in the terms part have to be separated by a "+".
 }
+\section{Vignettes}{
+
+https://mwheymans.github.io/miceafter/articles/regression_modelling.html
+}
+
 \examples{
   dat_list <- df2milist(lbpmilr, impvar="Impnr")
   ra <- with(data=dat_list, expr = glm(Chronic ~ factor(Carrying) + Radiation + Age))
   poolm <- pool_glm(ra, method="D1")
-  poolm
+  poolm$pmodel
+  poolm$pmultiparm
 
 }
 \references{

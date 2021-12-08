@@ -20,6 +20,11 @@ The (combined) F-statistic, p-value and degrees of freedom.
 \code{pool_levenetest} Calculates the pooled F-statistic
 of the Levenene test.
 }
+\section{Vignettes}{
+
+https://mwheymans.github.io/miceafter/articles/levene_test.html
+}
+
 \examples{
 
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")

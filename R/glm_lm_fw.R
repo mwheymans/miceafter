@@ -94,7 +94,7 @@ glm_lm_fw <- function(data, nimp, impvar, Outcome, P, p.crit, method, keep.P)
         }
 
         # Rubin's Rules
-        RR.model[[k]] <- summary(pool(fit))
+        RR.model[[k]] <- summary(pool(fit), conf.int=TRUE)
       }
 
       # D1 and D2 pooling methods
@@ -136,7 +136,7 @@ glm_lm_fw <- function(data, nimp, impvar, Outcome, P, p.crit, method, keep.P)
             with(data=imp_list, expr= glm(as.formula(paste(Y,
                                                            paste(P, collapse = "+")))))
 
-          RR.model[[k]] <- summary(pool(fit1))
+          RR.model[[k]] <- summary(pool(fit1), conf.int=TRUE)
           names(RR.model)[[k]] <-
             paste("Step", k)
           if(P_select==0) names(RR.model)[k] <- paste("Step", 1)
@@ -161,7 +161,7 @@ glm_lm_fw <- function(data, nimp, impvar, Outcome, P, p.crit, method, keep.P)
             fit0[[i]] <- glm(f0, data = imp.dt[[i]])
           }
 
-          RR.model[[k]] <- summary(pool(fit1))
+          RR.model[[k]] <- summary(pool(fit1), conf.int=TRUE)
           names(RR.model)[k] <- paste("Step", j)
           if(P_select==0) names(RR.model)[k] <- paste("Step", 1)
 
@@ -283,7 +283,7 @@ glm_lm_fw <- function(data, nimp, impvar, Outcome, P, p.crit, method, keep.P)
           fit[[i]] <- glm(fm_step, data = imp.dt[[i]])
         }
         # Rubin's Rules
-        out.res <- summary(pool(fit))
+        out.res <- summary(pool(fit), conf.int=TRUE)
         RR_model_select <- list(out.res)
         names(RR_model_select)[[1]] <- paste("Step", 0, " - no variables entered - ")
 

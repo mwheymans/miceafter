@@ -77,7 +77,7 @@ glm_lm_bw <- function(data, nimp, impvar, Outcome, P, p.crit, method, keep.P)
       }
 
       # Rubin's Rules
-      RR.model[[k]] <- summary(pool(fit))
+      RR.model[[k]] <- summary(pool(fit), conf.int=TRUE)
       names(RR.model)[[k]] <-
         paste("Step", k)#
     }
@@ -124,7 +124,7 @@ glm_lm_bw <- function(data, nimp, impvar, Outcome, P, p.crit, method, keep.P)
             with(data=imp_list, expr= glm(as.formula(paste(Y,
                                                            paste(P, collapse = "+")))))
 
-          RR.model[[k]] <- summary(pool(fit1))
+          RR.model[[k]] <- summary(pool(fit1), conf.int=TRUE)
           names(RR.model)[[k]] <-
             paste("Step", k)
 
@@ -150,7 +150,7 @@ glm_lm_bw <- function(data, nimp, impvar, Outcome, P, p.crit, method, keep.P)
               glm(form0, data = imp.dt[[i]])
           }
           RR.model[[k]] <-
-            summary(pool(fit1))
+            summary(pool(fit1), conf.int=TRUE)
           names(RR.model)[[k]] <-
             paste("Step", k)
 
@@ -289,7 +289,7 @@ glm_lm_bw <- function(data, nimp, impvar, Outcome, P, p.crit, method, keep.P)
 
       # Rubin's Rules
       out.res <-
-        summary(pool(fit))
+        summary(pool(fit), conf.int=TRUE)
       RR.model[[k+1]] <-
         out.res
       names(RR.model)[[k+1]] <-

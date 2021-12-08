@@ -26,6 +26,11 @@ The pooled c-index value and the confidence intervals.
 Rubin's Rules are used for pooling. The C-index values are log
 transformed before pooling and finally back transformed.
 }
+\section{Vignettes}{
+
+https://mwheymans.github.io/miceafter/articles/pooling_cindex.html
+}
+
 \examples{
  # Logistic Regression
  imp_dat <- df2milist(lbpmilr, impvar="Impnr")

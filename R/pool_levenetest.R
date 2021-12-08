@@ -19,6 +19,9 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
+#' @section Vignettes:
+#'   https://mwheymans.github.io/miceafter/articles/levene_test.html
+#'
 #' @seealso \code{\link{with.milist}}, \code{\link{levene_test}}
 #'
 #' @examples

@@ -16,6 +16,9 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
+#' @section Vignettes:
+#'   https://mwheymans.github.io/miceafter/articles/pooling_cindex.html
+#'
 #' @seealso \code{\link{with.milist}}, \code{\link{cindex}}
 #'
 #' @examples

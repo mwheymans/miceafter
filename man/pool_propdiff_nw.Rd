@@ -27,6 +27,11 @@ The \code{pool_propdiff_nw} function uses information from separate
 exposure groups. It is therefore important to first use the \code{propdiff_wald}
 function and to set strata = TRUE in that function.
 }
+\section{Vignettes}{
+
+https://mwheymans.github.io/miceafter/articles/pooling_diff_proportions.html
+}
+
 \examples{
 
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")

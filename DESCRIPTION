@@ -23,7 +23,7 @@ Suggests:
     foreign (>= 0.8-80),
     knitr,
     rmarkdown,
-    testthat,
+    testthat (>= 3.0.0),
     bookdown,
     readr
 Title: Functions to perform Data and Statistical analyses after Multiple Imputation
@@ -46,3 +46,4 @@ License: GPL (>= 2)
 URL: https://mwheymans.github.io/miceafter
 BugReports: https://github.com/mwheymans/miceafter/issues
 VignetteBuilder: knitr
+Config/testthat/edition: 3

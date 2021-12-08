@@ -73,13 +73,17 @@
 #' @references Van Buuren S. (2018). Flexible Imputation of Missing Data. 2nd Edition. Chapman & Hall/CRC
 #'   Interdisciplinary Statistics. Boca Raton.
 #'
+#' @section Vignettes:
+#'   https://mwheymans.github.io/miceafter/articles/regression_modelling.html
+#'
 #' @author Martijn Heymans, 2021
 #'
 #' @examples
 #'   dat_list <- df2milist(lbpmilr, impvar="Impnr")
 #'   ra <- with(data=dat_list, expr = glm(Chronic ~ factor(Carrying) + Radiation + Age))
 #'   poolm <- pool_glm(ra, method="D1")
-#'   poolm
+#'   poolm$pmodel
+#'   poolm$pmultiparm
 #'
 #' @export
 pool_glm <- function(object,
