@@ -26,7 +26,7 @@ Suggests:
     testthat (>= 3.0.0),
     bookdown,
     readr
-Title: Functions to perform Data and Statistical analyses after Multiple Imputation
+Title: Functions to Perform Data and Statistical Analyses after Multiple Imputation
 Version: 0.1.0
 Authors@R: c(
    person("Martijn", "Heymans", email = "mw.heymans@amsterdamumc.nl", role=c("cre", "aut"),
@@ -35,7 +35,7 @@ Authors@R: c(
 Description: 
    Package for Statistical Analyses and Pooling after Multiple Imputation. A large variety 
    of repeated statistical analysis can be performed and finally pooled. Statistical analysis 
-   that are available are, among others, Levene's test, Odds and Risk Ratios, One sample 
+   that are available are, among others, Levene test, Odds and Risk Ratios, One sample 
    proportions, difference between proportions and linear and logistic regression models. 
    More and more statistical analyses and pooling functions will be added over time.
 Encoding: UTF-8
@@ -43,7 +43,7 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 License: GPL (>= 2)
-URL: https://mwheymans.github.io/miceafter
+URL: https://mwheymans.github.io/miceafter/
 BugReports: https://github.com/mwheymans/miceafter/issues
 VignetteBuilder: knitr
 Config/testthat/edition: 3
