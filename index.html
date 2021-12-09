@@ -90,23 +90,8 @@
 <div class="section level1">
 <div class="page-header"><h1 id="miceafter">miceafter<a class="anchor" aria-label="anchor" href="#miceafter"></a>
 </h1></div>
-<p>The <code>miceafter</code> package provides functions to apply statistical and pooled analyses after multiple imputation. Therefore the name ‘miceafter’. The main functions of the package are the <code>df2milist</code>, <code>list2milist</code>, <code>mids2milist</code> and the <code>with.milist</code> functions. The <code>df2milist</code> function turns a data frame with multiply imputed datasets into an object of class <code>milist</code>, the <code>list2milist</code> does this for a list with multiply imputed datasets and the <code>mids2milist</code> for objects of class <code>mids</code>. These <code>milist</code> object can than be used with the <code>with.milist</code> function to apply repeated statistical analyses across the multiply imputed datasets. Subsequently, pooling functions are available in the form of separate <code>pool</code> functions, like the <code>pool_levenetest</code> function to pool Levene’s tests across multiply imputed datasets or the <code>pool_propdiff_nw function</code> to pool the difference between proportions according to method Newcombe-Wilson. The package also contains a function <code>pool_glm</code> to pool and select linear and logistic regression functions.</p>
-<p>More and more statistical analyses and pooling functions will be added over time.</p>
-<div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h2>
-<p>You can install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"mwheymans/miceafter"</span><span class="op">)</span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
-</h2>
-<p>Cite the package as:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>Martijn W <span class="kw">Heymans</span> (<span class="dv">2021</span>). miceafter<span class="op">:</span><span class="st"> </span>Data Analysis and Pooling after Multiple Imputation. </span>
-<span id="cb2-2"><a href="#cb2-2"></a>R package version <span class="dv">0</span>.<span class="dv">1</span>.<span class="fl">0.</span> https<span class="op">:</span><span class="er">//</span>mwheymans.github.io<span class="op">/</span>miceafter<span class="op">/</span></span></code></pre></div>
-</div>
+<p>With the <code>miceafter</code> package you can apply statistical and pooled analyses after multiple imputation. Therefore the name ‘miceafter’. The package contains a variety of statistical tests like the <code>pool_levenetest</code> function to pool Levene’s tests across multiply imputed datasets or the <code>pool_propdiff_nw function</code> to pool the difference between proportions according to method Newcombe-Wilson. The package also contains a function <code>pool_glm</code> to pool and select linear and logistic regression functions.</p>
+<p>More and more statistical analyses and pooling functions will be added over time to form a framework of statistical tests that can be applied and pooled across multiply imputed datasets.</p>
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
@@ -115,7 +100,7 @@
 <h2 id="pooling-levenes-test">Pooling Levene’s Test<a class="anchor" aria-label="anchor" href="#pooling-levenes-test"></a>
 </h2>
 <p>This example shows you how to pool the Levene test across 5 multiply imputed datasets. The pooling method that is used is method D1.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mwheymans.github.io/miceafter/">miceafter</a></span><span class="op">)</span>
 
 <span class="co"># Step 1: Turn data frame with multiply imputed datasets into object of 'milist'</span>
@@ -135,7 +120,7 @@
 <div class="section level2">
 <h2 id="pooling-difference-between-proportions-according-to-newcombe-wilson">Pooling Difference between Proportions according to Newcombe-Wilson<a class="anchor" aria-label="anchor" href="#pooling-difference-between-proportions-according-to-newcombe-wilson"></a>
 </h2>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mwheymans.github.io/miceafter/">miceafter</a></span><span class="op">)</span>
 
 <span class="co"># Step 1: Turn data frame with multiply imputed datasets into object of 'milist'</span>
@@ -152,7 +137,27 @@
 <span class="co">#&gt; [1,]    0.2786  0.1199   0.419</span>
 <span class="co">#&gt; attr(,"class")</span>
 <span class="co">#&gt; [1] "mipool"</span></code></pre></div>
-<p>More examples can be found on the <a href="https://mwheymans.github.io/miceafter/">package website</a></p>
+<p>See for more functions the <a href="https://mwheymans.github.io/miceafter/">package website</a></p>
+</div>
+<div class="section level2">
+<h2 id="main-functions">Main functions<a class="anchor" aria-label="anchor" href="#main-functions"></a>
+</h2>
+<p>The main functions of the package are the <code>df2milist</code>, <code>list2milist</code>, <code>mids2milist</code> and the <code>with.milist</code> functions. The <code>df2milist</code> function turns a data frame with multiply imputed datasets into an object of class <code>milist</code>, the <code>list2milist</code> does this for a list with multiply imputed datasets and the <code>mids2milist</code> for objects of class <code>mids</code>. These <code>milist</code> object can than be used with the <code>with.milist</code> function to apply repeated statistical analyses across the multiply imputed datasets. Subsequently, pooling functions are available in the form of separate <code>pool</code> functions.</p>
+</div>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"mwheymans/miceafter"</span><span class="op">)</span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
+<p>Cite the package as:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>Martijn W <span class="kw">Heymans</span> (<span class="dv">2021</span>). miceafter<span class="op">:</span><span class="st"> </span>Data Analysis and Pooling after Multiple Imputation. </span>
+<span id="cb4-2"><a href="#cb4-2"></a>R package version <span class="dv">0</span>.<span class="dv">1</span>.<span class="fl">0.</span> https<span class="op">:</span><span class="er">//</span>mwheymans.github.io<span class="op">/</span>miceafter<span class="op">/</span></span></code></pre></div>
 </div>
 </div>
 
