@@ -111,7 +111,7 @@
 <p>The lbp_orig as part of the miceafter package is a dataset with missing values. So we first impute them with the <code>mice</code> function. Than we use the <code>mids2milist</code> function to turn a <code>mids</code> object with multiply imputed datasets, as a result of using <code>mice</code>, into a <code>milist</code> object. Than we use the <code>with</code> function to apply repeated analyses with the <code>levene_test</code> function across the list of multiply imputed datasets. Finally, we pool the results by using the <code>pool_levenetest</code> function.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-  <span class="va">imp_data</span> <span class="op">&lt;-</span> <span class="fu">mice</span><span class="op">(</span><span class="fu">miceafter</span><span class="fu">::</span><span class="va"><a href="../reference/lbp_orig.html">lbp_orig</a></span>, m<span class="op">=</span><span class="fl">5</span>, seed<span class="op">=</span><span class="fl">3025</span>, printFlag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
+  <span class="va">imp_data</span> <span class="op">&lt;-</span> <span class="fu">mice</span><span class="op">(</span><span class="va">lbp_orig</span>, m<span class="op">=</span><span class="fl">5</span>, seed<span class="op">=</span><span class="fl">3025</span>, printFlag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
 
   <span class="va">imp_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mids2milist.html">mids2milist</a></span><span class="op">(</span><span class="va">imp_data</span><span class="op">)</span>
   

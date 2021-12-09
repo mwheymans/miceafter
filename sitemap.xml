@@ -61,7 +61,10 @@
     <loc>https://mwheymans.github.io/miceafter/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://mwheymans.github.io/miceafter/reference/inv_logit.html</loc>
+    <loc>https://mwheymans.github.io/miceafter/reference/invlogit.html</loc>
+  </url>
+  <url>
+    <loc>https://mwheymans.github.io/miceafter/reference/invlogit_ci.html</loc>
   </url>
   <url>
     <loc>https://mwheymans.github.io/miceafter/reference/lbp_orig.html</loc>
