@@ -136,34 +136,34 @@
   <span class="va">poolm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pool_glm.html">pool_glm</a></span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span><span class="op">)</span>
   <span class="va">poolm</span><span class="op">$</span><span class="va">pmodel</span>
 <span class="co">#&gt;                term     estimate  std.error  statistic        df      p.value</span>
-<span class="co">#&gt; 1       (Intercept) -2.366897090 2.74799318 -0.8613184  98.15690 0.3911618918</span>
-<span class="co">#&gt; 2            Gender -0.280060678 0.44685190 -0.6267416 137.27116 0.5318695626</span>
-<span class="co">#&gt; 3           Smoking  0.038155829 0.36413518  0.1047848 142.17550 0.9166942586</span>
-<span class="co">#&gt; 4          Function -0.064484390 0.04738824 -1.3607678 139.79567 0.1757768732</span>
-<span class="co">#&gt; 5        JobControl  0.004457592 0.02124739  0.2097948  95.23002 0.8342760137</span>
-<span class="co">#&gt; 6        JobDemands  0.011132128 0.04144950  0.2685709  91.46348 0.7888647640</span>
-<span class="co">#&gt; 7     SocialSupport  0.050422295 0.06266580  0.8046223  82.32601 0.4233552465</span>
-<span class="co">#&gt; 8 factor(Carrying)2  1.276580346 0.49129708  2.5983878 145.93658 0.0103269610</span>
-<span class="co">#&gt; 9 factor(Carrying)3  1.965674576 0.54309512  3.6193928 111.97795 0.0004447777</span>
+<span class="co">#&gt; 1       (Intercept) -3.173780394 2.79479104 -1.1356056  99.27508 2.588558e-01</span>
+<span class="co">#&gt; 2            Gender -0.178404317 0.45336940 -0.3935076 140.50451 6.945411e-01</span>
+<span class="co">#&gt; 3           Smoking  0.099426181 0.37322237  0.2663993 138.77800 7.903271e-01</span>
+<span class="co">#&gt; 4          Function -0.065707343 0.04906680 -1.3391404 124.35002 1.829677e-01</span>
+<span class="co">#&gt; 5        JobControl  0.007475997 0.02136375  0.3499384 108.96839 7.270604e-01</span>
+<span class="co">#&gt; 6        JobDemands  0.014481034 0.04021547  0.3600862 126.78356 7.193818e-01</span>
+<span class="co">#&gt; 7     SocialSupport  0.062450424 0.05958824  1.0480327 140.40135 2.964243e-01</span>
+<span class="co">#&gt; 8 factor(Carrying)2  1.406889326 0.51903861  2.7105677 130.14241 7.622897e-03</span>
+<span class="co">#&gt; 9 factor(Carrying)3  2.202751236 0.54831140  4.0173362 135.59068 9.706753e-05</span>
 <span class="co">#&gt;           OR    lower.EXP upper.EXP</span>
-<span class="co">#&gt; 1 0.09377124 0.0004015851 21.895847</span>
-<span class="co">#&gt; 2 0.75573788 0.3123396649  1.828585</span>
-<span class="co">#&gt; 3 1.03889311 0.5057752062  2.133950</span>
-<span class="co">#&gt; 4 0.93755075 0.8537006437  1.029637</span>
-<span class="co">#&gt; 5 1.00446754 0.9629801366  1.047742</span>
-<span class="co">#&gt; 6 1.01119432 0.9312787966  1.097968</span>
-<span class="co">#&gt; 7 1.05171514 0.9284557620  1.191338</span>
-<span class="co">#&gt; 8 3.58436147 1.3574445998  9.464583</span>
-<span class="co">#&gt; 9 7.13972725 2.4341531166 20.941865</span>
+<span class="co">#&gt; 1 0.04184511 0.0001634404 10.713464</span>
+<span class="co">#&gt; 2 0.83660410 0.3413960900  2.050130</span>
+<span class="co">#&gt; 3 1.10453693 0.5280780729  2.310268</span>
+<span class="co">#&gt; 4 0.93640487 0.8497427687  1.031905</span>
+<span class="co">#&gt; 5 1.00750401 0.9657344286  1.051080</span>
+<span class="co">#&gt; 6 1.01458639 0.9369742963  1.098627</span>
+<span class="co">#&gt; 7 1.06444169 0.9461484537  1.197525</span>
+<span class="co">#&gt; 8 4.08323402 1.4623490162 11.401382</span>
+<span class="co">#&gt; 9 9.04987763 3.0599627476 26.765125</span>
   <span class="va">poolm</span><span class="op">$</span><span class="va">pmultiparm</span>
 <span class="co">#&gt;                  p-values D1 F-statistic</span>
-<span class="co">#&gt; Gender           0.530870284  0.39280505</span>
-<span class="co">#&gt; Smoking          0.916549193  0.01097985</span>
-<span class="co">#&gt; Function         0.173648777  1.85168887</span>
-<span class="co">#&gt; JobControl       0.833952857  0.04401386</span>
-<span class="co">#&gt; JobDemands       0.788442743  0.07213032</span>
-<span class="co">#&gt; SocialSupport    0.421871615  0.64741702</span>
-<span class="co">#&gt; factor(Carrying) 0.001210212  6.77064079</span></code></pre></div>
+<span class="co">#&gt; Gender           0.693959474  0.15484825</span>
+<span class="co">#&gt; Smoking          0.789944686  0.07096859</span>
+<span class="co">#&gt; Function         0.180788109  1.79329711</span>
+<span class="co">#&gt; JobControl       0.726517293  0.12245687</span>
+<span class="co">#&gt; JobDemands       0.718839194  0.12966205</span>
+<span class="co">#&gt; SocialSupport    0.294669345  1.09837249</span>
+<span class="co">#&gt; factor(Carrying) 0.000508697  7.73362102</span></code></pre></div>
 <p>Back to <a href="#examples">Examples</a></p>
 </div>
 <div class="section level2">
@@ -184,35 +184,35 @@
   
   <span class="va">poolm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pool_glm.html">pool_glm</a></span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span><span class="op">)</span>
   <span class="va">poolm</span><span class="op">$</span><span class="va">pmodel</span>
-<span class="co">#&gt;                term    estimate  std.error  statistic        df      p.value</span>
-<span class="co">#&gt; 1       (Intercept)  6.01705977 2.51193850  2.3953850  60.06708 1.973677e-02</span>
-<span class="co">#&gt; 2            Gender -0.49458729 0.44133666 -1.1206576  48.29949 2.679750e-01</span>
-<span class="co">#&gt; 3           Smoking -0.23228447 0.32428706 -0.7162928 118.23088 4.752231e-01</span>
-<span class="co">#&gt; 4          Function -0.05009384 0.04280726 -1.1702184  88.59049 2.450516e-01</span>
-<span class="co">#&gt; 5        JobControl -0.02263349 0.01853582 -1.2210677  99.36751 2.249498e-01</span>
-<span class="co">#&gt; 6        JobDemands  0.02670666 0.03672514  0.7272037  68.60001 4.695757e-01</span>
-<span class="co">#&gt; 7     SocialSupport -0.01570766 0.05996401 -0.2619515  36.95559 7.948134e-01</span>
-<span class="co">#&gt; 8 factor(Carrying)2  0.74117366 0.43359228  1.7093793  75.70546 9.147710e-02</span>
-<span class="co">#&gt; 9 factor(Carrying)3  1.85251409 0.43698206  4.2393367 140.62951 4.037876e-05</span>
+<span class="co">#&gt;                term     estimate  std.error   statistic        df      p.value</span>
+<span class="co">#&gt; 1       (Intercept)  5.117789209 2.52183049  2.02939461  55.41663 0.0472314825</span>
+<span class="co">#&gt; 2            Gender -0.362503236 0.41389411 -0.87583570  89.57663 0.3834619295</span>
+<span class="co">#&gt; 3           Smoking -0.185516205 0.31853662 -0.58240150 136.94615 0.5612539216</span>
+<span class="co">#&gt; 4          Function -0.050711347 0.04952476 -1.02395938  29.63943 0.3141395295</span>
+<span class="co">#&gt; 5        JobControl -0.020501276 0.01841773 -1.11312740 111.50821 0.2680475401</span>
+<span class="co">#&gt; 6        JobDemands  0.036479400 0.03532437  1.03269795  99.27757 0.3042544512</span>
+<span class="co">#&gt; 7     SocialSupport  0.003380599 0.05445253  0.06208343  80.25459 0.9506507527</span>
+<span class="co">#&gt; 8 factor(Carrying)2  0.627231180 0.42536132  1.47458442  86.11728 0.1439708271</span>
+<span class="co">#&gt; 9 factor(Carrying)3  1.628605822 0.44224268  3.68260660 141.84850 0.0003274173</span>
 <span class="co">#&gt;         2.5 %      97.5 %</span>
-<span class="co">#&gt; 1  0.99255005 11.04156948</span>
-<span class="co">#&gt; 2 -1.38181199  0.39263741</span>
-<span class="co">#&gt; 3 -0.87444814  0.40987920</span>
-<span class="co">#&gt; 4 -0.13515637  0.03496869</span>
-<span class="co">#&gt; 5 -0.05941088  0.01414391</span>
-<span class="co">#&gt; 6 -0.04656561  0.09997892</span>
-<span class="co">#&gt; 7 -0.13721123  0.10579590</span>
-<span class="co">#&gt; 8 -0.12245455  1.60480186</span>
-<span class="co">#&gt; 9  0.98861079  2.71641739</span>
+<span class="co">#&gt; 1  0.06478185 10.17079657</span>
+<span class="co">#&gt; 2 -1.18482907  0.45982260</span>
+<span class="co">#&gt; 3 -0.81540266  0.44437026</span>
+<span class="co">#&gt; 4 -0.15190603  0.05048334</span>
+<span class="co">#&gt; 5 -0.05699540  0.01599285</span>
+<span class="co">#&gt; 6 -0.03360938  0.10656818</span>
+<span class="co">#&gt; 7 -0.10497810  0.11173930</span>
+<span class="co">#&gt; 8 -0.21834272  1.47280508</span>
+<span class="co">#&gt; 9  0.75436760  2.50284404</span>
   <span class="va">poolm</span><span class="op">$</span><span class="va">pmultiparm</span>
-<span class="co">#&gt;                   p-values D1 F-statistic</span>
-<span class="co">#&gt; Gender           0.2656659770  1.25587352</span>
-<span class="co">#&gt; Smoking          0.4740113028  0.51307532</span>
-<span class="co">#&gt; Function         0.2429189771  1.36941105</span>
-<span class="co">#&gt; JobControl       0.2227939521  1.49100639</span>
-<span class="co">#&gt; JobDemands       0.4682099219  0.52882523</span>
-<span class="co">#&gt; SocialSupport    0.7943191812  0.06861859</span>
-<span class="co">#&gt; factor(Carrying) 0.0002293791  8.60813224</span></code></pre></div>
+<span class="co">#&gt;                  p-values D1 F-statistic</span>
+<span class="co">#&gt; Gender           0.381855472 0.767088176</span>
+<span class="co">#&gt; Smoking          0.560336105 0.339191506</span>
+<span class="co">#&gt; Function         0.311751925 1.048492804</span>
+<span class="co">#&gt; JobControl       0.266087352 1.239052599</span>
+<span class="co">#&gt; JobDemands       0.302383631 1.066465046</span>
+<span class="co">#&gt; SocialSupport    0.950553932 0.003854352</span>
+<span class="co">#&gt; factor(Carrying) 0.002345374 6.263145407</span></code></pre></div>
 <p>Back to <a href="#examples">Examples</a></p>
 </div>
 <div class="section level2">
@@ -244,16 +244,16 @@
 <span class="co">#&gt; No more variables removed from the model</span>
   <span class="va">poolm</span><span class="op">$</span><span class="va">pmodel</span>
 <span class="co">#&gt;                term  estimate std.error statistic        df      p.value</span>
-<span class="co">#&gt; 1       (Intercept) -1.618192 0.3919104 -4.128984 125.38968 6.600801e-05</span>
-<span class="co">#&gt; 2 factor(Carrying)2  1.492064 0.4734738  3.151312 146.51079 1.971244e-03</span>
-<span class="co">#&gt; 3 factor(Carrying)3  2.231067 0.5064712  4.405121  87.90594 2.970996e-05</span>
+<span class="co">#&gt; 1       (Intercept) -1.733285 0.4164110 -4.162438 103.87704 6.510820e-05</span>
+<span class="co">#&gt; 2 factor(Carrying)2  1.583289 0.5082785  3.115003 100.44467 2.397682e-03</span>
+<span class="co">#&gt; 3 factor(Carrying)3  2.423172 0.5168716  4.688152  98.05451 8.910052e-06</span>
 <span class="co">#&gt;          OR  lower.EXP  upper.EXP</span>
-<span class="co">#&gt; 1 0.1982568 0.09128143  0.4305998</span>
-<span class="co">#&gt; 2 4.4462615 1.74428184 11.3337427</span>
-<span class="co">#&gt; 3 9.3097934 3.40262386 25.4721815</span>
+<span class="co">#&gt; 1  0.176703 0.07737783  0.4035258</span>
+<span class="co">#&gt; 2  4.870950 1.77701239 13.3517084</span>
+<span class="co">#&gt; 3 11.281593 4.04493236 31.4651362</span>
   <span class="va">poolm</span><span class="op">$</span><span class="va">pmultiparm</span>
 <span class="co">#&gt;                   p-values D1 F-statistic</span>
-<span class="co">#&gt; factor(Carrying) 6.771602e-05    9.993333</span></code></pre></div>
+<span class="co">#&gt; factor(Carrying) 2.054142e-05    11.20076</span></code></pre></div>
 <p>Back to <a href="#examples">Examples</a></p>
 </div>
 <div class="section level2">
@@ -276,24 +276,26 @@
 <span class="co">#&gt; Removed at Step 1 is - SocialSupport</span>
 <span class="co">#&gt; Removed at Step 2 is - Smoking</span>
 <span class="co">#&gt; Removed at Step 3 is - Gender</span>
-<span class="co">#&gt; Removed at Step 4 is - JobControl</span>
-<span class="co">#&gt; Removed at Step 5 is - JobDemands</span>
-<span class="co">#&gt; Removed at Step 6 is - Function</span>
+<span class="co">#&gt; Removed at Step 4 is - JobDemands</span>
+<span class="co">#&gt; Removed at Step 5 is - JobControl</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Selection correctly terminated, </span>
 <span class="co">#&gt; No more variables removed from the model</span>
   <span class="va">poolm</span><span class="op">$</span><span class="va">pmodel</span>
-<span class="co">#&gt;                term  estimate std.error statistic       df      p.value</span>
-<span class="co">#&gt; 1       (Intercept) 4.1817639 0.3207710 13.036604 44.54076 0.0000000000</span>
-<span class="co">#&gt; 2 factor(Carrying)2 0.7822612 0.4989994  1.567660 19.86144 0.1327552725</span>
-<span class="co">#&gt; 3 factor(Carrying)3 1.9228913 0.4515561  4.258366 36.22046 0.0001396336</span>
-<span class="co">#&gt;        2.5 %   97.5 %</span>
-<span class="co">#&gt; 1  3.5355141 4.828014</span>
-<span class="co">#&gt; 2 -0.2590989 1.823621</span>
-<span class="co">#&gt; 3  1.0072865 2.838496</span>
+<span class="co">#&gt;                term    estimate  std.error statistic       df      p.value</span>
+<span class="co">#&gt; 1       (Intercept)  5.19808739 0.65446751  7.942468 57.49364 8.096368e-11</span>
+<span class="co">#&gt; 2          Function -0.07870532 0.04242662 -1.855093 76.72492 6.742433e-02</span>
+<span class="co">#&gt; 3 factor(Carrying)2  0.63636528 0.43173562  1.473970 57.18327 1.459739e-01</span>
+<span class="co">#&gt; 4 factor(Carrying)3  1.65088720 0.45851767  3.600488 80.21130 5.485426e-04</span>
+<span class="co">#&gt;        2.5 %      97.5 %</span>
+<span class="co">#&gt; 1  3.8877826 6.508392161</span>
+<span class="co">#&gt; 2 -0.1631924 0.005781711</span>
+<span class="co">#&gt; 3 -0.2281103 1.500840894</span>
+<span class="co">#&gt; 4  0.7384449 2.563329542</span>
   <span class="va">poolm</span><span class="op">$</span><span class="va">pmultiparm</span>
-<span class="co">#&gt;                   p-values D1 F-statistic</span>
-<span class="co">#&gt; factor(Carrying) 0.0007456697     8.93562</span></code></pre></div>
+<span class="co">#&gt;                  p-values D1 F-statistic</span>
+<span class="co">#&gt; Function         0.065165580    3.441369</span>
+<span class="co">#&gt; factor(Carrying) 0.002431946    6.425669</span></code></pre></div>
 <p>Back to <a href="#examples">Examples</a></p>
 </div>
 </div>
