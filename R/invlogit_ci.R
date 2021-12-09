@@ -1,7 +1,7 @@
 #' Takes the inverse of logit transformed parameters and calculates
 #'  the confidence intervals
 #'
-#' \code{inv_logit} Takes the inverse of logit transformed
+#' \code{invlogit_ci} Takes the inverse of logit transformed
 #'  parameters and calculates the confidence interval
 #'  by using the critical value.
 #'
@@ -19,10 +19,10 @@
 #' @author Martijn Heymans, 2021
 #'
 #' @examples
-#'  inv_logit(est=1.39, se=0.25, crit.value=1.96)
+#'  invlogit_ci(est=1.39, se=0.25, crit.value=1.96)
 #'
 #' @export
-inv_logit <- function(est, se, crit.value){
+invlogit_ci <- function(est, se, crit.value){
   inv.est <- exp(est) / (1 + exp(est))
   inv.est.u <- exp(est + (crit.value*se)) /
     (1 + exp(est + (crit.value*se)))

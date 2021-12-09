@@ -46,7 +46,8 @@ reference:
   - glm_lm_fw
   - glm_lr_bw
   - glm_lr_fw
-  - inv_logit
+  - invlogit
+  - invlogit_ci
   - logit_trans
   - pool_D4
 - title: Datasets used in examples and tutorials

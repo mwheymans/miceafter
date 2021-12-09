@@ -46,7 +46,7 @@ levene_test <- function(y, x, formula, data){
     fit <- lm(eval_prop, y=TRUE, x=TRUE)
     nr_var <- attr(fit$terms, "term.labels")
     if(length(nr_var) > 1)
-      stop("Include single independent categorical variable only")
+      stop("Include only one independent categorical variable")
     df <- fit$model
     names(df) <- c("y", "x")
   }

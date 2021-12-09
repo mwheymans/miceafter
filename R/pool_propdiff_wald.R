@@ -37,13 +37,18 @@ pool_propdiff_wald <- function(object, conf.level=0.95)
   pool_est <- pool_scalar_RR(est=ra$est, se=ra$se,
                              logit_trans=FALSE,
                              conf.level = conf.level, dfcom=ra$dfcom[1])
-  low <- pool_est$pool_est - pool_est$t * pool_est$pool_se
-  high <- pool_est$pool_est + pool_est$t * pool_est$pool_se
-  output <- round(matrix(c(pool_est$pool_est, pool_est$pool_se,
+  low <-
+    pool_est$pool_est - pool_est$t * pool_est$pool_se
+  high <-
+    pool_est$pool_est + pool_est$t * pool_est$pool_se
+  output <-
+    round(matrix(c(pool_est$pool_est, pool_est$pool_se,
                            pool_est$t, low, high), 1, 5), 5)
-  colnames(output) <- c("Prop diff Wald", "SE", "t",
+  colnames(output) <-
+    c("Prop diff Wald", "SE", "t",
                         c(paste(conf.level*100, "CI low"),
                           paste(conf.level*100, "CI high")))
-  class(output) <- "mipool"
+  class(output) <-
+    "mipool"
   return(output)
 }

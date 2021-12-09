@@ -37,13 +37,18 @@ pool_riskratio <- function(object, conf.level = 0.95){
                    conf.level=conf.level,
                    dfcom = ra_or[1, 3])
 
-  low <- exp(pool_est$pool_est - pool_est$t * pool_est$pool_se)
-  high <- exp(pool_est$pool_est + pool_est$t * pool_est$pool_se)
-  output <- matrix(c(exp(pool_est$pool_est), low, high), 1, 3)
-  colnames(output) <- c("pooled RR",
+  low <-
+    exp(pool_est$pool_est - pool_est$t * pool_est$pool_se)
+  high <-
+    exp(pool_est$pool_est + pool_est$t * pool_est$pool_se)
+  output <-
+    matrix(c(exp(pool_est$pool_est), low, high), 1, 3)
+  colnames(output) <-
+    c("pooled RR",
                         c(paste(conf.level*100, "CI low"),
                           paste(conf.level*100, "CI high")))
-  class(output) <- 'mipool'
+  class(output) <-
+    'mipool'
   return(output)
 }
 

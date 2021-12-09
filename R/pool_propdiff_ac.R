@@ -37,10 +37,14 @@ pool_propdiff_ac <- function(object, conf.level=0.95)
   pool_est <- pool_scalar_RR(est=ra$est, se=ra$se,
                              logit_trans=FALSE,
                              conf.level = conf.level, dfcom=ra$dfcom[1])
-  low <- pool_est$pool_est - pool_est$t * pool_est$pool_se
-  high <- pool_est$pool_est + pool_est$t * pool_est$pool_se
-  output <- matrix(c(pool_est$pool_est, low, high), 1, 3)
-  colnames(output) <- c("Prop diff AC",
+  low <-
+    pool_est$pool_est - pool_est$t * pool_est$pool_se
+  high <-
+    pool_est$pool_est + pool_est$t * pool_est$pool_se
+  output <-
+    matrix(c(pool_est$pool_est, low, high), 1, 3)
+  colnames(output) <-
+    c("Prop diff AC",
                         c(paste(conf.level*100, "CI low"),
                           paste(conf.level*100, "CI high")))
   class(output) <- 'mipool'
