@@ -22,9 +22,6 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @section Vignettes:
-#'   https://mwheymans.github.io/miceafter/articles/pooling_diff_proportions.html
-#'
 #' @seealso \code{\link{with.milist}}, \code{\link{propdiff_wald}}
 #'
 #' @examples
