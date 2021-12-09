@@ -30,8 +30,6 @@ The `miceafter` package includes the function `pool_propdiff_nw`, to obtain conf
 The lbp_orig is a dataset as part of the miceafter package with missing values. So we first impute them with the `mice` function. Than we use the `mids2milist` function to turn the `mids` object with multiply imputed datasets, as a result of using `mice`, into a `milist` object. Than we use the `with` function to apply repeated analyses with the `propdiff_wald` function across the multiply imputed datasets. In this function we use the option `strata=TRUE` to extract results within each group of the independent variable. Finally, we pool the results by using the `pool_propdiff_nw` function.
 
 ```{r}
-library(mice)
-library(miceafter)
 
 imp_data <- mice(lbp_orig, m=5, seed=20873, printFlag = FALSE) 
 
@@ -48,7 +46,6 @@ res
 The dataset `lbpmilr` as part of the miceafter package is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the `Impnr` variable. First we convert the dataset into a `milist` object by using the `df2milist` function. Than we use the `with` function to apply repeated analyses with the `propdiff_wald` function across the multiply imputed datasets. In this function we use the option `strata=TRUE` to extract results within each group of the independent variable. Than the pooled Newcombe-Wilson confidence intervals for the difference between groups are derived with the `pool_propdiff_nw` function.
 
 ```{r}
-library(miceafter)
 
 imp_dat <- df2milist(lbpmilr, impvar = "Impnr") # MI datasets are in lbpmilr
 
