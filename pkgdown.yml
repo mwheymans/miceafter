@@ -4,9 +4,8 @@ pkgdown_sha: ~
 articles:
   levene_test: levene_test.html
   pooling_cindex: pooling_cindex.html
-  pooling_diff_proportions: pooling_diff_proportions.html
   regression_modelling: regression_modelling.html
-last_built: 2021-12-09T13:47Z
+last_built: 2021-12-09T14:57Z
 urls:
   reference: https://mwheymans.github.io/miceafter/reference
   article: https://mwheymans.github.io/miceafter/articles
