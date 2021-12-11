@@ -32,11 +32,11 @@ be used in function \code{with.miceafter}.
 }
 \examples{
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
-ra <- with(imp_dat, expr=propdiff_wald(Chronic ~ Gender))
+ra <- with(imp_dat, expr=propdiff_wald(Chronic ~ Radiation))
 
 # proportions in each subgroup
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
-ra <- with(imp_dat, expr=propdiff_wald(Chronic ~ Gender, strata=TRUE))
+ra <- with(imp_dat, expr=propdiff_wald(Chronic ~ Radiation, strata=TRUE))
 
 }
 \seealso{

@@ -29,6 +29,9 @@ and standard error according to method Agresti-Caffo.
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 ra <- with(imp_dat, expr=propdiff_ac(Chronic ~ Radiation))
 
+# same as
+ra <- with(imp_dat, expr=propdiff_ac(y=Chronic, x=Radiation))
+
 }
 \seealso{
 \code{\link{with.milist}}, \code{\link{pool_propdiff_ac}}
