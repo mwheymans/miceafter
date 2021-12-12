@@ -1,14 +1,14 @@
-#' Calculates the posterior mean and variance components of a
+#' Calculates the posterior beta components for a
 #'  single proportion
 #'
-#' \code{prop_nna} Calculates the posterior mean and variance
-#'  of a single proportion.
+#' \code{prop_nna} Calculates the posterior beta components
+#'  for a single proportion (assuming noninformative prior).
 #'
 #' @param x name of variable to calculate proportion.
 #' @param data An object of class 'mistats' ('Multiply Imputed
 #'  Statistical Analysis').
 #'
-#' @return The posterior mean and variance.
+#' @return The posterior beta components.
 #'
 #' @references Raghunathan, T. (2016). Missing Data Analysis in Practice.
 #'  Boca Raton, FL: Chapman and Hall/CRC. (paragr 4.6.2)
