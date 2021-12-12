@@ -1,6 +1,5 @@
 #'  Turns a data frame with multiply imputed data into
-#'  an object of class 'milist' to be further used
-#'  by 'miceafter::with'
+#'  an object of class 'milist'
 #'
 #' \code{df2milist} Turns a data frame of class 'data.frame', 'tbl_df'
 #'  or 'tbl' (tibble) into an object of class 'milist' to be further used
