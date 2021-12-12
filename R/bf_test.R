@@ -33,7 +33,10 @@
 #'  ra <- with(imp_dat, expr=bf_test(Pain ~ factor(Carrying)))
 #'
 #' @export
-bf_test <- function(y, x, formula, data){
+bf_test <- function(y,
+                    x,
+                    formula,
+                    data){
 
   call <- match.call()
 
@@ -41,12 +44,16 @@ bf_test <- function(y, x, formula, data){
     eval_prop <- eval(call[[1L]], parent.frame())
     df <- data.frame(y, x)
   } else {
-    eval_prop <- eval(call[[2]], parent.frame())
-    fit <- lm(eval_prop, y=TRUE, x=TRUE)
-    nr_var <- attr(fit$terms, "term.labels")
+    eval_prop <-
+      eval(call[[2]], parent.frame())
+    fit <-
+      lm(eval_prop, y=TRUE, x=TRUE)
+    nr_var <-
+      attr(fit$terms, "term.labels")
     if(length(nr_var) > 1)
       stop("Include only one independent categorical variable")
-    df <- fit$model
+    df <-
+      fit$model
     names(df) <- c("y", "x")
   }
   df$x <- factor(df$x)
@@ -55,11 +62,17 @@ bf_test <- function(y, x, formula, data){
     group_by(x) %>%
     mutate(resd = abs(y-median(y))) %>%
     dplyr::select(x, .data$resd)
-  fit_new <- lm(resd ~ x, data=df_new)
-  fstats <- summary(fit_new)$'fstatistic'
-  qhat <- coef(fit_new)
-  ui <- vcov(fit_new)
-  dfcom <- df.residual(fit_new)
-  obj <- list(fstats=fstats, qhat=qhat, vcov=ui, dfcom=dfcom)
+  fit_new <-
+    lm(resd ~ x, data=df_new)
+  fstats <-
+    summary(fit_new)$'fstatistic'
+  qhat <-
+    coef(fit_new)
+  ui <-
+    vcov(fit_new)
+  dfcom <-
+    df.residual(fit_new)
+  obj <-
+    list(fstats=fstats, qhat=qhat, vcov=ui, dfcom=dfcom)
   return(obj)
 }

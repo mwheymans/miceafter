@@ -15,12 +15,14 @@
 #' @author Martijn Heymans, 2021
 #'
 #' @export
-logit_trans <- function(est, se){
+logit_trans <- function(est,
+                        se){
   est_logit <-
     log(est/(1-est))
   se_logit <-
     se / (est * (1-est))
-  obj <- matrix(c(est_logit, se_logit),
+  obj <-
+    matrix(c(est_logit, se_logit),
                 length(est), 2)
   return(obj)
 }

@@ -28,42 +28,59 @@ riskratio <- function(y, x, formula, data){
 
   call <- match.call()
 
-  names_var <- all.vars(call, functions = FALSE)
+  names_var <-
+    all.vars(call, functions = FALSE)
   if(length(names_var) > 2)
     stop("Include only one independent variable in x or formula")
 
   if(!inherits(y,"formula")){
-    eval_prop <- eval(call[[1L]], parent.frame())
-    X <- data.frame(y, x)
+    eval_prop <-
+      eval(call[[1L]], parent.frame())
+    X <-
+      data.frame(y, x)
   } else {
-    call <- eval(call[[2L]], parent.frame())
-    X <- model.frame(call)
-    colnames(X) <- c('y', 'x')
+    call <-
+      eval(call[[2L]], parent.frame())
+    X <-
+      model.frame(call)
+    colnames(X) <-
+      c('y', 'x')
   }
   if(!all(X$x==1 | X$x==0))
     stop("x variable should be a 0 - 1 variable")
   if(!all(X$y==1 | X$y==0))
     stop("y variable should be a 0 - 1 variable")
 
-  sub1 <- subset(X, x==1)
-  sub0 <- subset(X, x==0)
+  sub1 <-
+    subset(X, x==1)
+  sub0 <-
+    subset(X, x==0)
 
-  n1 <- nrow(sub1)
-  n0 <- nrow(sub0)
+  n1 <-
+    nrow(sub1)
+  n0 <-
+    nrow(sub0)
 
-  x1 <- nrow(subset(sub1, y==1))
-  x0 <- nrow(subset(sub0, y==1))
+  x1 <-
+    nrow(subset(sub1, y==1))
+  x0 <-
+    nrow(subset(sub0, y==1))
 
-  p1hat <- x1/n1
-  p0hat <- x0/n0
+  p1hat <-
+    x1/n1
+  p0hat <-
+    x0/n0
 
-  dfcom <- c(n1+n0)-1
+  dfcom <-
+    c(n1+n0)-1
   rr <-
     p1hat / p0hat
   rr_se <-
     sqrt(1/x1 - 1/n1 + 1/x0 - 1/n0)
-  output <- matrix(c(rr, rr_se, dfcom), 1, 3)
-  colnames(output) <- c("RR", "SE", "dfcom")
+  output <-
+    matrix(c(rr, rr_se, dfcom), 1, 3)
+  colnames(output) <-
+    c("RR", "SE", "dfcom")
   output
 }
 

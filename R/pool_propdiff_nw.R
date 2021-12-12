@@ -33,7 +33,8 @@
 #' res
 #'
 #' @export
-pool_propdiff_nw <- function(object, conf.level=0.95)
+pool_propdiff_nw <- function(object,
+                             conf.level=0.95)
 {
 
   if(all(class(object)!="mistats"))
@@ -41,13 +42,17 @@ pool_propdiff_nw <- function(object, conf.level=0.95)
   if(!is.list(object$statistics))
     stop("object must be a list")
 
-  obj1 <- lapply(object$statistics,
-                 function(x) x[, c("prop1", "se1", "n1")])
-  obj0 <- lapply(object$statistics,
-                 function(x) x[, c("prop0", "se0", "n0")])
+  obj1 <-
+    lapply(object$statistics,
+           function(x) x[, c("prop1", "se1", "n1")])
+  obj0 <-
+    lapply(object$statistics,
+           function(x) x[, c("prop0", "se0", "n0")])
 
-  obj1 <- list(statistics=obj1)
-  obj0 <- list(statistics=obj0)
+  obj1 <-
+    list(statistics=obj1)
+  obj0 <-
+    list(statistics=obj0)
   class(obj0) <- class(obj1) <- 'mistats'
 
   p0_pool <-
@@ -55,16 +60,24 @@ pool_propdiff_nw <- function(object, conf.level=0.95)
   p1_pool <-
     pool_prop_wilson(obj1, conf.level=conf.level)
 
-  w0 <- p0_pool[-1]
-  w1 <- p1_pool[-1]
+  w0 <-
+    p0_pool[-1]
+  w1 <-
+    p1_pool[-1]
 
-  l0 <- w0[1]
-  u0 <- w0[2]
-  l1 <- w1[1]
-  u1 <- w1[2]
+  l0 <-
+    w0[1]
+  u0 <-
+    w0[2]
+  l1 <-
+    w1[1]
+  u1 <-
+    w1[2]
 
-  phat0 <- p0_pool[1]
-  phat1 <- p1_pool[1]
+  phat0 <-
+    p0_pool[1]
+  phat1 <-
+    p1_pool[1]
 
   prop_diff <-
     phat1 - phat0

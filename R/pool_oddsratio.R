@@ -20,7 +20,8 @@
 #' res
 #'
 #' @export
-pool_oddsratio <- function(object, conf.level = 0.95){
+pool_oddsratio <- function(object,
+                           conf.level = 0.95){
 
   if(all(class(object)!="mistats"))
     stop("object must be of class 'mistats'")
@@ -44,9 +45,8 @@ pool_oddsratio <- function(object, conf.level = 0.95){
   output <-
     matrix(c(exp(pool_est$pool_est), low, high), 1, 3)
   colnames(output) <-
-    c("pooled OR",
-                        c(paste(conf.level*100, "CI low"),
-                          paste(conf.level*100, "CI high")))
+    c("pooled OR", c(paste(conf.level*100, "CI low"),
+                     paste(conf.level*100, "CI high")))
   class(output) <- 'mipool'
   return(output)
 }

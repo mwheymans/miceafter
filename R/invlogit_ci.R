@@ -22,13 +22,19 @@
 #'  invlogit_ci(est=1.39, se=0.25, crit.value=1.96)
 #'
 #' @export
-invlogit_ci <- function(est, se, crit.value){
-  inv.est <- exp(est) / (1 + exp(est))
-  inv.est.u <- exp(est + (crit.value*se)) /
+invlogit_ci <- function(est,
+                        se,
+                        crit.value){
+  inv.est <-
+    exp(est) / (1 + exp(est))
+  inv.est.u <-
+    exp(est + (crit.value*se)) /
     (1 + exp(est + (crit.value*se)))
-  inv.est.l <- exp(est - (crit.value*se)) /
+  inv.est.l <-
+    exp(est - (crit.value*se)) /
     (1 + exp(est - (crit.value*se)))
-  obj <- matrix(c(inv.est, crit.value, inv.est.l, inv.est.u),
+  obj <-
+    matrix(c(inv.est, crit.value, inv.est.l, inv.est.u),
                 1, 4, byrow = T)
   return(obj)
 }

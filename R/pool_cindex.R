@@ -45,19 +45,24 @@ pool_cindex <- function(data,
 {
 
   if(class(data)=='mistats'){
-    ra <- data.frame(do.call("rbind", data$statistics))
-    colnames(ra) <- c("est", "se", "dfcom")
+    ra <-
+      data.frame(do.call("rbind", data$statistics))
+    colnames(ra) <-
+      c("est", "se", "dfcom")
   } else {
     if (!all(!is.data.frame(data) | !is.matrix(data)))
       stop("Data should be a data frame or matrix")
-    ra <- data
+    ra <-
+      data
     if(is_empty(dfcom))
       stop("Include number of complete data degrees of freedom")
   }
 
-  est_log <- pool_scalar_RR(est=ra[, 1], se=ra[, 2], logit_trans=TRUE,
+  est_log <-
+    pool_scalar_RR(est=ra[, 1], se=ra[, 2], logit_trans=TRUE,
                             conf.level=0.95, dfcom=ra[,3][1])
-  est_orig <- invlogit_ci(est=est_log$pool_est,
+  est_orig <-
+    invlogit_ci(est=est_log$pool_est,
                          se=est_log$pool_se,
                          crit.value = est_log$t)
 

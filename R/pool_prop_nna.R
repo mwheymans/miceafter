@@ -30,7 +30,8 @@
 #'  res
 #'
 #' @export
-pool_prop_nna <- function(object, conf.level=0.95){
+pool_prop_nna <- function(object,
+                          conf.level=0.95){
 
   if(all(class(object)!="mistats"))
     stop("object must be of class 'mistats'")
@@ -40,17 +41,25 @@ pool_prop_nna <- function(object, conf.level=0.95){
   ra <- data.frame(do.call("rbind", object$statistics))
   colnames(ra) <- c("e", "u")
 
-  m <- length(ra[, 1])
-  e_m <- mean(ra[, 1])
-  u_m <- mean(ra$u) # Within Variance
-  b_m <- var(ra$e) # Between Variance
-  T_m <- u_m + (1 + (1/m))*b_m # Total variance
+  m <-
+    length(ra[, 1])
+  e_m <-
+    mean(ra[, 1])
+  u_m <-
+    mean(ra$u) # Within Variance
+  b_m <-
+    var(ra$e) # Between Variance
+  T_m <-
+    u_m + (1 + (1/m))*b_m # Total variance
 
-  a <- e_m*(((e_m*(1-e_m)) / (T_m)) -1)
-  b <- (1-e_m)*(((e_m*(1-e_m))/(T_m)) -1)
+  a <-
+    e_m*(((e_m*(1-e_m)) / (T_m)) -1)
+  b <-
+    (1-e_m)*(((e_m*(1-e_m))/(T_m)) -1)
 
-  obj <- matrix(qbeta(c(0.5, (1-conf.level)/2,
-                        (1-(1-conf.level)/2)), a, b), 1, 3)
+  obj <-
+    matrix(qbeta(c(0.5, (1-conf.level)/2,
+              (1-(1-conf.level)/2)), a, b), 1, 3)
   colnames(obj) <-
     c("Prop nna", "95%CI L", "95%CI U ")
   class(obj) <- 'mipool'

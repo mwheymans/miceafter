@@ -22,7 +22,8 @@
 #'  ra <- with(imp_dat, expr=prop_nna(Radiation))
 #'
 #' @export
-prop_nna <- function(x, data){
+prop_nna <- function(x,
+                     data){
 
   call <- match.call()
 
@@ -30,12 +31,16 @@ prop_nna <- function(x, data){
   if(!all(x==1 | x==0))
     stop("x variable should be a 0 - 1 variable")
 
-  p <- sum(x)
-  n <- length(x)
+  p <-
+    sum(x)
+  n <-
+    length(x)
 
   # Proportion
-  e <- (p + 1/2) / (n + 1)
-  u <- (e*(1-e))/(n + 2)
+  e <-
+    (p + 1/2) / (n + 1)
+  u <-
+    (e*(1-e))/(n + 2)
 
   obj <- c(e, u)
   return(obj)

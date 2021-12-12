@@ -24,26 +24,38 @@
 #'   family=binomial)))
 #'
 #' @export
-cindex <- function(formula, data){
+cindex <- function(formula,
+                   data){
 
   mf_call <- match.call()
   fit <- eval(mf_call[[2L]], parent.frame())
 
   if(any(class(formula)!="coxph")){
-    predfit <- predict(fit, type="response")
-    can <- pROC::roc(fit$y, predfit, quiet=TRUE)
-    cest <- can$auc
-    cse <- sqrt(var(can))
-    n <- length(predfit)
+    predfit <-
+      predict(fit, type="response")
+    can <-
+      pROC::roc(fit$y, predfit, quiet=TRUE)
+    cest <-
+      can$auc
+    cse <-
+      sqrt(var(can))
+    n <-
+      length(predfit)
   }
   else {
-    cfit <- concordance(fit)
-    cest <- cfit$concordance
-    cse <- sqrt(cfit$var)
-    n <- fit$n
+    cfit <-
+      concordance(fit)
+    cest <-
+      cfit$concordance
+    cse <-
+      sqrt(cfit$var)
+    n <-
+      fit$n
   }
   dfcom <- n-1
-  output <- matrix(c(cest, cse, dfcom), 1, 3)
-  colnames(output) <- c("c-index", "se", "dfcom")
+  output <-
+    matrix(c(cest, cse, dfcom), 1, 3)
+  colnames(output) <-
+    c("c-index", "se", "dfcom")
   return(output)
 }

@@ -32,7 +32,8 @@
 #' res
 #'
 #' @export
-pool_levenetest <- function(object, method="D1"){
+pool_levenetest <- function(object,
+                            method="D1"){
 
   if(all(class(object)!="mistats"))
     stop("object must be of class 'mistats'")
@@ -103,10 +104,14 @@ pool_levenetest <- function(object, method="D1"){
       }
 
     }
-    output <- list(est = est, k = k, v = v, r = r)
-    r <- output$r
-    pval <- pf(output$est, k, output$v, lower.tail = FALSE)
-    output <- matrix(c(est, k, v, pval, r), ncol = 5)
+    output <-
+      list(est = est, k = k, v = v, r = r)
+    r <-
+      output$r
+    pval <-
+      pf(output$est, k, output$v, lower.tail = FALSE)
+    output <-
+      matrix(c(est, k, v, pval, r), ncol = 5)
     colnames(output) <- c("F_value", "df1", "df2",
                           "P(>F)", "RIV")
   }

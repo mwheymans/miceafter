@@ -20,19 +20,20 @@
 #' res
 #'
 #' @export
-pool_riskratio <- function(object, conf.level = 0.95){
+pool_riskratio <- function(object,
+                           conf.level = 0.95){
 
   if(all(class(object)!="mistats"))
     stop("object must be of class 'mistats'")
   if(!is.list(object$statistics))
     stop("object must be a list")
 
-  ra_or <-
+  ra_rr <-
     do.call("rbind", lapply(object$statistics,
                             function(x) x))
 
   pool_est <-
-    pool_scalar_RR(est=log(ra_or[, 1]), se=ra_or[, 2],
+    pool_scalar_RR(est=log(ra_rr[, 1]), se=ra_rr[, 2],
                    logit_trans=FALSE,
                    conf.level=conf.level,
                    dfcom = ra_or[1, 3])

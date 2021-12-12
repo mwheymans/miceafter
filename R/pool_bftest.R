@@ -29,7 +29,8 @@
 #' res
 #'
 #' @export
-pool_bftest <- function(object, method="D1"){
+pool_bftest <- function(object,
+                        method="D1"){
 
   if(all(class(object)!="mistats"))
     stop("object must be of class 'mistats'")

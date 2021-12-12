@@ -23,7 +23,8 @@
 #' res
 #'
 #' @export
-pool_propdiff_wald <- function(object, conf.level=0.95)
+pool_propdiff_wald <- function(object,
+                               conf.level=0.95)
 {
 
   if(all(class(object)!="mistats"))
@@ -31,10 +32,13 @@ pool_propdiff_wald <- function(object, conf.level=0.95)
   if(!is.list(object$statistics))
     stop("object must be a list")
 
-  ra <- data.frame(do.call("rbind", object$statistics))
-  colnames(ra) <- c("est", "se", "dfcom")
+  ra <-
+    data.frame(do.call("rbind", object$statistics))
+  colnames(ra) <-
+    c("est", "se", "dfcom")
 
-  pool_est <- pool_scalar_RR(est=ra$est, se=ra$se,
+  pool_est <-
+    pool_scalar_RR(est=ra$est, se=ra$se,
                              logit_trans=FALSE,
                              conf.level = conf.level, dfcom=ra$dfcom[1])
   low <-

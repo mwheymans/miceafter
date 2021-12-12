@@ -24,7 +24,10 @@
 #' ra <- with(imp_dat, expr=oddsratio(Chronic ~ Radiation))
 #'
 #' @export
-oddsratio <- function(y, x, formula, data){
+oddsratio <- function(y,
+                      x,
+                      formula,
+                      data){
 
   call <- match.call()
 
@@ -50,21 +53,32 @@ oddsratio <- function(y, x, formula, data){
     xc <- nrow(subset(sub0, y==1))
     xd <- nrow(subset(sub0, y==0))
 
-    OR <- (xa *xd) / (xb * xc)
-    log_se <- sqrt(1/xa + 1/xb + 1/xc + 1/xd)
-    dfcom <- nrow(X)-2
+    OR <-
+      (xa *xd) / (xb * xc)
+    log_se <-
+      sqrt(1/xa + 1/xb + 1/xc + 1/xd)
+    dfcom <-
+      nrow(X)-2
     c(OR, log_se, dfcom)
   } else {
-    eval_prop <- eval(call[[2]], parent.frame())
-    fit <- glm(eval_prop, y=TRUE, x=TRUE, family = binomial)
-    nr_var <- attr(fit$terms, "term.labels")
+    eval_prop <-
+      eval(call[[2]], parent.frame())
+    fit <-
+      glm(eval_prop, y=TRUE, x=TRUE, family = binomial)
+    nr_var <-
+      attr(fit$terms, "term.labels")
     if(length(nr_var) > 1)
       stop("Include single independent variable only or use function psfmi_lr")
-    OR <- exp(coef(fit)[2])
-    OR_se <- sqrt(diag(vcov(fit))[2])
-    dfcom <- df.residual(fit)
-    output <- matrix(c(OR, OR_se, dfcom), 1, 3)
-    colnames(output) <- c("OR", "SE", "dfcom")
+    OR <-
+      exp(coef(fit)[2])
+    OR_se <-
+      sqrt(diag(vcov(fit))[2])
+    dfcom <-
+      df.residual(fit)
+    output <-
+      matrix(c(OR, OR_se, dfcom), 1, 3)
+    colnames(output) <-
+      c("OR", "SE", "dfcom")
     output
   }
 }
