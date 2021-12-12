@@ -36,7 +36,7 @@ pool_riskratio <- function(object,
     pool_scalar_RR(est=log(ra_rr[, 1]), se=ra_rr[, 2],
                    logit_trans=FALSE,
                    conf.level=conf.level,
-                   dfcom = ra_or[1, 3])
+                   dfcom = ra_rr[1, 3])
 
   low <-
     exp(pool_est$pool_est - pool_est$t * pool_est$pool_se)

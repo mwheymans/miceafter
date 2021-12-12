@@ -72,7 +72,7 @@ riskratio <- function(y, x, formula, data){
     x0/n0
 
   dfcom <-
-    c(n1+n0)-1
+    c(n1+n0)-2
   rr <-
     p1hat / p0hat
   rr_se <-

@@ -84,7 +84,7 @@ propdiff_wald <- function(y,
       x1/n1
 
     dfcom <-
-      (n0+n1)-1
+      (n0+n1)-2
     # Proportion and Standard Error according to Wald
     phat_diff <-
       p1hat - p0hat

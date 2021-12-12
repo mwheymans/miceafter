@@ -7,8 +7,8 @@ title: "cran_comments"
 This is the first release.
 * Version nr 0.1.0
 
--- R CMD check results ------------------------------ miceafter 0.1.0 ----
-Duration: 4m 50s
+-- R CMD check results ---------------------------------------------------------- miceafter 0.1.0 ----
+Duration: 2m 34.4s
 
 0 errors √ | 0 warnings √ | 0 notes √
 

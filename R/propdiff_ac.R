@@ -71,7 +71,7 @@ propdiff_ac <- function(y,
     nrow(subset(sub0, y==1))
 
   dfcom <-
-    c(n0+n1)-1
+    c(n0+n1)-2
 
   # Agresti-Caffo
   p0hat_ac <-
