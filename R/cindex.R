@@ -20,8 +20,8 @@
 #'
 #'  imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 #'  ra <- with(data=imp_dat,
-#'   expr = cindex(glm(Chronic ~ Gender + Radiation,
-#'   family=binomial)))
+#'  expr = cindex(glm(Chronic ~ Gender + Radiation,
+#'  family=binomial)))
 #'
 #' @export
 cindex <- function(formula,

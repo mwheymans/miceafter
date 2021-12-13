@@ -43,8 +43,8 @@ https://mwheymans.github.io/miceafter/articles/pooling_cindex.html
  # Cox regression
  library(survival)
  imp_dat <- df2milist(lbpmicox, impvar="Impnr")
-  res_stats <- with(data=imp_dat,
-  expr = cindex(coxph(Surv(Time, Status) ~ Pain + Radiation)))
+ res_stats <- with(data=imp_dat,
+   expr = cindex(coxph(Surv(Time, Status) ~ Pain + Radiation)))
  res <- pool_cindex(res_stats)
  res
 

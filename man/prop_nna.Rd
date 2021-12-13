@@ -2,7 +2,7 @@
 % Please edit documentation in R/prop_nna.R
 \name{prop_nna}
 \alias{prop_nna}
-\title{Calculates the posterior mean and variance components of a
+\title{Calculates the posterior beta components for a
 single proportion}
 \usage{
 prop_nna(x, data)
@@ -14,11 +14,11 @@ prop_nna(x, data)
 Statistical Analysis').}
 }
 \value{
-The posterior mean and variance.
+The posterior beta components.
 }
 \description{
-\code{prop_nna} Calculates the posterior mean and variance
-of a single proportion.
+\code{prop_nna} Calculates the posterior beta components
+for a single proportion (assuming noninformative prior).
 }
 \examples{
  imp_dat <- df2milist(lbpmilr, impvar='Impnr')

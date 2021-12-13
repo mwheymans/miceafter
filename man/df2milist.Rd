@@ -3,8 +3,7 @@
 \name{df2milist}
 \alias{df2milist}
 \title{Turns a data frame with multiply imputed data into
-an object of class 'milist' to be further used
-by 'miceafter::with'}
+an object of class 'milist'}
 \usage{
 df2milist(data, impvar, keep = FALSE)
 }

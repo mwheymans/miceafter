@@ -109,11 +109,14 @@ pool_bftest <- function(object,
                           "P(>F)", "RIV")
   }
   if(method=="D2"){
-    est <-
+    est_f <-
       sapply(object$statistics,
              function(x) x[[1]][1])
+    est_chi <- f2chi(est_f,
+                     object$statistics[[1]]$fstats[2])
+
     output <-
-      pool_D2(dw=est,
+      pool_D2(dw=est_chi,
               v=object$statistics[[1]]$fstats[2])
   }
   class(output) <- "mipool"
