@@ -7,6 +7,8 @@
 #' @param object An object of class 'mistats' ('Multiply Imputed
 #'  Statistical Analysis').
 #' @param conf.level Confidence level of the confidence intervals.
+#' @param dfcom Complete data degrees of freedom. Default
+#'  number is taken from function \code{propdiff_wald}
 #'
 #' @return The proportion, the Confidence intervals,
 #'  the standard error and statistic.
@@ -24,7 +26,8 @@
 #'
 #' @export
 pool_propdiff_wald <- function(object,
-                               conf.level=0.95)
+                               conf.level=0.95,
+                               dfcom=NULL)
 {
 
   if(all(class(object)!="mistats"))
@@ -37,10 +40,16 @@ pool_propdiff_wald <- function(object,
   colnames(ra) <-
     c("est", "se", "dfcom")
 
+  if(is_empty(dfcom)){
+    dfcom <- ra$dfcom[1]
+  } else {
+    dfcom <- dfcom
+  }
+
   pool_est <-
     pool_scalar_RR(est=ra$est, se=ra$se,
                              logit_trans=FALSE,
-                             conf.level = conf.level, dfcom=ra$dfcom[1])
+                             conf.level = conf.level, dfcom=dfcom)
   low <-
     pool_est$pool_est - pool_est$t * pool_est$pool_se
   high <-

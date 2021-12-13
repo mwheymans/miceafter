@@ -14,7 +14,8 @@ dfcom has to be provided.}
 
 \item{conf.level}{conf.level Confidence level of the confidence intervals.}
 
-\item{dfcom}{Number of completed-data analysis degrees of freedom.}
+\item{dfcom}{Number of completed-data analysis degrees of freedom.
+Default number is taken from function \code{cindex}}
 }
 \value{
 The pooled c-index value and the confidence intervals.

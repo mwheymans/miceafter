@@ -8,6 +8,8 @@
 #' @param object An object of class 'mistats' (repeated statistical
 #'  analysis across multiply imputed datasets).
 #' @param conf.level Confidence level of the confidence intervals.
+#' @param dfcom Complete data degrees of freedom. Default
+#'  number is taken from function \code{prop_wald}
 #'
 #' @details Before pooling, the proportions will be naturally log
 #'  transformed and the pooled estimates back transformed to the original scale.
@@ -27,7 +29,9 @@
 #' res
 #'
 #' @export
-pool_prop_wald <- function(object, conf.level=0.95){
+pool_prop_wald <- function(object,
+                           conf.level=0.95,
+                           dfcom=NULL){
 
   if(all(class(object)!="mistats"))
     stop("object must be of class 'mistats'")
@@ -39,10 +43,16 @@ pool_prop_wald <- function(object, conf.level=0.95){
   colnames(ra) <-
     c("est", "se", "dfcom")
 
+  if(is_empty(dfcom)){
+    dfcom <- ra$dfcom[1]
+  } else {
+    dfcom <- dfcom
+  }
+
   pool_est <-
     pool_scalar_RR(est=ra$est, se=ra$se,
                       logit_trans=TRUE,
-                      conf.level = conf.level, dfcom=ra$dfcom[1])
+                      conf.level = conf.level, dfcom=dfcom)
 
   output <-
     invlogit_ci(est=pool_est$pool_est,

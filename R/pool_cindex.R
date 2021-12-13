@@ -8,6 +8,7 @@
 #'  dfcom has to be provided.
 #' @param conf.level conf.level Confidence level of the confidence intervals.
 #' @param dfcom Number of completed-data analysis degrees of freedom.
+#'  Default number is taken from function \code{cindex}
 #'
 #' @details Rubin's Rules are used for pooling. The C-index values are log
 #'  transformed before pooling and finally back transformed.
@@ -58,9 +59,15 @@ pool_cindex <- function(data,
       stop("Include number of complete data degrees of freedom")
   }
 
+  if(is_empty(dfcom)){
+    dfcom <- ra[,3][1]
+  } else {
+    dfcom <- dfcom
+  }
+
   est_log <-
     pool_scalar_RR(est=ra[, 1], se=ra[, 2], logit_trans=TRUE,
-                            conf.level=0.95, dfcom=ra[,3][1])
+                            conf.level=0.95, dfcom=dfcom)
   est_orig <-
     invlogit_ci(est=est_log$pool_est,
                          se=est_log$pool_se,

@@ -1,7 +1,7 @@
 #' Calculates the odds ratio (OR) and standard error.
 #'
-#' \code{oddsratio} Calculates the odds ratio and standard error
-#'  and degrees of freedom to be used in function \code{with.miceafter}.
+#' \code{odds_ratio} Calculates the odds ratio and standard error
+#'  and degrees of freedom to be used in function \code{with.milist}.
 #'
 #' @param x 0-1 binary independent variable.
 #' @param y 0-1 binary response variable.
@@ -17,15 +17,15 @@
 #'
 #' @author Martijn Heymans, 2021
 #'
-#' @seealso \code{\link{with.milist}}, \code{\link{pool_oddsratio}}
+#' @seealso \code{\link{with.milist}}, \code{\link{pool_odds_ratio}}
 #'
 #' @examples
 #'
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
-#' ra <- with(imp_dat, expr=oddsratio(Chronic ~ Radiation))
+#' ra <- with(imp_dat, expr=odds_ratio(Chronic ~ Radiation))
 #'
 #' @export
-oddsratio <- function(y,
+odds_ratio <- function(y,
                       x,
                       formula,
                       data){

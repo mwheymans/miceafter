@@ -5,13 +5,16 @@
 \title{Calculates the pooled proportion and standard error according
 to Wald across multiply imputed datasets.}
 \usage{
-pool_prop_wald(object, conf.level = 0.95)
+pool_prop_wald(object, conf.level = 0.95, dfcom = NULL)
 }
 \arguments{
 \item{object}{An object of class 'mistats' (repeated statistical
 analysis across multiply imputed datasets).}
 
 \item{conf.level}{Confidence level of the confidence intervals.}
+
+\item{dfcom}{Complete data degrees of freedom. Default
+number is taken from function \code{prop_wald}}
 }
 \value{
 The proportion, the Confidence intervals, the standard error

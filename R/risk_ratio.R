@@ -1,6 +1,6 @@
 #' Calculates the risk ratio (RR) and standard error.
 #'
-#' \code{riskratio} Calculates the risk ratio and standard error.
+#' \code{risk_ratio} Calculates the risk ratio and standard error.
 #'
 #' @param x 0-1 binary independent variable.
 #' @param y 0-1 binary response variable.
@@ -21,10 +21,10 @@
 #'
 #' @examples
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
-#' ra <- with(imp_dat, expr=riskratio(Chronic ~ Radiation))
+#' ra <- with(imp_dat, expr=risk_ratio(Chronic ~ Radiation))
 #'
 #' @export
-riskratio <- function(y, x, formula, data){
+risk_ratio <- function(y, x, formula, data){
 
   call <- match.call()
 
@@ -72,7 +72,7 @@ riskratio <- function(y, x, formula, data){
     x0/n0
 
   dfcom <-
-    c(n1+n0)-2
+    (n1+n0)-2
   rr <-
     p1hat / p0hat
   rr_se <-

@@ -5,13 +5,16 @@
 \title{Calculates the pooled difference between proportions and standard error
 according to Agresti-Caffo across multiply imputed datasets.}
 \usage{
-pool_propdiff_ac(object, conf.level = 0.95)
+pool_propdiff_ac(object, conf.level = 0.95, dfcom = NULL)
 }
 \arguments{
 \item{object}{An object of class 'mistats' ('Multiply Imputed
 Statistical Analysis').}
 
 \item{conf.level}{Confidence level of the confidence intervals.}
+
+\item{dfcom}{Complete data degrees of freedom. Default
+number is taken from function \code{propdiff_ac}}
 }
 \value{
 The proportion, the Confidence intervals, the standard error and
