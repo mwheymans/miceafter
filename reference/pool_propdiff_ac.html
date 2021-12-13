@@ -71,7 +71,7 @@ and standard error according to Agresti-Caffo across multiply imputed datasets.<
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pool_propdiff_ac</span><span class="op">(</span><span class="va">object</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pool_propdiff_ac</span><span class="op">(</span><span class="va">object</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span>, dfcom <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -81,6 +81,9 @@ and standard error according to Agresti-Caffo across multiply imputed datasets.<
 Statistical Analysis').</p></dd>
 <dt>conf.level</dt>
 <dd><p>Confidence level of the confidence intervals.</p></dd>
+<dt>dfcom</dt>
+<dd><p>Complete data degrees of freedom. Default
+number is taken from function <code>propdiff_ac</code></p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>

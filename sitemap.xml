@@ -85,7 +85,7 @@
     <loc>https://mwheymans.github.io/miceafter/reference/mids2milist.html</loc>
   </url>
   <url>
-    <loc>https://mwheymans.github.io/miceafter/reference/oddsratio.html</loc>
+    <loc>https://mwheymans.github.io/miceafter/reference/odds_ratio.html</loc>
   </url>
   <url>
     <loc>https://mwheymans.github.io/miceafter/reference/pool_D2.html</loc>
@@ -106,7 +106,7 @@
     <loc>https://mwheymans.github.io/miceafter/reference/pool_levenetest.html</loc>
   </url>
   <url>
-    <loc>https://mwheymans.github.io/miceafter/reference/pool_oddsratio.html</loc>
+    <loc>https://mwheymans.github.io/miceafter/reference/pool_odds_ratio.html</loc>
   </url>
   <url>
     <loc>https://mwheymans.github.io/miceafter/reference/pool_prop_nna.html</loc>
@@ -127,7 +127,7 @@
     <loc>https://mwheymans.github.io/miceafter/reference/pool_propdiff_wald.html</loc>
   </url>
   <url>
-    <loc>https://mwheymans.github.io/miceafter/reference/pool_riskratio.html</loc>
+    <loc>https://mwheymans.github.io/miceafter/reference/pool_risk_ratio.html</loc>
   </url>
   <url>
     <loc>https://mwheymans.github.io/miceafter/reference/pool_scalar_RR.html</loc>
@@ -145,7 +145,7 @@
     <loc>https://mwheymans.github.io/miceafter/reference/propdiff_wald.html</loc>
   </url>
   <url>
-    <loc>https://mwheymans.github.io/miceafter/reference/riskratio.html</loc>
+    <loc>https://mwheymans.github.io/miceafter/reference/risk_ratio.html</loc>
   </url>
   <url>
     <loc>https://mwheymans.github.io/miceafter/reference/with.milist.html</loc>
