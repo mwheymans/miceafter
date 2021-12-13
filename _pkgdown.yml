@@ -14,12 +14,12 @@ reference:
   - bf_test
   - cindex
   - levene_test
-  - oddsratio
+  - odds_ratio
   - prop_nna
   - prop_wald
   - propdiff_ac
   - propdiff_wald
-  - riskratio
+  - risk_ratio
 - title: Functions to Pool Statistical Analyses
 - contents:
   - pool_bftest
@@ -27,14 +27,14 @@ reference:
   - pool_D2
   - pool_glm
   - pool_levenetest
-  - pool_oddsratio
+  - pool_odds_ratio
   - pool_prop_nna
   - pool_prop_wald
   - pool_prop_wilson
   - pool_propdiff_ac
   - pool_propdiff_nw
   - pool_propdiff_wald
-  - pool_riskratio
+  - pool_risk_ratio
   - pool_scalar_RR
   - glm_mi
 - title: Extra Functions
