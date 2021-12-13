@@ -18,8 +18,9 @@ propdiff_ac(y, x, formula, data)
 \code{df2milist}, \code{list2milist} or \code{mids2milist}.}
 }
 \value{
-The difference between proportions and the standard error
-according to Agresti-Caffo.
+The difference between proportions, the standard error
+according to Agresti-Caffo and complete data degrees of freedom
+(dfcom) as n-1.
 }
 \description{
 \code{propdiff_ac} Calculates the difference between proportions

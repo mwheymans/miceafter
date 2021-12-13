@@ -67,6 +67,8 @@ pool_cindex <- function(data,
                          crit.value = est_log$t)
 
   output <- matrix(est_orig, 1, 4)
+  if(output[4] > 1) output[4] <- 1.00
+  if(output[3] < 0) output[3] <- 0.00
 
   colnames(output) <- c("C-index", "Critical value",
                         c(paste(conf.level*100, "CI low"),

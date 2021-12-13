@@ -10,7 +10,7 @@
 #'  \code{df2milist}, \code{list2milist} or \code{mids2milist}.
 #'
 #' @return The c-index, related standard error and
-#'  degrees of freedom.
+#'  complete data degrees of freedom (dfcom) as n-1.
 #'
 #' @author Martijn Heymans, 2021
 #'

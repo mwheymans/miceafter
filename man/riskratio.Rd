@@ -18,15 +18,15 @@ normally used by glm.}
 \code{df2milist}, \code{list2milist} or \code{mids2milist}.}
 }
 \value{
-The risk ratio and related standard error and
-degrees of freedom to be used in function \code{with.milist}.
+The risk ratio, related standard error and
+complete data degrees of freedom (dfcom) as n-2.
 }
 \description{
 \code{riskratio} Calculates the risk ratio and standard error.
 }
 \details{
-Note that the standard error of the RR is on the natural
-log scale, both when you use formula or y and x.
+Note that the standard error of the RR is in fact the
+standard error of the (natural) risk ratio.
 }
 \examples{
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")

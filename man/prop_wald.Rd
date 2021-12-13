@@ -16,7 +16,8 @@ prop_wald(x, formula, data)
 \code{df2milist}, \code{list2milist} or \code{mids2milist}.}
 }
 \value{
-The proportion and the standard error.
+The proportion, standard error and complete data
+degrees of freedom (dfcom) as n-1.
 }
 \description{
 \code{prop_wald} Calculates a single proportion and

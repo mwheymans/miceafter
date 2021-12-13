@@ -10,8 +10,9 @@
 #' @param data An objects of class \code{milist}, created by
 #'  \code{df2milist}, \code{list2milist} or \code{mids2milist}.
 #'
-#' @return The difference between proportions and the standard error
-#'  according to Agresti-Caffo.
+#' @return The difference between proportions, the standard error
+#'  according to Agresti-Caffo and complete data degrees of freedom
+#'  (dfcom) as n-1.
 #'
 #' @author Martijn Heymans, 2021
 #'
@@ -71,7 +72,7 @@ propdiff_ac <- function(y,
     nrow(subset(sub0, y==1))
 
   dfcom <-
-    c(n0+n1)-2
+    (n0+n1)-1
 
   # Agresti-Caffo
   p0hat_ac <-

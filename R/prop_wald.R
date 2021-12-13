@@ -11,7 +11,8 @@
 #' @param data An objects of class \code{milist}, created by
 #'  \code{df2milist}, \code{list2milist} or \code{mids2milist}.
 #'
-#' @return The proportion and the standard error.
+#' @return The proportion, standard error and complete data
+#'  degrees of freedom (dfcom) as n-1.
 #'
 #' @author Martijn Heymans, 2021
 #'

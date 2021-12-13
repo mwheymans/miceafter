@@ -9,8 +9,8 @@
 #'  analysis across multiply imputed datasets).
 #' @param conf.level Confidence level of the confidence intervals.
 #'
-#' @details Before pooling, the proportions will be naturally log transformed and
-#'  the pooled estimates back transformed to the original scale.
+#' @details Before pooling, the proportions will be naturally log
+#'  transformed and the pooled estimates back transformed to the original scale.
 #'
 #' @return The proportion, the Confidence intervals, the standard error
 #'  and the statistic.

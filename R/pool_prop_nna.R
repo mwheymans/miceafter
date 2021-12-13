@@ -61,7 +61,7 @@ pool_prop_nna <- function(object,
     matrix(qbeta(c(0.5, (1-conf.level)/2,
               (1-(1-conf.level)/2)), a, b), 1, 3)
   colnames(obj) <-
-    c("Prop nna", "95%CI L", "95%CI U ")
+    c("Prop nna", "95%CI L", "95%CI U")
   class(obj) <- 'mipool'
   return(obj)
 }

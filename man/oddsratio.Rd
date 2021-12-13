@@ -17,15 +17,16 @@ oddsratio(y, x, formula, data)
 \code{df2milist}, \code{df2milist} or \code{mids2milist}.}
 }
 \value{
-The odds ratio, related standard error and degrees of freedom.
+The odds ratio, related standard error and complete
+data degrees of freedom (dfcom) as n-2.
 }
 \description{
 \code{oddsratio} Calculates the odds ratio and standard error
 and degrees of freedom to be used in function \code{with.miceafter}.
 }
 \details{
-Note that the standard error of the OR is on the
-logit scale.
+Note that the standard error of the OR is in fact the
+standard error of the (natural) log odds ratio.
 }
 \examples{
 

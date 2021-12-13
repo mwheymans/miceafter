@@ -9,10 +9,11 @@
 #' @param data An objects of class \code{milist}, created by
 #'  \code{df2milist}, \code{df2milist} or \code{mids2milist}.
 #'
-#' @details Note that the standard error of the OR is on the
-#'  logit scale.
+#' @details Note that the standard error of the OR is in fact the
+#'  standard error of the (natural) log odds ratio.
 #'
-#' @return The odds ratio, related standard error and degrees of freedom.
+#' @return The odds ratio, related standard error and complete
+#'  data degrees of freedom (dfcom) as n-2.
 #'
 #' @author Martijn Heymans, 2021
 #'

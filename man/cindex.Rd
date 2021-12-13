@@ -15,7 +15,7 @@ normally used by glm or coxph.}
 }
 \value{
 The c-index, related standard error and
-degrees of freedom.
+complete data degrees of freedom (dfcom) as n-1.
 }
 \description{
 \code{cindex} Calculates the c-index and standard error for

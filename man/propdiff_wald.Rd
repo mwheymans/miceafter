@@ -22,8 +22,8 @@ Default is FALSE. Has to be used in combination with function
 \code{pool_propdiff_wilson}}
 }
 \value{
-The difference between proportions, standard error and complete
-data degrees of freedom.
+The difference between proportions, standard error and complete data
+degrees of freedom (dfcom) as n-1.
 }
 \description{
 \code{propdiff_wald} Calculates the difference between proportions and

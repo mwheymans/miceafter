@@ -14,8 +14,8 @@
 #'  Default is FALSE. Has to be used in combination with function
 #'  \code{pool_propdiff_wilson}
 #'
-#' @return The difference between proportions, standard error and complete
-#'  data degrees of freedom.
+#' @return The difference between proportions, standard error and complete data
+#'  degrees of freedom (dfcom) as n-1.
 #'
 #' @author Martijn Heymans, 2021
 #'
@@ -84,7 +84,7 @@ propdiff_wald <- function(y,
       x1/n1
 
     dfcom <-
-      (n0+n1)-2
+      (n0+n1)-1
     # Proportion and Standard Error according to Wald
     phat_diff <-
       p1hat - p0hat

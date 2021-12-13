@@ -9,11 +9,11 @@
 #' @param data An objects of class \code{milist}, created by
 #'  \code{df2milist}, \code{list2milist} or \code{mids2milist}.
 #'
-#' @details Note that the standard error of the RR is on the natural
-#'  log scale, both when you use formula or y and x.
+#' @details Note that the standard error of the RR is in fact the
+#'  standard error of the (natural) risk ratio.
 #'
-#' @return The risk ratio and related standard error and
-#'  degrees of freedom to be used in function \code{with.milist}.
+#' @return The risk ratio, related standard error and
+#'  complete data degrees of freedom (dfcom) as n-2.
 #'
 #' @author Martijn Heymans, 2021
 #'

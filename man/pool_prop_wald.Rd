@@ -23,8 +23,8 @@ standard error according to Wald across multiply imputed datasets
 and using Rubin's Rules.
 }
 \details{
-Before pooling, the proportions will be naturally log transformed and
-the pooled estimates back transformed to the original scale.
+Before pooling, the proportions will be naturally log
+transformed and the pooled estimates back transformed to the original scale.
 }
 \examples{
 
