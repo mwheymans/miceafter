@@ -25,6 +25,7 @@ The parameters for the Beta distribution are calculated
 using the method of moments (Gelman et al. p. 582).
 }
 \examples{
+
  imp_dat <- df2milist(lbpmilr, impvar='Impnr')
  ra <- with(imp_dat, expr=prop_nna(Radiation))
  res <- pool_prop_nna(ra)

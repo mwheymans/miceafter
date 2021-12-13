@@ -24,7 +24,7 @@
 #' @examples
 #'
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
-#' ra <- with(imp_dat, expr=prop_wald(Chronic ~ 1))
+#' ra <- with(imp_dat, expr=prop_wald(Radiation ~ 1))
 #' res <- pool_prop_wald(ra)
 #' res
 #'
@@ -59,6 +59,10 @@ pool_prop_wald <- function(object,
               se=pool_est$pool_se, crit.value=pool_est$t)
   colnames(output) <-
     c("Prop Wald", "Statistic", "95%CI L", "95%CI U")
+
+  if(output[4] > 1) output[4] <- 1.00
+  if(output[3] < 0) output[3] <- 0.00
+
   class(output) <- 'mipool'
   return(output)
 }

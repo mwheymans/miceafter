@@ -24,6 +24,7 @@
 #' @seealso \code{\link{with.milist}}, \code{\link{prop_nna}}
 #'
 #' @examples
+#'
 #'  imp_dat <- df2milist(lbpmilr, impvar='Impnr')
 #'  ra <- with(imp_dat, expr=prop_nna(Radiation))
 #'  res <- pool_prop_nna(ra)

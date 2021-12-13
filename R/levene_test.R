@@ -8,7 +8,7 @@
 #' @param y numeric (continuous) response variable.
 #' @param formula A formula object to specify the model as normally
 #'  used by glm. Use 'factor' to define the grouping x variable. Only
-#'  one grouping variable is allowed.
+#'  one variable is allowed.
 #' @param data An objects of class \code{milist}, created by
 #'  \code{df2milist}, \code{list2milist} or \code{mids2milist}.
 #'
@@ -54,7 +54,7 @@ levene_test <- function(y,
     nr_var <-
       attr(fit$terms, "term.labels")
     if(length(nr_var) > 1)
-      stop("Include only one independent categorical variable")
+      stop("Include only one categorical variable")
     df <-
       fit$model
     names(df) <-

@@ -79,6 +79,7 @@
 #' @author Martijn Heymans, 2021
 #'
 #' @examples
+#'
 #'   dat_list <- df2milist(lbpmilr, impvar="Impnr")
 #'   ra <- with(data=dat_list, expr = glm(Chronic ~ factor(Carrying) + Radiation + Age))
 #'   poolm <- pool_glm(ra, method="D1")
@@ -126,15 +127,26 @@ pool_glm <- function(object,
 
   if(object$statistics[[1]]$family[[1]]=="binomial"){
     pmodel <-
-      glm_mi(data=imp_dat, formula = fm,
-                     p.crit = p.crit, direction=direction, nimp=nimp, impvar="imp_id",
-                     keep.predictors = keep.predictors, method=method, model_type="binomial")
+      glm_mi(data=imp_dat,
+             formula = fm, p.crit = p.crit,
+             direction=direction,
+             nimp=nimp,
+             impvar="imp_id",
+             keep.predictors = keep.predictors,
+             method=method,
+             model_type="binomial")
   }
   if(object$statistics[[1]]$family[[1]]=="gaussian"){
     pmodel <-
-      glm_mi(data=imp_dat, formula = fm,
-                     p.crit = p.crit, direction=direction, nimp=nimp, impvar="imp_id",
-                     keep.predictors = keep.predictors, method=method, model_type="linear")
+      glm_mi(data=imp_dat,
+             formula = fm,
+             p.crit = p.crit,
+             direction=direction,
+             nimp=nimp,
+             impvar="imp_id",
+             keep.predictors = keep.predictors,
+             method=method,
+             model_type="linear")
   }
 
   output <-

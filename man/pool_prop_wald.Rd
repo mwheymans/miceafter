@@ -32,7 +32,7 @@ transformed and the pooled estimates back transformed to the original scale.
 \examples{
 
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
-ra <- with(imp_dat, expr=prop_wald(Chronic ~ 1))
+ra <- with(imp_dat, expr=prop_wald(Radiation ~ 1))
 res <- pool_prop_wald(ra)
 res
 

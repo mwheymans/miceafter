@@ -23,6 +23,7 @@ The pooled RR and confidence intervals.
 confidence interval.
 }
 \examples{
+
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 ra <- with(imp_dat, expr=risk_ratio(Chronic ~ Radiation))
 res <- pool_risk_ratio(ra)

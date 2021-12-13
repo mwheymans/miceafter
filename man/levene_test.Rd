@@ -13,7 +13,7 @@ levene_test(y, x, formula, data)
 
 \item{formula}{A formula object to specify the model as normally
 used by glm. Use 'factor' to define the grouping x variable. Only
-one grouping variable is allowed.}
+one variable is allowed.}
 
 \item{data}{An objects of class \code{milist}, created by
 \code{df2milist}, \code{list2milist} or \code{mids2milist}.}

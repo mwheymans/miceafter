@@ -31,6 +31,7 @@ standard error according to Wald and degrees of freedom to
 be used in function \code{with.miceafter}.
 }
 \examples{
+
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 ra <- with(imp_dat, expr=propdiff_wald(Chronic ~ Radiation))
 

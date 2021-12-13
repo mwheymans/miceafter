@@ -19,8 +19,9 @@
 #' @seealso \code{\link{with.milist}}, \code{\link{prop_wald}}
 #'
 #' @examples
+#'
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
-#' ra <- with(imp_dat, expr=prop_wald(Chronic ~ 1))
+#' ra <- with(imp_dat, expr=prop_wald(Radiation ~ 1))
 #' res <- pool_prop_wilson(ra)
 #' res
 #'

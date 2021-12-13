@@ -27,7 +27,7 @@ and standard error according to Agresti-Caffo across multiply imputed datasets.
 \examples{
 
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
-ra <- with(imp_dat, expr=propdiff_ac(Chronic ~ Gender))
+ra <- with(imp_dat, expr=propdiff_ac(Chronic ~ Radiation))
 res <- pool_propdiff_ac(ra)
 res
 

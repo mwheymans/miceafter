@@ -29,6 +29,7 @@ Note that the standard error of the RR is in fact the
 standard error of the (natural) risk ratio.
 }
 \examples{
+
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 ra <- with(imp_dat, expr=risk_ratio(Chronic ~ Radiation))
 

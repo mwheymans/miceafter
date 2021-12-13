@@ -33,6 +33,7 @@ https://mwheymans.github.io/miceafter/articles/pooling_cindex.html
 }
 
 \examples{
+
  # Logistic Regression
  imp_dat <- df2milist(lbpmilr, impvar="Impnr")
  res_stats <- with(data=imp_dat,

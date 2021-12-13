@@ -23,6 +23,7 @@
 #' @seealso \code{\link{with.milist}}, \code{\link{cindex}}
 #'
 #' @examples
+#'
 #'  # Logistic Regression
 #'  imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 #'  res_stats <- with(data=imp_dat,

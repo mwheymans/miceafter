@@ -16,6 +16,7 @@
 #' @seealso \code{\link{with.milist}}, \code{\link{risk_ratio}}
 #'
 #' @examples
+#'
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 #' ra <- with(imp_dat, expr=risk_ratio(Chronic ~ Radiation))
 #' res <- pool_risk_ratio(ra)
@@ -54,8 +55,8 @@ pool_risk_ratio <- function(object,
     matrix(c(exp(pool_est$pool_est), low, high), 1, 3)
   colnames(output) <-
     c("pooled RR",
-                        c(paste(conf.level*100, "CI low"),
-                          paste(conf.level*100, "CI high")))
+      c(paste(conf.level*100, "CI low"),
+        paste(conf.level*100, "CI high")))
   class(output) <-
     'mipool'
   return(output)

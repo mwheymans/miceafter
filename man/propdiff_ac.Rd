@@ -27,6 +27,7 @@ according to Agresti-Caffo and complete data degrees of freedom
 and standard error according to method Agresti-Caffo.
 }
 \examples{
+
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 ra <- with(imp_dat, expr=propdiff_ac(Chronic ~ Radiation))
 

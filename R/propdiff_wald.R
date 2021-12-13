@@ -22,6 +22,7 @@
 #' @seealso \code{\link{with.milist}}, \code{\link{pool_propdiff_nw}}
 #'
 #' @examples
+#'
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 #' ra <- with(imp_dat, expr=propdiff_wald(Chronic ~ Radiation))
 #'
@@ -113,7 +114,7 @@ propdiff_wald <- function(y,
       matrix(c(est_gr1, est_gr0), 1, 6)
     colnames(output) <-
       c("prop1", "se1", "n1",
-                          "prop0", "se0", "n0")
+        "prop0", "se0", "n0")
     return(output)
   }
 }

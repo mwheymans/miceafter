@@ -19,6 +19,7 @@
 #' @seealso \code{\link{with.milist}}, \code{\link{pool_propdiff_ac}}
 #'
 #' @examples
+#'
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 #' ra <- with(imp_dat, expr=propdiff_ac(Chronic ~ Radiation))
 #'
