@@ -106,11 +106,11 @@ statistic.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
 <span class="r-in"><span class="va">imp_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">imp_dat</span>, expr<span class="op">=</span><span class="fu"><a href="propdiff_ac.html">propdiff_ac</a></span><span class="op">(</span><span class="va">Chronic</span> <span class="op">~</span> <span class="va">Gender</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">imp_dat</span>, expr<span class="op">=</span><span class="fu"><a href="propdiff_ac.html">propdiff_ac</a></span><span class="op">(</span><span class="va">Chronic</span> <span class="op">~</span> <span class="va">Radiation</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">pool_propdiff_ac</span><span class="op">(</span><span class="va">ra</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">res</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Prop diff AC 95 CI low 95 CI high</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]   -0.1352357 -0.313936  0.0434645</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    0.2718669 0.1185021  0.4252316</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "mipool"</span>
 <span class="r-in"></span>
