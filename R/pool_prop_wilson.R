@@ -20,10 +20,15 @@
 #'
 #' @examples
 #'
+#' lbpmilr %>%
+#'   df2milist(impvar="Impnr") %>%
+#'     with(expr=prop_wald(Radiation ~ 1)) %>%
+#'       pool_prop_wilson()
+#'
+#' # Same as
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 #' ra <- with(imp_dat, expr=prop_wald(Radiation ~ 1))
 #' res <- pool_prop_wilson(ra)
-#' res
 #'
 #' @export
 pool_prop_wilson <- function(object, conf.level=0.95){

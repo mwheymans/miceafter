@@ -26,10 +26,15 @@
 #'
 #' @examples
 #'
+#' lbpmilr %>%
+#'   df2milist(impvar="Impnr") %>%
+#'     with(expr=propdiff_wald(Chronic ~ Radiation, strata = TRUE)) %>%
+#'       pool_propdiff_nw()
+#'
+#' # Same as
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 #' res <- with(imp_dat, expr=propdiff_wald(Chronic ~ Radiation, strata = TRUE))
 #' res <- pool_propdiff_nw(res)
-#' res
 #'
 #' @export
 pool_propdiff_nw <- function(object,

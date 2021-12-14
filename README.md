@@ -14,7 +14,8 @@ package contains a variety of statistical tests like the
 imputed datasets or the `pool_propdiff_nw function` to pool the
 difference between proportions according to method Newcombe-Wilson. The
 package also contains a function `pool_glm` to pool and select linear
-and logistic regression functions.
+and logistic regression functions. Functions can also be used in
+combination with the `%>%` (Pipe) operator.
 
 More and more statistical analyses and pooling functions will be added
 over time to form a framework of statistical tests that can be applied
@@ -39,6 +40,22 @@ ra <- with(imp_dat, expr=levene_test(Pain ~ factor(Carrying)))
 # Step 3: Pool repeated test results
 res <- pool_levenetest(ra, method="D1")
 res
+#>       F_value df1      df2    P(>F)       RIV
+#> [1,] 1.586703   2 115.3418 0.209032 0.1809493
+#> attr(,"class")
+#> [1] "mipool"
+```
+
+## Pooling Levene’s Test in one Pipe
+
+``` r
+library(miceafter)
+library(magrittr)
+
+lbpmilr %>%
+  df2milist(impvar="Impnr") %>%
+     with(expr=levene_test(Pain ~ factor(Carrying))) %>%
+                                pool_levenetest(method="D1")
 #>       F_value df1      df2    P(>F)       RIV
 #> [1,] 1.586703   2 115.3418 0.209032 0.1809493
 #> attr(,"class")

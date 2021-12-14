@@ -68,7 +68,7 @@ pool_cindex <- function(data,
 
   est_log <-
     pool_scalar_RR(est=ra[, 1], se=ra[, 2], logit_trans=TRUE,
-                            conf.level=0.95, dfcom=dfcom)
+                            conf.level=conf.level, dfcom=dfcom)
   est_orig <-
     invlogit_ci(est=est_log$pool_est,
                          se=est_log$pool_se,

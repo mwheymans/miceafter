@@ -27,10 +27,15 @@ https://mwheymans.github.io/miceafter/articles/levene_test.html
 
 \examples{
 
+lbpmilr \%>\%
+   df2milist(impvar="Impnr") \%>\%
+      with(expr=levene_test(Pain ~ factor(Carrying))) \%>\%
+         pool_levenetest(method="D1")
+
+# Same as
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 ra <- with(imp_dat, expr=levene_test(Pain ~ factor(Carrying)))
 res <- pool_levenetest(ra, method="D1")
-res
 
 }
 \references{

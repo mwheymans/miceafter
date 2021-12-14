@@ -3,7 +3,6 @@ Type: Package
 Depends:
     R (>= 4.0.0),
 Imports:
-    norm (>= 1.0-9.5),
     survival (>= 3.1-12),
     pROC (>= 1.16.2),
     rms (>= 6.1-0),
@@ -16,7 +15,6 @@ Imports:
     tidyr (>= 1.1.2),
     tibble (>= 3.0.4),
     stringr (>= 1.4.0),
-    miceadds (>= 3.10-28),
     car (>= 3.0-10),
     rlang
 Suggests: 
@@ -37,6 +35,7 @@ Description:
    of repeated statistical analysis can be performed and finally pooled. Statistical analysis 
    that are available are, among others, Levene's test, Odds and Risk Ratios, One sample 
    proportions, difference between proportions and linear and logistic regression models. 
+   Functions can also be used in combination with the Pipe operator. 
    More and more statistical analyses and pooling functions will be added over time.
 Encoding: UTF-8
 LazyData: true

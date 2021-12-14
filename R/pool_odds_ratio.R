@@ -17,10 +17,15 @@
 #'
 #' @examples
 #'
+#' lbpmilr %>%
+#'    df2milist(impvar="Impnr") %>%
+#'      with(expr=odds_ratio(Chronic ~ Radiation)) %>%
+#'        pool_odds_ratio()
+#'
+#' # Same as
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 #' ra <- with(imp_dat, expr=odds_ratio(Chronic ~ Radiation))
 #' res <- pool_odds_ratio(ra)
-#' res
 #'
 #' @export
 pool_odds_ratio <- function(object,

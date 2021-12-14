@@ -33,6 +33,7 @@
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 #' ra <- with(imp_dat, expr=levene_test(Pain ~ factor(Carrying)))
 #'
+#'
 #' @export
 levene_test <- function(y,
                         x,

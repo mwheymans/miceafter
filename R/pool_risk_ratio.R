@@ -17,10 +17,15 @@
 #'
 #' @examples
 #'
+#' lbpmilr %>%
+#'  df2milist(impvar="Impnr") %>%
+#'    with(expr=risk_ratio(Chronic ~ Radiation)) %>%
+#'      pool_risk_ratio()
+#'
+#' # Same as
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")
 #' ra <- with(imp_dat, expr=risk_ratio(Chronic ~ Radiation))
 #' res <- pool_risk_ratio(ra)
-#' res
 #'
 #' @export
 pool_risk_ratio <- function(object,
