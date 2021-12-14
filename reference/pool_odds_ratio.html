@@ -101,14 +101,16 @@ number is taken from function <code>odds_ratio</code></p></dd>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
+<span class="r-in"><span class="va">lbpmilr</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span class="r-in">   <span class="fu"><a href="df2milist.html">df2milist</a></span><span class="op">(</span>impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span class="r-in">     <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span>expr<span class="op">=</span><span class="fu"><a href="odds_ratio.html">odds_ratio</a></span><span class="op">(</span><span class="va">Chronic</span> <span class="op">~</span> <span class="va">Radiation</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span class="r-in">       <span class="fu">pool_odds_ratio</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in lbpmilr %&gt;% df2milist(impvar = "Impnr") %&gt;% with(expr = odds_ratio(Chronic ~     Radiation)) %&gt;% pool_odds_ratio():</span> could not find function "%&gt;%"</span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Same as</span></span>
 <span class="r-in"><span class="va">imp_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">imp_dat</span>, expr<span class="op">=</span><span class="fu"><a href="odds_ratio.html">odds_ratio</a></span><span class="op">(</span><span class="va">Chronic</span> <span class="op">~</span> <span class="va">Radiation</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">pool_odds_ratio</span><span class="op">(</span><span class="va">ra</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">res</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      pooled OR 95 CI low 95 CI high</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  3.193372   1.61868   6.299962</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "mipool"</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
