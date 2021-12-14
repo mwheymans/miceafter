@@ -17,6 +17,7 @@
 #'
 #' @examples
 #'
+#' library(magrittr)
 #' lbpmilr %>%
 #'  df2milist(impvar="Impnr") %>%
 #'    with(expr=risk_ratio(Chronic ~ Radiation)) %>%

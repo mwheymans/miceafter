@@ -26,6 +26,7 @@
 #'
 #' @examples
 #'
+#' library(magrittr)
 #' lbpmilr %>%
 #'   df2milist(impvar="Impnr") %>%
 #'     with(expr=propdiff_wald(Chronic ~ Radiation, strata = TRUE)) %>%

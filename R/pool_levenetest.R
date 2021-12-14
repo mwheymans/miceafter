@@ -25,11 +25,11 @@
 #' @seealso \code{\link{with.milist}}, \code{\link{levene_test}}
 #'
 #' @examples
-#'
+#' library(magrittr)
 #' lbpmilr %>%
 #'    df2milist(impvar="Impnr") %>%
 #'       with(expr=levene_test(Pain ~ factor(Carrying))) %>%
-#'          pool_levenetest(method="D1")
+#'         pool_levenetest(method="D1")
 #'
 #' # Same as
 #' imp_dat <- df2milist(lbpmilr, impvar="Impnr")

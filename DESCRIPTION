@@ -6,7 +6,6 @@ Imports:
     survival (>= 3.1-12),
     pROC (>= 1.16.2),
     rms (>= 6.1-0),
-    magrittr (>= 2.0.1),
     mice (>= 3.12.0),
     mitml (>= 0.3-7),
     mitools (>= 2.4),
@@ -16,7 +15,8 @@ Imports:
     tibble (>= 3.0.4),
     stringr (>= 1.4.0),
     car (>= 3.0-10),
-    rlang
+    rlang,
+    magrittr
 Suggests: 
     foreign (>= 0.8-80),
     knitr,

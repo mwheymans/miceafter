@@ -29,6 +29,7 @@ function and to set strata = TRUE in that function.
 }
 \examples{
 
+library(magrittr)
 lbpmilr \%>\%
   df2milist(impvar="Impnr") \%>\%
     with(expr=propdiff_wald(Chronic ~ Radiation, strata = TRUE)) \%>\%

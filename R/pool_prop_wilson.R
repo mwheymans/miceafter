@@ -20,6 +20,7 @@
 #'
 #' @examples
 #'
+#' library(magrittr)
 #' lbpmilr %>%
 #'   df2milist(impvar="Impnr") %>%
 #'     with(expr=prop_wald(Radiation ~ 1)) %>%
