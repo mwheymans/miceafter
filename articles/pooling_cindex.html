@@ -106,7 +106,7 @@
 </h2>
 </div>
 <div class="section level2">
-<h2 id="after-the-mice-function-and-with-logistic-regression">After the <code>mice</code> function and with Logistic Regression<a class="anchor" aria-label="anchor" href="#after-the-mice-function-and-with-logistic-regression"></a>
+<h2 id="pooling-the-c-index-after-the-mice-function-and-logistic-regression">Pooling the C-index After the <code>mice</code> function and Logistic Regression<a class="anchor" aria-label="anchor" href="#pooling-the-c-index-after-the-mice-function-and-logistic-regression"></a>
 </h2>
 <p>The lbp_orig is a dataset as part of the miceafter package with missing values. So we first impute them with the <code>mice</code> function. Than we use the <code>mids2milist</code> function to turn the <code>mids</code> object with multiply imputed datasets, as a result of using <code>mice</code>, into a <code>milist</code> object. Than we use the <code>with</code> function to apply repeated analyses with the <code>cindex</code> function across the multiply imputed datasets. Finally, we pool the results by using the <code>pool_cindex</code> function. We do that in one pipe.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
@@ -122,7 +122,7 @@
 <span class="co">#&gt; [1] "mipool"</span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="after-multiply-imputed-datasets-are-stored-in-a-separate-dataframe-and-with-logistic-regression">After Multiply Imputed datasets are stored in a separate dataframe and with Logistic Regression<a class="anchor" aria-label="anchor" href="#after-multiply-imputed-datasets-are-stored-in-a-separate-dataframe-and-with-logistic-regression"></a>
+<h2 id="pooling-the-c-index-after-multiply-imputed-datasets-are-stored-in-a-dataframe-and-with-logistic-regression">Pooling the C-index after Multiply Imputed datasets are stored in a dataframe and with Logistic Regression<a class="anchor" aria-label="anchor" href="#pooling-the-c-index-after-multiply-imputed-datasets-are-stored-in-a-dataframe-and-with-logistic-regression"></a>
 </h2>
 <p>The dataset <code>lbpmilr</code> as part of the miceafter package is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the <code>Impnr</code> variable. First we convert the dataset into a <code>milist</code> object by using the <code>df2milist</code> function. Than we use the <code>with</code> function to apply repeated analyses with the <code>cindex</code> function across the multiply imputed datasets. Finally, we pool the results by using the <code>pool_cindex</code> function.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -140,7 +140,7 @@
 <span class="co">#&gt; [1] "mipool"</span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="after-multiply-imputed-datasets-are-stored-in-a-separate-dataframe-and-with-cox-regression">After Multiply Imputed datasets are stored in a separate dataframe and with Cox Regression<a class="anchor" aria-label="anchor" href="#after-multiply-imputed-datasets-are-stored-in-a-separate-dataframe-and-with-cox-regression"></a>
+<h2 id="pooling-the-c-index-after-multiply-imputed-datasets-are-stored-in-a-dataframe-and-with-cox-regression">Pooling the C-index after Multiply Imputed datasets are stored in a dataframe and with Cox Regression<a class="anchor" aria-label="anchor" href="#pooling-the-c-index-after-multiply-imputed-datasets-are-stored-in-a-dataframe-and-with-cox-regression"></a>
 </h2>
 <p>The dataset <code>lbpmicox</code> as part of the miceafter package is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the <code>Impnr</code> variable. First we convert the dataset into a <code>milist</code> object by using the <code>df2milist</code> function. Than we use the <code>with</code> function to apply repeated analyses with the <code>cindex</code> function across the list of multiply imputed datasets. Finally, we pool the results by using the <code>pool_cindex</code> function.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
