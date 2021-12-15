@@ -24,6 +24,9 @@
 #' @param model_type A character vector for type of model, "binomial" is for logistic regression and
 #'   "linear" is for linear regression models.
 #'
+#' @return The outcome variable, the names of the predictors and name of variable to keep, if defined.
+#'  For internal use.
+#'
 #' @details The basic pooling procedure to derive pooled coefficients, standard errors, 95
 #'  confidence intervals and p-values is Rubin's Rules (RR). RR are possible when the model
 #'  includes continuous or dichotomous variables. When the model includes categorical (> 2 categories)

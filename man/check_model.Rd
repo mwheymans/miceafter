@@ -46,6 +46,10 @@ means forward selection.}
 \item{model_type}{A character vector for type of model, "binomial" is for logistic regression and
 "linear" is for linear regression models.}
 }
+\value{
+The outcome variable, the names of the predictors and name of variable to keep, if defined.
+For internal use.
+}
 \description{
 \code{check_model} Function to check input data for
 function \code{glm_mi}

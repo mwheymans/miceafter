@@ -6,6 +6,9 @@
 \usage{
 clean_P(variable)
 }
+\value{
+"Clean" version of variables. For internal use.
+}
 \description{
 Function to clean variables
 }
