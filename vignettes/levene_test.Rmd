@@ -27,21 +27,7 @@ Levene's test is used to test if the variance between groups is comparable. The 
 
 ## Examples
 
-## After the `mice` function in one pipe
-
-The lbp_orig as part of the miceafter package is a dataset with missing values. So we first impute them with the `mice` function. Than we use the `mids2milist` function to turn a `mids` object with multiply imputed datasets, as a result of using `mice`, into a `milist` object. Than we use the `with` function to apply repeated analyses with the `levene_test` function across the list of multiply imputed datasets. Finally, we pool the results by using the `pool_levenetest` function.
-
-```{r}
-
-  lbp_orig %>% 
-    mice(m=5, seed=3025, printFlag = FALSE) %>%
-      mids2milist() %>%
-        with(expr = levene_test(Pain ~ factor(Satisfaction))) %>%
-          pool_levenetest(method = "D1")
-
-```  
-
-## After the `mice` function basic
+## Pooling Levene's test after the `mice` function 
 
 The lbp_orig as part of the miceafter package is a dataset with missing values. So we first impute them with the `mice` function. Than we use the `mids2milist` function to turn a `mids` object with multiply imputed datasets, as a result of using `mice`, into a `milist` object. Than we use the `with` function to apply repeated analyses with the `levene_test` function across the list of multiply imputed datasets. Finally, we pool the results by using the `pool_levenetest` function.
 
@@ -59,7 +45,21 @@ The lbp_orig as part of the miceafter package is a dataset with missing values. 
 
 ```  
 
-## After Multiply Imputed datasets are stored in a separate dataframe 
+## Pooling Levene's test after the `mice` function in one Pipe
+
+The lbp_orig as part of the miceafter package is a dataset with missing values. So we first impute them with the `mice` function. Than we use the `mids2milist` function to turn a `mids` object with multiply imputed datasets, as a result of using `mice`, into a `milist` object. Than we use the `with` function to apply repeated analyses with the `levene_test` function across the list of multiply imputed datasets. Finally, we pool the results by using the `pool_levenetest` function.
+
+```{r}
+
+  lbp_orig %>% 
+    mice(m=5, seed=3025, printFlag = FALSE) %>%
+      mids2milist() %>%
+        with(expr = levene_test(Pain ~ factor(Satisfaction))) %>%
+          pool_levenetest(method = "D1")
+
+```  
+
+## Pooling Levene's test after Multiply Imputed datasets are stored in a separate dataframe 
 
 The dataset `lbpmilr` as part of the miceafter package is a long dataset that contains 10 multiply imputed datasets. The datasets are distinguished by the `Impnr` variable. First we convert the dataset into a `milist` object by the `df2milist` function. Than we use the `with` function to apply repeated analyses with the `levene_test` function across the multiply imputed datasets. Finally, we pool the results by using the `pool_levenetest` function. As pooling method we use `D1` (`D2` is also possible).
 
