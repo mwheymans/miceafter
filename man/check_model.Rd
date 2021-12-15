@@ -47,9 +47,8 @@ means forward selection.}
 "linear" is for linear regression models.}
 }
 \description{
-\code{check_model} Back transformation to original scale of
-natural logarithmic transformed parameters and calculating
-confidence interval
+\code{check_model} Function to check input data for
+function \code{glm_mi}
 }
 \details{
 The basic pooling procedure to derive pooled coefficients, standard errors, 95

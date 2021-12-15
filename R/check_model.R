@@ -1,8 +1,7 @@
 #' Function to check input data for function \code{glm_mi}
 #'
-#' \code{check_model} Back transformation to original scale of
-#'  natural logarithmic transformed parameters and calculating
-#'  confidence interval
+#' \code{check_model} Function to check input data for
+#'  function \code{glm_mi}
 #'
 #' @param data Data frame with stacked multiple imputed datasets.
 #'   The original dataset that contains missing values must be excluded from the
