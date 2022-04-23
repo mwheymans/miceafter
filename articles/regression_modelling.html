@@ -43,7 +43,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -87,7 +87,7 @@
       <h1 data-toc-skip>mice and miceafter for Regression modelling</h1>
                         <h4 data-toc-skip class="author">Martijn W Heymans</h4>
             
-            <h4 data-toc-skip class="date">2021-12-15</h4>
+            <h4 data-toc-skip class="date">2022-04-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mwheymans/miceafter/blob/HEAD/vignettes/regression_modelling.Rmd" class="external-link"><code>vignettes/regression_modelling.Rmd</code></a></small>
       <div class="hidden name"><code>regression_modelling.Rmd</code></div>
@@ -96,9 +96,9 @@
 
     
     
-<div class="section level1">
-<h1 id="installing-the-miceafter-and-mice-packages">Installing the miceafter and mice packages<a class="anchor" aria-label="anchor" href="#installing-the-miceafter-and-mice-packages"></a>
-</h1>
+<div class="section level2">
+<h2 id="installing-the-miceafter-and-mice-packages">Installing the miceafter and mice packages<a class="anchor" aria-label="anchor" href="#installing-the-miceafter-and-mice-packages"></a>
+</h2>
 <p>You can install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
@@ -107,18 +107,18 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"mice"</span><span class="op">)</span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
-</h1>
+<div class="section level2">
+<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+</h2>
 <ul>
 <li><a href="#mice-and-miceafter-for-pooling-logistic-regression-models">mice and miceafter for pooling logistic regression models</a></li>
 <li><a href="#mice-and-miceafter-for-pooling-linear-regression-models">mice and miceafter for pooling linear regression models</a></li>
 <li><a href="#mice-and-miceafter-for-selecting-logistic-regression-models">mice and miceafter for selecting logistic regression models</a></li>
 <li><a href="#mice-and-miceafter-for-selecting-linear-regression-models">mice and miceafter for selecting linear regression models</a></li>
 </ul>
-<div class="section level2">
-<h2 id="mice-and-miceafter-for-pooling-logistic-regression-models">mice and miceafter for pooling logistic regression models<a class="anchor" aria-label="anchor" href="#mice-and-miceafter-for-pooling-logistic-regression-models"></a>
-</h2>
+<div class="section level3">
+<h3 id="mice-and-miceafter-for-pooling-logistic-regression-models">mice and miceafter for pooling logistic regression models<a class="anchor" aria-label="anchor" href="#mice-and-miceafter-for-pooling-logistic-regression-models"></a>
+</h3>
 <p>lbp_orig is a dataset that is part of the miceafter package with missing values. So we first impute them with the <code>mice</code> function. Than we use the <code>mids2milist</code> function to turn a <code>mids</code> object, as a result of using <code>mice</code>, into a <code>milist</code> object with multiply imputed datasets. Than we use the <code>with</code> function to apply repeated logistic regression analyses. With the <code>pool_glm</code> function we obtain the results for the pooled model.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -135,40 +135,40 @@
   
   <span class="va">poolm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pool_glm.html">pool_glm</a></span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span><span class="op">)</span>
   <span class="va">poolm</span><span class="op">$</span><span class="va">pmodel</span>
-<span class="co">#&gt;                term    estimate  std.error  statistic        df    p.value</span>
-<span class="co">#&gt; 1       (Intercept) -2.69402592 2.67263004 -1.0080056 122.33544 0.31544139</span>
-<span class="co">#&gt; 2            Gender -0.25885512 0.44559375 -0.5809218 145.12075 0.56219425</span>
-<span class="co">#&gt; 3           Smoking  0.07255496 0.36827325  0.1970139 144.44446 0.84409358</span>
-<span class="co">#&gt; 4          Function -0.06727709 0.05289516 -1.2718950  58.47814 0.20844536</span>
-<span class="co">#&gt; 5        JobControl  0.00344687 0.02262901  0.1523208  56.57667 0.87947580</span>
-<span class="co">#&gt; 6        JobDemands  0.01273724 0.03974932  0.3204391 114.56922 0.74921916</span>
-<span class="co">#&gt; 7     SocialSupport  0.05979734 0.06001095  0.9964404 133.90791 0.32083341</span>
-<span class="co">#&gt; 8 factor(Carrying)2  1.35988140 0.53165802  2.5578123 103.43965 0.01198287</span>
-<span class="co">#&gt; 9 factor(Carrying)3  2.10175083 0.56528529  3.7180356  93.85687 0.00034145</span>
-<span class="co">#&gt;           OR    lower.EXP upper.EXP</span>
-<span class="co">#&gt; 1 0.06760821 0.0003406624 13.417595</span>
-<span class="co">#&gt; 2 0.77193485 0.3199639380  1.862346</span>
-<span class="co">#&gt; 3 1.07525190 0.5192624767  2.226555</span>
-<span class="co">#&gt; 4 0.93493610 0.8410199991  1.039340</span>
-<span class="co">#&gt; 5 1.00345282 0.9589903274  1.049977</span>
-<span class="co">#&gt; 6 1.01281870 0.9361293113  1.095791</span>
-<span class="co">#&gt; 7 1.06162138 0.9428061204  1.195410</span>
-<span class="co">#&gt; 8 3.89573125 1.3573257228 11.181341</span>
-<span class="co">#&gt; 9 8.18047997 2.6627017723 25.132463</span>
+<span class="co">#&gt;                term     estimate  std.error   statistic        df     p.value</span>
+<span class="co">#&gt; 1       (Intercept) -2.199553243 2.74475872 -0.80136488  89.68012 0.425038616</span>
+<span class="co">#&gt; 2            Gender -0.219068135 0.44581490 -0.49138810 141.63187 0.623912603</span>
+<span class="co">#&gt; 3           Smoking  0.112357931 0.36817752  0.30517325 141.55917 0.760682456</span>
+<span class="co">#&gt; 4          Function -0.073770624 0.04991288 -1.47798780 103.67214 0.142442764</span>
+<span class="co">#&gt; 5        JobControl  0.005701137 0.02152198  0.26489836  96.04121 0.791655458</span>
+<span class="co">#&gt; 6        JobDemands  0.001290886 0.04011425  0.03218023 115.54333 0.974383844</span>
+<span class="co">#&gt; 7     SocialSupport  0.056511610 0.06339051  0.89148378  70.05824 0.375721300</span>
+<span class="co">#&gt; 8 factor(Carrying)2  1.201478027 0.54057051  2.22261113  61.19652 0.029947064</span>
+<span class="co">#&gt; 9 factor(Carrying)3  1.965938960 0.57770035  3.40304273  56.02786 0.001236647</span>
+<span class="co">#&gt;          OR    lower.EXP upper.EXP</span>
+<span class="co">#&gt; 1 0.1108527 0.0004747318 25.884751</span>
+<span class="co">#&gt; 2 0.8032670 0.3327447471  1.939138</span>
+<span class="co">#&gt; 3 1.1189133 0.5403820347  2.316818</span>
+<span class="co">#&gt; 4 0.9288847 0.8413450513  1.025533</span>
+<span class="co">#&gt; 5 1.0057174 0.9636574185  1.049613</span>
+<span class="co">#&gt; 6 1.0012917 0.9248129687  1.084095</span>
+<span class="co">#&gt; 7 1.0581389 0.9324731471  1.200740</span>
+<span class="co">#&gt; 8 3.3250278 1.1281856124  9.799637</span>
+<span class="co">#&gt; 9 7.1416151 2.2449400181 22.718944</span>
   <span class="va">poolm</span><span class="op">$</span><span class="va">pmultiparm</span>
-<span class="co">#&gt;                   p-values D1 F-statistic</span>
-<span class="co">#&gt; Gender           0.5612989834  0.33747014</span>
-<span class="co">#&gt; Smoking          0.8438190746  0.03881449</span>
-<span class="co">#&gt; Function         0.2060033374  1.61771688</span>
-<span class="co">#&gt; JobControl       0.8792195014  0.02320164</span>
-<span class="co">#&gt; JobDemands       0.7487306708  0.10268124</span>
-<span class="co">#&gt; SocialSupport    0.3191382064  0.99289346</span>
-<span class="co">#&gt; factor(Carrying) 0.0009354539  7.12063523</span></code></pre></div>
+<span class="co">#&gt;                  p-values D1 F-statistic</span>
+<span class="co">#&gt; Gender           0.623167202 0.241462266</span>
+<span class="co">#&gt; Smoking          0.760243315 0.093130713</span>
+<span class="co">#&gt; Function         0.140101347 2.184447938</span>
+<span class="co">#&gt; JobControl       0.791243299 0.070171139</span>
+<span class="co">#&gt; JobDemands       0.974337064 0.001035567</span>
+<span class="co">#&gt; SocialSupport    0.374008405 0.794743335</span>
+<span class="co">#&gt; factor(Carrying) 0.003674305 5.967510908</span></code></pre></div>
 <p>Back to <a href="#examples">Examples</a></p>
 </div>
-<div class="section level2">
-<h2 id="mice-and-miceafter-for-pooling-linear-regression-models">mice and miceafter for pooling linear regression models<a class="anchor" aria-label="anchor" href="#mice-and-miceafter-for-pooling-linear-regression-models"></a>
-</h2>
+<div class="section level3">
+<h3 id="mice-and-miceafter-for-pooling-linear-regression-models">mice and miceafter for pooling linear regression models<a class="anchor" aria-label="anchor" href="#mice-and-miceafter-for-pooling-linear-regression-models"></a>
+</h3>
 <p>The lbp_orig is a dataset that is part of the miceafter package with missing values. So we first impute them with the <code>mice</code> function. Than we use the <code>mids2milist</code> function to turn a <code>mids</code> object, as a result of using <code>mice</code>, into a <code>milist</code> object with multiply imputed datasets. Than we use the <code>with</code> function to apply repeated linear regression analyses. With the <code>pool_glm</code> function we obtain the results for the pooled model.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -184,40 +184,40 @@
   
   <span class="va">poolm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pool_glm.html">pool_glm</a></span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span><span class="op">)</span>
   <span class="va">poolm</span><span class="op">$</span><span class="va">pmodel</span>
-<span class="co">#&gt;                term     estimate  std.error   statistic        df     p.value</span>
-<span class="co">#&gt; 1       (Intercept)  5.339409488 2.35932914  2.26310497 117.82350 0.025460376</span>
-<span class="co">#&gt; 2            Gender -0.380432159 0.40912050 -0.92987801 118.49141 0.354324799</span>
-<span class="co">#&gt; 3           Smoking -0.161152266 0.32086946 -0.50223622 126.87140 0.616371938</span>
-<span class="co">#&gt; 4          Function -0.071265550 0.04430006 -1.60870106  66.63586 0.112409729</span>
-<span class="co">#&gt; 5        JobControl -0.017403799 0.01850979 -0.94024809  99.61907 0.349364671</span>
-<span class="co">#&gt; 6        JobDemands  0.030796454 0.03455987  0.89110455 116.34259 0.374712247</span>
-<span class="co">#&gt; 7     SocialSupport  0.003015437 0.05215139  0.05782083 141.18492 0.953973097</span>
-<span class="co">#&gt; 8 factor(Carrying)2  0.669761945 0.40643445  1.64789658 140.53647 0.101607868</span>
-<span class="co">#&gt; 9 factor(Carrying)3  1.620539719 0.44577707  3.63531421 126.03784 0.000402999</span>
+<span class="co">#&gt;                term    estimate  std.error  statistic        df      p.value</span>
+<span class="co">#&gt; 1       (Intercept)  5.46804466 2.38896068  2.2888801  91.03355 0.0243996729</span>
+<span class="co">#&gt; 2            Gender -0.43004912 0.42222897 -1.0185211  81.22034 0.3114547422</span>
+<span class="co">#&gt; 3           Smoking -0.18982214 0.33111579 -0.5732802 101.66059 0.5677209467</span>
+<span class="co">#&gt; 4          Function -0.04310566 0.04458895 -0.9667342  73.68631 0.3368392131</span>
+<span class="co">#&gt; 5        JobControl -0.02240094 0.01847689 -1.2123758 113.34850 0.2278895162</span>
+<span class="co">#&gt; 6        JobDemands  0.03615936 0.03583342  1.0090960  85.53979 0.3157745461</span>
+<span class="co">#&gt; 7     SocialSupport -0.01217414 0.05397776 -0.2255399  98.55648 0.8220263273</span>
+<span class="co">#&gt; 8 factor(Carrying)2  0.73628015 0.43661292  1.6863453  77.86015 0.0957326702</span>
+<span class="co">#&gt; 9 factor(Carrying)3  1.81823727 0.50837659  3.5765559  36.78132 0.0009969769</span>
 <span class="co">#&gt;         2.5 %      97.5 %</span>
-<span class="co">#&gt; 1  0.66722297 10.01159601</span>
-<span class="co">#&gt; 2 -1.19056733  0.42970301</span>
-<span class="co">#&gt; 3 -0.79610121  0.47379668</span>
-<span class="co">#&gt; 4 -0.15969772  0.01716662</span>
-<span class="co">#&gt; 5 -0.05412842  0.01932083</span>
-<span class="co">#&gt; 6 -0.03765159  0.09924450</span>
-<span class="co">#&gt; 7 -0.10008312  0.10611399</span>
-<span class="co">#&gt; 8 -0.13375406  1.47327795</span>
-<span class="co">#&gt; 9  0.73836257  2.50271687</span>
+<span class="co">#&gt; 1  0.72269131 10.21339802</span>
+<span class="co">#&gt; 2 -1.27011778  0.41001953</span>
+<span class="co">#&gt; 3 -0.84661506  0.46697079</span>
+<span class="co">#&gt; 4 -0.13195737  0.04574605</span>
+<span class="co">#&gt; 5 -0.05900577  0.01420390</span>
+<span class="co">#&gt; 6 -0.03508059  0.10739931</span>
+<span class="co">#&gt; 7 -0.11928369  0.09493542</span>
+<span class="co">#&gt; 8 -0.13297399  1.60553430</span>
+<span class="co">#&gt; 9  0.78796170  2.84851284</span>
   <span class="va">poolm</span><span class="op">$</span><span class="va">pmultiparm</span>
 <span class="co">#&gt;                  p-values D1 F-statistic</span>
-<span class="co">#&gt; Gender           0.352700166 0.864673120</span>
-<span class="co">#&gt; Smoking          0.615583050 0.252241223</span>
-<span class="co">#&gt; Function         0.109859689 2.587919102</span>
-<span class="co">#&gt; JobControl       0.347664133 0.884066463</span>
-<span class="co">#&gt; JobDemands       0.373154425 0.794067311</span>
-<span class="co">#&gt; SocialSupport    0.953893137 0.003343249</span>
-<span class="co">#&gt; factor(Carrying) 0.001085976 6.852460631</span></code></pre></div>
+<span class="co">#&gt; Gender           0.309540227  1.03738528</span>
+<span class="co">#&gt; Smoking          0.566758506  0.32865022</span>
+<span class="co">#&gt; Function         0.334990012  0.93457498</span>
+<span class="co">#&gt; JobControl       0.225798078  1.46985508</span>
+<span class="co">#&gt; JobDemands       0.313895135  1.01827476</span>
+<span class="co">#&gt; SocialSupport    0.821680059  0.05086824</span>
+<span class="co">#&gt; factor(Carrying) 0.001133859  7.35038570</span></code></pre></div>
 <p>Back to <a href="#examples">Examples</a></p>
 </div>
-<div class="section level2">
-<h2 id="mice-and-miceafter-for-selecting-logistic-regression-models">mice and miceafter for selecting logistic regression models<a class="anchor" aria-label="anchor" href="#mice-and-miceafter-for-selecting-logistic-regression-models"></a>
-</h2>
+<div class="section level3">
+<h3 id="mice-and-miceafter-for-selecting-logistic-regression-models">mice and miceafter for selecting logistic regression models<a class="anchor" aria-label="anchor" href="#mice-and-miceafter-for-selecting-logistic-regression-models"></a>
+</h3>
 <p>We follow the same procedure as the first example but also apply model selection here.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -234,8 +234,8 @@
   
   <span class="va">poolm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pool_glm.html">pool_glm</a></span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span>, p.crit <span class="op">=</span> <span class="fl">0.15</span>, direction <span class="op">=</span> <span class="st">"BW"</span><span class="op">)</span>
 <span class="co">#&gt; Removed at Step 1 is - Smoking</span>
-<span class="co">#&gt; Removed at Step 2 is - JobDemands</span>
-<span class="co">#&gt; Removed at Step 3 is - JobControl</span>
+<span class="co">#&gt; Removed at Step 2 is - JobControl</span>
+<span class="co">#&gt; Removed at Step 3 is - JobDemands</span>
 <span class="co">#&gt; Removed at Step 4 is - Gender</span>
 <span class="co">#&gt; Removed at Step 5 is - SocialSupport</span>
 <span class="co">#&gt; Removed at Step 6 is - Function</span>
@@ -244,21 +244,21 @@
 <span class="co">#&gt; No more variables removed from the model</span>
   <span class="va">poolm</span><span class="op">$</span><span class="va">pmodel</span>
 <span class="co">#&gt;                term  estimate std.error statistic       df      p.value</span>
-<span class="co">#&gt; 1       (Intercept) -1.762604 0.4097277 -4.301892 153.5248 3.001540e-05</span>
-<span class="co">#&gt; 2 factor(Carrying)2  1.618826 0.4959175  3.264305 146.7273 1.365551e-03</span>
-<span class="co">#&gt; 3 factor(Carrying)3  2.386492 0.4980509  4.791664 152.9243 3.881307e-06</span>
+<span class="co">#&gt; 1       (Intercept) -1.654879 0.4207179 -3.933464 73.65649 1.876909e-04</span>
+<span class="co">#&gt; 2 factor(Carrying)2  1.496346 0.5436139  2.752590 42.70964 8.644477e-03</span>
+<span class="co">#&gt; 3 factor(Carrying)3  2.311090 0.5221285  4.426285 75.40832 3.185773e-05</span>
 <span class="co">#&gt;           OR  lower.EXP  upper.EXP</span>
-<span class="co">#&gt; 1  0.1715974 0.07637984  0.3855161</span>
-<span class="co">#&gt; 2  5.0471629 1.89413532 13.4488031</span>
-<span class="co">#&gt; 3 10.8752813 4.06552963 29.0913492</span>
+<span class="co">#&gt; 1  0.1911152 0.08264154  0.4419691</span>
+<span class="co">#&gt; 2  4.4653433 1.49156900 13.3679978</span>
+<span class="co">#&gt; 3 10.0854102 3.56458916 28.5349850</span>
   <span class="va">poolm</span><span class="op">$</span><span class="va">pmultiparm</span>
 <span class="co">#&gt;                   p-values D1 F-statistic</span>
-<span class="co">#&gt; factor(Carrying) 1.588343e-05    11.12238</span></code></pre></div>
+<span class="co">#&gt; factor(Carrying) 0.0001319443    9.727157</span></code></pre></div>
 <p>Back to <a href="#examples">Examples</a></p>
 </div>
-<div class="section level2">
-<h2 id="mice-and-miceafter-for-selecting-linear-regression-models">mice and miceafter for selecting linear regression models<a class="anchor" aria-label="anchor" href="#mice-and-miceafter-for-selecting-linear-regression-models"></a>
-</h2>
+<div class="section level3">
+<h3 id="mice-and-miceafter-for-selecting-linear-regression-models">mice and miceafter for selecting linear regression models<a class="anchor" aria-label="anchor" href="#mice-and-miceafter-for-selecting-linear-regression-models"></a>
+</h3>
 <p>We follow the same procedure as the second example but also apply model selection here.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -275,27 +275,27 @@
   <span class="va">poolm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pool_glm.html">pool_glm</a></span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span>, p.crit <span class="op">=</span> <span class="fl">0.15</span>, direction <span class="op">=</span> <span class="st">"BW"</span><span class="op">)</span>
 <span class="co">#&gt; Removed at Step 1 is - SocialSupport</span>
 <span class="co">#&gt; Removed at Step 2 is - Smoking</span>
-<span class="co">#&gt; Removed at Step 3 is - Gender</span>
-<span class="co">#&gt; Removed at Step 4 is - JobControl</span>
-<span class="co">#&gt; Removed at Step 5 is - JobDemands</span>
+<span class="co">#&gt; Removed at Step 3 is - JobDemands</span>
+<span class="co">#&gt; Removed at Step 4 is - Gender</span>
+<span class="co">#&gt; Removed at Step 5 is - JobControl</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Selection correctly terminated, </span>
 <span class="co">#&gt; No more variables removed from the model</span>
   <span class="va">poolm</span><span class="op">$</span><span class="va">pmodel</span>
-<span class="co">#&gt;                term    estimate  std.error statistic        df      p.value</span>
-<span class="co">#&gt; 1       (Intercept)  5.03244019 0.64390969  7.815444  60.00060 1.012084e-10</span>
-<span class="co">#&gt; 2          Function -0.07389333 0.04257827 -1.735470  68.77995 8.713604e-02</span>
-<span class="co">#&gt; 3 factor(Carrying)2  0.80270690 0.42938949  1.869414  57.38300 6.667075e-02</span>
-<span class="co">#&gt; 4 factor(Carrying)3  1.82768277 0.43441130  4.207263 115.75858 5.124708e-05</span>
+<span class="co">#&gt;                term   estimate  std.error statistic        df      p.value</span>
+<span class="co">#&gt; 1       (Intercept)  5.1139203 0.69909260  7.315083  34.39300 1.670199e-08</span>
+<span class="co">#&gt; 2          Function -0.0768820 0.04797762 -1.602455  27.08002 1.206569e-01</span>
+<span class="co">#&gt; 3 factor(Carrying)2  0.7771067 0.40717296  1.908542 104.34463 5.906911e-02</span>
+<span class="co">#&gt; 4 factor(Carrying)3  1.6616998 0.49525270  3.355256  40.12561 1.742540e-03</span>
 <span class="co">#&gt;         2.5 %     97.5 %</span>
-<span class="co">#&gt; 1  3.74442931 6.32045108</span>
-<span class="co">#&gt; 2 -0.15883950 0.01105285</span>
-<span class="co">#&gt; 3 -0.05700636 1.66242017</span>
-<span class="co">#&gt; 4  0.96725755 2.68810799</span>
+<span class="co">#&gt; 1  3.69379095 6.53404970</span>
+<span class="co">#&gt; 2 -0.17531034 0.02154634</span>
+<span class="co">#&gt; 3 -0.03030114 1.58451461</span>
+<span class="co">#&gt; 4  0.66085437 2.66254529</span>
   <span class="va">poolm</span><span class="op">$</span><span class="va">pmultiparm</span>
 <span class="co">#&gt;                  p-values D1 F-statistic</span>
-<span class="co">#&gt; Function         0.084728579    3.011858</span>
-<span class="co">#&gt; factor(Carrying) 0.000362937    8.384924</span></code></pre></div>
+<span class="co">#&gt; Function         0.117606663    2.567864</span>
+<span class="co">#&gt; factor(Carrying) 0.008223062    5.453517</span></code></pre></div>
 <p>Back to <a href="#examples">Examples</a></p>
 </div>
 </div>
@@ -318,7 +318,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>

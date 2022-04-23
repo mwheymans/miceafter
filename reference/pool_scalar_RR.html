@@ -27,7 +27,7 @@ estimates"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/m
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -77,7 +77,9 @@ estimates</p>
   logit_trans <span class="op">=</span> <span class="cn">FALSE</span>,
   conf.level <span class="op">=</span> <span class="fl">0.95</span>,
   statistic <span class="op">=</span> <span class="cn">FALSE</span>,
-  dfcom <span class="op">=</span> <span class="cn">NULL</span>
+  dfcom <span class="op">=</span> <span class="cn">NULL</span>,
+  df_small <span class="op">=</span> <span class="cn">TRUE</span>,
+  approxim <span class="op">=</span> <span class="st">"tdistr"</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -98,6 +100,13 @@ on the original parameter scale.</p></dd>
 provided, if FALSE (default) these are not shown.</p></dd>
 <dt>dfcom</dt>
 <dd><p>The complete data analysis degrees of freedom.</p></dd>
+<dt>df_small</dt>
+<dd><p>if TRUE (default) the (Barnard &amp; Rubin) small sample
+correction for the degrees of freedom is applied, if FALSE the old
+number of degrees of freedom is calculated.</p></dd>
+<dt>approxim</dt>
+<dd><p>if "tdistr" a t-distribution is used (default), if "zdistr"
+a z-distribution is used to derive a p-value according to the test statistic.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -163,7 +172,7 @@ derived using the t-distribution and adjusted degrees of freedom.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>
