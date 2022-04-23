@@ -10,7 +10,9 @@ pool_scalar_RR(
   logit_trans = FALSE,
   conf.level = 0.95,
   statistic = FALSE,
-  dfcom = NULL
+  dfcom = NULL,
+  df_small = TRUE,
+  approxim = "tdistr"
 )
 }
 \arguments{
@@ -28,6 +30,13 @@ on the original parameter scale.}
 provided, if FALSE (default) these are not shown.}
 
 \item{dfcom}{The complete data analysis degrees of freedom.}
+
+\item{df_small}{if TRUE (default) the (Barnard & Rubin) small sample
+correction for the degrees of freedom is applied, if FALSE the old
+number of degrees of freedom is calculated.}
+
+\item{approxim}{if "tdistr" a t-distribution is used (default), if "zdistr"
+a z-distribution is used to derive a p-value according to the test statistic.}
 }
 \value{
 A list object from which the following objects are extracted:

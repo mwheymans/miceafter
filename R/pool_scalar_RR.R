@@ -12,6 +12,11 @@
 #' @param dfcom The complete data analysis degrees of freedom.
 #' @param statistic if TRUE the test statistic and confidence interval are
 #'  provided, if FALSE (default) these are not shown.
+#' @param df_small if TRUE (default) the (Barnard & Rubin) small sample
+#'  correction for the degrees of freedom is applied, if FALSE the old
+#'  number of degrees of freedom is calculated.
+#' @param approxim if "tdistr" a t-distribution is used (default), if "zdistr"
+#'  a z-distribution is used to derive a p-value according to the test statistic.
 #'
 #'@return A list object from which the following objects are extracted:
 #'  \itemize{
@@ -47,10 +52,15 @@ pool_scalar_RR <- function(est,
                            logit_trans=FALSE,
                            conf.level=0.95,
                            statistic=FALSE,
-                           dfcom=NULL){
+                           dfcom=NULL,
+                           df_small=TRUE,
+                           approxim="tdistr")
+{
   call <- match.call()
   if(is_empty(dfcom))
-     stop("dfcom is not defined")
+    stop("dfcom is not defined")
+  if(approxim=="zdistr")
+    df_small=FALSE
   if(logit_trans){
     est_logit <- logit_trans(est, se)
     est <- est_logit[, 1]
@@ -66,41 +76,63 @@ pool_scalar_RR <- function(est,
     var_w + (1 + 1/m) * var_b # total variance
   se_total <-
     sqrt(var_T)
-  if (var_b == 0){
-    v_adj <- 100000000
-  } else {
-    r <-
-      (1 + 1 / m) * (var_b / var_w)
-    v_old <-
-      (m - 1) * (1 + (1/r))^2
-    lambda <-
-      (var_b + (var_b/m))/var_T
+  r <-
+    (1 + 1 / m) * (var_b / var_w)
+  v_old <-
+    (m - 1) * (1 + (1/r))^2
+  lambda <-
+    (var_b + (var_b/m))/var_T
+  if(df_small){
     # Adjustment according to Barnard & Rubin (1999)
     v_obs <-
       (((dfcom) + 1) / ((dfcom) + 3)) * (dfcom) * (1-lambda)
     v_adj <-
       (v_old * v_obs) / (v_old + v_obs)
   }
+  if(var_b == 0){
+    v_adj <- 100000000
+  }
   alpha <- 1 - (1 - conf.level)/2
-  t <- qt(alpha, v_adj)
+  if(approxim=="tdistr")
+    if(df_small){
+      t <- qt(alpha, v_adj)
+    } else{
+      t <- qt(alpha, v_old)
+    }
+  if(approxim=="zdistr")
+    t <- qnorm(alpha)
   if(var_b == 0){
     obj <- list(pool_est=mean_est, pool_se=se_total,
                 t=t, dfcom=dfcom)
   } else {
-    obj <- list(pool_est=mean_est, pool_se=se_total,
-              t=t, r=r, dfcom=dfcom, v_adj=v_adj)
+    if(df_small) {
+      obj <- list(pool_est=mean_est, pool_se=se_total,
+                  t=t, r=r, dfcom=dfcom, v_adj=v_adj)
+    } else {
+      obj <- list(pool_est=mean_est, pool_se=se_total,
+                  t=t, r=r, dfcom=dfcom, v_old=v_old)
+    }
   }
   if(statistic){
     statistic <- mean_est/se_total
-    pval <- 2*(1-pt(abs(statistic), v_adj))
+    if(approxim=="tdistr")
+      pval <- 2*(1-pt(abs(statistic), v_adj))
+    if(approxim=="zdistr")
+      pval <- 2*(1-pnorm(abs(statistic)))
     if(var_b==0){
       obj <- list(pool_est=mean_est, pool_se=se_total,
                   t=t, dfcom=dfcom,
                   statistic=statistic, pval=pval)
     } else {
-      obj <- list(pool_est=mean_est, pool_se=se_total,
-                t=t, r=r, dfcom=dfcom, v_adj=v_adj,
-                statistic=statistic, pval=pval)
+      if(df_small) {
+        obj <- list(pool_est=mean_est, pool_se=se_total,
+                    t=t, r=r, dfcom=dfcom, v_adj=v_adj,
+                    statistic=statistic, pval=pval)
+      } else {
+        obj <- list(pool_est=mean_est, pool_se=se_total,
+                    t=t, r=r, dfcom=dfcom,
+                    statistic=statistic, pval=pval)
+      }
     }
   }
   return(obj)
