@@ -116,7 +116,11 @@ pool_scalar_RR <- function(est,
   if(statistic){
     statistic <- mean_est/se_total
     if(approxim=="tdistr")
-      pval <- 2*(1-pt(abs(statistic), v_adj))
+      if(df_small){
+        pval <- 2*(1-pt(abs(statistic), v_adj))
+      } else{
+        pval <- 2*(1-pt(abs(statistic), v_old))
+      }
     if(approxim=="zdistr")
       pval <- 2*(1-pnorm(abs(statistic)))
     if(var_b==0){
@@ -130,7 +134,7 @@ pool_scalar_RR <- function(est,
                     statistic=statistic, pval=pval)
       } else {
         obj <- list(pool_est=mean_est, pool_se=se_total,
-                    t=t, r=r, dfcom=dfcom,
+                    t=t, r=r, dfcom=dfcom, v_old=v_old,
                     statistic=statistic, pval=pval)
       }
     }
