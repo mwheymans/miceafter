@@ -29,7 +29,7 @@ cindex <- function(formula,
   mf_call <- match.call()
   fit <- eval(mf_call[[2L]], parent.frame())
 
-  if(any(class(formula)!="coxph")){
+  if(any(!inherits(formula, "coxph"))){
     predfit <-
       predict(fit, type="response")
     can <-

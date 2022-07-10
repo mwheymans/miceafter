@@ -96,7 +96,7 @@ pool_glm <- function(object,
 
   call <- match.call()
 
-  if(!class(object)=='mistats')
+  if(!inherits(object, 'mistats'))
     stop("Object must be of class 'mistats'")
   names_model <- names(object$statistics[[1]]$model)
   if(any(grepl("rcs", names_model)))

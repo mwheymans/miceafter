@@ -12,15 +12,15 @@
 #'  \code{df2milist}, \code{list2milist} or \code{mids2milist}.
 #'
 #' @details The Levene's test centers around means to calculate
-#'  outcome residuals, the Brown-Forsythe test on the median.
+#'  outcome residuals, the Brown-Forsythe test around the median.
 #'
-#'@return An object containing the following objects are extracted:
+#'@return An object containing:
 #'  \itemize{
-#'  \item  \code{fstats} F-test value, including numerator and
+#'  \item \code{fstats} F-test value, including numerator and
 #'   denominator degrees of freedom.
-#'  \item  \code{qhat} pooled coefficients from fit.
-#'  \item  \code{vcov} variance-covariance matrix.
-#'  \item  \code{dfcom} degrees of freedom obtained from \code{df.residual}.
+#'  \item \code{qhat} pooled coefficients from fit.
+#'  \item \code{vcov} variance-covariance matrix.
+#'  \item \code{dfcom} degrees of freedom obtained from \code{df.residual}.
 #'}
 #'
 #' @author Martijn Heymans, 2021
@@ -57,7 +57,7 @@ bf_test <- function(y,
     names(df) <- c("y", "x")
   }
   df$x <- factor(df$x)
-  # center on subgroup means
+  # center on subgroup medians
   df_new <- df %>%
     group_by(x) %>%
     mutate(resd = abs(y-median(y))) %>%

@@ -24,6 +24,11 @@ statistic.
 \code{pool_propdiff_ac} Calculates the pooled difference between proportions
 and standard error according to Agresti-Caffo across multiply imputed datasets.
 }
+\details{
+For the pooled difference between proportions the difference
+between proportions according to Wald are used. The Agresti-Caffo
+difference is used to derive the Agresti-Caffo confidence intervals.
+}
 \examples{
 
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
@@ -31,6 +36,16 @@ ra <- with(imp_dat, expr=propdiff_ac(Chronic ~ Radiation))
 res <- pool_propdiff_ac(ra)
 res
 
+}
+\references{
+Agresti, A. and Caffo, B. Simple and Effective Confidence
+Intervals for Proportions and Differences of Proportions Result from
+Adding Two Successes and Two Failures. The American Statistician.
+2000;54:280-288.
+
+Fagerland MW, Lydersen S, Laake P. Recommended confidence
+intervals for two independent binomial proportions. Stat Methods Med Res.
+2015 Apr;24(2):224-54.
 }
 \seealso{
 \code{\link{with.milist}}, \code{\link{propdiff_ac}}

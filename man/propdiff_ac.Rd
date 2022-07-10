@@ -26,6 +26,13 @@ according to Agresti-Caffo and complete data degrees of freedom
 \code{propdiff_ac} Calculates the difference between proportions
 and standard error according to method Agresti-Caffo.
 }
+\details{
+As output the differences between proportions according to
+Agresti-Caffo and Wald are provided. The Agresti-Caffo difference is
+used in the function \code{pool_propdiff_ac} to derive the Agresti-Caffo
+confidence intervals. For the pooled difference between proportions
+the difference between proportions according to Wald are used.
+}
 \examples{
 
 imp_dat <- df2milist(lbpmilr, impvar="Impnr")
@@ -34,6 +41,16 @@ ra <- with(imp_dat, expr=propdiff_ac(Chronic ~ Radiation))
 # same as
 ra <- with(imp_dat, expr=propdiff_ac(y=Chronic, x=Radiation))
 
+}
+\references{
+Agresti, A. and Caffo, B. Simple and Effective Confidence
+Intervals for Proportions and Differences of Proportions Result from
+Adding Two Successes and Two Failures. The American Statistician.
+2000;54:280-288.
+
+Fagerland MW, Lydersen S, Laake P. Recommended confidence
+intervals for two independent binomial proportions. Stat Methods Med Res.
+2015 Apr;24(2):224-54.
 }
 \seealso{
 \code{\link{with.milist}}, \code{\link{pool_propdiff_ac}}

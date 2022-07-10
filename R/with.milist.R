@@ -22,7 +22,7 @@ with.milist <- function(data, expr=NULL, ...)
 {
   call <- match.call()
 
-  if (!class(data)=="milist")
+  if (!inherits(data, "milist"))
     stop("data must be of class 'milist'")
 
   statistics <- as.list(seq_len(length(data)))

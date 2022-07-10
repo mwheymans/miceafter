@@ -20,6 +20,8 @@
 df2milist <- function(data, impvar, keep=FALSE){
   if (!any(class(data)=="data.frame"))
     stop("object must be of class 'data.frame'")
+  if(!impvar %in% names(data))
+    stop("Variable defined as 'impvar' not in dataset")
 
   imp_list <- data %>%
     group_split(get(impvar), .keep = keep)

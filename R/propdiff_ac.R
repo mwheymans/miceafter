@@ -10,9 +10,23 @@
 #' @param data An objects of class \code{milist}, created by
 #'  \code{df2milist}, \code{list2milist} or \code{mids2milist}.
 #'
+#' @details As output the differences between proportions according to
+#'  Agresti-Caffo and Wald are provided. The Agresti-Caffo difference is
+#'  used in the function \code{pool_propdiff_ac} to derive the Agresti-Caffo
+#'  confidence intervals. For the pooled difference between proportions
+#'  the difference between proportions according to Wald are used.
+#'
 #' @return The difference between proportions, the standard error
 #'  according to Agresti-Caffo and complete data degrees of freedom
 #'  (dfcom) as n-1.
+#'
+#' @references Agresti, A. and Caffo, B. Simple and Effective Confidence
+#'  Intervals for Proportions and Differences of Proportions Result from
+#'  Adding Two Successes and Two Failures. The American Statistician.
+#'  2000;54:280-288.
+#' @references Fagerland MW, Lydersen S, Laake P. Recommended confidence
+#'  intervals for two independent binomial proportions. Stat Methods Med Res.
+#'  2015 Apr;24(2):224-54.
 #'
 #' @author Martijn Heymans, 2021
 #'
@@ -75,6 +89,14 @@ propdiff_ac <- function(y,
   dfcom <-
     (n0+n1)-1
 
+  # Wald
+  p0hat <-
+    x0/n0
+  p1hat <-
+    x1/n1
+  phat_diff <-
+    p1hat - p0hat
+
   # Agresti-Caffo
   p0hat_ac <-
     (x0 + 1)/(n0 + 2)
@@ -86,8 +108,8 @@ propdiff_ac <- function(y,
   se_phat_diff_ac <-
     sqrt((p0hat_ac * (1 - p0hat_ac)/(n0 + 2)) + (p1hat_ac * (1 - p1hat_ac)/(n1 + 2)))
   output <-
-    matrix(c(phat_diff_ac, se_phat_diff_ac, dfcom), 1, 3)
+    matrix(c(phat_diff_ac, se_phat_diff_ac, dfcom, phat_diff), 1, 4)
   colnames(output) <-
-    c("Prop diff AC", "SE", "dfcom")
+    c("Prop diff AC", "SE", "dfcom", "Prop diff Wald")
   return(output)
 }

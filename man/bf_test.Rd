@@ -18,13 +18,13 @@ used by glm. Use 'factor' to define the grouping variable.}
 \code{df2milist}, \code{list2milist} or \code{mids2milist}.}
 }
 \value{
-An object containing the following objects are extracted:
+An object containing:
 \itemize{
-\item  \code{fstats} F-test value, including numerator and
+\item \code{fstats} F-test value, including numerator and
 denominator degrees of freedom.
-\item  \code{qhat} pooled coefficients from fit.
-\item  \code{vcov} variance-covariance matrix.
-\item  \code{dfcom} degrees of freedom obtained from \code{df.residual}.
+\item \code{qhat} pooled coefficients from fit.
+\item \code{vcov} variance-covariance matrix.
+\item \code{dfcom} degrees of freedom obtained from \code{df.residual}.
 }
 }
 \description{
@@ -34,7 +34,7 @@ and degrees of freedom.
 }
 \details{
 The Levene's test centers around means to calculate
-outcome residuals, the Brown-Forsythe test on the median.
+outcome residuals, the Brown-Forsythe test around the median.
 }
 \examples{
 
