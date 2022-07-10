@@ -13,6 +13,7 @@ reference:
 - contents:
   - bf_test
   - cindex
+  - cor_est
   - levene_test
   - odds_ratio
   - prop_nna
@@ -20,10 +21,12 @@ reference:
   - propdiff_ac
   - propdiff_wald
   - risk_ratio
+  - t_test
 - title: Functions to Pool Statistical Analyses
 - contents:
   - pool_bftest
   - pool_cindex
+  - pool_cor
   - pool_D2
   - pool_glm
   - pool_levenetest
@@ -36,12 +39,15 @@ reference:
   - pool_propdiff_wald
   - pool_risk_ratio
   - pool_scalar_RR
+  - pool_t_test
   - glm_mi
 - title: Extra Functions
 - contents:
   - check_model
   - clean_P
+  - cor2fz
   - f2chi
+  - fz2cor
   - invlogit
   - invlogit_ci
   - logit_trans
