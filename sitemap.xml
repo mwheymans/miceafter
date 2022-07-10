@@ -37,10 +37,19 @@
     <loc>https://mwheymans.github.io/miceafter/reference/clean_P.html</loc>
   </url>
   <url>
+    <loc>https://mwheymans.github.io/miceafter/reference/cor2fz.html</loc>
+  </url>
+  <url>
+    <loc>https://mwheymans.github.io/miceafter/reference/cor_est.html</loc>
+  </url>
+  <url>
     <loc>https://mwheymans.github.io/miceafter/reference/df2milist.html</loc>
   </url>
   <url>
     <loc>https://mwheymans.github.io/miceafter/reference/f2chi.html</loc>
+  </url>
+  <url>
+    <loc>https://mwheymans.github.io/miceafter/reference/fz2cor.html</loc>
   </url>
   <url>
     <loc>https://mwheymans.github.io/miceafter/reference/glm_lm_bw.html</loc>
@@ -103,6 +112,9 @@
     <loc>https://mwheymans.github.io/miceafter/reference/pool_cindex.html</loc>
   </url>
   <url>
+    <loc>https://mwheymans.github.io/miceafter/reference/pool_cor.html</loc>
+  </url>
+  <url>
     <loc>https://mwheymans.github.io/miceafter/reference/pool_glm.html</loc>
   </url>
   <url>
@@ -136,6 +148,9 @@
     <loc>https://mwheymans.github.io/miceafter/reference/pool_scalar_RR.html</loc>
   </url>
   <url>
+    <loc>https://mwheymans.github.io/miceafter/reference/pool_t_test.html</loc>
+  </url>
+  <url>
     <loc>https://mwheymans.github.io/miceafter/reference/prop_nna.html</loc>
   </url>
   <url>
@@ -149,6 +164,9 @@
   </url>
   <url>
     <loc>https://mwheymans.github.io/miceafter/reference/risk_ratio.html</loc>
+  </url>
+  <url>
+    <loc>https://mwheymans.github.io/miceafter/reference/t_test.html</loc>
   </url>
   <url>
     <loc>https://mwheymans.github.io/miceafter/reference/with.milist.html</loc>

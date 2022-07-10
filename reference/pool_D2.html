@@ -71,19 +71,24 @@ across Multiply Imputed datasets.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pool_D2</span><span class="op">(</span><span class="va">dw</span>, <span class="va">v</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pool_D2</span><span class="op">(</span><span class="va">dw</span>, <span class="va">v</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dw</dt>
 <dd><p>a vector of chi square values obtained after multiple imputation.</p></dd>
+
+
 <dt>v</dt>
 <dd><p>single value for the degrees of freedom of the chi square statistic.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The pooled chi square values as the D2 statistic, the p-value,
+    
+
+<p>The pooled chi square values as the D2 statistic, the p-value,
 the numerator, df1 and denominator, df2 degrees of freedom for the
 F-test.</p>
     </div>
@@ -102,10 +107,10 @@ Interdisciplinary Statistics. Boca Raton.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">pool_D2</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.25</span>, <span class="fl">3.95</span>, <span class="fl">6.24</span>, <span class="fl">5.27</span>, <span class="fl">2.81</span><span class="op">)</span>, <span class="fl">4</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="fu">pool_D2</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.25</span>, <span class="fl">3.95</span>, <span class="fl">6.24</span>, <span class="fl">5.27</span>, <span class="fl">2.81</span><span class="op">)</span>, <span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        D2         p       df1       df2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.592801  0.669186  4.000000 59.199073 </span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -120,7 +125,7 @@ Interdisciplinary Statistics. Boca Raton.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

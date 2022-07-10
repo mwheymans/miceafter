@@ -71,46 +71,63 @@ estimates</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pool_scalar_RR</span><span class="op">(</span>
-  <span class="va">est</span>,
-  <span class="va">se</span>,
-  logit_trans <span class="op">=</span> <span class="cn">FALSE</span>,
-  conf.level <span class="op">=</span> <span class="fl">0.95</span>,
-  statistic <span class="op">=</span> <span class="cn">FALSE</span>,
-  dfcom <span class="op">=</span> <span class="cn">NULL</span>,
-  df_small <span class="op">=</span> <span class="cn">TRUE</span>,
-  approxim <span class="op">=</span> <span class="st">"tdistr"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pool_scalar_RR</span><span class="op">(</span></span>
+<span>  <span class="va">est</span>,</span>
+<span>  <span class="va">se</span>,</span>
+<span>  logit_trans <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  conf.level <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  statistic <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  dfcom <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  df_small <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  approxim <span class="op">=</span> <span class="st">"tdistr"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>est</dt>
 <dd><p>a numerical vector of parameter estimates.</p></dd>
+
+
 <dt>se</dt>
 <dd><p>a numerical vector of standard error estimates.</p></dd>
+
+
 <dt>logit_trans</dt>
 <dd><p>If TRUE logit transformation of parameter values
 is applied before pooling, if FALSE (default), pooling is done
 on the original parameter scale.</p></dd>
+
+
 <dt>conf.level</dt>
 <dd><p>Confidence level of the confidence intervals.</p></dd>
+
+
 <dt>statistic</dt>
 <dd><p>if TRUE the test statistic and confidence interval are
 provided, if FALSE (default) these are not shown.</p></dd>
+
+
 <dt>dfcom</dt>
 <dd><p>The complete data analysis degrees of freedom.</p></dd>
+
+
 <dt>df_small</dt>
 <dd><p>if TRUE (default) the (Barnard &amp; Rubin) small sample
 correction for the degrees of freedom is applied, if FALSE the old
 number of degrees of freedom is calculated.</p></dd>
+
+
 <dt>approxim</dt>
 <dd><p>if "tdistr" a t-distribution is used (default), if "zdistr"
 a z-distribution is used to derive a p-value according to the test statistic.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A list object from which the following objects are extracted:</p><ul><li><p><code>pool_est</code> the pooled parameter value.</p></li>
+    
+
+<p>A list object from which the following objects are extracted:</p><ul><li><p><code>pool_est</code> the pooled parameter value.</p></li>
 <li><p><code>pool_se</code> the pooled standard error value.</p></li>
 <li><p><code>t</code> quantile of the t-distribution (to calculate
 confidence intervals).</p></li>
@@ -135,10 +152,10 @@ derived using the t-distribution and adjusted degrees of freedom.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">est</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">se</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.05</span>, <span class="fl">0.03</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">pool_scalar_RR</span><span class="op">(</span><span class="va">est</span>, <span class="va">se</span>, dfcom<span class="op">=</span><span class="fl">500</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">res</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">est</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">se</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.05</span>, <span class="fl">0.03</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">pool_scalar_RR</span><span class="op">(</span><span class="va">est</span>, <span class="va">se</span>, dfcom<span class="op">=</span><span class="fl">500</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">res</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $pool_est</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -157,7 +174,7 @@ derived using the t-distribution and adjusted degrees of freedom.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $v_adj</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.77423</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -172,7 +189,7 @@ derived using the t-distribution and adjusted degrees of freedom.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

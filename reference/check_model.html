@@ -71,17 +71,17 @@ function <code>glm_mi</code></p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">check_model</span><span class="op">(</span>
-  <span class="va">data</span>,
-  <span class="va">formula</span>,
-  <span class="va">keep.predictors</span>,
-  <span class="va">impvar</span>,
-  <span class="va">p.crit</span>,
-  <span class="va">method</span>,
-  <span class="va">nimp</span>,
-  <span class="va">direction</span>,
-  <span class="va">model_type</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">check_model</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">formula</span>,</span>
+<span>  <span class="va">keep.predictors</span>,</span>
+<span>  <span class="va">impvar</span>,</span>
+<span>  <span class="va">p.crit</span>,</span>
+<span>  <span class="va">method</span>,</span>
+<span>  <span class="va">nimp</span>,</span>
+<span>  <span class="va">direction</span>,</span>
+<span>  <span class="va">model_type</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -91,34 +91,53 @@ function <code>glm_mi</code></p>
 The original dataset that contains missing values must be excluded from the
 dataset. The imputed datasets must be distinguished by an imputation variable,
 specified under impvar, and starting by 1.</p></dd>
+
+
 <dt>formula</dt>
 <dd><p>A formula object to specify the model as normally used by glm.
 See under "Details" and "Examples" how these can be specified.</p></dd>
+
+
 <dt>keep.predictors</dt>
 <dd><p>A single string or a vector of strings including the variables that are forced
 in the model during predictor selection. All type of variables are allowed.</p></dd>
+
+
 <dt>impvar</dt>
 <dd><p>A character vector. Name of the variable that distinguishes the
 imputed datasets.</p></dd>
+
+
 <dt>p.crit</dt>
 <dd><p>A numerical scalar. P-value selection criterium. A value of 1
 provides the pooled model without selection.</p></dd>
+
+
 <dt>method</dt>
 <dd><p>A character vector to indicate the pooling method for p-values to pool the
 total model or used during model selection. This can be "RR", D1", "D2", "D3", "D4", or "MPR".
 See details for more information. Default is "RR".</p></dd>
+
+
 <dt>nimp</dt>
 <dd><p>A numerical scalar. Number of imputed datasets. Default is 5.</p></dd>
+
+
 <dt>direction</dt>
 <dd><p>The direction of model selection, "BW" means backward selection and "FW"
 means forward selection.</p></dd>
+
+
 <dt>model_type</dt>
 <dd><p>A character vector for type of model, "binomial" is for logistic regression and
 "linear" is for linear regression models.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The outcome variable, the names of the predictors and name of variable to keep, if defined.
+    
+
+<p>The outcome variable, the names of the predictors and name of variable to keep, if defined.
 For internal use.</p>
     </div>
     <div id="details">
@@ -154,7 +173,7 @@ All variables in the terms part have to be separated by a "+".</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

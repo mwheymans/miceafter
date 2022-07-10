@@ -74,7 +74,7 @@ confidence intervals using an approximate Beta distribution.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pool_prop_nna</span><span class="op">(</span><span class="va">object</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pool_prop_nna</span><span class="op">(</span><span class="va">object</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -82,12 +82,17 @@ confidence intervals using an approximate Beta distribution.</p>
     <dl><dt>object</dt>
 <dd><p>An object of class 'mistats' ('Multiply Imputed
 Statistical Analysis').</p></dd>
+
+
 <dt>conf.level</dt>
 <dd><p>Confidence level of the confidence intervals.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The pooled proportion and the 95% Confidence interval.</p>
+    
+
+<p>The pooled proportion and the 95% Confidence interval.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -113,16 +118,16 @@ Dunson, Aki Vehtari, Donald B. Rubin. (2003). Bayesian Data Analysis
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"> <span class="va">imp_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar<span class="op">=</span><span class="st">'Impnr'</span><span class="op">)</span></span>
-<span class="r-in"> <span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">imp_dat</span>, expr<span class="op">=</span><span class="fu"><a href="prop_nna.html">prop_nna</a></span><span class="op">(</span><span class="va">Radiation</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"> <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">pool_prop_nna</span><span class="op">(</span><span class="va">ra</span><span class="op">)</span></span>
-<span class="r-in"> <span class="va">res</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="va">imp_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar<span class="op">=</span><span class="st">'Impnr'</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">imp_dat</span>, expr<span class="op">=</span><span class="fu"><a href="prop_nna.html">prop_nna</a></span><span class="op">(</span><span class="va">Radiation</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">pool_prop_nna</span><span class="op">(</span><span class="va">ra</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">res</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Prop nna   95%CI L   95%CI U</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.4623334 0.3836788 0.5422658</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "mipool"</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -137,7 +142,7 @@ Dunson, Aki Vehtari, Donald B. Rubin. (2003). Bayesian Data Analysis
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

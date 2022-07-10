@@ -87,7 +87,7 @@
       <h1 data-toc-skip>mice and miceafter for Regression modelling</h1>
                         <h4 data-toc-skip class="author">Martijn W Heymans</h4>
             
-            <h4 data-toc-skip class="date">2022-04-23</h4>
+            <h4 data-toc-skip class="date">2022-07-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mwheymans/miceafter/blob/HEAD/vignettes/regression_modelling.Rmd" class="external-link"><code>vignettes/regression_modelling.Rmd</code></a></small>
       <div class="hidden name"><code>regression_modelling.Rmd</code></div>
@@ -101,11 +101,11 @@
 </h2>
 <p>You can install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"mwheymans/miceafter"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"mwheymans/miceafter"</span><span class="op">)</span></span></code></pre></div>
 <p>You can install mice with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"mice"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"mice"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
@@ -121,49 +121,49 @@
 </h3>
 <p>lbp_orig is a dataset that is part of the miceafter package with missing values. So we first impute them with the <code>mice</code> function. Than we use the <code>mids2milist</code> function to turn a <code>mids</code> object, as a result of using <code>mice</code>, into a <code>milist</code> object with multiply imputed datasets. Than we use the <code>with</code> function to apply repeated logistic regression analyses. With the <code>pool_glm</code> function we obtain the results for the pooled model.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/amices/mice" class="external-link">mice</a></span><span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mwheymans.github.io/miceafter/">miceafter</a></span><span class="op">)</span>
-  
-  <span class="va">imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://amices.org/mice/reference/mice.html" class="external-link">mice</a></span><span class="op">(</span><span class="va">lbp_orig</span>, m<span class="op">=</span><span class="fl">5</span>, maxit<span class="op">=</span><span class="fl">5</span>, printFlag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
- 
-  <span class="va">dat_imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mids2milist.html">mids2milist</a></span><span class="op">(</span><span class="va">imp</span><span class="op">)</span>
-  
-  <span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">dat_imp</span>, expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">Chronic</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span> <span class="op">+</span> <span class="va">Gender</span> <span class="op">+</span> <span class="va">Smoking</span> <span class="op">+</span> 
-                      <span class="va">Function</span> <span class="op">+</span> <span class="va">JobControl</span> <span class="op">+</span> <span class="va">JobDemands</span> <span class="op">+</span> <span class="va">SocialSupport</span>, 
-                      family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span><span class="op">)</span>
-  
-  <span class="va">poolm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pool_glm.html">pool_glm</a></span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span><span class="op">)</span>
-  <span class="va">poolm</span><span class="op">$</span><span class="va">pmodel</span>
-<span class="co">#&gt;                term     estimate  std.error  statistic        df      p.value</span>
-<span class="co">#&gt; 1       (Intercept) -2.661508145 2.84433057 -0.9357239  74.75229 0.3524284827</span>
-<span class="co">#&gt; 2            Gender -0.206321773 0.45648036 -0.4519839 127.51781 0.6520484609</span>
-<span class="co">#&gt; 3           Smoking  0.061165639 0.36609875  0.1670742 146.02865 0.8675428354</span>
-<span class="co">#&gt; 4          Function -0.069025878 0.05079386 -1.3589414  80.26681 0.1779715306</span>
-<span class="co">#&gt; 5        JobControl  0.005914145 0.02343654  0.2523471  40.93261 0.8020356233</span>
-<span class="co">#&gt; 6        JobDemands  0.005648146 0.04163669  0.1356531  97.45877 0.8923753177</span>
-<span class="co">#&gt; 7     SocialSupport  0.061360909 0.06114741  1.0034915 130.49936 0.3174808580</span>
-<span class="co">#&gt; 8 factor(Carrying)2  1.446486310 0.51384531  2.8150229 128.64494 0.0056452564</span>
-<span class="co">#&gt; 9 factor(Carrying)3  2.100901137 0.55566274  3.7808926 100.51624 0.0002653778</span>
-<span class="co">#&gt;           OR    lower.EXP upper.EXP</span>
-<span class="co">#&gt; 1 0.06984281 0.0002416517 20.186149</span>
-<span class="co">#&gt; 2 0.81357125 0.3296978187  2.007590</span>
-<span class="co">#&gt; 3 1.06307499 0.5156274121  2.191754</span>
-<span class="co">#&gt; 4 0.93330253 0.8435773119  1.032571</span>
-<span class="co">#&gt; 5 1.00593167 0.9594267776  1.054691</span>
-<span class="co">#&gt; 6 1.00566413 0.9259044469  1.092295</span>
-<span class="co">#&gt; 7 1.06328259 0.9421341669  1.200009</span>
-<span class="co">#&gt; 8 4.24816154 1.5369565883 11.741956</span>
-<span class="co">#&gt; 9 8.17353207 2.7143470273 24.612412</span>
-  <span class="va">poolm</span><span class="op">$</span><span class="va">pmultiparm</span>
-<span class="co">#&gt;                  p-values D1 F-statistic</span>
-<span class="co">#&gt; Gender           0.651349935  0.20428945</span>
-<span class="co">#&gt; Smoking          0.867312543  0.02791377</span>
-<span class="co">#&gt; Function         0.175585099  1.84672160</span>
-<span class="co">#&gt; JobControl       0.801571944  0.06367908</span>
-<span class="co">#&gt; JobDemands       0.892169744  0.01840176</span>
-<span class="co">#&gt; SocialSupport    0.315762016  1.00699517</span>
-<span class="co">#&gt; factor(Carrying) 0.001507951  6.85275858</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/amices/mice" class="external-link">mice</a></span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mwheymans.github.io/miceafter/">miceafter</a></span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://amices.org/mice/reference/mice.html" class="external-link">mice</a></span><span class="op">(</span><span class="va">lbp_orig</span>, m<span class="op">=</span><span class="fl">5</span>, maxit<span class="op">=</span><span class="fl">5</span>, printFlag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span>
+<span> </span>
+<span>  <span class="va">dat_imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mids2milist.html">mids2milist</a></span><span class="op">(</span><span class="va">imp</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">dat_imp</span>, expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">Chronic</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span> <span class="op">+</span> <span class="va">Gender</span> <span class="op">+</span> <span class="va">Smoking</span> <span class="op">+</span> </span>
+<span>                      <span class="va">Function</span> <span class="op">+</span> <span class="va">JobControl</span> <span class="op">+</span> <span class="va">JobDemands</span> <span class="op">+</span> <span class="va">SocialSupport</span>, </span>
+<span>                      family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">poolm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pool_glm.html">pool_glm</a></span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span><span class="op">)</span></span>
+<span>  <span class="va">poolm</span><span class="op">$</span><span class="va">pmodel</span></span>
+<span><span class="co">#&gt;                term     estimate  std.error   statistic        df      p.value</span></span>
+<span><span class="co">#&gt; 1       (Intercept) -2.315578425 2.67199838 -0.86660922 120.48313 0.3878787209</span></span>
+<span><span class="co">#&gt; 2            Gender -0.294023465 0.44712375 -0.65758856 142.77376 0.5118613204</span></span>
+<span><span class="co">#&gt; 3           Smoking  0.043330889 0.36692861  0.11809079 145.04304 0.9061591023</span></span>
+<span><span class="co">#&gt; 4          Function -0.060491709 0.04862900 -1.24394299 118.04455 0.2159850567</span></span>
+<span><span class="co">#&gt; 5        JobControl  0.001560066 0.02204798  0.07075779  77.18477 0.9437735450</span></span>
+<span><span class="co">#&gt; 6        JobDemands  0.011280743 0.03950440  0.28555664 132.91324 0.7756622475</span></span>
+<span><span class="co">#&gt; 7     SocialSupport  0.051419807 0.06181638  0.83181519 110.17489 0.4073125380</span></span>
+<span><span class="co">#&gt; 8 factor(Carrying)2  1.289792088 0.50236730  2.56742842 130.96601 0.0113686460</span></span>
+<span><span class="co">#&gt; 9 factor(Carrying)3  2.108609904 0.53770759  3.92148062 130.49353 0.0001414859</span></span>
+<span><span class="co">#&gt;           OR    lower.EXP upper.EXP</span></span>
+<span><span class="co">#&gt; 1 0.09870907 0.0004975905 19.581326</span></span>
+<span><span class="co">#&gt; 2 0.74525900 0.3079365750  1.803654</span></span>
+<span><span class="co">#&gt; 3 1.04428338 0.5056619808  2.156634</span></span>
+<span><span class="co">#&gt; 4 0.94130157 0.8548835639  1.036455</span></span>
+<span><span class="co">#&gt; 5 1.00156128 0.9585424788  1.046511</span></span>
+<span><span class="co">#&gt; 6 1.01134461 0.9353281101  1.093539</span></span>
+<span><span class="co">#&gt; 7 1.05276476 0.9313840305  1.189964</span></span>
+<span><span class="co">#&gt; 8 3.63203133 1.3444531172  9.811909</span></span>
+<span><span class="co">#&gt; 9 8.23678340 2.8429934653 23.863791</span></span>
+<span>  <span class="va">poolm</span><span class="op">$</span><span class="va">pmultiparm</span></span>
+<span><span class="co">#&gt;                   p-values D1 F-statistic</span></span>
+<span><span class="co">#&gt; Gender           0.5108186875 0.432422720</span></span>
+<span><span class="co">#&gt; Smoking          0.9059968189 0.013945435</span></span>
+<span><span class="co">#&gt; Function         0.2138735665 1.547394151</span></span>
+<span><span class="co">#&gt; JobControl       0.9436623371 0.005006664</span></span>
+<span><span class="co">#&gt; JobDemands       0.7752451845 0.081542596</span></span>
+<span><span class="co">#&gt; SocialSupport    0.4058532066 0.691916509</span></span>
+<span><span class="co">#&gt; factor(Carrying) 0.0004755138 7.705792095</span></span></code></pre></div>
 <p>Back to <a href="#examples">Examples</a></p>
 </div>
 <div class="section level3">
@@ -171,48 +171,48 @@
 </h3>
 <p>The lbp_orig is a dataset that is part of the miceafter package with missing values. So we first impute them with the <code>mice</code> function. Than we use the <code>mids2milist</code> function to turn a <code>mids</code> object, as a result of using <code>mice</code>, into a <code>milist</code> object with multiply imputed datasets. Than we use the <code>with</code> function to apply repeated linear regression analyses. With the <code>pool_glm</code> function we obtain the results for the pooled model.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/amices/mice" class="external-link">mice</a></span><span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mwheymans.github.io/miceafter/">miceafter</a></span><span class="op">)</span>
-  
-  <span class="va">imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://amices.org/mice/reference/mice.html" class="external-link">mice</a></span><span class="op">(</span><span class="va">lbp_orig</span>, m<span class="op">=</span><span class="fl">5</span>, maxit<span class="op">=</span><span class="fl">5</span>, printFlag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
- 
-  <span class="va">dat_imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mids2milist.html">mids2milist</a></span><span class="op">(</span><span class="va">imp</span><span class="op">)</span>
-  
-  <span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">dat_imp</span>, expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">Pain</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span> <span class="op">+</span> <span class="va">Gender</span> <span class="op">+</span> <span class="va">Smoking</span> <span class="op">+</span> 
-                      <span class="va">Function</span> <span class="op">+</span> <span class="va">JobControl</span> <span class="op">+</span> <span class="va">JobDemands</span> <span class="op">+</span> <span class="va">SocialSupport</span><span class="op">)</span><span class="op">)</span>
-  
-  <span class="va">poolm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pool_glm.html">pool_glm</a></span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span><span class="op">)</span>
-  <span class="va">poolm</span><span class="op">$</span><span class="va">pmodel</span>
-<span class="co">#&gt;                term    estimate  std.error   statistic        df      p.value</span>
-<span class="co">#&gt; 1       (Intercept)  5.37497432 2.40233492  2.23739591 101.03732 0.0274567473</span>
-<span class="co">#&gt; 2            Gender -0.41174239 0.43906422 -0.93777260  51.01117 0.3527803045</span>
-<span class="co">#&gt; 3           Smoking -0.22668228 0.32377419 -0.70012461 119.27519 0.4852128445</span>
-<span class="co">#&gt; 4          Function -0.04855061 0.04404225 -1.10236460  90.59241 0.2732231811</span>
-<span class="co">#&gt; 5        JobControl -0.02021576 0.01911890 -1.05737022  76.64269 0.2936640535</span>
-<span class="co">#&gt; 6        JobDemands  0.02801370 0.03550570  0.78899161  95.95629 0.4320620197</span>
-<span class="co">#&gt; 7     SocialSupport  0.00488804 0.05175665  0.09444274 133.79942 0.9248987516</span>
-<span class="co">#&gt; 8 factor(Carrying)2  0.65403954 0.42487402  1.53937287 105.81733 0.1266983686</span>
-<span class="co">#&gt; 9 factor(Carrying)3  1.62184825 0.44007897  3.68535732 142.00779 0.0003240887</span>
-<span class="co">#&gt;         2.5 %      97.5 %</span>
-<span class="co">#&gt; 1  0.60940940 10.14053925</span>
-<span class="co">#&gt; 2 -1.29319591  0.46971112</span>
-<span class="co">#&gt; 3 -0.86777233  0.41440777</span>
-<span class="co">#&gt; 4 -0.13604043  0.03893920</span>
-<span class="co">#&gt; 5 -0.05828918  0.01785767</span>
-<span class="co">#&gt; 6 -0.04246497  0.09849237</span>
-<span class="co">#&gt; 7 -0.09747899  0.10725507</span>
-<span class="co">#&gt; 8 -0.18833132  1.49641040</span>
-<span class="co">#&gt; 9  0.75189572  2.49180079</span>
-  <span class="va">poolm</span><span class="op">$</span><span class="va">pmultiparm</span>
-<span class="co">#&gt;                  p-values D1 F-statistic</span>
-<span class="co">#&gt; Gender           0.350857392 0.879417456</span>
-<span class="co">#&gt; Smoking          0.484035104 0.490174464</span>
-<span class="co">#&gt; Function         0.271202508 1.215207704</span>
-<span class="co">#&gt; JobControl       0.291658731 1.118031787</span>
-<span class="co">#&gt; JobDemands       0.430651147 0.622507753</span>
-<span class="co">#&gt; SocialSupport    0.924765554 0.008919431</span>
-<span class="co">#&gt; factor(Carrying) 0.001961871 6.392747382</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/amices/mice" class="external-link">mice</a></span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mwheymans.github.io/miceafter/">miceafter</a></span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://amices.org/mice/reference/mice.html" class="external-link">mice</a></span><span class="op">(</span><span class="va">lbp_orig</span>, m<span class="op">=</span><span class="fl">5</span>, maxit<span class="op">=</span><span class="fl">5</span>, printFlag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span>
+<span> </span>
+<span>  <span class="va">dat_imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mids2milist.html">mids2milist</a></span><span class="op">(</span><span class="va">imp</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">dat_imp</span>, expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">Pain</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span> <span class="op">+</span> <span class="va">Gender</span> <span class="op">+</span> <span class="va">Smoking</span> <span class="op">+</span> </span>
+<span>                      <span class="va">Function</span> <span class="op">+</span> <span class="va">JobControl</span> <span class="op">+</span> <span class="va">JobDemands</span> <span class="op">+</span> <span class="va">SocialSupport</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">poolm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pool_glm.html">pool_glm</a></span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span><span class="op">)</span></span>
+<span>  <span class="va">poolm</span><span class="op">$</span><span class="va">pmodel</span></span>
+<span><span class="co">#&gt;                term    estimate  std.error   statistic        df      p.value</span></span>
+<span><span class="co">#&gt; 1       (Intercept)  5.45727476 2.58627884  2.11008754  41.62333 0.0409041669</span></span>
+<span><span class="co">#&gt; 2            Gender -0.40850167 0.41523383 -0.98378708  87.25526 0.3279402878</span></span>
+<span><span class="co">#&gt; 3           Smoking -0.21339959 0.32667432 -0.65324874 101.01390 0.5150800735</span></span>
+<span><span class="co">#&gt; 4          Function -0.05101041 0.04561652 -1.11824415  57.16722 0.2681398951</span></span>
+<span><span class="co">#&gt; 5        JobControl -0.02455765 0.01840517 -1.33428010 103.73091 0.1850338255</span></span>
+<span><span class="co">#&gt; 6        JobDemands  0.03396310 0.04239365  0.80113644  21.37699 0.4318676398</span></span>
+<span><span class="co">#&gt; 7     SocialSupport  0.00386067 0.05408746  0.07137828  86.47474 0.9432615172</span></span>
+<span><span class="co">#&gt; 8 factor(Carrying)2  0.68079981 0.41631998  1.63528019 116.56229 0.1046880168</span></span>
+<span><span class="co">#&gt; 9 factor(Carrying)3  1.70243308 0.47273490  3.60124261  65.17171 0.0006121476</span></span>
+<span><span class="co">#&gt;         2.5 %      97.5 %</span></span>
+<span><span class="co">#&gt; 1  0.23655307 10.67799645</span></span>
+<span><span class="co">#&gt; 2 -1.23378982  0.41678648</span></span>
+<span><span class="co">#&gt; 3 -0.86143249  0.43463331</span></span>
+<span><span class="co">#&gt; 4 -0.14235012  0.04032931</span></span>
+<span><span class="co">#&gt; 5 -0.06105691  0.01194161</span></span>
+<span><span class="co">#&gt; 6 -0.05410475  0.12203096</span></span>
+<span><span class="co">#&gt; 7 -0.10365321  0.11137455</span></span>
+<span><span class="co">#&gt; 8 -0.14373244  1.50533206</span></span>
+<span><span class="co">#&gt; 9  0.75836344  2.64650272</span></span>
+<span>  <span class="va">poolm</span><span class="op">$</span><span class="va">pmultiparm</span></span>
+<span><span class="co">#&gt;                  p-values D1 F-statistic</span></span>
+<span><span class="co">#&gt; Gender           0.326114625 0.967837016</span></span>
+<span><span class="co">#&gt; Smoking          0.513957628 0.426733922</span></span>
+<span><span class="co">#&gt; Function         0.265912198 1.250469987</span></span>
+<span><span class="co">#&gt; JobControl       0.182776535 1.780303384</span></span>
+<span><span class="co">#&gt; JobDemands       0.429834164 0.641819588</span></span>
+<span><span class="co">#&gt; SocialSupport    0.943151648 0.005094859</span></span>
+<span><span class="co">#&gt; factor(Carrying) 0.001249887 6.979345359</span></span></code></pre></div>
 <p>Back to <a href="#examples">Examples</a></p>
 </div>
 <div class="section level3">
@@ -220,40 +220,42 @@
 </h3>
 <p>We follow the same procedure as the first example but also apply model selection here.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/amices/mice" class="external-link">mice</a></span><span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mwheymans.github.io/miceafter/">miceafter</a></span><span class="op">)</span>
-  
-  <span class="va">imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://amices.org/mice/reference/mice.html" class="external-link">mice</a></span><span class="op">(</span><span class="va">lbp_orig</span>, m<span class="op">=</span><span class="fl">5</span>, maxit<span class="op">=</span><span class="fl">5</span>, printFlag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
- 
-  <span class="va">dat_imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mids2milist.html">mids2milist</a></span><span class="op">(</span><span class="va">imp</span><span class="op">)</span>
-  
-  <span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">dat_imp</span>, expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">Chronic</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span> <span class="op">+</span> <span class="va">Gender</span> <span class="op">+</span> <span class="va">Smoking</span> <span class="op">+</span> 
-                      <span class="va">Function</span> <span class="op">+</span> <span class="va">JobControl</span> <span class="op">+</span> <span class="va">JobDemands</span> <span class="op">+</span> <span class="va">SocialSupport</span>, 
-                      family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span><span class="op">)</span>
-  
-  <span class="va">poolm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pool_glm.html">pool_glm</a></span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span>, p.crit <span class="op">=</span> <span class="fl">0.15</span>, direction <span class="op">=</span> <span class="st">"BW"</span><span class="op">)</span>
-<span class="co">#&gt; Removed at Step 1 is - Smoking</span>
-<span class="co">#&gt; Removed at Step 2 is - JobDemands</span>
-<span class="co">#&gt; Removed at Step 3 is - JobControl</span>
-<span class="co">#&gt; Removed at Step 4 is - Gender</span>
-<span class="co">#&gt; Removed at Step 5 is - SocialSupport</span>
-<span class="co">#&gt; Removed at Step 6 is - Function</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Selection correctly terminated, </span>
-<span class="co">#&gt; No more variables removed from the model</span>
-  <span class="va">poolm</span><span class="op">$</span><span class="va">pmodel</span>
-<span class="co">#&gt;                term  estimate std.error statistic        df      p.value</span>
-<span class="co">#&gt; 1       (Intercept) -1.611270 0.4071748 -3.957193  98.81257 1.429128e-04</span>
-<span class="co">#&gt; 2 factor(Carrying)2  1.354849 0.4937072  2.744237 109.88135 7.085767e-03</span>
-<span class="co">#&gt; 3 factor(Carrying)3  2.315848 0.5103323  4.537923  93.58550 1.685501e-05</span>
-<span class="co">#&gt;          OR  lower.EXP  upper.EXP</span>
-<span class="co">#&gt; 1  0.199634 0.08899174  0.4478364</span>
-<span class="co">#&gt; 2  3.876177 1.45706745 10.3116356</span>
-<span class="co">#&gt; 3 10.133517 3.67853006 27.9155431</span>
-  <span class="va">poolm</span><span class="op">$</span><span class="va">pmultiparm</span>
-<span class="co">#&gt;                   p-values D1 F-statistic</span>
-<span class="co">#&gt; factor(Carrying) 3.343758e-05    10.66569</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/amices/mice" class="external-link">mice</a></span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mwheymans.github.io/miceafter/">miceafter</a></span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://amices.org/mice/reference/mice.html" class="external-link">mice</a></span><span class="op">(</span><span class="va">lbp_orig</span>, m<span class="op">=</span><span class="fl">5</span>, maxit<span class="op">=</span><span class="fl">5</span>, printFlag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span>
+<span> </span>
+<span>  <span class="va">dat_imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mids2milist.html">mids2milist</a></span><span class="op">(</span><span class="va">imp</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">dat_imp</span>, expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">Chronic</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span> <span class="op">+</span> <span class="va">Gender</span> <span class="op">+</span> <span class="va">Smoking</span> <span class="op">+</span> </span>
+<span>                      <span class="va">Function</span> <span class="op">+</span> <span class="va">JobControl</span> <span class="op">+</span> <span class="va">JobDemands</span> <span class="op">+</span> <span class="va">SocialSupport</span>, </span>
+<span>                      family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">poolm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pool_glm.html">pool_glm</a></span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span>, p.crit <span class="op">=</span> <span class="fl">0.15</span>, direction <span class="op">=</span> <span class="st">"BW"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Removed at Step 1 is - JobControl</span></span>
+<span><span class="co">#&gt; Removed at Step 2 is - Smoking</span></span>
+<span><span class="co">#&gt; Removed at Step 3 is - JobDemands</span></span>
+<span><span class="co">#&gt; Removed at Step 4 is - Gender</span></span>
+<span><span class="co">#&gt; Removed at Step 5 is - SocialSupport</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Selection correctly terminated, </span></span>
+<span><span class="co">#&gt; No more variables removed from the model</span></span>
+<span>  <span class="va">poolm</span><span class="op">$</span><span class="va">pmodel</span></span>
+<span><span class="co">#&gt;                term   estimate  std.error statistic        df      p.value</span></span>
+<span><span class="co">#&gt; 1       (Intercept) -0.8324489 0.72523865 -1.147828 121.18997 0.2533005231</span></span>
+<span><span class="co">#&gt; 2          Function -0.0659619 0.04544334 -1.451520 151.81316 0.1486985242</span></span>
+<span><span class="co">#&gt; 3 factor(Carrying)2  1.3962005 0.54237025  2.574257  58.42732 0.0126016568</span></span>
+<span><span class="co">#&gt; 4 factor(Carrying)3  2.0385944 0.56284778  3.621928  83.77355 0.0005000088</span></span>
+<span><span class="co">#&gt;          OR lower.EXP upper.EXP</span></span>
+<span><span class="co">#&gt; 1 0.4349827 0.1034955  1.828196</span></span>
+<span><span class="co">#&gt; 2 0.9361665 0.8557775  1.024107</span></span>
+<span><span class="co">#&gt; 3 4.0398216 1.3643765 11.961624</span></span>
+<span><span class="co">#&gt; 4 7.6798065 2.5074482 23.521693</span></span>
+<span>  <span class="va">poolm</span><span class="op">$</span><span class="va">pmultiparm</span></span>
+<span><span class="co">#&gt;                  p-values D1 F-statistic</span></span>
+<span><span class="co">#&gt; Function         0.146638417    2.106910</span></span>
+<span><span class="co">#&gt; factor(Carrying) 0.001601645    6.690156</span></span></code></pre></div>
 <p>Back to <a href="#examples">Examples</a></p>
 </div>
 <div class="section level3">
@@ -261,41 +263,41 @@
 </h3>
 <p>We follow the same procedure as the second example but also apply model selection here.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/amices/mice" class="external-link">mice</a></span><span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mwheymans.github.io/miceafter/">miceafter</a></span><span class="op">)</span>
-  
-  <span class="va">imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://amices.org/mice/reference/mice.html" class="external-link">mice</a></span><span class="op">(</span><span class="va">lbp_orig</span>, m<span class="op">=</span><span class="fl">5</span>, maxit<span class="op">=</span><span class="fl">5</span>, printFlag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
- 
-  <span class="va">dat_imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mids2milist.html">mids2milist</a></span><span class="op">(</span><span class="va">imp</span><span class="op">)</span>
-  
-  <span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">dat_imp</span>, expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">Pain</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span> <span class="op">+</span> <span class="va">Gender</span> <span class="op">+</span> <span class="va">Smoking</span> <span class="op">+</span> 
-                      <span class="va">Function</span> <span class="op">+</span> <span class="va">JobControl</span> <span class="op">+</span> <span class="va">JobDemands</span> <span class="op">+</span> <span class="va">SocialSupport</span><span class="op">)</span><span class="op">)</span>
-  
-  <span class="va">poolm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pool_glm.html">pool_glm</a></span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span>, p.crit <span class="op">=</span> <span class="fl">0.15</span>, direction <span class="op">=</span> <span class="st">"BW"</span><span class="op">)</span>
-<span class="co">#&gt; Removed at Step 1 is - SocialSupport</span>
-<span class="co">#&gt; Removed at Step 2 is - Smoking</span>
-<span class="co">#&gt; Removed at Step 3 is - JobDemands</span>
-<span class="co">#&gt; Removed at Step 4 is - JobControl</span>
-<span class="co">#&gt; Removed at Step 5 is - Gender</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Selection correctly terminated, </span>
-<span class="co">#&gt; No more variables removed from the model</span>
-  <span class="va">poolm</span><span class="op">$</span><span class="va">pmodel</span>
-<span class="co">#&gt;                term    estimate  std.error statistic        df      p.value</span>
-<span class="co">#&gt; 1       (Intercept)  5.10561948 0.62216534  8.206210  95.40028 1.077582e-12</span>
-<span class="co">#&gt; 2          Function -0.07720667 0.04247946 -1.817506  74.76933 7.314600e-02</span>
-<span class="co">#&gt; 3 factor(Carrying)2  0.78849039 0.38542774  2.045754 147.69250 4.255492e-02</span>
-<span class="co">#&gt; 4 factor(Carrying)3  1.76747945 0.45994331  3.842820  70.49079 2.634130e-04</span>
-<span class="co">#&gt;        2.5 %      97.5 %</span>
-<span class="co">#&gt; 1  3.8705319 6.340707005</span>
-<span class="co">#&gt; 2 -0.1618344 0.007421025</span>
-<span class="co">#&gt; 3  0.0268249 1.550155886</span>
-<span class="co">#&gt; 4  0.8502637 2.684695195</span>
-  <span class="va">poolm</span><span class="op">$</span><span class="va">pmultiparm</span>
-<span class="co">#&gt;                   p-values D1 F-statistic</span>
-<span class="co">#&gt; Function         0.0708398840    3.303328</span>
-<span class="co">#&gt; factor(Carrying) 0.0006766346    7.677413</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/amices/mice" class="external-link">mice</a></span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mwheymans.github.io/miceafter/">miceafter</a></span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://amices.org/mice/reference/mice.html" class="external-link">mice</a></span><span class="op">(</span><span class="va">lbp_orig</span>, m<span class="op">=</span><span class="fl">5</span>, maxit<span class="op">=</span><span class="fl">5</span>, printFlag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span>
+<span> </span>
+<span>  <span class="va">dat_imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mids2milist.html">mids2milist</a></span><span class="op">(</span><span class="va">imp</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">dat_imp</span>, expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">Pain</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span> <span class="op">+</span> <span class="va">Gender</span> <span class="op">+</span> <span class="va">Smoking</span> <span class="op">+</span> </span>
+<span>                      <span class="va">Function</span> <span class="op">+</span> <span class="va">JobControl</span> <span class="op">+</span> <span class="va">JobDemands</span> <span class="op">+</span> <span class="va">SocialSupport</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">poolm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pool_glm.html">pool_glm</a></span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span>, p.crit <span class="op">=</span> <span class="fl">0.15</span>, direction <span class="op">=</span> <span class="st">"BW"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Removed at Step 1 is - SocialSupport</span></span>
+<span><span class="co">#&gt; Removed at Step 2 is - Smoking</span></span>
+<span><span class="co">#&gt; Removed at Step 3 is - Gender</span></span>
+<span><span class="co">#&gt; Removed at Step 4 is - JobControl</span></span>
+<span><span class="co">#&gt; Removed at Step 5 is - JobDemands</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Selection correctly terminated, </span></span>
+<span><span class="co">#&gt; No more variables removed from the model</span></span>
+<span>  <span class="va">poolm</span><span class="op">$</span><span class="va">pmodel</span></span>
+<span><span class="co">#&gt;                term    estimate  std.error statistic       df      p.value</span></span>
+<span><span class="co">#&gt; 1       (Intercept)  5.08270171 0.60343052  8.423011 132.9202 5.218048e-14</span></span>
+<span><span class="co">#&gt; 2          Function -0.06490737 0.03951553 -1.642579 142.4496 1.026758e-01</span></span>
+<span><span class="co">#&gt; 3 factor(Carrying)2  0.61071330 0.39563245  1.543638 120.2696 1.253032e-01</span></span>
+<span><span class="co">#&gt; 4 factor(Carrying)3  1.67929858 0.42978687  3.907282 142.8317 1.435842e-04</span></span>
+<span><span class="co">#&gt;        2.5 %     97.5 %</span></span>
+<span><span class="co">#&gt; 1  3.8891329 6.27627048</span></span>
+<span><span class="co">#&gt; 2 -0.1430200 0.01320525</span></span>
+<span><span class="co">#&gt; 3 -0.1725935 1.39402013</span></span>
+<span><span class="co">#&gt; 4  0.8297337 2.52886349</span></span>
+<span>  <span class="va">poolm</span><span class="op">$</span><span class="va">pmultiparm</span></span>
+<span><span class="co">#&gt;                   p-values D1 F-statistic</span></span>
+<span><span class="co">#&gt; Function         0.1005536267    2.698065</span></span>
+<span><span class="co">#&gt; factor(Carrying) 0.0006698409    7.469177</span></span></code></pre></div>
 <p>Back to <a href="#examples">Examples</a></p>
 </div>
 </div>
@@ -318,7 +320,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

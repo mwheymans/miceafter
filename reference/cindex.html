@@ -73,7 +73,7 @@ to be further used in function <code>with.milist</code>.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">cindex</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cindex</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -81,13 +81,18 @@ to be further used in function <code>with.milist</code>.</p>
     <dl><dt>formula</dt>
 <dd><p>A formula object to specify the model as
 normally used by glm or coxph.</p></dd>
+
+
 <dt>data</dt>
 <dd><p>An object of class <code>milist</code>, created by
 <code>df2milist</code>, <code>list2milist</code> or <code>mids2milist</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The c-index, related standard error and
+    
+
+<p>The c-index, related standard error and
 complete data degrees of freedom (dfcom) as n-1.</p>
     </div>
     <div id="see-also">
@@ -101,11 +106,11 @@ complete data degrees of freedom (dfcom) as n-1.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"> <span class="va">imp_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span></span>
-<span class="r-in"> <span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">imp_dat</span>,</span>
-<span class="r-in"> expr <span class="op">=</span> <span class="fu">cindex</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">Chronic</span> <span class="op">~</span> <span class="va">Gender</span> <span class="op">+</span> <span class="va">Radiation</span>, family<span class="op">=</span><span class="va">binomial</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="va">imp_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">imp_dat</span>,</span></span>
+<span class="r-in"><span> expr <span class="op">=</span> <span class="fu">cindex</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">Chronic</span> <span class="op">~</span> <span class="va">Gender</span> <span class="op">+</span> <span class="va">Radiation</span>, family<span class="op">=</span><span class="va">binomial</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -120,7 +125,7 @@ complete data degrees of freedom (dfcom) as n-1.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

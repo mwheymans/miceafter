@@ -74,20 +74,25 @@ for a single proportion (assuming noninformative prior).</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">prop_nna</span><span class="op">(</span><span class="va">x</span>, <span class="va">data</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">prop_nna</span><span class="op">(</span><span class="va">x</span>, <span class="va">data</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>name of variable to calculate proportion.</p></dd>
+
+
 <dt>data</dt>
 <dd><p>An object of class 'mistats' ('Multiply Imputed
 Statistical Analysis').</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The posterior beta components.</p>
+    
+
+<p>The posterior beta components.</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -105,9 +110,9 @@ Boca Raton, FL: Chapman and Hall/CRC. (paragr 4.6.2)</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="va">imp_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar<span class="op">=</span><span class="st">'Impnr'</span><span class="op">)</span></span>
-<span class="r-in"> <span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">imp_dat</span>, expr<span class="op">=</span><span class="fu">prop_nna</span><span class="op">(</span><span class="va">Radiation</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="va">imp_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar<span class="op">=</span><span class="st">'Impnr'</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">imp_dat</span>, expr<span class="op">=</span><span class="fu">prop_nna</span><span class="op">(</span><span class="va">Radiation</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -122,7 +127,7 @@ Boca Raton, FL: Chapman and Hall/CRC. (paragr 4.6.2)</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

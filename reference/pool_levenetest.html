@@ -71,7 +71,7 @@ of the Levenene test.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pool_levenetest</span><span class="op">(</span><span class="va">object</span>, method <span class="op">=</span> <span class="st">"D1"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pool_levenetest</span><span class="op">(</span><span class="va">object</span>, method <span class="op">=</span> <span class="st">"D1"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -79,13 +79,18 @@ of the Levenene test.</p>
     <dl><dt>object</dt>
 <dd><p>An object of class 'mistats' ('Multiply Imputed
 Statistical Analysis').</p></dd>
+
+
 <dt>method</dt>
 <dd><p>A character vector to choose the pooling method,
 'D1' (default) or 'D2'.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The (combined) F-statistic, p-value and degrees of freedom.</p>
+    
+
+<p>The (combined) F-statistic, p-value and degrees of freedom.</p>
     </div>
     <div id="vignettes">
     <h2>Vignettes</h2>
@@ -113,21 +118,21 @@ Interdisciplinary Statistics. Boca Raton.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="va">lbpmilr</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="df2milist.html">df2milist</a></span><span class="op">(</span>impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">      <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span>expr<span class="op">=</span><span class="fu"><a href="levene_test.html">levene_test</a></span><span class="op">(</span><span class="va">Pain</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">        <span class="fu">pool_levenetest</span><span class="op">(</span>method<span class="op">=</span><span class="st">"D1"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">lbpmilr</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="df2milist.html">df2milist</a></span><span class="op">(</span>impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>      <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span>expr<span class="op">=</span><span class="fu"><a href="levene_test.html">levene_test</a></span><span class="op">(</span><span class="va">Pain</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>        <span class="fu">pool_levenetest</span><span class="op">(</span>method<span class="op">=</span><span class="st">"D1"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       F_value df1      df2    P(&gt;F)       RIV</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 1.586703   2 115.3418 0.209032 0.1809493</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "mipool"</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Same as</span></span>
-<span class="r-in"><span class="va">imp_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">imp_dat</span>, expr<span class="op">=</span><span class="fu"><a href="levene_test.html">levene_test</a></span><span class="op">(</span><span class="va">Pain</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">pool_levenetest</span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span><span class="op">)</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Same as</span></span></span>
+<span class="r-in"><span><span class="va">imp_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">imp_dat</span>, expr<span class="op">=</span><span class="fu"><a href="levene_test.html">levene_test</a></span><span class="op">(</span><span class="va">Pain</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">pool_levenetest</span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -142,7 +147,7 @@ Interdisciplinary Statistics. Boca Raton.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

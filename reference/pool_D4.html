@@ -71,7 +71,7 @@ across Multiply Imputed datasets according method D4.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pool_D4</span><span class="op">(</span><span class="va">data</span>, <span class="va">nimp</span>, <span class="va">impvar</span>, <span class="va">fm0</span>, <span class="va">fm1</span>, robust <span class="op">=</span> <span class="cn">TRUE</span>, model_type <span class="op">=</span> <span class="st">"binomial"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pool_D4</span><span class="op">(</span><span class="va">data</span>, <span class="va">nimp</span>, <span class="va">impvar</span>, <span class="va">fm0</span>, <span class="va">fm1</span>, robust <span class="op">=</span> <span class="cn">TRUE</span>, model_type <span class="op">=</span> <span class="st">"binomial"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -81,25 +81,40 @@ across Multiply Imputed datasets according method D4.</p>
 The original dataset that contains missing values must be excluded from the
 dataset. The imputed datasets must be distinguished by an imputation variable,
 specified under impvar, and starting by 1.</p></dd>
+
+
 <dt>nimp</dt>
 <dd><p>A numerical scalar. Number of imputed datasets. Default is 5.</p></dd>
+
+
 <dt>impvar</dt>
 <dd><p>A character vector. Name of the variable that distinguishes the
 imputed datasets.</p></dd>
+
+
 <dt>fm0</dt>
 <dd><p>the null model.</p></dd>
+
+
 <dt>fm1</dt>
 <dd><p>the (nested) model to compare. Must be larger than the null model.</p></dd>
+
+
 <dt>robust</dt>
 <dd><p>if TRUE a robust LRT is used (algorithm 1 in Chan and Meng), otherwise
 algorithm 2 is used.</p></dd>
+
+
 <dt>model_type</dt>
 <dd><p>if TRUE (default) a logistic regression model is fitted, otherwise
 a linear regression model is used</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The D4 statistic, the numerator, df1 and denominator, df2 degrees of freedom
+    
+
+<p>The D4 statistic, the numerator, df1 and denominator, df2 degrees of freedom
 for the F-test.</p>
     </div>
     <div id="references">
@@ -116,15 +131,15 @@ Likelihood Ratio Tests in Multiply Imputed Data Sets.” PsyArXiv. January 29. d
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="va">fm0</span> <span class="op">&lt;-</span> <span class="va">Chronic</span> <span class="op">~</span> <span class="va">BMI</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="va">Satisfaction</span> <span class="op">+</span> <span class="va">SocialSupport</span> <span class="op">+</span> <span class="va">Smoking</span></span>
-<span class="r-in"><span class="va">fm1</span> <span class="op">&lt;-</span> <span class="va">Chronic</span> <span class="op">~</span> <span class="va">BMI</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="va">Satisfaction</span> <span class="op">+</span>  <span class="va">SocialSupport</span> <span class="op">+</span> <span class="va">Smoking</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="va">Radiation</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">miceafter</span><span class="fu">::</span><span class="fu">pool_D4</span><span class="op">(</span>data<span class="op">=</span><span class="va">lbpmilr</span>, nimp<span class="op">=</span><span class="fl">10</span>, impvar<span class="op">=</span><span class="st">"Impnr"</span>,</span>
-<span class="r-in">               fm0<span class="op">=</span><span class="va">fm0</span>, fm1<span class="op">=</span><span class="va">fm1</span>, robust <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">fm0</span> <span class="op">&lt;-</span> <span class="va">Chronic</span> <span class="op">~</span> <span class="va">BMI</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="va">Satisfaction</span> <span class="op">+</span> <span class="va">SocialSupport</span> <span class="op">+</span> <span class="va">Smoking</span></span></span>
+<span class="r-in"><span><span class="va">fm1</span> <span class="op">&lt;-</span> <span class="va">Chronic</span> <span class="op">~</span> <span class="va">BMI</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="va">Satisfaction</span> <span class="op">+</span>  <span class="va">SocialSupport</span> <span class="op">+</span> <span class="va">Smoking</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="va">Radiation</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">miceafter</span><span class="fu">::</span><span class="fu">pool_D4</span><span class="op">(</span>data<span class="op">=</span><span class="va">lbpmilr</span>, nimp<span class="op">=</span><span class="fl">10</span>, impvar<span class="op">=</span><span class="st">"Impnr"</span>,</span></span>
+<span class="r-in"><span>               fm0<span class="op">=</span><span class="va">fm0</span>, fm1<span class="op">=</span><span class="va">fm1</span>, robust <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $F</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 8.837382</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -140,7 +155,7 @@ Likelihood Ratio Tests in Multiply Imputed Data Sets.” PsyArXiv. January 29. d
 <span class="r-out co"><span class="r-pr">#&gt;</span> $riv</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.0592191</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -155,7 +170,7 @@ Likelihood Ratio Tests in Multiply Imputed Data Sets.” PsyArXiv. January 29. d
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

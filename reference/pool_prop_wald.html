@@ -76,7 +76,7 @@ and using Rubin's Rules.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pool_prop_wald</span><span class="op">(</span><span class="va">object</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span>, dfcom <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pool_prop_wald</span><span class="op">(</span><span class="va">object</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span>, dfcom <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -84,15 +84,22 @@ and using Rubin's Rules.</p>
     <dl><dt>object</dt>
 <dd><p>An object of class 'mistats' (repeated statistical
 analysis across multiply imputed datasets).</p></dd>
+
+
 <dt>conf.level</dt>
 <dd><p>Confidence level of the confidence intervals.</p></dd>
+
+
 <dt>dfcom</dt>
 <dd><p>Complete data degrees of freedom. Default
 number is taken from function <code>prop_wald</code></p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The proportion, the Confidence intervals, the standard error
+    
+
+<p>The proportion, the Confidence intervals, the standard error
 and the statistic.</p>
     </div>
     <div id="details">
@@ -111,16 +118,16 @@ transformed and the pooled estimates back transformed to the original scale.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="va">imp_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">imp_dat</span>, expr<span class="op">=</span><span class="fu"><a href="prop_wald.html">prop_wald</a></span><span class="op">(</span><span class="va">Radiation</span> <span class="op">~</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">pool_prop_wald</span><span class="op">(</span><span class="va">ra</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">res</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">imp_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">imp_dat</span>, expr<span class="op">=</span><span class="fu"><a href="prop_wald.html">prop_wald</a></span><span class="op">(</span><span class="va">Radiation</span> <span class="op">~</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">pool_prop_wald</span><span class="op">(</span><span class="va">ra</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">res</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Prop Wald Statistic   95%CI L   95%CI U</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.4622519  1.977215 0.3832793 0.5431653</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "mipool"</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -135,7 +142,7 @@ transformed and the pooled estimates back transformed to the original scale.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

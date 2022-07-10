@@ -103,67 +103,65 @@
 </h1></div>
 <p>With the <code>miceafter</code> package you can apply statistical and pooled analyses after multiple imputation. Therefore the name ‘miceafter’. The package contains a variety of statistical tests like the <code>pool_levenetest</code> function to pool Levene’s tests across multiply imputed datasets or the <code>pool_propdiff_nw function</code> to pool the difference between proportions according to method Newcombe-Wilson. The package also contains a function <code>pool_glm</code> to pool and select linear and logistic regression functions. Functions can also be used in combination with the <code>%&gt;%</code> (Pipe) operator.</p>
 <p>More and more statistical analyses and pooling functions will be added over time to form a framework of statistical tests that can be applied and pooled across multiply imputed datasets.</p>
-<div class="section level2">
-<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
-</h2>
-</div>
+<div class="section level2"><h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+</h2></div>
 <div class="section level2">
 <h2 id="pooling-levenes-test">Pooling Levene’s Test<a class="anchor" aria-label="anchor" href="#pooling-levenes-test"></a>
 </h2>
 <p>This example shows you how to pool the Levene test across 5 multiply imputed datasets. The pooling method that is used is method D1.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mwheymans.github.io/miceafter/">miceafter</a></span><span class="op">)</span>
-
-<span class="co"># Step 1: Turn data frame with multiply imputed datasets into object of 'milist'</span>
-<span class="va">imp_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span>
-
-<span class="co"># Step 2: Do repeated analyses across multiply imputed datasets</span>
-<span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">imp_dat</span>, expr<span class="op">=</span><span class="fu"><a href="reference/levene_test.html">levene_test</a></span><span class="op">(</span><span class="va">Pain</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># Step 3: Pool repeated test results</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pool_levenetest.html">pool_levenetest</a></span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span><span class="op">)</span>
-<span class="va">res</span>
-<span class="co">#&gt;       F_value df1      df2    P(&gt;F)       RIV</span>
-<span class="co">#&gt; [1,] 1.586703   2 115.3418 0.209032 0.1809493</span>
-<span class="co">#&gt; attr(,"class")</span>
-<span class="co">#&gt; [1] "mipool"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mwheymans.github.io/miceafter/">miceafter</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Step 1: Turn data frame with multiply imputed datasets into object of 'milist'</span></span>
+<span><span class="va">imp_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Step 2: Do repeated analyses across multiply imputed datasets</span></span>
+<span><span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">imp_dat</span>, expr<span class="op">=</span><span class="fu"><a href="reference/levene_test.html">levene_test</a></span><span class="op">(</span><span class="va">Pain</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Step 3: Pool repeated test results</span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pool_levenetest.html">pool_levenetest</a></span><span class="op">(</span><span class="va">ra</span>, method<span class="op">=</span><span class="st">"D1"</span><span class="op">)</span></span>
+<span><span class="va">res</span></span>
+<span><span class="co">#&gt;       F_value df1      df2    P(&gt;F)       RIV</span></span>
+<span><span class="co">#&gt; [1,] 1.586703   2 115.3418 0.209032 0.1809493</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "mipool"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="pooling-levenes-test-in-one-pipe">Pooling Levene’s Test in one Pipe<a class="anchor" aria-label="anchor" href="#pooling-levenes-test-in-one-pipe"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mwheymans.github.io/miceafter/">miceafter</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span>
-
-<span class="va">lbpmilr</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="reference/df2milist.html">df2milist</a></span><span class="op">(</span>impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-     <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span>expr<span class="op">=</span><span class="fu"><a href="reference/levene_test.html">levene_test</a></span><span class="op">(</span><span class="va">Pain</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-                                <span class="fu"><a href="reference/pool_levenetest.html">pool_levenetest</a></span><span class="op">(</span>method<span class="op">=</span><span class="st">"D1"</span><span class="op">)</span>
-<span class="co">#&gt;       F_value df1      df2    P(&gt;F)       RIV</span>
-<span class="co">#&gt; [1,] 1.586703   2 115.3418 0.209032 0.1809493</span>
-<span class="co">#&gt; attr(,"class")</span>
-<span class="co">#&gt; [1] "mipool"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mwheymans.github.io/miceafter/">miceafter</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">lbpmilr</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="reference/df2milist.html">df2milist</a></span><span class="op">(</span>impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>     <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span>expr<span class="op">=</span><span class="fu"><a href="reference/levene_test.html">levene_test</a></span><span class="op">(</span><span class="va">Pain</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Carrying</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>                                <span class="fu"><a href="reference/pool_levenetest.html">pool_levenetest</a></span><span class="op">(</span>method<span class="op">=</span><span class="st">"D1"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;       F_value df1      df2    P(&gt;F)       RIV</span></span>
+<span><span class="co">#&gt; [1,] 1.586703   2 115.3418 0.209032 0.1809493</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "mipool"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="pooling-difference-between-proportions-according-to-newcombe-wilson">Pooling Difference between Proportions according to Newcombe-Wilson<a class="anchor" aria-label="anchor" href="#pooling-difference-between-proportions-according-to-newcombe-wilson"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mwheymans.github.io/miceafter/">miceafter</a></span><span class="op">)</span>
-
-<span class="co"># Step 1: Turn data frame with multiply imputed datasets into object of 'milist'</span>
-<span class="va">imp_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span>
-
-<span class="co"># Step 2: Do repeated analyses across multiply imputed datasets</span>
-<span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">imp_dat</span>, 
-           expr<span class="op">=</span><span class="fu"><a href="reference/propdiff_wald.html">propdiff_wald</a></span><span class="op">(</span><span class="va">Chronic</span> <span class="op">~</span> <span class="va">Radiation</span>, strata <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># Step 3: Pool repeated test results</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pool_propdiff_nw.html">pool_propdiff_nw</a></span><span class="op">(</span><span class="va">ra</span><span class="op">)</span>
-<span class="va">res</span>
-<span class="co">#&gt;      Prop diff CI L NW CI U NW</span>
-<span class="co">#&gt; [1,]    0.2786  0.1199   0.419</span>
-<span class="co">#&gt; attr(,"class")</span>
-<span class="co">#&gt; [1] "mipool"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mwheymans.github.io/miceafter/">miceafter</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Step 1: Turn data frame with multiply imputed datasets into object of 'milist'</span></span>
+<span><span class="va">imp_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/df2milist.html">df2milist</a></span><span class="op">(</span><span class="va">lbpmilr</span>, impvar<span class="op">=</span><span class="st">"Impnr"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Step 2: Do repeated analyses across multiply imputed datasets</span></span>
+<span><span class="va">ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">imp_dat</span>, </span>
+<span>           expr<span class="op">=</span><span class="fu"><a href="reference/propdiff_wald.html">propdiff_wald</a></span><span class="op">(</span><span class="va">Chronic</span> <span class="op">~</span> <span class="va">Radiation</span>, strata <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Step 3: Pool repeated test results</span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pool_propdiff_nw.html">pool_propdiff_nw</a></span><span class="op">(</span><span class="va">ra</span><span class="op">)</span></span>
+<span><span class="va">res</span></span>
+<span><span class="co">#&gt;      Prop diff CI L NW CI U NW</span></span>
+<span><span class="co">#&gt; [1,]    0.2786  0.1199   0.419</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "mipool"</span></span></code></pre></div>
 <p>See for more functions the <a href="https://mwheymans.github.io/miceafter/">package website</a></p>
 </div>
 <div class="section level2">
@@ -176,8 +174,8 @@
 </h2>
 <p>You can install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"mwheymans/miceafter"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"mwheymans/miceafter"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
@@ -226,7 +224,9 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
+<li><a href="https://CRAN.R-project.org/package=miceafter" class="external-link"><img src="https://www.r-pkg.org/badges/version-ago/miceafter" alt="CRAN_Release_Badge"></a></li>
 <li><a href="https://github.com/mwheymans/miceafter/actions" class="external-link"><img src="https://github.com/mwheymans/miceafter/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://CRAN.R-project.org/package=miceafter" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/miceafter?color=blue" alt="Total downloads badge"></a></li>
 </ul>
 </div>
 
@@ -241,7 +241,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

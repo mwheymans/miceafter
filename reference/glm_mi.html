@@ -76,17 +76,17 @@ models across multiply imputed data using selection methods RR, D1, D2, D3, D4 a
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">glm_mi</span><span class="op">(</span>
-  <span class="va">data</span>,
-  formula <span class="op">=</span> <span class="cn">NULL</span>,
-  nimp <span class="op">=</span> <span class="fl">5</span>,
-  impvar <span class="op">=</span> <span class="cn">NULL</span>,
-  keep.predictors <span class="op">=</span> <span class="cn">NULL</span>,
-  p.crit <span class="op">=</span> <span class="fl">1</span>,
-  method <span class="op">=</span> <span class="st">"RR"</span>,
-  direction <span class="op">=</span> <span class="cn">NULL</span>,
-  model_type <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">glm_mi</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  formula <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  nimp <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  impvar <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  keep.predictors <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  p.crit <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"RR"</span>,</span>
+<span>  direction <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  model_type <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -96,36 +96,55 @@ models across multiply imputed data using selection methods RR, D1, D2, D3, D4 a
 The original dataset that contains missing values must be excluded from the
 dataset. The imputed datasets must be distinguished by an imputation variable,
 specified under impvar, and starting by 1.</p></dd>
+
+
 <dt>formula</dt>
 <dd><p>A formula object to specify the model as normally used by glm.
 See under "Details" and "Examples" how these can be specified. If a formula
 object is used set predictors, cat.predictors, spline.predictors or int.predictors
 at the default value of NULL.</p></dd>
+
+
 <dt>nimp</dt>
 <dd><p>A numerical scalar. Number of imputed datasets. Default is 5.</p></dd>
+
+
 <dt>impvar</dt>
 <dd><p>A character vector. Name of the variable that distinguishes the
 imputed datasets.</p></dd>
+
+
 <dt>keep.predictors</dt>
 <dd><p>A single string or a vector of strings including the variables that are forced
 in the model during predictor selection. All type of variables are allowed.</p></dd>
+
+
 <dt>p.crit</dt>
 <dd><p>A numerical scalar. P-value selection criterium. A value of 1
 provides the pooled model without selection.</p></dd>
+
+
 <dt>method</dt>
 <dd><p>A character vector to indicate the pooling method for p-values to pool the
 total model or used during predictor selection. This can be "RR", D1", "D2", "D3", "D4", or "MPR".
 See details for more information. Default is "RR".</p></dd>
+
+
 <dt>direction</dt>
 <dd><p>The direction of predictor selection, "BW" means backward selection and "FW"
 means forward selection.</p></dd>
+
+
 <dt>model_type</dt>
 <dd><p>A character vector for type of model, "binomial" is for logistic regression and
 "linear" is for linear regression models.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>An object of class <code>pmods</code> (multiply imputed models) from
+    
+
+<p>An object of class <code>pmods</code> (multiply imputed models) from
 which the following objects can be extracted:</p><ul><li><p><code>data</code> imputed datasets</p></li>
 <li><p><code>RR_model</code> pooled model at each selection step</p></li>
 <li><p><code>RR_model_final</code> final selected pooled model</p></li>
@@ -194,18 +213,18 @@ to Development, Validation, and Updating (2nd edition). Springer Nature Switzerl
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="va">pool_lr</span> <span class="op">&lt;-</span> <span class="fu">glm_mi</span><span class="op">(</span>data<span class="op">=</span><span class="va">lbpmilr</span>, formula <span class="op">=</span> <span class="va">Chronic</span> <span class="op">~</span> <span class="va">Pain</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Satisfaction</span><span class="op">)</span> <span class="op">+</span> <span class="fu">rcs</span><span class="op">(</span><span class="va">Tampascale</span>,<span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="va">Radiation</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="va">Radiation</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Satisfaction</span><span class="op">)</span> <span class="op">+</span> <span class="va">Age</span> <span class="op">+</span> <span class="va">Duration</span> <span class="op">+</span> <span class="va">BMI</span>,</span>
-<span class="r-in">  p.crit <span class="op">=</span> <span class="fl">0.05</span>, direction<span class="op">=</span><span class="st">"FW"</span>, nimp<span class="op">=</span><span class="fl">5</span>, impvar<span class="op">=</span><span class="st">"Impnr"</span>,</span>
-<span class="r-in">  keep.predictors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Radiation*factor(Satisfaction)"</span>, <span class="st">"Age"</span><span class="op">)</span>,</span>
-<span class="r-in">  method<span class="op">=</span><span class="st">"D1"</span>, model_type<span class="op">=</span><span class="st">"binomial"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="va">pool_lr</span> <span class="op">&lt;-</span> <span class="fu">glm_mi</span><span class="op">(</span>data<span class="op">=</span><span class="va">lbpmilr</span>, formula <span class="op">=</span> <span class="va">Chronic</span> <span class="op">~</span> <span class="va">Pain</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Satisfaction</span><span class="op">)</span> <span class="op">+</span> <span class="fu">rcs</span><span class="op">(</span><span class="va">Tampascale</span>,<span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="va">Radiation</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="va">Radiation</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Satisfaction</span><span class="op">)</span> <span class="op">+</span> <span class="va">Age</span> <span class="op">+</span> <span class="va">Duration</span> <span class="op">+</span> <span class="va">BMI</span>,</span></span>
+<span class="r-in"><span>  p.crit <span class="op">=</span> <span class="fl">0.05</span>, direction<span class="op">=</span><span class="st">"FW"</span>, nimp<span class="op">=</span><span class="fl">5</span>, impvar<span class="op">=</span><span class="st">"Impnr"</span>,</span></span>
+<span class="r-in"><span>  keep.predictors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Radiation*factor(Satisfaction)"</span>, <span class="st">"Age"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  method<span class="op">=</span><span class="st">"D1"</span>, model_type<span class="op">=</span><span class="st">"binomial"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Entered at Step 1 is - Pain</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Selection correctly terminated, </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> No new variables entered the model</span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="va">pool_lr</span><span class="op">$</span><span class="va">RR_model_final</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">pool_lr</span><span class="op">$</span><span class="va">RR_model_final</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Final model`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                              term     estimate  std.error    statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1                     (Intercept) -4.709498778 1.43056951 -3.292044710</span>
@@ -226,7 +245,7 @@ to Development, Validation, and Updating (2nd edition). Springer Nature Switzerl
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7  40.99328 3.937762e-01 0.328760726 0.0242557883  4.4559927</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8  19.52844 8.488278e-01 0.720343254 0.0207352364 25.0247643</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -241,7 +260,7 @@ to Development, Validation, and Updating (2nd edition). Springer Nature Switzerl
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

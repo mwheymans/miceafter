@@ -73,7 +73,7 @@ Function is called by <code>glm_mi</code>.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">glm_lr_bw</span><span class="op">(</span><span class="va">data</span>, <span class="va">nimp</span>, <span class="va">impvar</span>, <span class="va">Outcome</span>, <span class="va">P</span>, <span class="va">p.crit</span>, <span class="va">method</span>, <span class="va">keep.P</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">glm_lr_bw</span><span class="op">(</span><span class="va">data</span>, <span class="va">nimp</span>, <span class="va">impvar</span>, <span class="va">Outcome</span>, <span class="va">P</span>, <span class="va">p.crit</span>, <span class="va">method</span>, <span class="va">keep.P</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -83,27 +83,42 @@ Function is called by <code>glm_mi</code>.</p>
 The original dataset that contains missing values must be excluded from the
 dataset. The imputed datasets must be distinguished by an imputation variable,
 specified under impvar, and starting by 1.</p></dd>
+
+
 <dt>nimp</dt>
 <dd><p>A numerical scalar. Number of imputed datasets. Default is 5.</p></dd>
+
+
 <dt>impvar</dt>
 <dd><p>A character vector. Name of the variable that distinguishes the
 imputed datasets.</p></dd>
+
+
 <dt>Outcome</dt>
 <dd><p>Character vector containing the name of the outcome variable.</p></dd>
+
+
 <dt>P</dt>
 <dd><p>Character vector with the names of the predictor variables.
 At least one predictor variable has to be defined. Give predictors unique names
 and do not use predictor name combinations with numbers as, age2, BMI10, etc.</p></dd>
+
+
 <dt>p.crit</dt>
 <dd><p>A numerical scalar. P-value selection criterium. A value of 1
 provides the pooled model without selection.</p></dd>
+
+
 <dt>method</dt>
 <dd><p>A character vector to indicate the pooling method for p-values to pool the
 total model or used during predictor selection. This can be "RR", D1", "D2", "D3" or "MPR".
 See details for more information. Default is "RR".</p></dd>
+
+
 <dt>keep.P</dt>
 <dd><p>A single string or a vector of strings including the variables that are forced
 in the model during predictor selection. All type of variables are allowed.</p></dd>
+
 </dl></div>
     <div id="author">
     <h2>Author</h2>
@@ -122,7 +137,7 @@ in the model during predictor selection. All type of variables are allowed.</p><
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
