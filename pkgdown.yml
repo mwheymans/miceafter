@@ -1,11 +1,11 @@
 pandoc: 2.7.3
-pkgdown: 2.0.5
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   levene_test: levene_test.html
   pooling_cindex: pooling_cindex.html
   regression_modelling: regression_modelling.html
-last_built: 2022-07-10T15:03Z
+last_built: 2022-09-30T13:52Z
 urls:
   reference: https://mwheymans.github.io/miceafter/reference
   article: https://mwheymans.github.io/miceafter/articles
