@@ -1,4 +1,4 @@
-#' Takes the inverse of logit transformed parameters and calculates
+#'  Takes the inverse of logit transformed parameters and calculates
 #'  the confidence intervals
 #'
 #' \code{invlogit_ci} Takes the inverse of logit transformed

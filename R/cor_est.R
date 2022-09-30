@@ -9,7 +9,9 @@
 #'  \code{df2milist}, \code{list2milist} or \code{mids2milist}.
 #' @param method a character string indicating which correlation coefficient
 #'  is used for the test. One of "pearson" (default), "kendall", or "spearman".
-#' @param se_method Method to calculate standard error. See details.
+#' @param se_method Method to calculate standard error. If "normal" than
+#'  the basic method is used, if "fieler" than the method of Fieler is used.
+#'  See details.
 #'
 #' @details The basic method to calculate the standard error is by:
 #'

@@ -16,9 +16,10 @@
 #'  confidence intervals. For the pooled difference between proportions
 #'  the difference between proportions according to Wald are used.
 #'
-#' @return The difference between proportions, the standard error
-#'  according to Agresti-Caffo and complete data degrees of freedom
-#'  (dfcom) as n-1.
+#' @return The difference between proportions according Agresti-Caffo,
+#'  to calculate the confidence intervals, the standard error
+#'  according to Agresti-Caffo, the complete data degrees of freedom
+#'  (dfcom) as n-1 and the difference between proportions according to Wald.
 #'
 #' @references Agresti, A. and Caffo, B. Simple and Effective Confidence
 #'  Intervals for Proportions and Differences of Proportions Result from

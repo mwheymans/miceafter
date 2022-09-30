@@ -1,4 +1,4 @@
-#'  Direct Pooling and model selection of Linear and Logistic regression
+#'  Pooling and model selection of Linear and Logistic regression
 #'  models across multiply imputed data.
 #'
 #' \code{glm_mi} Pooling and backward or forward selection of Linear and Logistic regression
