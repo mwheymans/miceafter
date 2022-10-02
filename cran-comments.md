@@ -2,6 +2,28 @@
 title: "cran_comments"
 ---
 
+## Resubmission
+This is a resubmission. In this version I have:
+Updated version nr to 0.5.0.
+Did some error checking and correction.
+
+## R CMD check results
+Duration: 2m 7.8s
+
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+
+## devtools::test()
+ℹ Testing miceafter
+✔ | F W S  OK | Context
+⠏ |         0 | testthat                                                                                        
+══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ]
+
+## Test environments
+*	R studio 2022.07.1, R version 4.2.1
+* win-builder Development: * DONE Status: OK
+* win-builder Release: * DONE Status: OK
+
 ## Submission
 
 This is the first release.

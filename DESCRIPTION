@@ -25,7 +25,7 @@ Suggests:
     bookdown,
     readr
 Title: Data and Statistical Analyses after Multiple Imputation
-Version: 0.1.0
+Version: 0.5.0
 Authors@R: c(
    person("Martijn", "Heymans", email = "mw.heymans@amsterdamumc.nl", role=c("cre", "aut"),
    comment = c(ORCID = "0000-0002-3889-0921")),
