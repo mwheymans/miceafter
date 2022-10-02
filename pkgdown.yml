@@ -5,7 +5,7 @@ articles:
   levene_test: levene_test.html
   pooling_cindex: pooling_cindex.html
   regression_modelling: regression_modelling.html
-last_built: 2022-09-30T13:52Z
+last_built: 2022-10-02T13:13Z
 urls:
   reference: https://mwheymans.github.io/miceafter/reference
   article: https://mwheymans.github.io/miceafter/articles
