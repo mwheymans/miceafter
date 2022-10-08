@@ -32,6 +32,7 @@ This example shows you how to pool the Levene test across 5 multiply
 imputed datasets. The pooling method that is used is method D1.
 
 ``` r
+
 library(miceafter)
 
 # Step 1: Turn data frame with multiply imputed datasets into object of 'milist'
@@ -52,6 +53,7 @@ res
 ## Pooling Levene’s Test in one Pipe
 
 ``` r
+
 library(miceafter)
 library(magrittr)
 
@@ -68,6 +70,7 @@ lbpmilr %>%
 ## Pooling Difference between Proportions according to Newcombe-Wilson
 
 ``` r
+
 library(miceafter)
 
 # Step 1: Turn data frame with multiply imputed datasets into object of 'milist'
@@ -116,6 +119,7 @@ devtools::install_github("mwheymans/miceafter")
 Cite the package as:
 
 ``` r
+
 Martijn W Heymans (2021). miceafter: Data Analysis and Pooling after Multiple Imputation. 
-R package version 0.1.0. https://mwheymans.github.io/miceafter/
+R package version 0.5.0. https://mwheymans.github.io/miceafter/
 ```
