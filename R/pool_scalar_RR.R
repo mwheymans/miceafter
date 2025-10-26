@@ -8,9 +8,13 @@
 #' @param logit_trans If TRUE logit transformation of parameter values
 #'  is applied before pooling, if FALSE (default), pooling is done
 #'  on the original parameter scale.
-#' @param conf.level Confidence level of the confidence intervals.
+#' @param conf.level Used to calculate quantile of t or z distribution. Can
+#'  be used to calculate confidence intervals. Default is for
+#'  95% Confidence interval. See Details.
 #' @param dfcom The complete data analysis degrees of freedom.
-#' @param statistic if TRUE the test statistic and confidence interval are
+#'  (dfcom=n-k, with n the hypothetical complete data and k the number of
+#'  fitted parameters).
+#' @param statistic if TRUE the test statistic and p-value are
 #'  provided, if FALSE (default) these are not shown.
 #' @param df_small if TRUE (default) the (Barnard & Rubin) small sample
 #'  correction for the degrees of freedom is applied, if FALSE the old
@@ -77,7 +81,7 @@ pool_scalar_RR <- function(est,
   se_total <-
     sqrt(var_T)
   r <-
-    (1 + 1 / m) * (var_b / var_w)
+    (1 + (1 / m)) * (var_b / var_w)
   v_old <-
     (m - 1) * (1 + (1/r))^2
   lambda <-
@@ -114,7 +118,7 @@ pool_scalar_RR <- function(est,
     }
   }
   if(statistic){
-    statistic <- mean_est/se_total
+      statistic <- mean_est/se_total
     if(approxim=="tdistr")
       if(df_small){
         pval <- 2*(1-pt(abs(statistic), v_adj))
